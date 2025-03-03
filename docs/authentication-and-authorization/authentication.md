@@ -212,8 +212,8 @@ eingeteilt werden:
 ### Passwort-Qualität
 
 Kann ein neues Passwort in der Applikation gesetzt werden, sollte dieses
-gewisse Mindestanforderungen erfüllen. 2018 wurden die NIST 800-63-3:
-Digital Identity Guidelines[1] veröffentlicht, diese inkludieren mehrere
+gewisse Mindestanforderungen erfüllen. 2018 wurden die [NIST 800-63-3:
+Digital Identity Guidelines](https://pages.nist.gov/800-63-3/) veröffentlicht, diese inkludieren mehrere
 Best-Pracises im Umgang mit Passwörtern:
 
 -   Minimale Passwortlänge: 8 Zeichen. Ein Unicode Zeichen ist ein
@@ -235,8 +235,8 @@ Best-Pracises im Umgang mit Passwörtern:
 -   Passwort-Hints dürfen nicht mehr verwendet werden.
 
 Um eingegebene Passwörter gegen eine Liste von geleakten Passwörtern zu
-überprüfen, kann z.B. von <https://haveibeenpwned.com> (im Folgenden
-immer haveibeenpwned genannt) eine ca. 10 Gigabyte große Liste an
+überprüfen, kann z.B. von [Have I Been Pwned](https://haveibeenpwned.com)
+eine ca. 10 Gigabyte große Liste an
 Passwort-Hashes heruntergeladen werden. Alternativ bietet haveibeenpwned
 einen Passwort-Check Service an. Bei diesem werden Passwörter nicht als
 Hash übermittelt (ansonsten würde der Serverbetreiber Wissen über die
@@ -524,5 +524,3 @@ Risiko zu senken wurden als IDs große Zufallszahlen gewählt.
 
 8.  Auf welche Gefahren sollten bei der Implementierung der
     Passwort-Vergessen Funktion geachtet werden?
-
-[1] <https://pages.nist.gov/800-63-3/>

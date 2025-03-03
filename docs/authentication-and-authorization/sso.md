@@ -61,7 +61,7 @@ eigentlich verbieten sollte. Der alleinige Zeitpunkt der Überprüfung
 
 ## OAuth2
 
-OAuth2 (Open Authorization[1]) erlaubt es einem Benutzer (Resource
+[OAuth2](https://tools.ietf.org/html/rfc6749) erlaubt es einem Benutzer (Resource
 Owner) einer Applikation (Client) Zugriff auf Resourcen/Operationen auf
 einem Server (Resource Server) zu erteilen. Ein Authorization Server
 wird verwendet um ein Zugriffs-Token für einen definierten Bereich
@@ -334,5 +334,3 @@ authentifiziert und autorisiert.
     issuer? wer ist subject, etc.)?
 
 6.  Wie ist das Verhältnis zwischen OIDC und OAuth2?
-
-[1] urlhttps://tools.ietf.org/html/rfc6749

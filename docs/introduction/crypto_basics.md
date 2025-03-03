@@ -155,21 +155,21 @@ kryptographischen Algorithmen, hier eine kleine Auswahl öffentlich
 verfügbarer Dokumente:
 
 1.  Das amerikanische NIST gibt Empfehlungen für Cryptographical
-    Standards ab, z. B. SP-800-175B[3]. Aufgrund der Zusammenarbeit des
+    Standards ab, z. B. [SP-800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/final). Aufgrund der Zusammenarbeit des
     NIST mit der amerikanischen NSA bei zu vorigen Crypto-Standards
     (Vermutung der Platzierung einer Backdoor in einen
     Random-Number-Generator) wird mittlerweile gerne von den
     NIST-Empfehlungen abgesehen.
 
 2.  Die europäische ENISA gibt regelmäßig Empfehlungen zu verwendeten
-    kryptographischen Standards und Schlüssellängen ab (*Algorithms, key
-    size and parameter report 2014*[4]. Während diese relativ gut sind,
+    kryptographischen Standards und Schlüssellängen ab ([Algorithms, key
+    size and parameter report 2014](https://www.enisa.europa.eu/publications/algorithms-key-size-and-parameters-report-2014)). Während diese relativ gut sind,
     ist die Frequenz der Veröffentlichung für IT-Verhältnisse etwas
     behäbig (4-5 Jahre).
 
 3.  Das deutsche Bundesamt für Sicherheit in der Informationstechnik
     (BSI) bietet häufig überarbeitete Empfehlungen zum Einsatz
-    kryptographischer Methoden an (BSI TR-02102[5]). Diese sind relativ
+    kryptographischer Methoden an ([BSI TR-02102](https://www.bsi.bund.de/DE/Publikationen/TechnischeRichtlinien/tr02102/index_htm.html)). Diese sind relativ
     aktuell und klassifizieren Algorithmen in sichere Algorithmen die
     bei aktuellen Neuentwicklungen verwendet werden sollen und in
     legacy-Algorithmen, die zwar nicht mehr bei Neuentwicklungen
@@ -193,11 +193,5 @@ verfügbarer Dokumente:
 [1] Das Schlüsselpaar ist mathematisch “verwandt”.
 
 [2] Z. B. aus CPU-Zufallszahlengeneratoren, etc.
-
-[3] <https://csrc.nist.gov/publications/detail/sp/800-175b/final>
-
-[4] <https://www.enisa.europa.eu/publications/algorithms-key-size-and-parameters-report-2014>
-
-[5] <https://www.bsi.bund.de/DE/Publikationen/TechnischeRichtlinien/tr02102/index_htm.html>
 
 [6] <https://www.bettercrypto.org>

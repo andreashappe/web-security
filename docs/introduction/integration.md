@@ -30,7 +30,7 @@ Supply Chain).
 
 Um den Aufwand dieser Überprüfungen zu reduzieren und damit
 optimaler-weise deren Frequenz zu erhöhen gibt es automatisierte Tools
-wie den *OWASP Dependency-Check*[1] oder *OWASP Dependency-Track*. Diese
+wie den [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) oder *OWASP Dependency-Track*. Diese
 analysieren automatisch Projekte auf Dependencies (z.B. über Ruby
 Gemfiles, NPM package-lock.json Files, Maven Projektbeschreibungen),
 extrahieren automatisch dependencies und korrelieren diese mit
