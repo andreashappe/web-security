@@ -6,21 +6,21 @@ Grundidee ist es, ein unified Authentication/Authorization-Konzept über
 mehrere Server hinweg zu implementieren. Potentielle Gründe für den
 Einsatz einer Single-Sign On oder Federation Lösung sind:
 
--   SSO erlaubt es mehreren Applikationen eine gemeinsame
-    Login/Logout-Lösung zu verwenden. Dadurch können redundante Lösungen
-    eingespart und duplizierte Sicherheitsprobleme vermieden werden.
-    Nachteil: der Login-Server ist ein Single-Point-of-Failure.
+- SSO erlaubt es mehreren Applikationen eine gemeinsame
+  Login/Logout-Lösung zu verwenden. Dadurch können redundante Lösungen
+  eingespart und duplizierte Sicherheitsprobleme vermieden werden.
+  Nachteil: der Login-Server ist ein Single-Point-of-Failure.
 
--   Das gesamte Passwort-Management kann aus der Webapplikation
-    ausgelagert werden. Es müssen keine Passwörter mehr selbst erhoben,
-    bearbeitet oder gespeichert werden.
+- Das gesamte Passwort-Management kann aus der Webapplikation
+  ausgelagert werden. Es müssen keine Passwörter mehr selbst erhoben,
+  bearbeitet oder gespeichert werden.
 
--   Die User-Experience ist angeblich besser. Der Aufwand für einen
-    Benutzer einen neuen Account anzulegen wird minimiert.
+- Die User-Experience ist angeblich besser. Der Aufwand für einen
+  Benutzer einen neuen Account anzulegen wird minimiert.
 
--   Durch den Login-Server können weitere Authenticationsservices
-    implementiert worden sein, z.B. Ausweiskontrolle oder eine
-    Multi-Faktor-Authentication.
+- Durch den Login-Server können weitere Authenticationsservices
+  implementiert worden sein, z.B. Ausweiskontrolle oder eine
+  Multi-Faktor-Authentication.
 
 ## Festival-Beispiel
 
@@ -80,10 +80,7 @@ transparent für den Endbenutzer erfolgen. Der Vorteil liegt darin, dass
 während der Ausstellung durch den Authorisationsserver die angeforderten
 Rechte des Tokens wiederholt überprüft werden.
 
-<figure>
-<embed src="graphs/oauth2.pdf" />
-<figcaption>Beispiel für einen OAuth2-Fluss (tex into pdf)</figcaption>
-</figure>
+![Beispiel für einen OAuth2-Fluss](/images/oauth2.svg)
 
 Ein interessanter Aspekt ist der Zeitpunkt der Authorization: die
 Überprüfung der eigentlich Zugriffsberechtigung wird durch den
@@ -119,16 +116,16 @@ durchzuführen. Es gibt verschiedene Subprotokolle (*flows* genannt). Im
 Allgemeinen funktioniert das OpenID Connect Protokoll auf folgende
 Weise:
 
-1.  Der Client schickt einen Request zu dem OpenID Provider.
+1. Der Client schickt einen Request zu dem OpenID Provider.
 
-2.  Der OpenID Provider authentifiziert den Benutzer, der Benutzer
-    bestätigt den Authentication Request.
+2. Der OpenID Provider authentifiziert den Benutzer, der Benutzer
+   bestätigt den Authentication Request.
 
-3.  Der OpenID Provider returniert einen ID Token (und zumeist auch
-    einen Access Token).
+3. Der OpenID Provider returniert einen ID Token (und zumeist auch
+   einen Access Token).
 
-4.  Der Cient kann das Access Token verwenden um weitere Informationen
-    über den User über den *UserInfo Endpoint* zu erhalten.
+4. Der Cient kann das Access Token verwenden um weitere Informationen
+   über den User über den *UserInfo Endpoint* zu erhalten.
 
 Das ID Token ist ein JSON Web Token (JWT, siehe auch Kapitel
 <a href="#jwt" data-reference-type="ref" data-reference="jwt">[jwt]</a>,
@@ -207,30 +204,30 @@ public-key basierten Signatur unterschrieben.
 
 Typische Elemente einer Assertion wären:
 
--   *Issuer* identifiziert den IdP der diese Assertion ausgestellt hat.
+- *Issuer* identifiziert den IdP der diese Assertion ausgestellt hat.
 
--   *Signature* beinhaltet die Signatur welche die Integrität der
-    Security Assertion sichert.
+- *Signature* beinhaltet die Signatur welche die Integrität der
+  Security Assertion sichert.
 
--   *Subject* beschreibt das identifizierte Objekt, in diesem Fall den
-    identifizierten User. Der verwendete Identifier (*NameId*) kann
-    verschiedene Typen besitzen, häufig wird *transient* verwendet.
-    *transient* beschreibt einen kurzfristigen Identifier, ähnlich einer
-    Session-Id, und besitzt den Vorteil, dass auf diese Weise der SP
-    nicht die genaue Identität des Subjects erfährt.
+- *Subject* beschreibt das identifizierte Objekt, in diesem Fall den
+  identifizierten User. Der verwendete Identifier (*NameId*) kann
+  verschiedene Typen besitzen, häufig wird *transient* verwendet.
+  *transient* beschreibt einen kurzfristigen Identifier, ähnlich einer
+  Session-Id, und besitzt den Vorteil, dass auf diese Weise der SP
+  nicht die genaue Identität des Subjects erfährt.
 
--   Conditions: beliebig viele Conditions welche den Anwendungsbereich
-    der Assertion beschränken. Beispiel sind z. b. temporale
-    Beschränkungen (*NotBefore*, *NotOnOrAfter*) oder eine Einschränkung
-    der Service für welche die Assertion gültig sein soll.
+- Conditions: beliebig viele Conditions welche den Anwendungsbereich
+  der Assertion beschränken. Beispiel sind z. b. temporale
+  Beschränkungen (*NotBefore*, *NotOnOrAfter*) oder eine Einschränkung
+  der Service für welche die Assertion gültig sein soll.
 
--   AttributeStatement: beliebig viele Attribute-Statements welche
-    optionale Daten an die Assertion anhängen.
+- AttributeStatement: beliebig viele Attribute-Statements welche
+  optionale Daten an die Assertion anhängen.
 
--   *AuthnStatement* beschreibt die Assertion selbst und beinhaltet
-    einen eindeutigen Identifier für die Assertion (*SessionIndex*).
-    Dieser Identifier wird häufig im Zuge des Sign-Out zur
-    Identifikation der betroffenen Session verwendet.
+- *AuthnStatement* beschreibt die Assertion selbst und beinhaltet
+  einen eindeutigen Identifier für die Assertion (*SessionIndex*).
+  Dieser Identifier wird häufig im Zuge des Sign-Out zur
+  Identifikation der betroffenen Session verwendet.
 
 Bei einem realen Deployment kann die Situation auftreten, dass mehrere
 Identity Provider verfügbar sind und der Service Provider den korrekten
@@ -241,16 +238,16 @@ User gegen einem Active Directory und externe User gegen einen
 Um die Selektion des IdPs zu vereinfachen, gibt es das IdP Discovery
 Protokoll. Die beiden häufigen Arten des IdP Discoveries sind:
 
--   IdP Discovery am SP: der SP selbst kann die User einem IdP zuordnen
-    und weiß daher, welchen IdP er kontaktieren soll.
+- IdP Discovery am SP: der SP selbst kann die User einem IdP zuordnen
+  und weiß daher, welchen IdP er kontaktieren soll.
 
--   Delegated IdP Discovery: der SP leitet die Anfrage an einen eigenen
-    IdP Discovery Service weiter. Dieser identifiziert den zu wählenden
-    IdP und retourniert diese Information an den SP. Bei diesem
-    Protokoll muss erwähnt werden, dass die gesamte Kommunikation über
-    den Client läuft: der SP teilt dem Client mit, dass dieser per HTTP
-    Redirect den IdP Discovery Service kontaktieren soll (auf diese
-    Weise erhält der IdP Discovery Service die IP des Clients).
+- Delegated IdP Discovery: der SP leitet die Anfrage an einen eigenen
+  IdP Discovery Service weiter. Dieser identifiziert den zu wählenden
+  IdP und retourniert diese Information an den SP. Bei diesem
+  Protokoll muss erwähnt werden, dass die gesamte Kommunikation über
+  den Client läuft: der SP teilt dem Client mit, dass dieser per HTTP
+  Redirect den IdP Discovery Service kontaktieren soll (auf diese
+  Weise erhält der IdP Discovery Service die IP des Clients).
 
 ### Protocol Bindings
 
@@ -259,17 +256,12 @@ beim Entwurf des Standards auf vielfältige Integrationsmöglichkeiten in
 bestehende Netzwerke geachtet. Dementsprechend definiert SAML2 multiple
 Transportprotokolle, sogenannte Bindings:
 
--   HTTP Redirect Binding
-
--   HTTP POST Binding
-
--   HTTP Artifact Binding
-
--   SAML SOAP Binding
-
--   Reverse SOAP Binding
-
--   SAML URI Binding
+- HTTP Redirect Binding
+- HTTP POST Binding
+- HTTP Artifact Binding
+- SAML SOAP Binding
+- Reverse SOAP Binding
+- SAML URI Binding
 
 Bei Webbrowser-basierten Flows wird meistens das HTTP Redirect oder das
 HTTP POST Binding verwendet. Bei dem Redirect binding werden die
@@ -288,11 +280,7 @@ data-reference="saml2_sso">1.1</a> zeigt ein Beispiel für ein
 SP-initiated Single-Sign On welches durch einen Service Provider
 gestartet und mittels HTTP POST Binding implementiert wurde.
 
-<figure id="saml2_sso">
-<embed src="graphs/saml2.pdf" />
-<figcaption>Beispiel für ein Single-Sign On welches durch einen
-Service-Provider angestossen wurde.</figcaption>
-</figure>
+![Beispiel für ein Single-Sign On welches durch einen Service-Provider angestossen wurde](/images/saml2.svg)
 
 In diesem Beispiel will ein Client (*User Agent*) auf einen Service
 Provider zugreifen und benötigt hierfür eine Autorisierung. Nach dem
@@ -319,18 +307,18 @@ authentifiziert und autorisiert.
 
 ## Reflektionsfragen
 
-1.  Wie funktioniert der Sign-On Fluss bei SAML2?
+1. Wie funktioniert der Sign-On Fluss bei SAML2?
 
-2.  Wie funktioniert der Authorisierungsfluss bei OAuth2?
+2. Wie funktioniert der Authorisierungsfluss bei OAuth2?
 
-3.  Wie ist ein JSON Web Token aufgebaut? Welches Problem kann im
-    Zusammenhang mit Verwechslungen der Signatur und er MAC-Adresse
-    passieren?
+3. Wie ist ein JSON Web Token aufgebaut? Welches Problem kann im
+   Zusammenhang mit Verwechslungen der Signatur und er MAC-Adresse
+   passieren?
 
-4.  Welche Rolle übernimmt das IdP Discovery Protokoll innerhalb von
-    SAML2?
+4. Welche Rolle übernimmt das IdP Discovery Protokoll innerhalb von
+   SAML2?
 
-5.  Gegeben eine SAML2 Example Assertion, was sagt diese aus (wer ist
-    issuer? wer ist subject, etc.)?
+5. Gegeben eine SAML2 Example Assertion, was sagt diese aus (wer ist
+   issuer? wer ist subject, etc.)?
 
-6.  Wie ist das Verhältnis zwischen OIDC und OAuth2?
+6. Wie ist das Verhältnis zwischen OIDC und OAuth2?

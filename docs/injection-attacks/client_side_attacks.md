@@ -25,10 +25,12 @@ z.B. “Hallo”, und dies wird für alle anderen Benutzer als Teil der
 HTML-Seite ausgegeben. Das resultierende HTML-Fragment könnte z.B. so
 aussehen:
 
+```html
     <div class="comment">
         <div class="author">Andreas Happe</div>
         <div class="content">Hallo</div>
     </div>
+```
 
 Ein Angreifer würde nun versuchen, JavaScript-Code als Eingabe zu
 übergeben, in der Hoffnung, dass dieser Code ungefiltert in der
@@ -40,10 +42,12 @@ relativ harmlos und öffnet nur ein Browser-Popup mit dem Text “1”. Der
 resultierende HTML-Code (der im Browser des Opfers angezeigt werden
 würde) wäre:
 
+```html
     <div class="comment">
         <div class="author">Andreas Happe</div>
         <div class="content"><script>alert(1);</script></div>
     </div>
+```
 
 Ein Problem bei der defensiven Identifikation von potentiellen
 XSS-Lücken ist, dass die XSS-Angriffsfläche immens ist. Fast jede
@@ -65,26 +69,21 @@ ausgeführt und hatten teilweise Zugriff auf Amazon-Cookies, etc.
 
 XSS-Angriffe werden in drei grobe Familien eingeteilt:
 
-Reflected XSS  
-: hier wird kein XSS-Code am Server persistiert sondern vom Server an
+Reflected XSS: hier wird kein XSS-Code am Server persistiert sondern vom Server an
 den Client zurück reflektiert. Dies wird meistens durch das Einschleusen
 von JavaScript-Code über einen HTTP Parameter erfüllt — dies impliziert
 allerdings auch, dass der Angreifer einen Weg findet, das Opfer zum
 Aufruf der modifizierten URL zu bewegen. Beispiel einer modifizierten
-URL: <a
-href="http://opfer.xyz/operation?parameter=&lt;script&gt;alert(1)&lt;/script&gt;"
-class="uri">http://opfer.xyz/operation?parameter=&lt;script&gt;alert(1)&lt;/script&gt;</a>.
+URL: `http://opfer.xyz/operation?parameter=<script>alert(1)</script>`.
 
-Stored/Persistent XSS  
-: hier besitzt der Angreifer die Möglichkeit den Javascript-Code am
+Stored/Persistent XSS: hier besitzt der Angreifer die Möglichkeit den Javascript-Code am
 Server zu persistieren, ihn z.B. als Datenbank-Inhalt oder über eine
 hochgeladene Datei zuzustellen. Das Opfer betrachtet nun eine Webseite
 und bekommt durch den Server das XSS-Fragment übertragen. Ein Beispiel
 wäre das Übertragen von `<script>alert(1)</script>` als Chatnachricht
 innerhalb einer Webseite.
 
-DOM-based XSS  
-: dieser Angriffsvektor betrifft vor allem client-seitige
+DOM-based XSS: dieser Angriffsvektor betrifft vor allem client-seitige
 Javascript-Frameworks die Eingaben aus dem DOM[1] des Browsers
 übernehmen. Der Angreifer versucht, Schadcode innerhalb des DOMs zu
 platzieren (z.B. über die verwendete URL) und hofft, dass die
@@ -92,8 +91,7 @@ Webapplikation dieses Element zum Bau einer Webseite verwendet. Bei
 dieser Form des XSS wird der bösartige Javascript Code erst im Client
 gebaut.
 
-mXSS  
-: Webbrowser erlauben es, über eine Stringzuweisung in das
+mXSS: Webbrowser erlauben es, über eine Stringzuweisung in das
 *innerHTML*-Attribute HTML-Code zu erstellen. Bevor der übergebene
 String in HTML-Code verwandelt wird, wenden die unterschiedlichen
 Browser-Familien Optimierungen (Mutationen) auf den String an. Dies kann
@@ -101,8 +99,7 @@ ein Angreifer ausnutzen, indem er Schadcode so formatiert, dass er
 innerhalb des Strings noch harmlos wirkt, aber nach der String-Mutation
 bösartig wird.
 
-uXSS  
-: Universal XSS zielen auf Fehler innerhalb von Webbrowsern bzw.
+uXSS: Universal XSS zielen auf Fehler innerhalb von Webbrowsern bzw.
 innerhalb von Webbrowserplugin ab. Da diese auf ein Client-Programm
 abzielen, sind sie für diese Vorlesung out-of-scope.
 
@@ -186,10 +183,11 @@ Ein Beispiel wäre folgende Opferwebseite:
 
 In diesem konkrete Beispiel wird Javascript von einem *Content Delivery
 Network* geladen, liegt also nicht lokal am Opfer-Webserver vor. Ein
-Angreifer würde nun den CDN-Server hacken und das
-<a href="script.js" class="uri">script.js</a>-File ersetzen:
+Angreifer würde nun den CDN-Server hacken und das `script.js`-File ersetzen:
 
+```javascript
     document.getElementById("main").innerHTML = "My Company sucks";
+```
 
 In diesem Fall wird der Inhalt des Elements ,,main” ersetzt und
 schlußendlich so die Opfer-Webseite defaced.
@@ -238,10 +236,12 @@ eingetragen.
 Falls ein Angreifer eine XSS-Lücke innerhalb eines Login-Formulars
 findet, kann er diese ausnutzen um die Login-Daten zu stehlen:
 
+```html
     <script>
     document.write('<form><input id=password type=password style=visibility:hidden></form>');
     setTimeout('alert("Password: " + document.getElementById("password").value)', 100);
     </script>
+```
 
 ### DOM-based XSS-Angriffe
 
@@ -250,8 +250,9 @@ der Angriff innerhalb des Browsers geschieht, besitzt der Webserver
 keine Möglichkeit diese Angriffe zu erkennen oder sogar zu verhindern.
 
 Ein primitives Beispiel für eine über DOM-based XSS verwundbare Webseite
-(<a href="seite.html" class="uri">seite.html</a>):
+(`seite.html`):
 
+```html
     <html>
         <head>..</head>
         <body>
@@ -260,10 +261,11 @@ Ein primitives Beispiel für eine über DOM-based XSS verwundbare Webseite
             </script>
         </body>
     </html>
+```
 
 Bei dieser Seite wird die aktuelle URL via Javascript ausgelesen (über
 *document.baseURI*) und dynamisch in die Webseite eingefügt. Wird diese
-Seite z.B. als <a href="seite.html" class="uri">seite.html</a>
+Seite z.B. als `seite.html`
 aufgerufen würde *URL: seite.html* ausgegeben werden. Dies geschieht im
 Browser des Opfers, keine Serveroperation wird dabei involviert.
 
@@ -491,8 +493,6 @@ CSP-Richtlinien.
 
 ## CSRF Angriffe
 
-<span id="csrf" label="csrf"></span>
-
 CSRF-Angriffe nutzen ein bestehendes Vertrauensverhältnis zwischen dem
 Web-Browser des Opfers und einem Webserver aus. Das grundsätzliche
 Problem ist, das Webbrowser, bei Requests zu bereits eingeloggten
@@ -528,18 +528,17 @@ Folgende Schritte würden bei einem typischen CSRF-Szenario passieren:
 Ein Beispiel für ein HTML Formular welches der Angreifer auf seinem
 Webserver hinterlegen würden:
 
-    <form action="http://bank.com/transfer.do" method="POST">
+```html
+<form action="http://bank.com/transfer.do" method="POST">
     <input type="hidden" name="acct" value="MARIA"/>
     <input type="hidden" name="amount" value="100000"/>
     <input type="submit" value="View my pictures"/>
-    </form>
+</form>
+```
 
-<figure>
-<embed src="graphs/csrf.pdf" />
-<figcaption>Beispiel für einen CSRF-Angriff</figcaption>
-</figure>
+![Beispiel für einen CSRF-Angriff](/images/csrf.svg)
 
-In diesem Fall wird die Operation <http://bank.com/transfer.do> mit den
+In diesem Fall wird die Operation `http://bank.com/transfer.do` mit den
 Parametern *acct* und *amount* aufgerufen. Bei diesem Beispiel wurden
 die Felder versteckt und der Button mit einem *ablenkenden* Text
 beschriftet. Alternativ könnte der Angreifer das Formular auch in einem
@@ -594,8 +593,7 @@ auf eine weitere Seite weiterleitet und das Ziel über einen Parameter
 bestimmt wird. Ein Angreifer kann nun versuchen, das Opfer auf eine
 externe Seite zu leiten um dies im Zuge eines Social Engineering
 Angriffs auszunutzen. Eine verwundbare Operation würde z.B.
-folgendermaßen aussehen:
-<http://example.com/example.php?url=http://malicious.example.com>.
+folgendermaßen aussehen: `http://example.com/example.php?url=http://malicious.example.com`.
 
 Besonders gefährlich ist es, wenn die verlinkte URL nicht über ein HTTP
 Redirect aufgerufen wird, sondern wenn die übergebene URL als Ziel eines
@@ -636,16 +634,13 @@ werden darf. Dadurch werden Clickjacking-Angriffe unterbunden.
 Der Webserver kann über das Setzen des *X-Frame-Options* Header auf
 folgende Werte das Webbrowser-Verhaltensmuster beeinflussen:
 
-DENY  
-: die Webseite darf nicht von anderen Webseiten mittels IFrames
+DENY: die Webseite darf nicht von anderen Webseiten mittels IFrames
 eingebunden werden.
 
-SAMEORIGIN  
-: die Webseite darf von allen Webseiten mit dem identen Origin
+SAMEORIGIN: die Webseite darf von allen Webseiten mit dem identen Origin
 eingebunden werden.
 
-ALLOW-FROM domain  
-: die Webseite darf explizit von der Domain *domain* eingebunden werden.
+ALLOW-FROM domain: die Webseite darf explizit von der Domain *domain* eingebunden werden.
 
 Die Verwendung von *X-Frame-Options* ist allerdings nicht problemlos.
 EIn häufiger Fehler ist es, dass bei *ALLOW-FROM* mehr als ein Origin
@@ -680,18 +675,21 @@ Angreifer bestimmt wurde.
 
 Ein Beispiel für Reverse Tab Nabbing, folgende Opfer Seite:
 
+```html
     <html>
       <body>
         <li><a href="bad.example.com" target="_blank">Vulnerable target using html link to open the new page</a></li>
         <button onclick="window.open('https://bad.example.com')">Vulnerable target using javascript to open the new page</button>
       </body>
     </html>
+```
 
 Die Opferwebseite öffnet eine externe Seite über einen Link (mittels
 *target=\_blank* wird ein neues Fenster geöffnet) bzw. alternativ über
 Javascript (*onclick*). Als neue Webseite verwendet der Angreifer
 folgendes:
 
+```html
     <html>
       <body>
         <script>
@@ -701,6 +699,7 @@ folgendes:
         </script>
       </body>
     </html>
+```
 
 Der Angreifer setzt über *window.opener* die Adresse der aufgerufenen
 Seite und ändert dadurch (im Hintergrund) die im Webbrowser dargestellte
@@ -746,6 +745,7 @@ reagieren.
 
 Ein Beispiel für einen Message-Handler:
 
+```html
     <script>
     function messageHandler(event){
         from = "From: " + event.origin;
@@ -756,6 +756,7 @@ Ein Beispiel für einen Message-Handler:
     // Register the handler
     window.addEventListener("message", messageHandler)
     </script>
+```
 
 Das Beispiel zeigt bereits eine Schwachstelle von HTML5 postMessage: der
 *origin* wird nicht durch den Empfänger überprüft, sondern durch den
@@ -763,7 +764,9 @@ Code des Empfängers.
 
 Wie kann eine Nachricht gesendet werden?
 
+```javascript
     otherWindow.postMessage(message, targetOrigin, [transfer])
+```
 
 Die jeweiligen Variablen wären:
 

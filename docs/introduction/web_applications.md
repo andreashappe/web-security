@@ -76,14 +76,15 @@ Entwickler eine .php-Datei am Server vergisst oder ein Angreifer eine
 zusätzliche .php-Datei am Server hochladen kann, kann es zu einer
 ungewollten Code-Execution kommen. Neuere Frameworks bieten zumeist die
 Möglichkeit, ein explizites Request-Routing zu definieren, so könnte
-z.B. das PHP-Framework Laraval mit folgender
-<a href="routes/web.php" class="uri">routes/web.php</a> Konfiguration[1]
+z.B. das PHP-Framework Laraval mit folgender `routes/web.php` [Konfiguration](https://laravel.com/docs/5.7/routing)
 gestartet werden:
 
+```php
     Route::get('/operation.php', 'SomeController@operation');
+```
 
 In diesem Fall wird ein eingehender Request auf
-<a href="/operation.php" class="uri">/operation.php</a> an die Methode
+`/operation.php` an die Methode
 *operation* des Controllers *SomeController* weitergeleitet. Auf diese
 Weise wird explizit definiert, welche Operationen wie erreichbar sind
 und wo sich der aufzurufende Source-Code befindet. Falls ein Angreifer
@@ -122,10 +123,7 @@ wie *Angular.js* oder *React* implementieren das MVC-Pattern samt
 Routing innerhalb des Browsers. Der Server dient als Datenquelle und
 bietet jene zumeist über Webservices an.
 
-<figure>
-<embed src="graphs/mvc.pdf" />
-<figcaption>Die Model-View-Controller (MVC) Architektur</figcaption>
-</figure>
+![Die Model-View-Controller (MVC) Architektur](/images/mvc.svg)
 
 Die Wahl der Struktur besitzt Einfluss auf Sicherheitsentscheidungen der
 Applikation. Bei einem klassischen server-seitigen MVC-Pattern werden
@@ -154,12 +152,11 @@ Methoden gewährleistet werden.
 Eine einfache Webapplikation wird zumeist aus drei groben Komponenten
 bestehen:
 
--   Webserver: dient zur Bereitstellung statischer Dateien und leitet
+-  Webserver: dient zur Bereitstellung statischer Dateien und leitet
     dynamische Anfragen an die jeweiligen Applikationsserver weiter.
     Webserver sind optimiert für das effiziente Zustellen statischer
     Inhalte. Unter POSIX-Betriebssystemen wie Linux befinden sich am
-    Websever die Web-Dateien häufig im Verzeichnis
-    <a href="/var/www" class="uri">/var/www</a>.
+    Websever die Web-Dateien häufig im Verzeichnis `/var/www`.
 
 -   Applikationsserver: beinhalten die Applikation und bieten die
     Laufzeitumgebung der Applikation an. Die Applikation kommuniziert
@@ -184,15 +181,11 @@ mit eigenständigen Benutzerrollen zu betreiben.
 
 Während Webserver, Applikationsserver und Datenbank zum Betrieb einer
 dynamischen Webapplikation prinzipiell ausreichen, kann es zu einer
-Inflation von externen Komponenten kommen, dies wird in Grafik
-<a href="#component_inflation" data-reference-type="ref"
-data-reference="component_inflation">1.1</a> gezeigt. Beispiele
-potentieller zusätzlicher Komponenten:
+Inflation von externen Komponenten kommen, dies wird in folgender Grafik gezeigt:
 
-<figure id="component_inflation">
-<embed src="images/web_components.pdf" style="width:10cm" />
-<figcaption>Beispiel der Komponenten einer Webapplikation</figcaption>
-</figure>
+![Beispiel der Komponenten einer Webapplikation](/images/web_components.png)
+
+Beispiel der Komponenten einer Webapplikation
 
 -   Load-Balancer: verteilen den Traffic auf mehrere Webserver. Hier
     kann es zu Problemen beim Session-Management kommen.
@@ -430,8 +423,6 @@ Credentials Zugriff erhält.
 
 4.  Wie können Konfigurationsdaten sicher innerhalb einer Applikation
     bereitgestellt werden?
-
-[1] <https://laravel.com/docs/5.7/routing>
 
 [2] Ein Beispiel aus dem Jahr 2020 wären 10 GeForce RTX 2080 Ti
 Grafikkarten, diese erreichen z.B. 551 Giga-Hashes/Sekunde (Quelle:

@@ -40,19 +40,19 @@ Bei jedem Folgezugriff inkludiert der Client dieses Cookie, der Server
 interpretiert diese Daten und bildet anhand dieser die Benutzersession.
 Bei diesem Verfahren sind mehrere Punkte problematisch:
 
--   Der Client kann das Cookie beliebig verändern. Dadurch könnte z.B.
-    ein im Cookie gespeicherter Benutzername auf “admin” geändert
-    werden. Der Server kann dies umgehen, indem er das Cookie signiert
-    und dadurch dessen Integrität sichert.
+- Der Client kann das Cookie beliebig verändern. Dadurch könnte z.B.
+  ein im Cookie gespeicherter Benutzername auf “admin” geändert
+  werden. Der Server kann dies umgehen, indem er das Cookie signiert
+  und dadurch dessen Integrität sichert.
 
--   Der Client kann das Cookie auslesen, und dadurch Zugriff auf
-    potentiell sensible Daten erhalten. Der Server kann dies umgehen,
-    indem er das Cookie verschlüsselt und dadurch die Confidentiality
-    der Daten gewährleistet.
+- Der Client kann das Cookie auslesen, und dadurch Zugriff auf
+  potentiell sensible Daten erhalten. Der Server kann dies umgehen,
+  indem er das Cookie verschlüsselt und dadurch die Confidentiality
+  der Daten gewährleistet.
 
--   Der Server besitzt keine Möglichkeit serverseitig alle Sessions
-    eines Benutzers zu invalidieren (sprich, alle Session eines
-    Benutzers auszuloggen).
+- Der Server besitzt keine Möglichkeit serverseitig alle Sessions
+  eines Benutzers zu invalidieren (sprich, alle Session eines
+  Benutzers auszuloggen).
 
 Bei einer server-seitigen Sessionimplementierung generiert der Server
 eine eindeutige zufällige ID und speichert diese innerhalb des Cookies.
@@ -135,23 +135,23 @@ der nächsten Formulare wieder als hidden field eingetragen.
 
 Der Soll-Session-Lifecycle wäre:
 
-1.  Benutzer führt ein Login durch. Während des erfolgreichem Logins
-    wird eine neue zufällige Session-Id am Server mittels eines
-    kryptographisch-sicheren Zufallsgenerator generiert, und dem Client
-    auf sicherem Weg mitgeteilt.
+1. Benutzer führt ein Login durch. Während des erfolgreichem Logins
+   wird eine neue zufällige Session-Id am Server mittels eines
+   kryptographisch-sicheren Zufallsgenerator generiert, und dem Client
+   auf sicherem Weg mitgeteilt.
 
-2.  Der eingeloggte Benutzer führt nun mehrere Operationen aus. Der
-    Browser des Benutzers inkludiert das Session-Cookie bei jedem
-    Zugriff.
+2. Der eingeloggte Benutzer führt nun mehrere Operationen aus. Der
+   Browser des Benutzers inkludiert das Session-Cookie bei jedem
+   Zugriff.
 
-3.  Vor dem Zugriff auf sensible Operationen oder Daten wird überprüft,
-    ob die Session-Id noch aktiv ist. Der logische Benutzer wird der
-    Session zugeordnet und die Applikation führt Überprüfung der
-    Benutzeridentität und -berechtigung durch.
+3. Vor dem Zugriff auf sensible Operationen oder Daten wird überprüft,
+   ob die Session-Id noch aktiv ist. Der logische Benutzer wird der
+   Session zugeordnet und die Applikation führt Überprüfung der
+   Benutzeridentität und -berechtigung durch.
 
-4.  Während des Logouts wird sowohl server-seitig als auch client-seitig
-    das Session-Cookie gelöscht und damit die Session auf beiden Seiten
-    invalidiert.
+4. Während des Logouts wird sowohl server-seitig als auch client-seitig
+   das Session-Cookie gelöscht und damit die Session auf beiden Seiten
+   invalidiert.
 
 ## Potentielle Probleme beim Session-Management
 
@@ -218,21 +218,21 @@ Parameter übertragen werden. Dies gilt auch für die Session-Id.
 
 Welche Probleme können bei der Verwendung als GET Parameter auftreten?
 
--   Die Session-Id ist Teil der URL und wird mit hoher
-    Wahrscheinlichkeit in Web-Proxies und Web-Server Logdateien
-    gespeichert.
+- Die Session-Id ist Teil der URL und wird mit hoher
+  Wahrscheinlichkeit in Web-Proxies und Web-Server Logdateien
+  gespeichert.
 
--   Die URL inklusive der GET Parameter sind Teil der Browser Historie.
-    Durch Fehler in Browsern können Fremdseiten teilweise auf die
-    Browserhistorie zugreifen.
+- Die URL inklusive der GET Parameter sind Teil der Browser Historie.
+  Durch Fehler in Browsern können Fremdseiten teilweise auf die
+  Browserhistorie zugreifen.
 
--   GET Parameter werden teilweise von Site Analysis Tools verwendet.
-    Dies würde implizieren, dass z.B. bei Verwendung von Google
-    Analytics alle Session-IDs an Alphabet weitergeleitet werden.
+- GET Parameter werden teilweise von Site Analysis Tools verwendet.
+  Dies würde implizieren, dass z.B. bei Verwendung von Google
+  Analytics alle Session-IDs an Alphabet weitergeleitet werden.
 
--   Wird ein Cookie als Teil der URL verwendet, wird dieser Session-Wert
-    im Normalfall über den Referer-Header übertragen. Auf diese Weise
-    würde jede besuchte externe Webseite diesen Session-Wert.
+- Wird ein Cookie als Teil der URL verwendet, wird dieser Session-Wert
+  im Normalfall über den Referer-Header übertragen. Auf diese Weise
+  würde jede besuchte externe Webseite diesen Session-Wert.
 
 Anstatt des GET-Parameters sollte die Cookie-basierte HTTP Session
 verwendet werden. Falls dies nicht möglich ist, sollte ein HTTP POST
@@ -245,20 +245,20 @@ Eine Session-Id muss eine zufällig generierte Zahl sein, dies impliziert
 die Verwendung eines kryptographischen Zufallszahlengenerators.
 Beispiele für schlecht gewählte Session-Ids wären:
 
--   Aufsteigende Zahlen
+- Aufsteigende Zahlen
 
--   Verwenden eines Hashs über erratbare Eingangswerte:
-    *hash(Systemzeit)*, *hash(username)*, *hash(username:password)*.
+- Verwenden eines Hashs über erratbare Eingangswerte:
+  *hash(Systemzeit)*, *hash(username)*, *hash(username:password)*.
 
--   Verwenden eines MACs über konstante Daten: *mac(username)*,
-    *mac(username:password)*
+- Verwenden eines MACs über konstante Daten: *mac(username)*,
+  *mac(username:password)*
 
--   mac(systemzeit) — mittels NTP Angriffe kann versucht werden, die
-    Zeit des Servers in die Vergangenheit zu bewegen.
+- mac(systemzeit) — mittels NTP Angriffe kann versucht werden, die
+  Zeit des Servers in die Vergangenheit zu bewegen.
 
--   Verwendung eines nicht-kryptographisch sicheren
-    Zufallszahlengenerator (z.B. *java.util.Random* statt
-    *java.security.SecureRandom* in Java).
+- Verwendung eines nicht-kryptographisch sicheren
+  Zufallszahlengenerator (z.B. *java.util.Random* statt
+  *java.security.SecureRandom* in Java).
 
 Während eines Pen-Tests würde die Zufälligkeit der Session-Id getestet
 werden. Dies geschieht indem man sich mehrere Tausend Male einloggt und
@@ -313,13 +313,13 @@ aktuellen Cookies übergibt:
 
 Folgende Gegenmaßnahmen sollten implementiert werden:
 
--   keine XSS-Lücke in der Webseite implementieren…
+- keine XSS-Lücke in der Webseite implementieren…
 
--   durch Verwendung des httpOnly-Cookie Flags kann dem Webbrowser
-    mitgeteilt werden, dass der Zugriff mittels Javascript auf das
-    Session Cookie nicht erlaubt ist.
+- durch Verwendung des httpOnly-Cookie Flags kann dem Webbrowser
+  mitgeteilt werden, dass der Zugriff mittels Javascript auf das
+  Session Cookie nicht erlaubt ist.
 
--   CSP bietet Möglichkeiten XSS-Angriffe einzuschränken.
+- CSP bietet Möglichkeiten XSS-Angriffe einzuschränken.
 
 ## JSON Web Tokens
 
@@ -327,30 +327,34 @@ JSON Web Tokens (JWT) sind standardisierte (RFC 7519) Tokens die als
 HTTP Parameter, HTTP Session Cookies oder mittels eines HTTP Headers
 übertragen werden können. Ein JSON Web-Token besteht aus drei Bereichen:
 
--   Header: dieser Bereich speichert vor allem den verwendeten
-    Algorithmus zur Erstellung des Integrity Checks.
+- Header: dieser Bereich speichert vor allem den verwendeten
+  Algorithmus zur Erstellung des Integrity Checks.
 
--   Content: JSON-Dokument welches die eigentliche Payload des Tokens
-    ist. Es gib hier mehre vordefinierte optionale Werte: *iss*
-    beschreibt den Issuer/Aussteller des Tokens, *sub* beschreibt das
-    Subjekt des tokens, *aud* die geplante Audience (welche Server
-    sollen das Token erhalten, *exp* und *nbf* den Gültigkeitszeitraum
-    des tokens, *iat* den Ausstellungszeitpunkt.
+- Content: JSON-Dokument welches die eigentliche Payload des Tokens
+  ist. Es gib hier mehre vordefinierte optionale Werte: *iss*
+  beschreibt den Issuer/Aussteller des Tokens, *sub* beschreibt das
+  Subjekt des tokens, *aud* die geplante Audience (welche Server
+  sollen das Token erhalten), *exp* und *nbf* den Gültigkeitszeitraum
+  des tokens, *iat* den Ausstellungszeitpunkt.
 
--   Integrity Check: der integrity check verwendet den, im *alg*-Header
-    definierten Algorithmus über *header* und *content* um eine
-    Checksumme zu bilden.
+- Integrity Check: der integrity check verwendet den, im *alg*-Header
+  definierten Algorithmus über *header* und *content* um eine
+  Checksumme zu bilden.
 
 Die Gesamtstruktur des Tokens ist:
 
+```
     verification = algorithm(base64(header) + "." + base64(content))
     token = base64(header) + "." + base64(content) + "." + base64(hash)
+```
 
 Ein Beispiel für einen Token (man kann dabei die drei durch einen .
 getrennten Base64-Bereiche erkennen. Da es sich um encoded JSON handelt,
 beginnen die beiden ersten Base64-Blöcke immer mit *eyJ*):
 
+```
     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
 
 ### Problem: Null-Algorithmus
 
@@ -438,19 +442,19 @@ werden.
 
 ## Reflektionsfragen
 
-1.  Was versteht man unter einem Session-Fixation Angriff?
+1. Was versteht man unter einem Session-Fixation Angriff?
 
-2.  Erkläre client- und server-seitige Session-Konzepte. Welche Variante
-    sollte man aus Sicherheitsgründen wählen und erläutere dies.
+2. Erkläre client- und server-seitige Session-Konzepte. Welche Variante
+   sollte man aus Sicherheitsgründen wählen und erläutere dies.
 
-3.  Wie sieht ein guter Umgang mit einer Session aus? Wann wird diese
-    angelegt, wann gelöscht. Wie sollte sie implementiert werden?
+3. Wie sieht ein guter Umgang mit einer Session aus? Wann wird diese
+   angelegt, wann gelöscht. Wie sollte sie implementiert werden?
 
-4.  Welche sicherheits-relevenaten Probleme gibt es im Zusammenhang von
-    Mixed-Content und Session-IDs?
+4. Welche sicherheits-relevenaten Probleme gibt es im Zusammenhang von
+   Mixed-Content und Session-IDs?
 
-5.  Warum sollten Session-ID nie innerhalb der URL (bzw. als HTTP
-    GET-Parameter) verwendet werden?
+5. Warum sollten Session-ID nie innerhalb der URL (bzw. als HTTP
+   GET-Parameter) verwendet werden?
 
 [1] *Message Authentication Code*
 
