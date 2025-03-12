@@ -43,8 +43,8 @@ Slack notifiziert.
 Bei *Supply-Chain Angriffen* plazieren Angreifer Schadcode zumeist in
 neuen Versionen bereits verwendeter Bibliotheken. Der Angreifer muss
 also Zugriff auf den Source Code einer häufig verwendeten Bibliothek
-erlangen. Die Geschichte zeigt, dass dies durchaus einfacher als gedacht
-ist[2].
+erlangen. Die Geschichte zeigt, dass dies [durchaus einfacher als gedacht
+ist](https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html).
 
 Ein Angreifer kann Supply-Chain Angriffe auch ohne Erlangen eines
 bestehenden Projektes durchführen. Bei *Typo-Squatting* Angriffen
@@ -55,7 +55,7 @@ Angriff zielt darauf ab, dass das Opfer beim Integrieren der eigentlich
 gewünschten Bibliothek sich vertut oder vertippt und dadurch die falsche
 Bibliothek samt Schadcode inkludiert.
 
-Ein weiterer Angriffsvektor ist *Dependency Confusion*[3]. Hier
+Ein weiterer Angriffsvektor ist [Dependency Confusion](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610). Hier
 entwickelt das Opfer eine Software, die sowohl öffentliche als auch
 interne (private) BBibliotheken verwendet. Der Angreifer kennt den Namen
 einer internen Bibliothek und läd eine Schadsoftware mit diesem Namen
@@ -196,15 +196,12 @@ agilen Deployment kombiniert.
 ### Agile Methoden
 
 Agile Methoden sind ein neueres Projektmanagement-Muster, welches im
-Agile Manifesto[4] folgende Grundsätze definiert:
+[Agile Manifesto](https://agilemanifesto.org/) folgende Grundsätze definiert:
 
--   Individuals and interactions over processes and tools
-
--   Working Software over comprehensive documentation
-
--   Customer collaboration over contract negotiation
-
--   Responding to change over following a plan
+- Individuals and interactions over processes and tools
+- Working Software over comprehensive documentation
+- Customer collaboration over contract negotiation
+- Responding to change over following a plan
 
 Umgesetzt führt dies zumeist dazu, dass monolithische Projekte in kleine
 minimale Teile transformiert werden. Diese werden dann, in Reihenfolge
@@ -415,11 +412,3 @@ einer Applikation mittels *OWASP ZAP* unter Zuhilfename des
     genommen werden?
 
 4.  Was sind Supply-Chain Angriffe und wie können diese geschehen?
-
-[1] <https://jeremylong.github.io/DependencyCheck/analyzers/index.html>
-
-[2] <https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html>
-
-[3] <https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610>
-
-[4] <https://agilemanifesto.org/>
