@@ -912,11 +912,231 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-Uploads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path-Traversals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type Juggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML-basierte Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialisierungs-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Smuggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSTI
     
   </span>
   
@@ -1398,10 +1618,8 @@ wären z.B. SmartCards oder biometrische Methoden. Die Identifikation
 wird zumeist mit einer Authentifikation kombiniert.</p>
 <p>Die Authentifikation dient zur Validierung der behaupteten Identität des
 Benutzers. Es gibt mehrere Möglichkeiten (Faktoren) über welche ein
-Benutzer seine Identität authentifizieren kann, Tabelle
-<a href="#tbl:factors" data-reference-type="ref"
-data-reference="tbl:factors">1.1</a> gibt eine kurze Übersicht häufig
-genutzter Faktoren.</p>
+Benutzer seine Identität authentifizieren kann, folgende Tabelle
+gibt eine kurze Übersicht häufig genutzter Faktoren:</p>
 <table>
 <thead>
 <tr>
@@ -1444,7 +1662,6 @@ genutzter Faktoren.</p>
 </tr>
 </tbody>
 </table>
-<p>Verschiedene Faktoren zur Authentication</p>
 <p>Bei der initialen Registrierung und bei nachfolgenden Anmeldungen können
 unterschiedliche Faktoren verwendet werden. Z. B. VideoIdent bei der
 Registrierung, bei Folgeanmeldungen Passwörter.</p>
@@ -1471,18 +1688,18 @@ Passwort als auch einem Login-Button bestehen sollte.</p>
 <ul>
 <li>
 <p>Benutzername und Passwort-Feld sind nicht innerhalb der gleichen
-    Seite</p>
+  Seite</p>
 </li>
 <li>
 <p>Password-Feld wird erst angezeigt, nachdem ein Benutzername
-    eingegeben wurde</p>
+  eingegeben wurde</p>
 </li>
 <li>
 <p>Verwendung von Flash-, Silverlight- oder Java-Applets</p>
 </li>
 <li>
 <p>Authentication through EMail a la Slack (Email mit Bestätigungslink
-    dient als Passwortersatz)</p>
+  dient als Passwortersatz)</p>
 </li>
 <li>
 <p>HTTP BASIC basierte Authentifikation</p>
@@ -1501,21 +1718,21 @@ sind weitere Operationen komplexer:</p>
 <ul>
 <li>
 <p>“Passwort vergessen”-Funktion: hier muss meistens eine Email-Adresse
-    angegeben werden. Falls die Email-Adresse dem System nicht bekannt
-    ist, sollte keine Fehlermeldung ausgegeben werden, sondern ein
-    Hinweis, dass an die angegebene Email eine Benachrichtigungsemail
-    versendet wurde.</p>
+  angegeben werden. Falls die Email-Adresse dem System nicht bekannt
+  ist, sollte keine Fehlermeldung ausgegeben werden, sondern ein
+  Hinweis, dass an die angegebene Email eine Benachrichtigungsemail
+  versendet wurde.</p>
 </li>
 <li>
 <p>Bereits vorhandene Email-Adresse bei Registrierung: hier sollte
-    ebenso eine neutrale Erfolgsmeldung innerhalb der Webseite
-    ausgegeben, und anschließend in einer Bestätigungsemail der Benutzer
-    darauf hingewiesen werden, dass er bereits ein Konto mit der
-    Email-Adresse angelegt hatte.</p>
+  ebenso eine neutrale Erfolgsmeldung innerhalb der Webseite
+  ausgegeben, und anschließend in einer Bestätigungsemail der Benutzer
+  darauf hingewiesen werden, dass er bereits ein Konto mit der
+  Email-Adresse angelegt hatte.</p>
 </li>
 <li>
 <p>Bereits vorhandener Login bei Registrierung: hier muss dem User eine
-    Fehlermeldung angezeigt werden.</p>
+  Fehlermeldung angezeigt werden.</p>
 </li>
 </ul>
 <p>Generell ist dieser Bereich einer derjenigen, bei denen Usability und
@@ -1538,11 +1755,11 @@ bereitgestellt werden:</p>
 </li>
 <li>
 <p>Automatisch generierte Liste basierend auf den öffentlichen Seiten
-    der zu testenden Homepage.</p>
+  der zu testenden Homepage.</p>
 </li>
 <li>
 <p>Deep-Learning basierte Verfahren, die basierend auf existierenden
-    Passwortlisten neue Passwortlisten generieren.</p>
+  Passwortlisten neue Passwortlisten generieren.</p>
 </li>
 </ul>
 <p>Gegenmaßnahmen zielen auf eine Verlangsamung des Angriffs bzw. auf eine
@@ -1553,13 +1770,13 @@ Sperre betroffener Konten ab:</p>
 </li>
 <li>
 <p>Sperre von Benutzeraccounts bzw. IP-Adressen nach einer definierten
-    Anzahl von Fehlversuchen.</p>
+  Anzahl von Fehlversuchen.</p>
 </li>
 <li>
 <p>Einsatz einer Mehrfaktorauthentication. Durch die benötigte manuelle
-    Interaktion wird eine Brute-Force Attacke ausgebremst. Hier ist die
-    Wahl eines geeigneten Faktors und eine geeignete Integration
-    notwendig.</p>
+  Interaktion wird eine Brute-Force Attacke ausgebremst. Hier ist die
+  Wahl eines geeigneten Faktors und eine geeignete Integration
+  notwendig.</p>
 </li>
 </ul>
 <h3 id="logout">Logout</h3>
@@ -1580,7 +1797,7 @@ ein Account gesperrt muss dafür Sorge getragen werden, dass:</p>
 <ul>
 <li>
 <p>bereits ausgestellte Recovery-Codes den Account nicht reaktivieren
-    können</p>
+  können</p>
 </li>
 <li>
 <p>aktive Benutzersessions beendet werden</p>
@@ -1599,25 +1816,22 @@ niemals Zugriff auf Passwörter hat, können diese auch nicht verloren
 werden. Falls dies nicht möglich ist, müssen beim Umgang mit Passwörtern
 gewisse Grundregeln eingehalten werden.</p>
 <p>Genauere Informationen zur sicheren Speicherung von Passwörtern können
-im Kapitel <em>Sensitive Data Exposure</em>
-(<a href="#password_storage" data-reference-type="ref"
-data-reference="password_storage">[password_storage]</a>) gefunden
-werden.</p>
+im Kapitel <em>Sensitive Data Exposure</em> gefunden werden.</p>
 <p>Prinzipiell können Angriffe gegen Passwörter in drei Kategorien
 eingeteilt werden:</p>
 <ol>
 <li>
 <p>Disclosure tritt auf, wenn das Passwort unbeabsichtigt
-    “veröffentlicht” wird. Dies kann z.B. durch Notizzettel, Wikis oder
-    auch durch phishing geschehen.</p>
+   “veröffentlicht” wird. Dies kann z.B. durch Notizzettel, Wikis oder
+   auch durch phishing geschehen.</p>
 </li>
 <li>
 <p>Online Attacks sind Angriffe gegenüber einem Login-System. Diese
-    können durch das Websystem erkannt werden.</p>
+   können durch das Websystem erkannt werden.</p>
 </li>
 <li>
 <p>Offline Attacks sind Angriffe gegenüber geleakten Passwort-Hashes.
-    Diese können durch das Websystem nicht erkannt werden.</p>
+   Diese können durch das Websystem nicht erkannt werden.</p>
 </li>
 </ol>
 <h3 id="passwort-qualitat">Passwort-Qualität</h3>
@@ -1628,24 +1842,24 @@ Best-Pracises im Umgang mit Passwörtern:</p>
 <ul>
 <li>
 <p>Minimale Passwortlänge: 8 Zeichen. Ein Unicode Zeichen ist ein
-    Zeichen.</p>
+  Zeichen.</p>
 </li>
 <li>
 <p>Falls ein Benutzer ein längeres Passwort eingibt, müssen mindestens
-    64 Zeichen gespeichert werden.</p>
+  64 Zeichen gespeichert werden.</p>
 </li>
 <li>
 <p>Das periodische Neusetzen von Passwörtern wird nicht mehr gefordert.
-    Diese Maßnahme bewirkte schwächere Passwörter.</p>
+  Diese Maßnahme bewirkte schwächere Passwörter.</p>
 </li>
 <li>
 <p>Komplexitätsregeln bei Passwörtern (mindestens ein Sonderzeichen und
-    ähnliches) wurden entfernt.</p>
+  ähnliches) wurden entfernt.</p>
 </li>
 <li>
 <p>Neu eingegebene Passwörter müssen gegen eine Liste von bekannten
-    Passwort-Leaks und gegen bekannte Standard bzw. häufig genutzte
-    Passwörter getestet werden.</p>
+  Passwort-Leaks und gegen bekannte Standard bzw. häufig genutzte
+  Passwörter getestet werden.</p>
 </li>
 <li>
 <p>Passwort-Hints dürfen nicht mehr verwendet werden.</p>
@@ -1674,19 +1888,19 @@ Implementierungshinweise:</p>
 <ul>
 <li>
 <p>Dem User sein bestehendes Passwort zuzusenden ist ein epic fail da
-    hierfür das Passwort unverschlüsselt gespeichert werden müsste.</p>
+  hierfür das Passwort unverschlüsselt gespeichert werden müsste.</p>
 </li>
 <li>
 <p>Dem Benutzer ein neues Passwort per Email zuzuschicken sollte
-    vermieden werden.</p>
+  vermieden werden.</p>
 </li>
 <li>
 <p>Der generierte Link sollte nur einmalig verwendbar sein, und auch
-    nur das Updaten des aktuellen (vergessenen) Passworts erlauben.</p>
+  nur das Updaten des aktuellen (vergessenen) Passworts erlauben.</p>
 </li>
 <li>
 <p>der generierte Link sollte nur für den betreffenden User verwendbar
-    sein.</p>
+  sein.</p>
 </li>
 </ul>
 <p>Hinweis: die aktuellen NIST Richtlinien verbieten explizit die
@@ -1713,7 +1927,7 @@ setzen. Für eine sichere Operation muss folgendes gegeben sein:</p>
 </li>
 <li>
 <p>im Zuge der Operation, die das neue Passwort setzt, muss auch das
-    alte Passwort erfragt werden.</p>
+  alte Passwort erfragt werden.</p>
 </li>
 </ul>
 <p>Das bestehende Password wird erfragt, damit ein Angreifer mit Zugriff
@@ -1781,17 +1995,17 @@ Abkürzung FIDO steht dabei für <em>Fast IDentity Online</em>.</p>
 <ul>
 <li>
 <p>U2F (Universal Second Factor) standardisiert den Einsatz von
-    physikalischen Tokens (wie z.B. einem Yubikey). Sofern die
-    Webapplikation und der verwendete Webbrowser U2F unterstützen kann
-    der Benutzer sich mit einem Hardware-Token authentifizieren (z.B.
-    durch Knopfdruck auf einem USB-Stick oder durch Antappen eines
-    NFC/BLE Tokens).</p>
+  physikalischen Tokens (wie z.B. einem Yubikey). Sofern die
+  Webapplikation und der verwendete Webbrowser U2F unterstützen kann
+  der Benutzer sich mit einem Hardware-Token authentifizieren (z.B.
+  durch Knopfdruck auf einem USB-Stick oder durch Antappen eines
+  NFC/BLE Tokens).</p>
 </li>
 <li>
 <p>UAF (Universal Authentication Framework) dient zur Implementierung
-    eines Passwort-losen Logins. Der Benutzer muss über ein
-    UAF-kompatibles Endgerät verfügen (z.B. Windows 10) und registriert
-    quasi sein Endgerät bei der Webapplikation.</p>
+  eines Passwort-losen Logins. Der Benutzer muss über ein
+  UAF-kompatibles Endgerät verfügen (z.B. Windows 10) und registriert
+  quasi sein Endgerät bei der Webapplikation.</p>
 </li>
 </ul>
 <p>Das Grundprinzip basiert auf public key Kryptographie. Wenn ein
@@ -1816,29 +2030,29 @@ erkannt werden:</p>
 <ul>
 <li>
 <p>FIDO1/2 überträgt nur einen öffentlichen Schlüssel während der
-    Registrierung eines neuen Authenticators. TOTP überträgt ein shared
-    secret. Bei FIDO verlässt der geheime Schlüssel niemals den
-    Authenticator.</p>
+  Registrierung eines neuen Authenticators. TOTP überträgt ein shared
+  secret. Bei FIDO verlässt der geheime Schlüssel niemals den
+  Authenticator.</p>
 </li>
 <li>
 <p>TOTP benötigt im Gegensatz zu FIDO während der Authentifizierung
-    keine aktive Netzwerkverbindung zwischen Authenticator und Service.
-    Stattdessen benötigt TOTP eine synchronisierte Systemzeit zwischen
-    allen beteiligten Parteien.</p>
+  keine aktive Netzwerkverbindung zwischen Authenticator und Service.
+  Stattdessen benötigt TOTP eine synchronisierte Systemzeit zwischen
+  allen beteiligten Parteien.</p>
 </li>
 <li>
 <p>Da bei FIDO der geheime Schlüssel nicht den Authenticator verlässt,
-    gibt es ein Pairing zwischen dem Device und dem Service. Bei TOTP
-    kann ein Benutzer das idente shared secret mit mehreren
-    Authenticators verwenden, eine Zuordnung zu einem dedizierten
-    Authenticator ist daher nicht möglich.</p>
+  gibt es ein Pairing zwischen dem Device und dem Service. Bei TOTP
+  kann ein Benutzer das idente shared secret mit mehreren
+  Authenticators verwenden, eine Zuordnung zu einem dedizierten
+  Authenticator ist daher nicht möglich.</p>
 </li>
 <li>
 <p>TOTP besitzt keine Hardware-Requirements und kann daher gratis in
-    Software implementiert werden. Während FIDO ein freier Standard ist,
-    setzt es einen Hardware-Token voraus — dadurch ist der Einsatz von
-    FIDO mit Hardware-Kosten verbunden und ist tendenziell nicht
-    “gratis”.</p>
+  Software implementiert werden. Während FIDO ein freier Standard ist,
+  setzt es einen Hardware-Token voraus — dadurch ist der Einsatz von
+  FIDO mit Hardware-Kosten verbunden und ist tendenziell nicht
+  “gratis”.</p>
 </li>
 </ul>
 <h2 id="authentication-von-operationen">Authentication von Operationen</h2>
@@ -1906,33 +2120,33 @@ Risiko zu senken wurden als IDs große Zufallszahlen gewählt.</p>
 </li>
 <li>
 <p>Wie funktionieren TOTP und FIDO U2F? Worin liegen konzeptionelle
-    Unterschiede?</p>
+   Unterschiede?</p>
 </li>
 <li>
 <p>Welche Regeln sollten bei der Speicherung von Passwörtern und zu der
-    Sicherung der Qualität der Passwörter beachtet werden?</p>
+   Sicherung der Qualität der Passwörter beachtet werden?</p>
 </li>
 <li>
 <p>Was ist der Unterschied zwischen Identification und Authentication?
-    Nenne zumindest vier Beispiele wie ein Benutzer identifiziert werden
-    kann.</p>
+   Nenne zumindest vier Beispiele wie ein Benutzer identifiziert werden
+   kann.</p>
 </li>
 <li>
 <p>Wie sollte ein Login-Formular gestaltet sein? Von welchen Techniken
-    sollte man Abstand nehmen?</p>
+   sollte man Abstand nehmen?</p>
 </li>
 <li>
 <p>Was ist eine User Enumeration und wie kann man sich dagegen
-    schützen? Was sind komplexere Applikationsfunktionen die schwer
-    gegenüber User Enumeration absicherbar sind?</p>
+   schützen? Was sind komplexere Applikationsfunktionen die schwer
+   gegenüber User Enumeration absicherbar sind?</p>
 </li>
 <li>
 <p>Was sind Brute-Force Angriffe und wie werden die dabei verwendeten
-    Daten erzeugt? Welche Gegenmaßnahmen gibt es?</p>
+   Daten erzeugt? Welche Gegenmaßnahmen gibt es?</p>
 </li>
 <li>
 <p>Auf welche Gefahren sollten bei der Implementierung der
-    Passwort-Vergessen Funktion geachtet werden?</p>
+   Passwort-Vergessen Funktion geachtet werden?</p>
 </li>
 </ol>
 

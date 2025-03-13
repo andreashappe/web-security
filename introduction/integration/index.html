@@ -873,11 +873,231 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-Uploads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path-Traversals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type Juggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML-basierte Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialisierungs-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Smuggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSTI
     
   </span>
   
@@ -1360,14 +1580,14 @@ Konfiguration können zwei potentielle Schwachstellen auftreten:</p>
 <ol>
 <li>
 <p>Öffentliche Quelle werden gegenüber privaten Quellen bevorzugt: es
-    wrid nun der Schadcode aus dem öffentlichen Repository geladen.</p>
+   wrid nun der Schadcode aus dem öffentlichen Repository geladen.</p>
 </li>
 <li>
 <p>Bei der Auswahl der Bibliothek aus internen und öffentlichen Quellen
-    ,,gewinnt” das Paket mit der höchsten Version. In diesem Fall muss
-    der Angreier nur ein Paket mit einer höheren Versionnummer in das
-    öffentliche Repository hochladen um seinen Schadcode in die
-    Opfersoftware zu integrieren.</p>
+   ,,gewinnt” das Paket mit der höchsten Version. In diesem Fall muss
+   der Angreier nur ein Paket mit einer höheren Versionnummer in das
+   öffentliche Repository hochladen um seinen Schadcode in die
+   Opfersoftware zu integrieren.</p>
 </li>
 </ol>
 <h2 id="insufficient-logging-and-monitoring">Insufficient Logging and Monitoring</h2>
@@ -1380,28 +1600,28 @@ Angreifers und die betroffenen Daten zu erkennen.</p>
 <ul>
 <li>
 <p>Es muss mit verteilten Applikationen umgehen können. Eine
-    Webapplikation ist potentiell auf mehrere Computersysteme verteilt
-    (Webserver, Applikationsserver, Datenbankserver). Die Logdaten der
-    gesamten Systeme sollten an einer Stelle aggregiert werden.</p>
+  Webapplikation ist potentiell auf mehrere Computersysteme verteilt
+  (Webserver, Applikationsserver, Datenbankserver). Die Logdaten der
+  gesamten Systeme sollten an einer Stelle aggregiert werden.</p>
 </li>
 <li>
 <p>Es muss die Integrität der Logdaten schützen: ein Angreifer sollte
-    keine Möglichkeit besitzen, die geloggten Daten zu beeinflussen.
-    Würden z.B. Logdaten direkt am Webserver gespeichert werden, könnte
-    ein Angreifer der den Webserver gehackt hat, ebenso die Logdaten
-    modifizieren. Dies impliziert, dass der Log-Server über eine genau
-    definierte API erreichbar sein sollte.</p>
+  keine Möglichkeit besitzen, die geloggten Daten zu beeinflussen.
+  Würden z.B. Logdaten direkt am Webserver gespeichert werden, könnte
+  ein Angreifer der den Webserver gehackt hat, ebenso die Logdaten
+  modifizieren. Dies impliziert, dass der Log-Server über eine genau
+  definierte API erreichbar sein sollte.</p>
 </li>
 <li>
 <p>Es muss die Vertraulichkeit der Daten schützen. Da der Logserver
-    Detailinformationen über betriebliche Abläufe speichert, müssen
-    diese Daten mindestens ebenso sicher wie die ursprünglichen Daten
-    gespeichert werden.</p>
+  Detailinformationen über betriebliche Abläufe speichert, müssen
+  diese Daten mindestens ebenso sicher wie die ursprünglichen Daten
+  gespeichert werden.</p>
 </li>
 <li>
 <p>Das Log-System muss Möglichkeiten zur nachträglichen Auswertung der
-    gesammelten Daten bieten. Bonuspunkte, wenn man ein automatisiertes
-    Monitoring mit dem Log-System betreiben kann.</p>
+  gesammelten Daten bieten. Bonuspunkte, wenn man ein automatisiertes
+  Monitoring mit dem Log-System betreiben kann.</p>
 </li>
 </ul>
 <p>Die jeweiligen loggenden Systeme sollten alle sicherheitsrelevanten
@@ -1425,25 +1645,25 @@ Format vermieden.</p>
 <ul>
 <li>
 <p>Wann hat sich der Vorfall ereignet? Bei einer verteilten Applikation
-    sollte hier darauf geachtet werden, dass Timestamps die Zeitzone
-    beinhalten (und auch auf Zeitumstellungen achten). Grundlage für das
-    temporale korrelieren von Events ist es, dass alle beteiligten
-    Server eine idente Systemzeit besitzen (z.B. durch die Verwendung
-    von ntp).</p>
+  sollte hier darauf geachtet werden, dass Timestamps die Zeitzone
+  beinhalten (und auch auf Zeitumstellungen achten). Grundlage für das
+  temporale korrelieren von Events ist es, dass alle beteiligten
+  Server eine idente Systemzeit besitzen (z.B. durch die Verwendung
+  von ntp).</p>
 </li>
 <li>
 <p>Wo ist das Event passiert? Hierfür können Systemnamen, Servicenamen,
-    Containernamen oder Applikationsnamen verwendet werden.</p>
+  Containernamen oder Applikationsnamen verwendet werden.</p>
 </li>
 <li>
 <p>Für welchen Benutzer ist das Event passiert? Hier können
-    Systembenutzer (mit denen das Service läuft) oder feingranular der
-    gerade eingeloggte Benutzer protokolliert werden.</p>
+  Systembenutzer (mit denen das Service läuft) oder feingranular der
+  gerade eingeloggte Benutzer protokolliert werden.</p>
 </li>
 <li>
 <p>Was ist passiert? Dies wird immer applikations- und event-spezifisch
-    sein. Viele Systeme verwenden zumindest eine idente Klassifizierung
-    der Wichtigkeit des Events.</p>
+  sein. Viele Systeme verwenden zumindest eine idente Klassifizierung
+  der Wichtigkeit des Events.</p>
 </li>
 </ul>
 <p>Die Verwendung von personenbezogenen Daten kann das Logging
@@ -1593,23 +1813,23 @@ unterschieden:</p>
 <ul>
 <li>
 <p>DevOpsSec: es wird ein Produkt entwickelt, danach wird die
-    Administration durchgeführt. Final wird Security gewährleistet: ein
-    Beispiel dafür wäre es, dass nach Inbetriebnahme das Security-Team
-    Security-Patches einspielt. Das klassische Beispiel wäre das
-    Anpassen und der Betrieb von Standardsoftware.</p>
+  Administration durchgeführt. Final wird Security gewährleistet: ein
+  Beispiel dafür wäre es, dass nach Inbetriebnahme das Security-Team
+  Security-Patches einspielt. Das klassische Beispiel wäre das
+  Anpassen und der Betrieb von Standardsoftware.</p>
 </li>
 <li>
 <p>DevSecOps: zuerst wird entwickelt, danach wird Security betrachtet
-    und danach die Administration fortgesetzt. Dieser Ansatz wird
-    aktuell (2019) häufig gesehen und ist zumindest besser als die
-    Security generell zu ignorieren. Ein Beispiel hierfür wäre es, die
-    Inbetriebnahme von der erfolgreichen Durchführung einer
-    Sicherheitsüberprüfung abhängig zu machen.</p>
+  und danach die Administration fortgesetzt. Dieser Ansatz wird
+  aktuell (2019) häufig gesehen und ist zumindest besser als die
+  Security generell zu ignorieren. Ein Beispiel hierfür wäre es, die
+  Inbetriebnahme von der erfolgreichen Durchführung einer
+  Sicherheitsüberprüfung abhängig zu machen.</p>
 </li>
 <li>
 <p>SecDevOps: betrachtet initial die Security (z.B. schon während der
-    Planung der Software). Dadurch durchdringt Security die gesamte
-    Entwicklung als auch die Administration.</p>
+  Planung der Software). Dadurch durchdringt Security die gesamte
+  Entwicklung als auch die Administration.</p>
 </li>
 </ul>
 <p>Security bewirkt meistens einen Mehraufwand für die Entwickler. Um
@@ -1673,13 +1893,13 @@ einer Applikation mittels <em>OWASP ZAP</em> unter Zuhilfename des
 </li>
 <li>
 <p>Welche Sicherheitsmaßnahmen können im Zuge von SecDevOps
-    automatisiert durchgeführt werden? Erläutere die jeweiligen
-    Maßnahmen.</p>
+   automatisiert durchgeführt werden? Erläutere die jeweiligen
+   Maßnahmen.</p>
 </li>
 <li>
 <p>Wie kann während der Continuous Integration (CI) oder Continuous
-    Delivery (CD) auf die Sicherheit eines Softwareprodukts Rücksicht
-    genommen werden?</p>
+   Delivery (CD) auf die Sicherheit eines Softwareprodukts Rücksicht
+   genommen werden?</p>
 </li>
 <li>
 <p>Was sind Supply-Chain Angriffe und wie können diese geschehen?</p>

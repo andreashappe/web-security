@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../integration/">
+        <link rel="prev" href="../serialization-attacks/">
       
       
-        <link rel="next" href="../../web-applications/web_technologies/">
+        <link rel="next" href="../SSTI/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Kryptographische Grundlagen - Web Application Security</title>
+        <title>Request Smuggling - Web Application Security</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kryptographische-grundlagen" class="md-skip">
+        <a href="#http-request-smuggling" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kryptographische Grundlagen
+              Request Smuggling
             
           </span>
         </div>
@@ -266,8 +266,6 @@
       
   
   
-    
-  
   
   
     
@@ -279,11 +277,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -298,7 +296,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Einführung
@@ -312,7 +310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security_principles/" class="md-nav__link">
+      <a href="../../introduction/security_principles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -334,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security_as_process/" class="md-nav__link">
+      <a href="../../introduction/security_as_process/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -356,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/" class="md-nav__link">
+      <a href="../../introduction/integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -375,31 +373,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Kryptographische Grundlagen
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../introduction/crypto_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -409,80 +386,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#verschlusselung" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verschlüsselung
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#block-und-stream-cipher" class="md-nav__link">
-    <span class="md-ellipsis">
-      Block- und Stream-Cipher
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integritatsschutz" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integritätsschutz
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zufallszahlen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Zufallszahlen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#weitere-informationsquellen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weitere Informationsquellen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -727,8 +630,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -738,11 +643,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -757,7 +662,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Server-Seitige Angriffe
@@ -771,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
+      <a href="../allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -793,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+      <a href="../file-uploads/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -815,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+      <a href="../path-traversals/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -837,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+      <a href="../command-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -859,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+      <a href="../database-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+      <a href="../ldap-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -903,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+      <a href="../type-juggling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -925,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+      <a href="../xml-based-attacks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -947,7 +852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+      <a href="../serialization-attacks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -966,10 +871,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -979,6 +893,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -991,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+      <a href="../SSTI/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1239,68 +1154,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#verschlusselung" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verschlüsselung
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#block-und-stream-cipher" class="md-nav__link">
-    <span class="md-ellipsis">
-      Block- und Stream-Cipher
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integritatsschutz" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integritätsschutz
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zufallszahlen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Zufallszahlen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#weitere-informationsquellen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weitere Informationsquellen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1318,197 +1171,187 @@
   
 
 
-<h1 id="kryptographische-grundlagen">Kryptographische Grundlagen</h1>
-<p>Kryptographie beschreibt die Technik (und Kunst) über
-nicht-vertrauenswürdige Kanäle bzw. Speicherorte Daten integritäts- und
-vertraulichkeitsgesichert zu übertragen. Dadurch kann Kryptographie als
-Mittel gegen <em>spoofing</em>, <em>tampering</em>, <em>repudiation</em> und <em>information
-disclosure</em> dienen. Dieses Kapitel soll eine (extrem) kurze Einführung
-in die, in diesem Dokument, verwendeten Konzepte geben.</p>
-<p>Bei der Verschlüsselung wird der ursprüngliche Text (häufig <em>plaintext</em>
-genannt) durch den Algorithmus in einen neuen, verschlüsselten, Text
-(häufig <em>ciphertext</em> genannt) konvertiert. Dieser Ciphertext kann durch
-die Entschlüsselung wieder in den Plaintext zurück verwandelt werden.
-Die hierbei verwendeten Algorithmen werden häufig <em>Cipher</em> genannt. In
-der Literatur werden die dabei beteiligten Partein meistens ident
-benannt: <em>Alice</em> und <em>Bob</em> sind die beiden Parteien die miteinander
-sicher kommunizieren wollen. <em>Eve</em> ist ein Angreifer, der diese
-Nachrichten abhören, aber nicht modifizieren kann; <em>Mallory</em> ist ein
-Angreifer, der auch aktiv angreifen darf.</p>
-<p>Grundlegend sollten folgende Grundsätze bei der Verwendung von
-Kryptographie beachtet werden:</p>
+<h1 id="http-request-smuggling">HTTP Request Smuggling</h1>
+<p>Bei HTTP Request Smuggling versucht der Angreifer, einzelne HTTP
+Requests in ein System einzuschleusen. Der Angriff erfolgt nicht direkt
+gegen eine Webapplikation an-sich, sondern nutzt aus, dass bei modernen
+Webapplikationen zumeist mehrere Server involviert sind.Das HTTP
+verwendet eine nicht-eindeutige Kodierung der Request-Länge, HTTP
+Request Smuggling tritt auf, wenn die verschiedenen Server bei dem
+indenten Request von unterschiedlichen Request-Längen ausgehen und daher
+diesen Request unterschiedlich zusammensetzen.</p>
+<p>Ein typisches Setup besteht aus einem Frontend- und einem einem
+Backend-Server. Das Frontend dient zumeist zum Cachen von Daten oder
+auch zur Zugriffskontrolle. Das Backend beinhaltet den
+Applikationsserver welcher schlussendlich den Request innerhalb des
+Applikationscodes behandelt. Problematisch ist, dass ein Frontend-System
+die Anfragen mehrerer Clients (Web-Browser) parallel entgegen nimmt und
+diese über eine Verbindung an ein Backend-System weiterleitet. Die
+Verwendung einer TCP-Verbindung geschieht zumeist aus
+Performancegründen, da das wiederholte Aufbauen einer Verbindung
+zeitaufwendig wäre. Da nur nur eine Verbindung verwendet wird, müssen
+Requests unterschiedlicher Browser nacheinander über diese Verbindung
+übertragen werden. Das Backend-System empfängt nun über diese Verbindung
+die Anfragen, muss diese erneut in einzelne Requests zerlegen und
+schlussendlich abarbeiten. Damit das Backend die Grenzen der einzelnen
+Requests identifizieren kann, wird die Längenangabe innerhalb der
+Requests verwendet.</p>
+<p>HTTP beeinhaltet zwei Möglichkeiten die Requestlänge zu definieren:</p>
+<ol>
+<li>
+<p>Der HTTP-Header <em>Content-Lenght</em> beinhaltet die Länge des
+   Request-Bodies.</p>
+</li>
+<li>
+<p>Wird als HTTP-Header <em>Transfer-Encoding: chunked</em> verwendet, gibt es
+   keinen Header mit der Länge des Requestbodies. Anstatt dessen können
+   als Requestbody mehrere Chunks übertragen werden. Ein Chunk besteht
+   immer aus einer initialen Zeile mit der Länge der Daten innerhalb
+   des aktuellen Chunks. Diese Länge wird in hexadezimal Notation
+   übergeben. Direkt an die Zeile mit der Länge werden Daten
+   (entsprechend der übertragenen Länge) angehängt. Ein Chunk wird mit
+   einer Leerzeile beendet. Schlussendlich wird der Reqeust mit einem
+   Chunk der Länge 0 beendet.</p>
+</li>
+</ol>
+<p>Der Fall, dass sowohl <em>Content-Length</em> als auch <em>Transfer-Encoding:
+chunked</em> gesetzt sind, wurde im HTTP-Standard nicht definiert.
+Dementsprechend reagieren unterschiedliche Server auch unterschiedlich
+auf solche Requests. Dies kann von einem Angreifer ausgenutzt werden.</p>
+<p>Zwei einfache Beispiele[6] sollen dieses Verhalten erläutern.</p>
+<p>Nehmen wir initial an, dass das Frontend <em>Content-Length</em> und das
+Backend <em>chunked encoding</em> verwendet. Folgender Request wird empfangen:</p>
+<div class="highlight"><pre><span></span><code><span class="err"> </span><span class="nf">POST</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+ <span class="l">Host: vulnerable-website.com</span>
+ <span class="l">Content-Length: 13</span>
+ <span class="l">Transfer-Encoding: chunked</span>
+
+ 0
+
+ SMUGGLED 
+</code></pre></div>
+<p>Das Frontend würde (aufgrund des <em>Content-Length: 11</em> Headers) die
+gesamte Nachricht auf die Verbindung zum Backend kopieren. Ein
+paralleler Request eines zweiten Benutzers wird direkt danach auf die
+gleiche Leitung kopiert. Das Backend liest den Request, verwendet aber
+<em>Chunked Encoding</em>. Aufgrund des 0-Chunks (die initiale 0-Zeile) beendet
+es den ersten Request nach der Leerzeile (nach der 0) und verwendet den
+Rest der Eingabe als Beginn eines neuen Requests (der daher mit “
+SMUGGLED” beginnt). Der parallele Request eines anderen Benutzers wird
+direkt an den eingeschleusten Request als String angehängt und wird
+dadurch Teil des eingeschleusten Requests.</p>
+<p>Der umgekehrte Fall: Frontend verwendet <em>Chunked-Encoding</em>, Backend
+verwendet <em>Content-Length</em> funktioniert ähnlich:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">vulnerable-website.com</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">3</span>
+<span class="na">Transfer-Encoding</span><span class="o">:</span> <span class="l">chunked</span>
+
+8
+SMUGGLED
+0
+</code></pre></div>
+<p>Hier wird allerdings eine Zeile mit 0 zwischen dem eingeschleusten
+Request und dem dazu-kopierten Folgerequest eines anderen Benutzers
+eingefügt (da das Chunked-Encoding diese Zeile zum Beenden des Requests
+benötigt). Dies muss der Angreifer bei der Erstellung seines
+Angriffscodes berücksichtigen.</p>
+<p>Wie kann dieses Verhalten bei einem Angriff ausgenutzt werden? Ein
+schönes Beispiel wäre eine Webapplikation, bei dem ein Benutzer
+Kommentare absetzen kann. Das Registrieren eines Benutzers ist auch für
+einen Angreifer möglich. Hier könnte z.B. folgender Request als Angriff
+verwendet werden[7]:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">vulnerable-website.com</span>
+<span class="na">Transfer-Encoding</span><span class="o">:</span> <span class="l">chunked</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">324</span>
+
+0
+
+POST /post/comment HTTP/1.1
+Host: vulnerable-website.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 400
+Cookie: session=BOe1lFDosZ9lk7NLUpWcG8mjiwbeNZAO
+
+csrf=SmsWiwIJ07Wg5oqX87FfUVkMThn9VzO0&amp;postId=2&amp;name=Carlos+Montoya&amp;email=carlos%40normal-user.net&amp;website=https%3A%2F%2Fnormal-user.net&amp;comment=
+</code></pre></div>
+<p>Unter der Annahme, dass das Frontend <em>Content-Length</em> und das Backend
+<em>Chunked-Encoding</em> verwendet würde folgendes passieren:</p>
 <ul>
 <li>
-<p>Niemals selbst ein kryptographisches System entwerfen, sondern immer
-  ein etabliertes (und getestetes) System verwenden.</p>
+<p>Das Frontend kopiert den gesamten Request auf die Verbindung zum
+  Backend.</p>
 </li>
 <li>
-<p>Niemals selbst einen kryptographischen Algorithmus/Bibliothek
-  implementieren, sondern immer etablierte und getestet Komponenten
-  verwenden.</p>
+<p>Das Backend versucht den Request zu erkennen, verwendet dafür
+  <em>Chunked-Encoding</em> und beendet den Request mit dem 0-Chunk.</p>
 </li>
 <li>
-<p>Die richtige kryptographische Methode wählen.</p>
+<p>Das Backend liest die nächste Zeile Text und interpretiert diese als
+  Beginn eines neuen Requests. In diesem Fall wäre dies ein POSt
+  Request auf <code>/post/comment</code>.</p>
 </li>
 <li>
-<p>Immer davon ausgehen, dass der eigene Source Code früher oder später
-  öffentlich wird. Aus diesem Grund darf ein kryptographischer
-  Schlüssel (oder auch Credentials) niemals Teil des Source Codes
-  werden.</p>
+<p>Da der Angreifer selbst ein Konto erstellen konnte, konnte dieser
+  eine valide Session als auch ein valides CSRF-Token generieren. Die
+  Session wird als HTTP-Header eingeschleust. Innerhalb des
+  eingeschleusten Requests wird auch das bekannte CSRF-Token gesetzt.</p>
 </li>
 <li>
-<p>Essentiell zur sicheren Verwendung der verschiedenen
-  kryptographischen Methoden sind die dabei verwendeten Schüssel.
-  Diese müssen sowohl sicher gespeichert als auch transportiert
-  werden. Noch komplexer ist das Herstellen eines Vertrauensverhältnis
-  (Trust) zwischen den jeweiligen Kommunikationspartnern: woher weiss
-  ein Partner, dass ein vorhandener Schlüssel eines anderen
-  Kommunikationsparters vertrauenswürdig ist? Key Management ist
-  komplex und sollte nicht unterschätzt werden!</p>
+<p>Innerhalb des eingeschleusten Requests wird mit einem Request-Body
+  begonnen. In diesem werden mehrere Parameter gesetzt. Der
+  eingeschleuste Request endet mit einem <em>comment=</em>, also dem Wert der
+  als Kommentar vom User eingegeben werden sollte.</p>
+</li>
+<li>
+<p>Da das Backend nicht weiss, dass der Request beendet ist, liest es
+  die nächsten Daten aus der eingehenden Verbindung. In diesem Fall
+  ist dies ein Request eines anderen Benutzers, der zeitgleich
+  abgegeben und vom Frontend direkt nach dem eingeschleusten Reqeust
+  in die Verbindung kopiert wurde.</p>
+</li>
+<li>
+<p>Die Applikationslogik interpretiert nun den Folgerequest als Inhalt
+  des Parameters <em>comment</em>, also als Kommentar der als Kommetar
+  gepostet werden sollte (da die Operation <code>/comment/post</code> war).</p>
+</li>
+<li>
+<p>Der Angreifer überprüft nun, ob ein neuer Kommentar mit sensiblen
+  Daten eines anderen Users an der betroffenen Stelle auftaucht.
+  Sensible Daten könnte z.B. Credentials im Zuge einer Login-Operation
+  oder auch ein HTTP-Header mit Session-Cookies sein. Falls möglich,
+  würde der Angreifer diese Verwenden um serverseitig die Identität
+  des anderen Benutzers anzunehmen.</p>
+</li>
+<li>
+<p>Falls kein Kommentar erscheint oder der Kommentar nur sinnlose
+  Informationen beinhaltet, wiederholt der Angreifer den
+  Angriffsrequest (potentiell würde er ein neues CSRF-Token initial
+  generieren).</p>
 </li>
 </ul>
-<p>Jede implementierte und konfigurierbare kryptographische Methode erhöht
-potentiell die Angriffsoberfläche. Ein Beispiel hierfür ist z. B. die
-OpenSSL-Bibliothek die dutzende Algorithmen implementiert. Als
-Alternative sind in den letzten Jahren kryptographische Bibliotheken wie
-<em>NaCl</em> (“salt”) entstanden, die für jede kryptographische Methode genau
-eine sichere Implementierung anbieten. Auf diese Weise sollen
-Selektionsfehler durch Entwickler vermieden werden.</p>
-<p>Ein häufiger verwendeter Begriff ist <em>Rubber Hose Cryptography</em>. Ein
-noch so technisch sicheres kryptographisches System kann durch bezahlte
-Schläger mit einem Gummischlauch und der Androhung von Gewalt, falls das
-Opfer nicht den privaten Schlüssel mitteilt, günstig gebrochen werden.
-Anstatt durch Androhung von Gewalt kann <em>Rubber Hose Cryptography</em> auch
-auf andere Aspekte eines Schlüsselträgers abzielen: Geld, Ideologie,
-Coersion oder Ego (Sex sells).</p>
-<h2 id="verschlusselung">Verschlüsselung</h2>
-<p>Zur Wahrung der Vertraulichkeit von Daten wird Verschlüsselung
-eingesetzt. Bei dieser wird der Originaltext (engl. <em>plaintext</em>) in
-einen verschlüsselten Text (engl. <em>ciphertext</em>) konvertiert. Dieser kann
-wieder durch den Entschlüsselungs-Vorgang in den Originaltext zurück
-verwandelt werden. Verschlüsselungsalgorithmen können in zwei Familien
-eingeteilt werden: symmetrisch und asymmetrisch (auch public-key
-encryption genannt). Bei symmetrischer Verschlüsselung wird zum ver- und
-entschlüsseln der idente Schlüssel verwendet. Problematisch hierbei ist,
-dass dieser geteilte geheime Schlüssel initial zwischen allen
-Beteiligten verteilt werden muss. Bei der asymmetrischen Verschlüsselung
-wird statt einem geteilten Schlüssel ein Schlüsselpaar[1] verwendet.
-Dieses besteht aus einem öffentlichen Schlüssel der zur Verschlüsselung
-dient und einem zugehörigen privaten Schlüssel der zum Entschlüsseln
-verwendet wird. Dadurch wird die Problematik des initialen
-Schlüsselverteilens entschärft, da nur öffentliche Schlüssel verteilt
-werden müssen (diese dürfen veröffentlicht bzw. verloren werden). Ein
-Nachteil asymmetrischer Verschlüsselung gegenüber symmetrischer
-Verschlüsselung ist, dass sie langsamer als symmetrische Verschlüsselung
-ist.</p>
-<h2 id="block-und-stream-cipher">Block- und Stream-Cipher</h2>
-<p>Eine weitere Unterscheidungsmöglichkeit für Verschlüsselungsalgorithmen
-ist die in <em>block</em> und <em>stream</em> ciphers. Bei Blockciphern werden zuerst
-Daten angehäuft (“ein Block” an plain-data) und dann dieser Block
-verschlüsselt. Bei einem Streamcipher wird jedes Zeichen sofort
-verschlüsselt, das Sammeln von Blocken wird so vermieden. Während
-Stream-Ciphers teilweise einfacher für Programmierer in ihrer Verwendung
-sind, werden aus Effizienzgründen fast ausschließlich Blockcipher
-verwendet. Werden zwei idente Blöcke mit dem identen Schlüssel
-verschlüsselt, würden idente verschlüsselte Blöcke entstehen. Dies
-erlaubt es einem Angreifer, strukturelle Informationen aus
-verschlüsselten Dokumenten zu extrahieren. Um dies zu vermeiden werden
-so genannte <em>Block Modes</em> verwendet um sicherzustellen, dass idente
-plain-text Blöcke unterschiedliche cipher-text Blöcke produzieren. Bei
-Auswahl des Block Modes sollten GCM-Modes (bzw. AEAD-Varianten)
-bevorzugt und ECB bzw. CBC Modes vermieden werden.</p>
-<h2 id="integritatsschutz">Integritätsschutz</h2>
-<p>Verschlüsselung gewährleistet nicht automatisch die Integrität der
-verschlüsselten Daten. Hierfür müssen eigene Algorithmen verwendet
-werden. Häufig vorgefunden werden Hashes, Message Authentication Codes
-(MACs) und Signaturen. Vereinfacht ausgedruckt berechnen Hashes
-ausgehend von beliebig langen Eingangsdaten eine Checksumme konstanter
-Größe. Wird ein Hash auf identen Eingangsdaten angewandt, wird auch ein
-identer Hash berechnet. Ein Hash ist eine Einwegfunktion: während der
-zugehörige Hash zu einem Eingangsdatum schnell berechnet werden kann
-(gegeben den ursprünglichen Daten), ist das Berechnen der Eingangsdaten
-ausgehend von einem Hash realistisch nicht möglich.</p>
-<p>Bei einem Message Authentication Code (MAC) wird der Hash um ein
-geheimes geteiltes Passwort erweitert. Zur Berechnung bzw. Validierung
-eines MACs wird dieses Passwort benötigt. Analog zur symmetrischen
-Verschlüsselung ergibt sich hier die Problematik der
-Schlüsselverteilung. Signaturen lösen dieses Problem indem sie
-asymmetrische (public-key) Verschlüsselung einsetzen. Bei ihnen kann die
-Checksumme (Signature) mit Hilfe des privaten Schlüssels erstellt und
-mit Hilfe des öffentlichen Schlüssels verifiziert werden. Dadurch
-entfällt das Problem der Schlüsselverteilung, allerdings wird auch hier
-der Vorteil durch geringere Geschwindigkeit erkauft.</p>
-<p>Je nach Einsatzbereich muss nun ein geeignetes Verfahren zur
-Integritätssicherung und Verschlüsselung gewählt werden. Werden Daten
-über ein öffentliches bzw. feindliches Netzwerk transferiert ist z. B.
-der Einsatz eines Hashes problematisch. Falls ein Angreifer einen
-Datensatz abfangen und modifizieren kann, kann er ebenso einen neuen
-Hash berechnen und so den Integritätsschutz umgehen. Bei diesem Beispiel
-wäre der Einsatz eines MACs oder von Signaturen sinnvoller.</p>
-<h2 id="zufallszahlen">Zufallszahlen</h2>
-<p>Bei der korrekten Verwendung von kryptographischen Methoden ist der
-Einsatz guter Zufallszahlengenerator essentiell. Dieser sollte
-Zufallszahlen mit hoher Entropie generieren. Dies kann z. B. durch
-Einsatz eines Hardware-Zufallsgenerators sichergestellt werden. Ist ein
-solcher nicht verfügbar, muss ein kryptographisch sicherer
-Pseudo-Zufallszahlengenerator (PRNG) verwendet werden. Moderne
-Betriebssysteme bieten zumeist hybride Lösungen an: hierbei werden zwar
-PRNGs verwendet, diese allerdings mit Entropie aus weiteren Quelle[2]
-angereichert.</p>
-<p>Die Qualität der generierten Zufallszahlen kann über deren Entropie
-bestimmt werden. Hierbei wird über statistische Methoden die Qualität
-der Zufälligkeit der generierten Karten ermittelt.</p>
-<h2 id="weitere-informationsquellen">Weitere Informationsquellen</h2>
-<p>Entwickler benötigen Guidance zur Selektion der jeweiligen
-kryptographischen Algorithmen, hier eine kleine Auswahl öffentlich
-verfügbarer Dokumente:</p>
-<ol>
+<p>Was kann man gegen HTTP Request Smuggling Angriffe unternehmen? Mehrere
+Möglichkeiten würden diese unterbinden;</p>
+<ul>
 <li>
-<p>Das amerikanische NIST gibt Empfehlungen für Cryptographical
-   Standards ab, z. B. <a href="https://csrc.nist.gov/publications/detail/sp/800-175b/final">SP-800-175B</a>. Aufgrund der Zusammenarbeit des
-   NIST mit der amerikanischen NSA bei zu vorigen Crypto-Standards
-   (Vermutung der Platzierung einer Backdoor in einen
-   Random-Number-Generator) wird mittlerweile gerne von den
-   NIST-Empfehlungen abgesehen.</p>
+<p>Sicherstellen, dass Front- und Backend die Request-Länge ident
+  interpretieren.</p>
 </li>
 <li>
-<p>Die europäische ENISA gibt regelmäßig Empfehlungen zu verwendeten
-   kryptographischen Standards und Schlüssellängen ab (<a href="https://www.enisa.europa.eu/publications/algorithms-key-size-and-parameters-report-2014">Algorithms, key
-   size and parameter report 2014</a>). Während diese relativ gut sind,
-   ist die Frequenz der Veröffentlichung für IT-Verhältnisse etwas
-   behäbig (4-5 Jahre).</p>
+<p>Am Frontend potentiell mehrdeutige Request-Längen mit eindeutigen
+  Längen ersetzen.</p>
 </li>
 <li>
-<p>Das deutsche Bundesamt für Sicherheit in der Informationstechnik
-   (BSI) bietet häufig überarbeitete Empfehlungen zum Einsatz
-   kryptographischer Methoden an (<a href="https://www.bsi.bund.de/DE/Publikationen/TechnischeRichtlinien/tr02102/index_htm.html">BSI TR-02102</a>). Diese sind relativ
-   aktuell und klassifizieren Algorithmen in sichere Algorithmen die
-   bei aktuellen Neuentwicklungen verwendet werden sollen und in
-   legacy-Algorithmen, die zwar nicht mehr bei Neuentwicklungen
-   verwendet werden sollten, die aber bei bestehender Software durchaus
-   weiterverwendet werden können.</p>
+<p>Zwischen Front- und Backend für jeden Client-Request eine neue
+  Verbindung aufbauen. Dies wird zumeist aus Performance-Gründen nicht
+  durchgeführt.</p>
 </li>
 <li>
-<p><a href="https://www.bettercrypto.org">BetterCrypto.org</a> bietet regelmäßig upgedatete
-   Beispielskonfigurationen für geläufige Webserver. Diese sollten dazu
-   dienen, dass ein Administrator diese Snippets direkt in die
-   Konfiguration eines Webservers kopieren können und dadurch eine
-   sichere Konfiguration erreicht wird.</p>
+<p>Zwischen Front- und Backend HTTP/2 verwenden. Diese Protokollversion
+  besitzt die Mehrdeutigkeit der Requestlängen nicht mehr.</p>
 </li>
-</ol>
-<h2 id="reflektionsfragen">Reflektionsfragen</h2>
-<ol>
-<li>
-<p>Welche Grundideen sollten bei dem Entwurf und Einsatz
-   kryptographischer Methoden angewandt werden?</p>
-</li>
-<li>
-<p>Wann sollte ein MAC verwendet werden? Stelle diesen einem Hash oder
-   einer kryptographsichen Signatur gegenüber.</p>
-</li>
-</ol>
-<p>[1] Das Schlüsselpaar ist mathematisch “verwandt”.</p>
-<p>[2] Z. B. aus CPU-Zufallszahlengeneratoren, etc.</p>
+</ul>
 
 
 

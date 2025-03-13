@@ -1035,11 +1035,231 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-Uploads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path-Traversals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type Juggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML-basierte Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialisierungs-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Smuggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSTI
     
   </span>
   
@@ -1669,24 +1889,21 @@ aufgerufenen Pfad und der verwendeten HTTP-Version. Jede weitere Zeile
 beinhaltet einen HTTP Header, diese sind immer als <em>Key: Value</em>
 strukturiert.</p>
 <p>Bei folgendem Beispiel versucht ein Webbrowser auf die Datei
-<em>/index.html</em> eines Webservers lesend (Verb: GET) zuzugreifen:</p>
-<pre><code>GET /index.html HTTP/1.1
-Host: snikt.net
-User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: close
-Upgrade-Insecure-Requests: 1
-</code></pre>
+<code>/index.html</code> eines Webservers lesend (Verb: <code>GET</code>) zuzugreifen:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/index.html</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">snikt.net</span>
+<span class="na">User-Agent</span><span class="o">:</span> <span class="l">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">en-US,en;q=0.5</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="o">:</span> <span class="l">1</span>
+</code></pre></div>
 <h4 id="http-request-verbsmethoden">HTTP Request Verbs/Methoden</h4>
 <p>Ein Request beginnt immer mit einem HTTP Verb (auf Englisch auch HTTP
 Request Method genannt), dieses beschreibt die Aktion die der Client
-gerne hätte. Häufig verwendete Verben werden in Tabelle
-<a href="#tbl:http_verbs" data-reference-type="ref"
-data-reference="tbl:http_verbs">1.1</a> gelistet. Ein verwendetes HTTP
-Verb kann sowohl <em>safe</em> als auch <em>idempotent</em> sein. Safe Verben sollten
-niemals Resourcen verändern (also Daten am Server modifizieren).</p>
+gerne hätte. Häufig verwendete Verben werden in folgender Tabelle
+gelistet:</p>
 <table>
 <thead>
 <tr>
@@ -1753,7 +1970,9 @@ niemals Resourcen verändern (also Daten am Server modifizieren).</p>
 </tr>
 </tbody>
 </table>
-<p>Häufig verwendete HTTP Methoden bzw. Verben</p>
+<p>Ein verwendetes HTTP
+Verb kann sowohl <em>safe</em> als auch <em>idempotent</em> sein. Safe Verben sollten
+niemals Resourcen verändern (also Daten am Server modifizieren).</p>
 <p>Idempotente Verben sollten auch bei wiederholtem Aufruf auf eine
 Resource das idente Ergebnis liefern. Sie können also beliebig häufig
 aufgerufen, und wiederholt werden. Wenn z.B. während eines DELETE
@@ -1776,9 +1995,8 @@ Dissertation veröffentlicht. Das Paradigma versucht es, zustandlose APIs
 über eine einheitliche Schnittstelle anzubieten. Jede gespeicherte
 Ressource sollte eine eindeutige URL besitzen, als Kommunikationssprache
 wird häufig HTTP eingesetzt.</p>
-<p>Tabelle <a href="#tbl:rest" data-reference-type="ref"
-data-reference="tbl:rest">1.2</a> zeigt wie häufig benötige
-CRUD-Funktionalität[2] auf HTTP Verben umgelegt wird.</p>
+<p>Folgende Tabelle zeigt wie häufig benötige
+CRUD-Funktionalität[2] auf HTTP Verben umgelegt wird:</p>
 <table>
 <thead>
 <tr>
@@ -1792,42 +2010,41 @@ CRUD-Funktionalität[2] auf HTTP Verben umgelegt wird.</p>
 <tr>
 <td style="text-align: left;">GET</td>
 <td style="text-align: left;">READ</td>
-<td style="text-align: left;"><a href="/notes/1" class="uri">/notes/1</a></td>
+<td style="text-align: left;"><code>/notes/1</code></td>
 <td style="text-align: left;">Fordert die Ressource vom Server an. Diese Operation sollte safe und idempotent sein.</td>
 </tr>
 <tr>
 <td style="text-align: left;">POST</td>
 <td style="text-align: left;">CREATE</td>
-<td style="text-align: left;"><a href="/notes" class="uri">/notes</a></td>
+<td style="text-align: left;"><code>/notes</code></td>
 <td style="text-align: left;">Erstellt eine neue Ressource am Server, deren URI wird zurück gegeben.</td>
 </tr>
 <tr>
 <td style="text-align: left;">PUT</td>
 <td style="text-align: left;">CREATE/UPDATE</td>
-<td style="text-align: left;"><a href="/notes/2" class="uri">/notes/2</a></td>
+<td style="text-align: left;"><code>/notes/2</code></td>
 <td style="text-align: left;">Erstellt oder ersetzt eine Ressource an der angegeben URI.</td>
 </tr>
 <tr>
 <td style="text-align: left;">PATCH</td>
 <td style="text-align: left;">UPDATE</td>
-<td style="text-align: left;"><a href="/notes/2" class="uri">/notes/2</a></td>
+<td style="text-align: left;"><code>/notes/2</code></td>
 <td style="text-align: left;">Die angegebene Ressource wird verändert, Nebeneffekte sind erlaubt.</td>
 </tr>
 <tr>
 <td style="text-align: left;">DELETE</td>
 <td style="text-align: left;">DELETE</td>
-<td style="text-align: left;"><a href="/notes/2" class="uri">/notes/2</a></td>
+<td style="text-align: left;"><code>/notes/2</code></td>
 <td style="text-align: left;">Die angegebene Ressource wird gelöscht.</td>
 </tr>
 <tr>
 <td style="text-align: left;">HEAD</td>
 <td style="text-align: left;">READ</td>
-<td style="text-align: left;"><a href="/notes/2" class="uri">/notes/2</a></td>
+<td style="text-align: left;"><code>/notes/2</code></td>
 <td style="text-align: left;">Liefert Meta-Daten für die angegebene Ressource.</td>
 </tr>
 </tbody>
 </table>
-<p>Verwendung von HTTP Verben bei RESTful-Architekturen</p>
 <h4 id="request-host-header">Request Host Header</h4>
 <p>Der übergebene <em>Host</em>-Header kann sicherheitsrelevant sein: dieser
 Header wird nicht verwendet um auf der Netzwerkebene das Ziel zu
@@ -1836,24 +2053,24 @@ Webserver verwenden diesen Header um Adressen innerhalb der Antwortseite
 zu generieren.</p>
 <h3 id="http-response">HTTP Response</h3>
 <p>Der Server liefert nun ein Antwortdokument:</p>
-<pre><code>HTTP/1.1 302 Found
-Date: Sun, 03 Mar 2019 22:03:21 GMT
-Server: Apache/2.4.25 (Debian)
-Location: https://snikt.net/
-Content-Length: 277
-Connection: close
-Content-Type: text/html; charset=iso-8859-1
+<div class="highlight"><pre><span></span><code><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
+<span class="na">Date</span><span class="o">:</span> <span class="l">Sun, 03 Mar 2019 22:03:21 GMT</span>
+<span class="na">Server</span><span class="o">:</span> <span class="l">Apache/2.4.25 (Debian)</span>
+<span class="na">Location</span><span class="o">:</span> <span class="l">https://snikt.net/</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">277</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html; charset=iso-8859-1</span>
 
-&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
-&lt;html&gt;&lt;head&gt;
-&lt;title&gt;302 Found&lt;/title&gt;
-&lt;/head&gt;&lt;body&gt;
-&lt;h1&gt;Found&lt;/h1&gt;
-&lt;p&gt;The document has moved &lt;a href="https://snikt.net/"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;address&gt;Apache/2.4.25 (Debian) Server at snikt.net Port 80&lt;/address&gt;
-&lt;/body&gt;&lt;/html&gt;
-</code></pre>
+<span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>302 Found<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Found<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The document has moved <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://snikt.net/&quot;</span><span class="p">&gt;</span>here<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">address</span><span class="p">&gt;</span>Apache/2.4.25 (Debian) Server at snikt.net Port 80<span class="p">&lt;/</span><span class="nt">address</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Hier fällt zuerst der Statuscode (302) auf. Prinzipiell beschreiben
 Codes aus dem 100er Bereich <em>Continue</em>, Codes im 200er Bereich Erfolg
 (<em>success</em>), Code im 300er Bereich sind Redirects, Codes im 400er
@@ -1933,8 +2150,8 @@ Langzeitschlüssels gebannt.</p>
 Webbrowser mit, dass Folgezugriffe auf die Webseite immer über ein
 sicheres Protokoll zu erfolgen haben. Bei Angabe des Headers wird eine
 Laufzeit in Sekunden[4] für diese Regel angegeben:</p>
-<pre><code>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</span>
+</code></pre></div>
 <p>Sobald dieser Header vom Browser interpretiert wird, werden potentielle
 zukünftige HTTP-Aufrufe automatisch vom Browser auf HTTPS hochgestuft.
 Zusätzlich schützen Webbrowser (bei Verwendung von HSTS) Benutzer vor
@@ -2000,15 +2217,15 @@ in das Antwortdokument. Falls der Angreifer nicht mittels Javascript auf
 das Session-Cookie zugreifen kann, aber die Möglichkeit besitzt per
 Javascript einen HTTP TRACE Aufruf auf den Opfer-Webserver abzusetzen,
 kann er auf diese Weise das Session-Cookie extrahieren:</p>
-<pre><code>&lt;script&gt;
-  var xmlhttp = new XMLHttpRequest();
-  var url = 'http://127.0.0.1/';
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">xmlhttp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://127.0.0.1/&#39;</span><span class="p">;</span>
 
-  xmlhttp.withCredentials = true; // send cookie header
-  xmlhttp.open('TRACE', url, false);
-  xmlhttp.send();
-&lt;/script&gt;
-</code></pre>
+<span class="w">  </span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">withCredentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// send cookie header</span>
+<span class="w">  </span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;TRACE&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Aus diesem Grund wird empfohlen, auf Webservern immer HTTP TRACE zu
 deaktivieren.</p>
 <h3 id="samesite-flag">sameSite-Flag</h3>
@@ -2042,17 +2259,17 @@ wird. Der Zugriff mittels JavaScript wurde durch <em>httpOnly</em> verboten,
 das Cookie ist für alle Pfade gültig. Da kein Ablaufdatum (<em>Expires</em>)
 bzw. Lebenszeit (<em>Max-Age</em>) angegeben wurde, wird das Cookie beim
 Schließen des Browsers gelöscht:</p>
-<pre><code>Set-Cookie: sessionid=38afes7a8; HttpOnly; Path=/
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">Set-Cookie: sessionid=38afes7a8; HttpOnly; Path=/</span>
+</code></pre></div>
 <p>Das folgende Cookies mit Namen <em>id</em> wird vor der unsicheren Übertragung
 mittels HTTP (<em>Secure</em>) als auch vor Zugriffen mittels JavaScript
 (<em>httpOnly</em>) geschützt. Die Lebensdauer wurde mit einem absoluten Datum
 angegeben:</p>
-<pre><code>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly</span>
+</code></pre></div>
 <p>Ein Beispiel für das Setzen der sicherheitsrelevanten Header:</p>
-<pre><code>Set-Cookie: CookieName=CookieValue; SameSite=Strict; httpOnly; Secure;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">Set-Cookie: CookieName=CookieValue; SameSite=Strict; httpOnly; Secure;</span>
+</code></pre></div>
 <h2 id="javascript">JavaScript</h2>
 <p>Wird über Webprogrammierung gesprochen fällt früher oder später der Name
 der Programmiersprache <em>JavaScript</em> (auch teilweise mit JS abgekürzt).
@@ -2130,8 +2347,8 @@ Webbrowser-Benutzers durchgeführt werden.</p>
 <p>Während die Same-Origin-Policy aus Sicherheitssicht begrüßenswert ist,
 muss sie teilweise aufgeweicht werden. Zum Beispiel könnte eine Webseite
 aus Sicherheitsgründen auf mehrere Teilserver aufgeteilt worden sein:
-<em>www.evil.com</em> beinhaltet die klassische Webseite, während
-<em>api.evil.com</em> Operationen anbietet, die von <em>www</em> aus aufgerufen werden
+<code>www.evil.com</code> beinhaltet die klassische Webseite, während
+<code>api.evil.com</code> Operationen anbietet, die von <code>www</code> aus aufgerufen werden
 sollten.</p>
 <p>Um diese Zugriffe sauber zu erlauben, wird Cross-Domain Resource Sharing
 verwendet. Hierbei werden zusätzliche Browser-Header verwendet, über
@@ -2162,19 +2379,19 @@ durchgeführt:</p>
 <ol>
 <li>
 <p>Der Webbrowser eines Benutzers erkennt, dass er ausgehend von <em>www</em>
-    auf <em>api</em> zugreifen will und hierfür ein CORS Authorization
-    notwendig ist.</p>
+   auf <em>api</em> zugreifen will und hierfür ein CORS Authorization
+   notwendig ist.</p>
 </li>
 <li>
 <p>Um diese durchzuführen, versendet er einen HTTP OPTIONS request auf
-    die gewünschte Operation auf <em>api</em> und setzt dabei den Origin
-    Header: <em>Origin: http://www</em> auf die aufrufende Webseite.</p>
+   die gewünschte Operation auf <em>api</em> und setzt dabei den Origin
+   Header: <code>Origin: http://www</code> auf die aufrufende Webseite.</p>
 </li>
 <li>
 <p>Der <em>api</em> Webserver antwortet nun mit dem HTTP Header
-    <em>Access-Control-Allow-Origin: http://www</em> und signalisiert dem
-    Webbrowser dass der Zugriff auf <em>api</em> ausgehend von <em>www</em> erlaubt
-    ist.</p>
+   <code>Access-Control-Allow-Origin: http://www</code> und signalisiert dem
+   Webbrowser dass der Zugriff auf <em>api</em> ausgehend von <em>www</em> erlaubt
+   ist.</p>
 </li>
 <li>
 <p>Der Webserver führt nun die Operation auf <em>api</em> durch.</p>
@@ -2187,20 +2404,19 @@ Verfahren werden die gewünschten Daten über einen GET-Request als
 Javascript-Datei geladen. Damit die geladenen Daten an Javascript
 übergeben werden, wird beim Inkludieren der Daten eine Callback Funktion
 mit übergeben.</p>
-<p>Ein Beispiel, mittels der URL <a href="/php/jsonp.php?callback=callback"
-class="uri">/php/jsonp.php?callback=callback</a> wird eine Operation
+<p>Ein Beispiel, mittels der URL <code>/php/jsonp.php?callback=callback</code> wird eine Operation
 aufgerufen, der Parameter <em>callback</em> gibt an, wie die lokale
 Javascript-Callback Funktion heißt. Das Antwortdokument ist z.B.:</p>
-<pre><code>callback('{ "name":"John", "age":30, "city":"New York" }');
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">callback</span><span class="p">(</span><span class="s1">&#39;{ &quot;name&quot;:&quot;John&quot;, &quot;age&quot;:30, &quot;city&quot;:&quot;New York&quot; }&#39;</span><span class="p">);</span>
+</code></pre></div>
 <p>In der aufrufenden Webseite würde der Call nun folgendermaßen aussehen:</p>
-<pre><code>&lt;script&gt;
-function callback(data) {
-    console.log(data);
-}
-&lt;/script&gt;
-&lt;script src="/jsonp.php?callback=callback&gt;&lt;/script&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">callback</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/jsonp.php?callback=callback</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Es wird also vom Server ein Funktionsaufruf (auf die Callback-Funktion)
 mit den serverseitigen-Daten erzeugt und dadurch im Webbrowser die
 jeweilige Javascript-Funktion aufgerufen. In diesem Fall greift die SOP
@@ -2231,12 +2447,12 @@ werden.</p>
 <ul>
 <li>
 <p>Verwendung von WebAssembly um einen hoch-performanten Crypto-Miner
-    im Browser auszuführen.</p>
+  im Browser auszuführen.</p>
 </li>
 <li>
 <p>Verwendung von WebAssembly zum Auslagern von Teilen von
-    JavaScript-Schadcode um auf diese Weise die Detektion durch
-    Anti-Malware Tools zu umgehen.</p>
+  JavaScript-Schadcode um auf diese Weise die Detektion durch
+  Anti-Malware Tools zu umgehen.</p>
 </li>
 </ul>
 <p>Aktuell (Stand Anfang 2020) waren keine großflächigen Angriffe mittels
@@ -2268,20 +2484,19 @@ XSS-Angriffen verwundbar. Dies ist durch zwei Probleme bedingt:</p>
 <ol>
 <li>
 <p>Cookies können durch Verwendung des <em>httpOnly</em>-Flags den Zugriff
-    durch JavaScript unterbinden. Bei WebStorage wurde dieser
-    Sicherheitsmechanismus nicht vorgesehen.</p>
+   durch JavaScript unterbinden. Bei WebStorage wurde dieser
+   Sicherheitsmechanismus nicht vorgesehen.</p>
 </li>
 <li>
 <p>Cookies können auf einen Unterpfad gescoped werden. Werden z.B. zwei
-    Webapplikationen auf einem gemeinsamen Server Betrieben, kann ein
-    Cookie z.B. für <a href="https://example.local/app1">https://example.local/app1</a> und ein Cookie für
-    <a href="https.//example.local/app2"
-    class="uri">https.//example.local/app2</a> ausgestellt werden. Eine
-    Applikation besitzt keinen Zugriff auf das Cookie der anderen
-    Applikation. Bei WebStorage kann dies nicht durchgeführt werden,
-    WebStorage ist immer für die Domain gültig. Das heißt, dass ein
-    Angreifer mit einem XSS-Fehler in app1 auf den WebStorage der app2
-    zugreifen kann.</p>
+   Webapplikationen auf einem gemeinsamen Server Betrieben, kann ein
+   Cookie z.B. für <code>https://example.local/app1</code> und ein Cookie für
+   <code>https://example.local/app2</code> ausgestellt werden. Eine
+   Applikation besitzt keinen Zugriff auf das Cookie der anderen
+   Applikation. Bei WebStorage kann dies nicht durchgeführt werden,
+   WebStorage ist immer für die Domain gültig. Das heißt, dass ein
+   Angreifer mit einem XSS-Fehler in app1 auf den WebStorage der app2
+   zugreifen kann.</p>
 </li>
 </ol>
 <p>Aus diesen Gründen verbieten einige Sicherheitsrichtlinien den Einsatz
@@ -2306,15 +2521,15 @@ Standards geschaffen, zum Beispiel:</p>
 <ul>
 <li>
 <p>WebRTC erlaubt die peer-to-peer Kommunikation zwischen Browsern und
-    wird z.B. für Audio- oder Videokonferenzen verwendet.</p>
+  wird z.B. für Audio- oder Videokonferenzen verwendet.</p>
 </li>
 <li>
 <p>WebNFC erlaubt die Verwendung von NFC über Webbrowser.</p>
 </li>
 <li>
 <p>WebBluetooth erlaubt es, JavaScript auf konfigurierte BlueTooth LE
-    devices zuzugreifen und wird für SmartHealth bzw. SmartHome
-    Anwendungen benötigt.</p>
+  devices zuzugreifen und wird für SmartHealth bzw. SmartHome
+  Anwendungen benötigt.</p>
 </li>
 </ul>
 <p>Bei diesen Schnittstellen sind aktuell weniger Sicherheits-, sondern
@@ -2325,28 +2540,28 @@ verglichen werden.</p>
 <ol>
 <li>
 <p>Wie können HTTP Header im Zuge einer Information Disclosure
-    verwendet werden?</p>
+   verwendet werden?</p>
 </li>
 <li>
 <p>Was versteht man unter SOP? Warum und wie kann dieses Prinzip mit
-    CORS aufweichen?</p>
+   CORS aufweichen?</p>
 </li>
 <li>
 <p>Was sind HTTP Methoden? Erkläre <em>safe</em> und <em>idempotente</em> HTTP
-    Methoden.</p>
+   Methoden.</p>
 </li>
 <li>
 <p>Welche Vor- und Nachteile besitzt die Verwendung von Perfect Forward
-    Secrecy?</p>
+   Secrecy?</p>
 </li>
 <li>
 <p>Welche Flags sollten bei Verwendung von HTTP Cookie-basierter
-    Sessions gesetzt werden?</p>
+   Sessions gesetzt werden?</p>
 </li>
 <li>
 <p>HTTP Cookies als auch HTTP5 localStorage/sessionStorage können zur
-    Speicherung von lokalen Daten verwendet werden. Erläutere die
-    Unterschiede.</p>
+   Speicherung von lokalen Daten verwendet werden. Erläutere die
+   Unterschiede.</p>
 </li>
 </ol>
 <p>[1] Da das P in HTTP bereits für Protocol steht, macht die Bezeichnung

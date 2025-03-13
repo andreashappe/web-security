@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../integration/">
+        <link rel="prev" href="../../authentication-and-authorization/sso/">
       
       
-        <link rel="next" href="../../web-applications/web_technologies/">
+        <link rel="next" href="../file-uploads/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Kryptographische Grundlagen - Web Application Security</title>
+        <title>Allgemeines - Web Application Security</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kryptographische-grundlagen" class="md-skip">
+        <a href="#serverseitige-angriffe" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kryptographische Grundlagen
+              Allgemeines
             
           </span>
         </div>
@@ -266,8 +266,6 @@
       
   
   
-    
-  
   
   
     
@@ -279,11 +277,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -298,7 +296,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Einführung
@@ -312,7 +310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security_principles/" class="md-nav__link">
+      <a href="../../introduction/security_principles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -334,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security_as_process/" class="md-nav__link">
+      <a href="../../introduction/security_as_process/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -356,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/" class="md-nav__link">
+      <a href="../../introduction/integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -375,31 +373,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Kryptographische Grundlagen
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../introduction/crypto_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -409,80 +386,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#verschlusselung" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verschlüsselung
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#block-und-stream-cipher" class="md-nav__link">
-    <span class="md-ellipsis">
-      Block- und Stream-Cipher
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integritatsschutz" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integritätsschutz
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zufallszahlen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Zufallszahlen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#weitere-informationsquellen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weitere Informationsquellen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -727,8 +630,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -738,11 +643,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -757,7 +662,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Server-Seitige Angriffe
@@ -768,10 +673,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Allgemeines
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -781,6 +707,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen-need-to-split-those-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen (need to split those up)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -793,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+      <a href="../file-uploads/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -815,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+      <a href="../path-traversals/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -837,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+      <a href="../command-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -859,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+      <a href="../database-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+      <a href="../ldap-injections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -903,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+      <a href="../type-juggling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -925,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+      <a href="../xml-based-attacks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -947,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+      <a href="../serialization-attacks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -969,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+      <a href="../http-request-smuggling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -991,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+      <a href="../SSTI/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1246,54 +1201,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#verschlusselung" class="md-nav__link">
+  <a href="#reflektionsfragen-need-to-split-those-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Verschlüsselung
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#block-und-stream-cipher" class="md-nav__link">
-    <span class="md-ellipsis">
-      Block- und Stream-Cipher
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integritatsschutz" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integritätsschutz
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zufallszahlen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Zufallszahlen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#weitere-informationsquellen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weitere Informationsquellen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
+      Reflektionsfragen (need to split those up)
     </span>
   </a>
   
@@ -1318,197 +1228,113 @@
   
 
 
-<h1 id="kryptographische-grundlagen">Kryptographische Grundlagen</h1>
-<p>Kryptographie beschreibt die Technik (und Kunst) über
-nicht-vertrauenswürdige Kanäle bzw. Speicherorte Daten integritäts- und
-vertraulichkeitsgesichert zu übertragen. Dadurch kann Kryptographie als
-Mittel gegen <em>spoofing</em>, <em>tampering</em>, <em>repudiation</em> und <em>information
-disclosure</em> dienen. Dieses Kapitel soll eine (extrem) kurze Einführung
-in die, in diesem Dokument, verwendeten Konzepte geben.</p>
-<p>Bei der Verschlüsselung wird der ursprüngliche Text (häufig <em>plaintext</em>
-genannt) durch den Algorithmus in einen neuen, verschlüsselten, Text
-(häufig <em>ciphertext</em> genannt) konvertiert. Dieser Ciphertext kann durch
-die Entschlüsselung wieder in den Plaintext zurück verwandelt werden.
-Die hierbei verwendeten Algorithmen werden häufig <em>Cipher</em> genannt. In
-der Literatur werden die dabei beteiligten Partein meistens ident
-benannt: <em>Alice</em> und <em>Bob</em> sind die beiden Parteien die miteinander
-sicher kommunizieren wollen. <em>Eve</em> ist ein Angreifer, der diese
-Nachrichten abhören, aber nicht modifizieren kann; <em>Mallory</em> ist ein
-Angreifer, der auch aktiv angreifen darf.</p>
-<p>Grundlegend sollten folgende Grundsätze bei der Verwendung von
-Kryptographie beachtet werden:</p>
-<ul>
-<li>
-<p>Niemals selbst ein kryptographisches System entwerfen, sondern immer
-  ein etabliertes (und getestetes) System verwenden.</p>
-</li>
-<li>
-<p>Niemals selbst einen kryptographischen Algorithmus/Bibliothek
-  implementieren, sondern immer etablierte und getestet Komponenten
-  verwenden.</p>
-</li>
-<li>
-<p>Die richtige kryptographische Methode wählen.</p>
-</li>
-<li>
-<p>Immer davon ausgehen, dass der eigene Source Code früher oder später
-  öffentlich wird. Aus diesem Grund darf ein kryptographischer
-  Schlüssel (oder auch Credentials) niemals Teil des Source Codes
-  werden.</p>
-</li>
-<li>
-<p>Essentiell zur sicheren Verwendung der verschiedenen
-  kryptographischen Methoden sind die dabei verwendeten Schüssel.
-  Diese müssen sowohl sicher gespeichert als auch transportiert
-  werden. Noch komplexer ist das Herstellen eines Vertrauensverhältnis
-  (Trust) zwischen den jeweiligen Kommunikationspartnern: woher weiss
-  ein Partner, dass ein vorhandener Schlüssel eines anderen
-  Kommunikationsparters vertrauenswürdig ist? Key Management ist
-  komplex und sollte nicht unterschätzt werden!</p>
-</li>
-</ul>
-<p>Jede implementierte und konfigurierbare kryptographische Methode erhöht
-potentiell die Angriffsoberfläche. Ein Beispiel hierfür ist z. B. die
-OpenSSL-Bibliothek die dutzende Algorithmen implementiert. Als
-Alternative sind in den letzten Jahren kryptographische Bibliotheken wie
-<em>NaCl</em> (“salt”) entstanden, die für jede kryptographische Methode genau
-eine sichere Implementierung anbieten. Auf diese Weise sollen
-Selektionsfehler durch Entwickler vermieden werden.</p>
-<p>Ein häufiger verwendeter Begriff ist <em>Rubber Hose Cryptography</em>. Ein
-noch so technisch sicheres kryptographisches System kann durch bezahlte
-Schläger mit einem Gummischlauch und der Androhung von Gewalt, falls das
-Opfer nicht den privaten Schlüssel mitteilt, günstig gebrochen werden.
-Anstatt durch Androhung von Gewalt kann <em>Rubber Hose Cryptography</em> auch
-auf andere Aspekte eines Schlüsselträgers abzielen: Geld, Ideologie,
-Coersion oder Ego (Sex sells).</p>
-<h2 id="verschlusselung">Verschlüsselung</h2>
-<p>Zur Wahrung der Vertraulichkeit von Daten wird Verschlüsselung
-eingesetzt. Bei dieser wird der Originaltext (engl. <em>plaintext</em>) in
-einen verschlüsselten Text (engl. <em>ciphertext</em>) konvertiert. Dieser kann
-wieder durch den Entschlüsselungs-Vorgang in den Originaltext zurück
-verwandelt werden. Verschlüsselungsalgorithmen können in zwei Familien
-eingeteilt werden: symmetrisch und asymmetrisch (auch public-key
-encryption genannt). Bei symmetrischer Verschlüsselung wird zum ver- und
-entschlüsseln der idente Schlüssel verwendet. Problematisch hierbei ist,
-dass dieser geteilte geheime Schlüssel initial zwischen allen
-Beteiligten verteilt werden muss. Bei der asymmetrischen Verschlüsselung
-wird statt einem geteilten Schlüssel ein Schlüsselpaar[1] verwendet.
-Dieses besteht aus einem öffentlichen Schlüssel der zur Verschlüsselung
-dient und einem zugehörigen privaten Schlüssel der zum Entschlüsseln
-verwendet wird. Dadurch wird die Problematik des initialen
-Schlüsselverteilens entschärft, da nur öffentliche Schlüssel verteilt
-werden müssen (diese dürfen veröffentlicht bzw. verloren werden). Ein
-Nachteil asymmetrischer Verschlüsselung gegenüber symmetrischer
-Verschlüsselung ist, dass sie langsamer als symmetrische Verschlüsselung
-ist.</p>
-<h2 id="block-und-stream-cipher">Block- und Stream-Cipher</h2>
-<p>Eine weitere Unterscheidungsmöglichkeit für Verschlüsselungsalgorithmen
-ist die in <em>block</em> und <em>stream</em> ciphers. Bei Blockciphern werden zuerst
-Daten angehäuft (“ein Block” an plain-data) und dann dieser Block
-verschlüsselt. Bei einem Streamcipher wird jedes Zeichen sofort
-verschlüsselt, das Sammeln von Blocken wird so vermieden. Während
-Stream-Ciphers teilweise einfacher für Programmierer in ihrer Verwendung
-sind, werden aus Effizienzgründen fast ausschließlich Blockcipher
-verwendet. Werden zwei idente Blöcke mit dem identen Schlüssel
-verschlüsselt, würden idente verschlüsselte Blöcke entstehen. Dies
-erlaubt es einem Angreifer, strukturelle Informationen aus
-verschlüsselten Dokumenten zu extrahieren. Um dies zu vermeiden werden
-so genannte <em>Block Modes</em> verwendet um sicherzustellen, dass idente
-plain-text Blöcke unterschiedliche cipher-text Blöcke produzieren. Bei
-Auswahl des Block Modes sollten GCM-Modes (bzw. AEAD-Varianten)
-bevorzugt und ECB bzw. CBC Modes vermieden werden.</p>
-<h2 id="integritatsschutz">Integritätsschutz</h2>
-<p>Verschlüsselung gewährleistet nicht automatisch die Integrität der
-verschlüsselten Daten. Hierfür müssen eigene Algorithmen verwendet
-werden. Häufig vorgefunden werden Hashes, Message Authentication Codes
-(MACs) und Signaturen. Vereinfacht ausgedruckt berechnen Hashes
-ausgehend von beliebig langen Eingangsdaten eine Checksumme konstanter
-Größe. Wird ein Hash auf identen Eingangsdaten angewandt, wird auch ein
-identer Hash berechnet. Ein Hash ist eine Einwegfunktion: während der
-zugehörige Hash zu einem Eingangsdatum schnell berechnet werden kann
-(gegeben den ursprünglichen Daten), ist das Berechnen der Eingangsdaten
-ausgehend von einem Hash realistisch nicht möglich.</p>
-<p>Bei einem Message Authentication Code (MAC) wird der Hash um ein
-geheimes geteiltes Passwort erweitert. Zur Berechnung bzw. Validierung
-eines MACs wird dieses Passwort benötigt. Analog zur symmetrischen
-Verschlüsselung ergibt sich hier die Problematik der
-Schlüsselverteilung. Signaturen lösen dieses Problem indem sie
-asymmetrische (public-key) Verschlüsselung einsetzen. Bei ihnen kann die
-Checksumme (Signature) mit Hilfe des privaten Schlüssels erstellt und
-mit Hilfe des öffentlichen Schlüssels verifiziert werden. Dadurch
-entfällt das Problem der Schlüsselverteilung, allerdings wird auch hier
-der Vorteil durch geringere Geschwindigkeit erkauft.</p>
-<p>Je nach Einsatzbereich muss nun ein geeignetes Verfahren zur
-Integritätssicherung und Verschlüsselung gewählt werden. Werden Daten
-über ein öffentliches bzw. feindliches Netzwerk transferiert ist z. B.
-der Einsatz eines Hashes problematisch. Falls ein Angreifer einen
-Datensatz abfangen und modifizieren kann, kann er ebenso einen neuen
-Hash berechnen und so den Integritätsschutz umgehen. Bei diesem Beispiel
-wäre der Einsatz eines MACs oder von Signaturen sinnvoller.</p>
-<h2 id="zufallszahlen">Zufallszahlen</h2>
-<p>Bei der korrekten Verwendung von kryptographischen Methoden ist der
-Einsatz guter Zufallszahlengenerator essentiell. Dieser sollte
-Zufallszahlen mit hoher Entropie generieren. Dies kann z. B. durch
-Einsatz eines Hardware-Zufallsgenerators sichergestellt werden. Ist ein
-solcher nicht verfügbar, muss ein kryptographisch sicherer
-Pseudo-Zufallszahlengenerator (PRNG) verwendet werden. Moderne
-Betriebssysteme bieten zumeist hybride Lösungen an: hierbei werden zwar
-PRNGs verwendet, diese allerdings mit Entropie aus weiteren Quelle[2]
-angereichert.</p>
-<p>Die Qualität der generierten Zufallszahlen kann über deren Entropie
-bestimmt werden. Hierbei wird über statistische Methoden die Qualität
-der Zufälligkeit der generierten Karten ermittelt.</p>
-<h2 id="weitere-informationsquellen">Weitere Informationsquellen</h2>
-<p>Entwickler benötigen Guidance zur Selektion der jeweiligen
-kryptographischen Algorithmen, hier eine kleine Auswahl öffentlich
-verfügbarer Dokumente:</p>
+<h1 id="serverseitige-angriffe">Serverseitige Angriffe</h1>
+<p>Ein Grundsatz der Programmierung ist <em>Garbage-In, Garbage-Out</em>. In
+Anlehnung an FIFO (<em>First-In, First-Out</em>) wird damit ausgedrückt, dass
+durch “schlechte” Benutzereingaben undefiniertes Verhalten produziert
+wird. Während dies ursprünglich funktional gedacht war, ist diese
+Aussage auch für die Sicherheit einer Applikation relevant.</p>
+<p>Benutzern kann nicht getraut werden. Während gutartige Benutzer
+bestenfalls wirre Eingaben erstellen, werden durch bösartige Benutzer
+Eingaben durchgeführt, die gezielt die Sicherheit eines Systems
+kompromittieren sollten. Das Grundmuster ist, dass eine Benutzereingabe
+als Kommando interpretiert wird. Dies wird durch Angreifer ausgenutzt
+um, von der Applikation ungewollte, Kommandos abzusetzen. Diese
+Kommandos werden dann mit den Rechten der Webapplikation (oder eines
+weiteren Hintergrundsystems) ausgeführt.</p>
+<p>Ein Problem ist die große Angriffsfläche da nicht nur die direkt
+Eingabe-verarbeitenden Stellen überprüft werden müssen, sondern alle
+Programmteile die potentiell Benutzereingaben indirekt erhalten können
+(z.B. Daten aus deiner Datenbank auslesen, die ursprünglich von einem
+Benutzer bereitgestellt wurden). Ebenso muss ein Ausbruch nicht direkt
+am angegriffenen System erfolgen, sondern kann auch auf
+Hintergrundsystemen passieren. Beispielsweise kann ein Angreifer eine
+Webapplikation angreifen, bricht aber erst auf Datenbankebene aus dem
+System aus (auf einem getrennten Datenkbankserver).</p>
+<p>Da Tests auf Injection-Angriffe meist gegen bestimmte Operationen und
+bestimmte Hintergrundsysteme gerichtet sind (z.B. gegen eine MSSQL
+Datenbank) werden zumeist dutzende oder hunderte Angriffsmuster
+durchprobiert. Aus Effizienzgründen wird hier sehr stark auf
+automatisierte Tools gesetzt.</p>
+<p>Der Verteidigungsgrundsatz ist es, niemals Benutzerdaten zu vertrauen.
+Alle Benutzereingaben müssen auf Schadmuster hin überprüft werden, falls
+Schadcode entdeckt wird, muss die Eingabe verworfen oder gecleaned
+werden. Aufgrund der vielen verschiedenen Angriffsmuster ist dies nur
+mittels Bibliotheken sinnvoll möglich. Benutzereingaben dürfen niemals
+direkt zur Erstellung dynamischer Operationen verwendet werden. Die
+meisten Frameworks bieten dezidierte Möglichkeiten um Benutzereingaben
+in Operationen zu inkludieren (z.B. <em>prepared statements</em>), bei diesen
+wird automatisch eine Filterung von Schadcode durchgeführt. Und
+schlussendlich sollten alle Benutzerausgaben noch bereinigt bzw.
+maskiert werden bevor sie wieder angezeigt werden. Dadurch wird
+verhindert, dass Operationen im Kontext eines anderen Benutzers
+ausgeführt werden.</p>
+<p>Als zusätzliche Hardening-Maßnahme können Sandboxing-Konzepte, optionale
+HTTP Security-Header und IDS/IPS-Systeme verwendet werden.</p>
+<h2 id="reflektionsfragen-need-to-split-those-up">Reflektionsfragen (need to split those up)</h2>
 <ol>
 <li>
-<p>Das amerikanische NIST gibt Empfehlungen für Cryptographical
-   Standards ab, z. B. <a href="https://csrc.nist.gov/publications/detail/sp/800-175b/final">SP-800-175B</a>. Aufgrund der Zusammenarbeit des
-   NIST mit der amerikanischen NSA bei zu vorigen Crypto-Standards
-   (Vermutung der Platzierung einer Backdoor in einen
-   Random-Number-Generator) wird mittlerweile gerne von den
-   NIST-Empfehlungen abgesehen.</p>
+<p>Wie funktioniert eine SQL union-based Injection? Womit können
+   SQL-Injections vermieden werden?</p>
 </li>
 <li>
-<p>Die europäische ENISA gibt regelmäßig Empfehlungen zu verwendeten
-   kryptographischen Standards und Schlüssellängen ab (<a href="https://www.enisa.europa.eu/publications/algorithms-key-size-and-parameters-report-2014">Algorithms, key
-   size and parameter report 2014</a>). Während diese relativ gut sind,
-   ist die Frequenz der Veröffentlichung für IT-Verhältnisse etwas
-   behäbig (4-5 Jahre).</p>
+<p>Wie funktioniert eine SQL time-based Injection? Womit können
+   SQL-Injections vermieden werden?</p>
 </li>
 <li>
-<p>Das deutsche Bundesamt für Sicherheit in der Informationstechnik
-   (BSI) bietet häufig überarbeitete Empfehlungen zum Einsatz
-   kryptographischer Methoden an (<a href="https://www.bsi.bund.de/DE/Publikationen/TechnischeRichtlinien/tr02102/index_htm.html">BSI TR-02102</a>). Diese sind relativ
-   aktuell und klassifizieren Algorithmen in sichere Algorithmen die
-   bei aktuellen Neuentwicklungen verwendet werden sollen und in
-   legacy-Algorithmen, die zwar nicht mehr bei Neuentwicklungen
-   verwendet werden sollten, die aber bei bestehender Software durchaus
-   weiterverwendet werden können.</p>
+<p>Warum sollten SQL prepared statements verwendet werden?</p>
 </li>
 <li>
-<p><a href="https://www.bettercrypto.org">BetterCrypto.org</a> bietet regelmäßig upgedatete
-   Beispielskonfigurationen für geläufige Webserver. Diese sollten dazu
-   dienen, dass ein Administrator diese Snippets direkt in die
-   Konfiguration eines Webservers kopieren können und dadurch eine
-   sichere Konfiguration erreicht wird.</p>
+<p>Was versteht man unter einer Serialisierungs-Schwachstelle? Welche
+   negativen Auswirkungen können Serialisierungsangriffe auf eine
+   Applikation besitzen?</p>
+</li>
+<li>
+<p>Was versteht man unter XML External Entity Attacks? Welche negativen
+   Auswirkungen auf die Applikation können erzielt werden und welche
+   Gegenmaßnahmen sind möglich?</p>
+</li>
+<li>
+<p>Welche Probleme können beim Upload eines Files auf einen Webserver
+   auftreten? Welche Best-Practises im Zusammenhang mit File-Uploads
+   sollten beachtet werden?</p>
+</li>
+<li>
+<p>Unterschied der Angriffsvektoren mit einem File, dass serverseitig
+   exekutierten Code enthält und einem File, dass client-seitig
+   exekutierten Code enthält?</p>
+</li>
+<li>
+<p>Wie können Path-Traversal Angriffe eingesetzt werden?</p>
+</li>
+<li>
+<p>Erläutere LDAP-Injections.</p>
+</li>
+<li>
+<p>Welche Schwachstelle wird bei Type-Juggling Angriffen ausgenutzt?
+    Erläutere ein solches Beispiel.</p>
+</li>
+<li>
+<p>Was versteht man unter HTTP Request Smuggling?</p>
+</li>
+<li>
+<p>Erläutere Server-Side Template Injection (SSTI).</p>
 </li>
 </ol>
-<h2 id="reflektionsfragen">Reflektionsfragen</h2>
-<ol>
-<li>
-<p>Welche Grundideen sollten bei dem Entwurf und Einsatz
-   kryptographischer Methoden angewandt werden?</p>
-</li>
-<li>
-<p>Wann sollte ein MAC verwendet werden? Stelle diesen einem Hash oder
-   einer kryptographsichen Signatur gegenüber.</p>
-</li>
-</ol>
-<p>[1] Das Schlüsselpaar ist mathematisch “verwandt”.</p>
-<p>[2] Z. B. aus CPU-Zufallszahlengeneratoren, etc.</p>
+<p>[1] Diese werden im Kapitel Injection Attacks erklärt.</p>
+<p>[2] Structured Query Language</p>
+<p>[3] Würde man die <em>?</em>-basierte Methode verwenden, muss man bei jeder
+Änderung des Query-Strings überprüfen, ob die Reihenfolge der
+dynamischen Parameter ident geblieben ist.</p>
+<p>[4] <a href="https://www.netsparker.com/blog/web-security/ldap-injection-how-to-prevent/">https://www.netsparker.com/blog/web-security/ldap-injection-how-to-prevent/</a></p>
+<p>[5] <a href="https://github.com/ikkisoft/SerialKiller">https://github.com/ikkisoft/SerialKiller</a></p>
+<p>[6] Aus dem exzellenten PortSwigger-Tutorial unter
+<a href="https://portswigger.net/web-security/request-smuggling">https://portswigger.net/web-security/request-smuggling</a>.</p>
+<p>[7] Quelle:
+<a href="https://portswigger.net/web-security/request-smuggling/exploiting">https://portswigger.net/web-security/request-smuggling/exploiting</a></p>
+<p>[8] <a href="https://jinja.palletsprojects.com/">https://jinja.palletsprojects.com/</a></p>
+<p>[9] siehe auch
+<a href="https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/">https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/</a></p>
 
 
 

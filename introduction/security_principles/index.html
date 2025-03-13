@@ -822,11 +822,231 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-Uploads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path-Traversals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type Juggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML-basierte Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialisierungs-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Smuggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSTI
     
   </span>
   
@@ -1219,24 +1439,24 @@ einige Beispiele:</p>
 <ul>
 <li>
 <p>Reduktion benötigter Operationen: ist eine Operation wirklich für
-    den Kunden notwendig oder könnte der Kundenwunsch mit bereits
-    implementierten Operationen ebenso befriedigt werden?</p>
+  den Kunden notwendig oder könnte der Kundenwunsch mit bereits
+  implementierten Operationen ebenso befriedigt werden?</p>
 </li>
 <li>
 <p>Reduktion der gesammelten und gespeicherten Daten: was ist das
-    minimale Datenset, dass für die Bereitstellung der Operationen
-    benötigt wird. Dies entspricht auch der Datenminimierung die durch
-    die DSGVO[1] vorgeschrieben wird. Hier gibt es einen Wandel der
-    Kultur: von big-data (alles speichern, vielleicht kann man das
-    später verwenden) Richtung toxic-data (Daten sind gefährlich, wie
-    komme ich mit möglichst wenig Daten aus).</p>
+  minimale Datenset, dass für die Bereitstellung der Operationen
+  benötigt wird. Dies entspricht auch der Datenminimierung die durch
+  die DSGVO[1] vorgeschrieben wird. Hier gibt es einen Wandel der
+  Kultur: von big-data (alles speichern, vielleicht kann man das
+  später verwenden) Richtung toxic-data (Daten sind gefährlich, wie
+  komme ich mit möglichst wenig Daten aus).</p>
 </li>
 <li>
 <p>Komponentenebene: welche Komponenten sind für den Betrieb notwendig?</p>
 </li>
 <li>
 <p>Funktionale Ebene: welche Funktionen und Features können innerhalb
-    von Komponenten deaktiviert werden?</p>
+  von Komponenten deaktiviert werden?</p>
 </li>
 </ul>
 <h3 id="security-misconfiguration">Security Misconfiguration</h3>
@@ -1249,69 +1469,68 @@ am Server vorgefunden werden sollte:</p>
 <ul>
 <li>
 <p>Entwicklungstools wie phpmyadmin. Diese besitzen meistens getrennte
-    Zugangsdaten (verwenden also nicht die Zugangsdaten/Berechtigungen
-    der Web-Applikation) und sind daher potentiell ein <em>alternate
-    channel</em> über den auf eine Webapplikation zugegriffen werden kann.</p>
+  Zugangsdaten (verwenden also nicht die Zugangsdaten/Berechtigungen
+  der Web-Applikation) und sind daher potentiell ein <em>alternate
+  channel</em> über den auf eine Webapplikation zugegriffen werden kann.</p>
 </li>
 <li>
 <p>Debug Mode bei verwendeten Frameworks, dieser erlaubt teilweise im
-    Fehlerfall die Verwendung von interaktiven Shells direkt innerhalb
-    der Webapplikation. Dies würde es einem Angreifer erlauben, direkt
-    Programmcode abzusetzen.</p>
+  Fehlerfall die Verwendung von interaktiven Shells direkt innerhalb
+  der Webapplikation. Dies würde es einem Angreifer erlauben, direkt
+  Programmcode abzusetzen.</p>
 </li>
 <li>
 <p>Debug Toolbars bei Verwendung von Frameworks. Diese erlauben es
-    zeitweise die letzten Sessions aller Benutzer anzuzeigen und
-    erleichtern auf diese Weise Identity Theft.</p>
+  zeitweise die letzten Sessions aller Benutzer anzuzeigen und
+  erleichtern auf diese Weise Identity Theft.</p>
 </li>
 <li>
 <p>Stacktraces mit Detailinformationen im Produktivbetrieb. Ein
-    normaler Anwendern kann mit diesen Informationen nichts anfangen,
-    ein Angreifer kann durch diese allerdings genaue Systeminformationen
-    (Bibliotheksversionen, Pfade, etc.) erhalten welche weiter Angriffer
-    erleichtern können.</p>
+  normaler Anwendern kann mit diesen Informationen nichts anfangen,
+  ein Angreifer kann durch diese allerdings genaue Systeminformationen
+  (Bibliotheksversionen, Pfade, etc.) erhalten welche weiter Angriffer
+  erleichtern können.</p>
 </li>
 <li>
 <p>phpinfo.php liefert genaue Informationen über die verwendete
-    PHP-Version, verfügbare Module, System- und
-    Konfigurationsinformationen die im Produktivbetrieb nicht öffentlich
-    verfügbar sein müssen.</p>
+  PHP-Version, verfügbare Module, System- und
+  Konfigurationsinformationen die im Produktivbetrieb nicht öffentlich
+  verfügbar sein müssen.</p>
 </li>
 </ul>
 <p>Beispiele für Metadaten, die nicht am Server vorgefunden werden sollten:</p>
 <ul>
 <li>
-<p>Beispielscode wie z.B. ein
-    <a href="/example" class="uri">/example</a> Verzeichnis. Dieser kann
-    zeitweise ebenso Sicherheitsfehler enthalten und auf diese Weise
-    Zugang zu dem System erlauben. Auch Beispielscode ohne serverseitige
-    Exekution kann missbraucht werden, siehe z. B. DOM-basierte
-    XSS-Angriffe.</p>
+<p>Beispielscode wie z.B. ein <code>/example</code> Verzeichnis. Dieser kann
+  zeitweise ebenso Sicherheitsfehler enthalten und auf diese Weise
+  Zugang zu dem System erlauben. Auch Beispielscode ohne serverseitige
+  Exekution kann missbraucht werden, siehe z. B. DOM-basierte
+  XSS-Angriffe.</p>
 </li>
 <li>
 <p>.git, .svn Verzeichnisse: diese beinhalten den gesamten Source-Code
-    samt Versionshistory. Ein Angreifer kann auf diese Weise sowohl
-    interne Credentials erhalten als auch den verwendeten Source Code
-    analysieren.</p>
+  samt Versionshistory. Ein Angreifer kann auf diese Weise sowohl
+  interne Credentials erhalten als auch den verwendeten Source Code
+  analysieren.</p>
 </li>
 <li>
 <p>Credentials im Dateisystem oder in Repositories. Da Repositories
-    häufig auf öffentlichen Webservern gespeichert wird (z.B. private
-    gitlab, githab oder bitbucket Repositories) gespeichert wird, können
-    diese im Falle einer Fehlkonfiguration auch potentiell öffentlich
-    zugreifbar gemacht werden. In diesem Fall besitzt ein Angreifer
-    credentials mit denen er potentiell auf sensible Aktivitäten oder
-    Daten zugreifen kann.</p>
+  häufig auf öffentlichen Webservern gespeichert wird (z.B. private
+  gitlab, githab oder bitbucket Repositories) gespeichert wird, können
+  diese im Falle einer Fehlkonfiguration auch potentiell öffentlich
+  zugreifbar gemacht werden. In diesem Fall besitzt ein Angreifer
+  credentials mit denen er potentiell auf sensible Aktivitäten oder
+  Daten zugreifen kann.</p>
 </li>
 <li>
 <p>Backup files (.bak, .tmp) innerhalb des Dateisystems, diese werden
-    z.B. durch Texteditoren angelegt. Wird z.B. auf einem PHP-System
-    eine PHP-Datei am Webserver abgelegt und ein Angreifer greift darauf
-    zu, wird der Code am Server ausgeführt und der Angreifer erhält nur
-    das Ergebnis der Operation. Falls der Angreifer eine Backup-Datei am
-    Server findet, kann er auf diese zugreifen, herunterladen und
-    analysieren und kann auf diese Weise Fehler innerhalb des Source
-    Codes suchen.</p>
+  z.B. durch Texteditoren angelegt. Wird z.B. auf einem PHP-System
+  eine PHP-Datei am Webserver abgelegt und ein Angreifer greift darauf
+  zu, wird der Code am Server ausgeführt und der Angreifer erhält nur
+  das Ergebnis der Operation. Falls der Angreifer eine Backup-Datei am
+  Server findet, kann er auf diese zugreifen, herunterladen und
+  analysieren und kann auf diese Weise Fehler innerhalb des Source
+  Codes suchen.</p>
 </li>
 </ul>
 <h2 id="least-privilege">Least Privilege</h2>
@@ -1401,7 +1620,7 @@ Intransparenz zu lüften:</p>
 </li>
 <li>
 <p>Verlust der Obscurity durch Unfall (z.B. Selfies mit sichtbaren
-    Schlüsseln im Hintergrund)</p>
+  Schlüsseln im Hintergrund)</p>
 </li>
 </ul>
 <p>Analog gibt es in der Kryptographie das Kerckhoffsche Prinzip: die
@@ -1451,7 +1670,7 @@ Programmcode und Daten auch in diesen Architekturen durchzuführen.</p>
 <ol>
 <li>
 <p>Erläutere das Minimalprinzip mit zumindest drei Beispielen für
-    jenes.</p>
+   jenes.</p>
 </li>
 <li>
 <p>Erläutere Least Privilege und Separation of Duties.</p>
@@ -1464,7 +1683,7 @@ Programmcode und Daten auch in diesen Architekturen durchzuführen.</p>
 </li>
 <li>
 <p>Welche Probleme können durch die Vermischung von Applikationlogik
-    und Eingabedaten entstehen?</p>
+   und Eingabedaten entstehen?</p>
 </li>
 </ol>
 <p>[1] Datenschutzgrundverordnung, siehe auch

@@ -12,7 +12,7 @@
         <link rel="prev" href="../authorization/">
       
       
-        <link rel="next" href="../../server-side-attacks/injection_attacks/">
+        <link rel="next" href="../../server-side-attacks/allgemein/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -795,11 +795,231 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-Uploads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path-Traversals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type Juggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML-basierte Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialisierungs-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Smuggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSTI
     
   </span>
   
@@ -1271,24 +1491,17 @@ Weise:</p>
    über den User über den <em>UserInfo Endpoint</em> zu erhalten.</p>
 </li>
 </ol>
-<p>Das ID Token ist ein JSON Web Token (JWT, siehe auch Kapitel
-<a href="#jwt" data-reference-type="ref" data-reference="jwt">[jwt]</a>,
-Seite ), folgende Felder müssen in diesem ausgefüllt werden:</p>
-<p>iss<br />
-: der Aussteller des Tokens. Dieser muss ein https-Endpunkt sein.</p>
-<p>sub<br />
-: der subject identifier identifiziert den Benutzer.</p>
-<p>aud<br />
-: der Identifier für den Server, der die Authentification anforderte.</p>
-<p>exp<br />
-: Ablaufdateum des Tokens.</p>
-<p>iat<br />
-: Austellungsdatum des Tokens.</p>
+<p>Das ID Token ist ein JSON Web Token (JWT), folgende Felder müssen in diesem ausgefüllt werden:</p>
+<ul>
+<li>iss: der Aussteller des Tokens. Dieser muss ein https-Endpunkt sein.</li>
+<li>sub: der subject identifier identifiziert den Benutzer.</li>
+<li>aud: der Identifier für den Server, der die Authentification anforderte.</li>
+<li>exp: Ablaufdateum des Tokens.</li>
+<li>iat: Austellungsdatum des Tokens.</li>
+</ul>
 <p>OpenID Connect definiert drei verschiedene flows (<em>code</em>, <em>implicit</em>
-oder <em>hybrid</em>), ihre Unterschiede werden kurz in Tabelle
-<a href="#tbl:oidc" data-reference-type="ref"
-data-reference="tbl:oidc">1.1</a> aufgeführt. Für ,,normale”
-Applikationen wird die Verwendung des <em>code</em> Flows empfohlen.</p>
+oder <em>hybrid</em>), ihre Unterschiede werden kurz in folgender Tabelle
+aufgeführt:</p>
 <table>
 <thead>
 <tr>
@@ -1343,7 +1556,7 @@ Applikationen wird die Verwendung des <em>code</em> Flows empfohlen.</p>
 </tr>
 </tbody>
 </table>
-<p>Übersicht über die verschiedenen OpenID Connect Flüsse</p>
+<p>Für "normale" Applikationen wird die Verwendung des <em>code</em> Flows empfohlen.</p>
 <h2 id="saml2">SAML2</h2>
 <p>Die Abkürzung SAML2 steht für Security Assertion Markup Language
 (Version 2). Diese XML-basierte Sprache dient zum Austausch von
@@ -1456,8 +1669,7 @@ Verfahren verpacken die Nachrichten innerhalb von HTML Formularen und
 umgehen dadurch die Größenlimitierung. Um den Fluss zu automatisieren,
 werden die Formular zumeist mittels JavaScript automatisch versendet.</p>
 <h3 id="saml2-beispiel-single-sign-on">SAML2-Beispiel: Single Sign-On</h3>
-<p>Abbildung <a href="#saml2_sso" data-reference-type="ref"
-data-reference="saml2_sso">1.1</a> zeigt ein Beispiel für ein
+<p>Folgende Abbildung zeigt ein Beispiel für ein
 SP-initiated Single-Sign On welches durch einen Service Provider
 gestartet und mittels HTTP POST Binding implementiert wurde.</p>
 <p><img alt="Beispiel für ein Single-Sign On welches durch einen Service-Provider angestossen wurde" src="/images/saml2.svg" /></p>

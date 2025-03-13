@@ -674,11 +674,231 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+      <a href="../../server-side-attacks/allgemein/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/file-uploads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File-Uploads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/path-traversals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path-Traversals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/command-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/database-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/ldap-injections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LDAP-Injections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/type-juggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type Juggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/xml-based-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML-basierte Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/serialization-attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialisierungs-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/http-request-smuggling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Smuggling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/SSTI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSTI
     
   </span>
   
@@ -1251,17 +1471,17 @@ aufgeteilt werden:</p>
 <ul>
 <li>
 <p>parsing: eingehende und ausgehende HTTP Nachrichten müssen
-    analysiert werden.</p>
+  analysiert werden.</p>
 </li>
 <li>
 <p>buffering: teilweise werden Nachrichten auf mehrere Teilnachrichten
-    aufgeteilt. <em>mod_security</em> sammelt diese, fügt diese zu einer
-    gemeinsamen Nachricht zusammen und ruft erst danach die Filterregeln
-    auf.</p>
+  aufgeteilt. <em>mod_security</em> sammelt diese, fügt diese zu einer
+  gemeinsamen Nachricht zusammen und ruft erst danach die Filterregeln
+  auf.</p>
 </li>
 <li>
 <p>rule-engine: ist die aktive Komponente welche die bereitgestellten
-    Regeln auf die gesammelten HTTP-Nachrichten anwendet.</p>
+  Regeln auf die gesammelten HTTP-Nachrichten anwendet.</p>
 </li>
 <li>
 <p>logging: führt das Logging durch.</p>
@@ -1304,95 +1524,100 @@ nicht mehr blockiert werden.</p>
 Transaktion erklärt.</p>
 <p>Folgender Input Request mit jeweils einem Parameter in der URL (<em>a</em>) und
 einem Parameter im Body (<em>b</em>).</p>
-<pre><code>POST /?a=test HTTP/1.0
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 6
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/?a=test</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.0</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">6</span>
 
-b=test
-</code></pre>
+<span class="nt">b</span><span class="o">=</span><span class="s">test</span>
+</code></pre></div>
 <p>Dies führt zu folgendem Antwortdokument mit der Nachricht <em>Hello World!</em>
 im Content:</p>
-<pre><code>HTTP/1.1 200 OK
-Date: Sun, 17 Jan 2010 00:13:44 GMT
-Server: Apache
-Content-Length: 12
-Connection: close
-Content-Type: text/html
+<div class="highlight"><pre><span></span><code><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="o">:</span> <span class="l">Sun, 17 Jan 2010 00:13:44 GMT</span>
+<span class="na">Server</span><span class="o">:</span> <span class="l">Apache</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">12</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html</span>
 
 Hello World!
-</code></pre>
+</code></pre></div>
 <p>Folgende Phasen können nun in den Log-Dateien erkannt werden:</p>
-<pre><code>[4] Initialising transaction (txid SopXW38EAAE9YbLQ).
-[5] Adding request argument (QUERY_STRING): name "a", value "test"
+<div class="highlight"><pre><span></span><code>[4] Initialising transaction (txid SopXW38EAAE9YbLQ).
+[5] Adding request argument (QUERY_STRING): name &quot;a&quot;, value &quot;test&quot;
 [4] Transaction context created (dcfg 8121800).
 [4] Starting phase REQUEST_HEADERS.
-</code></pre>
+</code></pre></div>
 <p>Für jeden eingehenden HTTP-Request wird zunächst eine eindeutige
 Transaktions-ID vergeben. Anschließend wird der HTTP Header analysiert
 und der Parameter <em>a</em> extrahiert. Abschließend werden die Regeln der
 Phase 1 (Request-Header) angewandt.</p>
-<pre><code>[4] Second phase starting (dcfg 8121800).
+<div class="highlight"><pre><span></span><code>[4] Second phase starting (dcfg 8121800).
 [4] Input filter: Reading request body.
 [9] Input filter: Bucket type HEAP contains 6 bytes.
 [9] Input filter: Bucket type EOS contains 0 bytes.
-[5] Adding request argument (BODY): name "b", value "test"
+[5] Adding request argument (BODY): name &quot;b&quot;, value &quot;test&quot;
 [4] Input filter: Completed receiving request body (length 6).
 [4] Starting phase REQUEST_BODY.
-</code></pre>
+</code></pre></div>
 <p>Falls die Nachricht noch nicht blockiert wurde, wird nun der Content des
 Requests analysiert und dabei der Parameter <em>b</em> extrahiert. Jetzt
 besitzt <em>mod_security</em> Zugriff auf alle Parameter und die Regeln der
 Phase 2 (Request Body) werden angewendet.</p>
-<pre><code>[4] Hook insert_filter: Adding input forwarding filter (r 81d0588).
+<div class="highlight"><pre><span></span><code>[4] Hook insert_filter: Adding input forwarding filter (r 81d0588).
 [4] Hook insert_filter: Adding output filter (r 81d0588).
 
 [4] Input filter: Forwarding input: mode=0, block=0, nbytes=8192 (f 81d2228, r 81d0588).
 [4] Input filter: Forwarded 6 bytes.
 [4] Input filter: Sent EOS.
 [4] Input filter: Input forwarding complete.
-</code></pre>
+</code></pre></div>
 <p>Wenn auch diese Regeln den Request nicht verwerfen, wird der Request an
 den Applikationsserver/die Applikation weitergeleitet. <em>mod_security</em>
 kann nun abwarten, bis ein entsprechendes Antwortdokument empfangen
 wird.</p>
-<pre><code>[9] Output filter: Receiving output (f 81d2258, r 81d0588).
+<div class="highlight"><pre><span></span><code>[9] Output filter: Receiving output (f 81d2258, r 81d0588).
 [4] Starting phase RESPONSE_HEADERS.
 
 [9] Output filter: Bucket type MMAP contains 12 bytes.
 [9] Output filter: Bucket type EOS contains 0 bytes.
 [4] Output filter: Completed receiving response body (buffered full - 12 bytes).
 [4] Starting phase RESPONSE_BODY.
-</code></pre>
+</code></pre></div>
 <p>Analog zu der Request-Phase wird nun das Antwortdokument analysiert und
 die Regeln der jeweiligen Phasen (3 und 4) angewendet. Hier sieht man
 auch schön, dass auch das Antwortdokument gespeichert wird — werden z.
 B. viele große Dokumente zugestellt (oder Dateien heruntergeladen)
 müssen diese zwischengespeichert, und auf diese Weise serverseitig viele
 Ressourcen verbraucht, werden.</p>
-<pre><code>[4] Output filter: Output forwarding complete.
+<div class="highlight"><pre><span></span><code>[4] Output filter: Output forwarding complete.
 [4] Initialising logging.
 [4] Starting phase LOGGING.
 [4] Audit log: Ignoring a non-relevant request.
-</code></pre>
+</code></pre></div>
 <p>Abschließend wird noch die Log-Phase durchspielt und aufgrund dieser
 erkannt, ob der Request bzw. die Response in die Logdatei aufgenommen
 werden sollte.</p>
 <h2 id="rules">Rules</h2>
 <p>Das Herz einer <em>mod_security</em> Installation sind die verwendeten
 Filterregeln. Diese besitzen immer das idente Format:</p>
-<pre><code>SecRule ARGS OPERATOR ACTIONS
-</code></pre>
+<div class="highlight"><pre><span></span><code>SecRule ARGS OPERATOR ACTIONS
+</code></pre></div>
 <p>Die jeweiligen Bereiche sind einfacher erklärt:</p>
-<p>ARGS<br />
-: beschreibt auf welchen Bereich (z. B. auf welchen Parameter) eine
+<ul>
+<li>
+<p>ARGS: beschreibt auf welchen Bereich (z. B. auf welchen Parameter) eine
 jeweilige Operation angewendet werden soll.</p>
-<p>OPERATOR<br />
-: definiert die Abfrage/den Filter der auf die ARGS angewandt werden
+</li>
+<li>
+<p>OPERATOR: definiert die Abfrage/den Filter der auf die ARGS angewandt werden
 soll.</p>
-<p>ACTIONS<br />
-: beschreibt die Aktivitäten (z. B. blockieren und loggen) die angewandt
+</li>
+<li>
+<p>ACTIONS: beschreibt die Aktivitäten (z. B. blockieren und loggen) die angewandt
 werden, falls der Operator erfolgreich auf die Argumente angewandt
 werden konnte.</p>
+</li>
+</ul>
 <h3 id="rules-args">Rules: Args</h3>
 <p>Beispiele für mögliche Argumente:</p>
 <ul>
@@ -1432,7 +1657,7 @@ werden konnte.</p>
 <ul>
 <li>
 <p>"@contains &lt;script &gt;": überprüft ob in den Arguments ein
-    script-Tag vorkommt</p>
+  script-Tag vorkommt</p>
 </li>
 <li>
 <p>"@detectSQLi": überprüft die Arguments auf SQL-Injection-Muster</p>
@@ -1442,17 +1667,17 @@ werden konnte.</p>
 </li>
 <li>
 <p>"@inspectFile /path/to/util/runav.pl": die Arguments werden an das
-    angeführte Skripts übergeben, das Ergebnis des Operators ist das
-    Ergebnis des Skripts. Auf diese Weise kann z. B. jedes hochgeladene
-    File mittels eines Virenscanners überprüft werden, bevor dieses File
-    an den Applikationsserver übergeben wird.</p>
+  angeführte Skripts übergeben, das Ergebnis des Operators ist das
+  Ergebnis des Skripts. Auf diese Weise kann z. B. jedes hochgeladene
+  File mittels eines Virenscanners überprüft werden, bevor dieses File
+  an den Applikationsserver übergeben wird.</p>
 </li>
 <li>
 <p>"@ipMatch 192.168.1.100": Vergleich auf eine IP-Adresse</p>
 </li>
 <li>
 <p>"@validateDTD /path/to/xml.dtd": überprüft ob das übergebene
-    Argument einem definierten XML-Schema entspricht.</p>
+  Argument einem definierten XML-Schema entspricht.</p>
 </li>
 </ul>
 <h4 id="actions">Actions</h4>
@@ -1472,7 +1697,7 @@ eingeteilt werden:</p>
 </li>
 <li>
 <p>variable: für komplexe Regeln können Variablen gesetzt bzw.
-    ausgelesen werden</p>
+  ausgelesen werden</p>
 </li>
 <li>
 <p>logging: Definition der Daten, die geloggt werden sollten</p>
@@ -1486,27 +1711,27 @@ eingeteilt werden:</p>
 </ul>
 <h4 id="beispiele">Beispiele</h4>
 <p>Ein einfaches primitives Beispiel:</p>
-<pre><code>SecRule ARGS "@contains &lt;script&gt;" log,deny,status:404
-</code></pre>
+<div class="highlight"><pre><span></span><code>SecRule ARGS &quot;@contains &lt;script&gt;&quot; log,deny,status:404
+</code></pre></div>
 <p>Diese Regeln verwendet als Datenquelle alle extrahierten Argumente
 (<em>ARGS</em>) und überprüft, ob in diesen ein HTML script-Tag vorkommt. In
 dem Fall wird die Anfrage mit einem 404 Fehler blockiert und geloggt.</p>
 <p>Eine komplexere Regel:</p>
-<pre><code>SecRule REQUEST\_LINE|REQUEST\_HEADERS|REQUEST\_HEADERS\_NAMES "@contains () \{" "id:420008,phase:2,t:none,t:lowercase,deny,status:500,log,msg:'Malware expert - user-agent: Bash ENV Variable Injection Attack'"
-</code></pre>
+<div class="highlight"><pre><span></span><code>SecRule REQUEST\_LINE|REQUEST\_HEADERS|REQUEST\_HEADERS\_NAMES &quot;@contains () \{&quot; &quot;id:420008,phase:2,t:none,t:lowercase,deny,status:500,log,msg:&#39;Malware expert - user-agent: Bash ENV Variable Injection Attack&#39;&quot;
+</code></pre></div>
 <p>Diese Regel sucht in verschiedenen Datenquellen nach dem String <em>() {</em>.
 Dieser String beschreibt einen Bash-Funktionsaufruf und sollte in
 regulärem Verkehr nicht vorkommen. Falls dieser String gefunden wird,
 wird der Request mit einem 500er Statuscode abgelehnt und protokolliert.</p>
-<pre><code>SecRule REMOTE\_ADDR "@ipMatch 192.168.1.101" id:102,phase:1,t:none,nolog,pass,ctl:ruleEngine:off
-</code></pre>
+<div class="highlight"><pre><span></span><code>SecRule REMOTE\_ADDR &quot;@ipMatch 192.168.1.101&quot; id:102,phase:1,t:none,nolog,pass,ctl:ruleEngine:off
+</code></pre></div>
 <p>Diese Regel würde Verkehr von der IP-Adresse 192.168.1.101 immer
 akzeptieren (durch ruleEngine:off werden keine Folgeregeln mehr
 verwendet), diese Requests werden ebenso nicht geloggt. Dadurch wird ein
 Whitelisting der IP-Adresse durchgeführt.</p>
-<pre><code>SecRule ARGS:username “@streq admin” chain,deny
+<div class="highlight"><pre><span></span><code>SecRule ARGS:username “@streq admin” chain,deny
 SecRule REMOTE\_ADDR “!streq 192.168.1.111”
-</code></pre>
+</code></pre></div>
 <p>Das letzte Beispiel zeigt, wie zwei Regeln mittels <em>chain</em> verknüpft
 werden. Es wird zuerst die erste Regel angewendet (<em>für das Argument
 username wurde der Wert admin verwendet</em>) und dann mit der Regel <em>die
@@ -1521,7 +1746,7 @@ beschrieben. Jedes Sublog beginnt mit einem MIME-ähnlichem Header,
 dieser besteht aus einer eindeutigen ID über welchen die Sublogs
 aggregiert werden können (in dem Beispiel <em>f9adec1d</em>) und einer
 Log-Kategorie (dies ist der angehängte Buchstabe).</p>
-<pre><code>--f9adec1d-A--
+<div class="highlight"><pre><span></span><code>--f9adec1d-A--
 [25/Sep/2016:18:42:50 +0300] V@fwen8AAQEAAA2TDbQAAAAK 127.0.0.1 35965 127.0.0.1 443
 --f9adec1d-B--
 GET / HTTP/1.1
@@ -1538,17 +1763,17 @@ Content-Type: text/html; charset=iso-8859-1
 --f9adec1d-E--
 
 --f9adec1d-H--
-Message: Access denied with code 500 (phase 2). String match "() {" at REQUEST_HEADERS:User-Agent. [file "/etc/modsecurity/malware_expert.conf"] [line "97"] [id "420008"] [msg "Malware expert - user-agent: Bash ENV Variable Injection Attack"]
+Message: Access denied with code 500 (phase 2). String match &quot;() {&quot; at REQUEST_HEADERS:User-Agent. [file &quot;/etc/modsecurity/malware_expert.conf&quot;] [line &quot;97&quot;] [id &quot;420008&quot;] [msg &quot;Malware expert - user-agent: Bash ENV Variable Injection Attack&quot;]
 Action: Intercepted (phase 2)
 Stopwatch: 1474818170070960 1010 (- - -)
 Stopwatch2: 1474818170070960 1010; combined=177, p1=25, p2=147, p3=0, p4=0, p5=5, sr=55, sw=0, l=0, gc=0
 Response-Body-Transformed: Dechunked
 Producer: ModSecurity for Apache/2.9.0 (http://www.modsecurity.org/).
 Server: Apache
-Engine-Mode: "ENABLED"
+Engine-Mode: &quot;ENABLED&quot;
 
 --f9adec1d-Z--
-</code></pre>
+</code></pre></div>
 <p>In Abhängigkeit der Transaktion können unterschiedliche Log-Kategorien
 befüllt werden. <em>A</em> beinhaltet immer den Zeitstempel und die Adressen
 der betroffenen Kommunikationspartner, <em>B</em> ist der eingehende Request,
@@ -1583,27 +1808,23 @@ nun ein geeignetes Paranoia-Level gewählt werden.</p>
 <ol>
 <li>
 <p>Was versteht man unter einer Web-Application Firewall? Welche
-    Einsatzzwecke bzw. Verwendungsmöglichkeitne gibt es für solche?</p>
+   Einsatzzwecke bzw. Verwendungsmöglichkeitne gibt es für solche?</p>
 </li>
 <li>
 <p>Aus welchen Teilen besteht eine mod_security Regel? Erläutere die
-    jeweiligen Teile.</p>
+   jeweiligen Teile.</p>
 </li>
 <li>
 <p>Was wird durch folgende Regel: <em>SecRule ARGS "@contains
-    &lt;script&gt;" log,deny,status:404</em> durchgeführt?</p>
+   &lt;script&gt;" log,deny,status:404</em> durchgeführt?</p>
 </li>
-</ol>
-<!-- -->
-
-<ol>
 <li>
 <p>Was ist der Grundgedanke dabei, DevOps und Security zu verbinden?</p>
 </li>
 <li>
 <p>Welche Sicherheitsmaßnahmen können im Zuge von SecDevOps
-    automatisiert durchgeführt werden? Erläutere die jeweiligen
-    Maßnahmen.</p>
+   automatisiert durchgeführt werden? Erläutere die jeweiligen
+   Maßnahmen.</p>
 </li>
 </ol>
 
