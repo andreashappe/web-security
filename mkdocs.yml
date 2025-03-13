@@ -56,8 +56,18 @@ nav:
     - 'Request Smuggling': server-side-attacks/http-request-smuggling.md
     - 'SSTI': server-side-attacks/SSTI.md
   - 'Client-Seitige Angriffe':
-    - 'Angriffe': client-side-attacks/client_side_attacks.md
-    - 'Härtungsmaßnahmen': client-side-attacks/client_side_hardening.md
+    - 'Allgemeines': client-side-attacks/allgemeines.md
+    - 'Javascript-Injections (XSS)': client-side-attacks/xss.md
+    - 'CSRF-Angriffe': client-side-attacks/csrf-attacks.md
+    - 'Redirects und Forwards': client-side-attacks/unverified-redirects.md
+    - 'Clickjacking': client-side-attacks/clickjacking.md
+    - 'Reverse Tab-Nabbing': client-side-attacks/reverse-tab-nabbing.md
+    - 'HTML5 postMessage': client-side-attacks/postMessage.md
+  - 'Client-Seitige Härtung':
+    - 'Allgemeines': client-side-hardening/allgemeines.md
+    - 'Integration externer Inhalte': client-side-hardening/integration-externer-komponenten.md
+    - 'Referer-Policy': client-side-hardening/referer-policy.md
+    - 'Content-Security-Policy': client-side-hardening/content-security-policy.md
   - 'Appendix':
     - 'Apache mod_security': appendix/mod_security.md
     - 'Entstehungsgeschichte': appendix/history.md
