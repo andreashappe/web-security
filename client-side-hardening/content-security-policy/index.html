@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../authorization/">
+        <link rel="prev" href="../referer-policy/">
       
       
-        <link rel="next" href="../../server-side-attacks/allgemein/">
+        <link rel="next" href="../../appendix/mod_security/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Single-Sign On (SSO) - Web Application Security</title>
+        <title>Content-Security-Policy - Web Application Security</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#federationsingle-sign-on" class="md-skip">
+        <a href="#content-security-policy" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Single-Sign On (SSO)
+              Content-Security-Policy
             
           </span>
         </div>
@@ -494,8 +494,6 @@
       
   
   
-    
-  
   
   
     
@@ -507,11 +505,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -526,7 +524,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Zugriffskontrolle
@@ -540,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication/" class="md-nav__link">
+      <a href="../../authentication-and-authorization/authentication/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../session_management/" class="md-nav__link">
+      <a href="../../authentication-and-authorization/session_management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -584,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authorization/" class="md-nav__link">
+      <a href="../../authentication-and-authorization/authorization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -603,31 +601,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Single-Sign On (SSO)
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/sso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -637,104 +614,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#festival-beispiel" class="md-nav__link">
-    <span class="md-ellipsis">
-      Festival-Beispiel
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#oauth2" class="md-nav__link">
-    <span class="md-ellipsis">
-      OAuth2
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openid-connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenID Connect
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saml2" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SAML2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saml2-assertions" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2 Assertions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protocol-bindings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Protocol Bindings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saml2-beispiel-single-sign-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2-Beispiel: Single Sign-On
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1243,8 +1122,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1254,11 +1135,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1273,7 +1154,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Client-Seitige Härtung
@@ -1287,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../client-side-hardening/allgemeines/" class="md-nav__link">
+      <a href="../allgemeines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1309,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../client-side-hardening/integration-externer-komponenten/" class="md-nav__link">
+      <a href="../integration-externer-komponenten/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1331,7 +1212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../client-side-hardening/referer-policy/" class="md-nav__link">
+      <a href="../referer-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1350,10 +1231,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../client-side-hardening/content-security-policy/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Content-Security-Policy
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1363,6 +1265,68 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#trennung-von-html-und-javascript-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trennung von HTML und JavaScript-Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verfugbare-csp-elemente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verfügbare CSP-Elemente
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csp-nonces" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSP-Nonces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CSP-Nonces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csp-beispiele" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSP-Beispiele
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1516,64 +1480,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#festival-beispiel" class="md-nav__link">
+  <a href="#trennung-von-html-und-javascript-code" class="md-nav__link">
     <span class="md-ellipsis">
-      Festival-Beispiel
+      Trennung von HTML und JavaScript-Code
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#oauth2" class="md-nav__link">
+  <a href="#verfugbare-csp-elemente" class="md-nav__link">
     <span class="md-ellipsis">
-      OAuth2
+      Verfügbare CSP-Elemente
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#openid-connect" class="md-nav__link">
+  <a href="#csp-nonces" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenID Connect
+      CSP-Nonces
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saml2" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SAML2">
+    <nav class="md-nav" aria-label="CSP-Nonces">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#saml2-assertions" class="md-nav__link">
+  <a href="#csp-beispiele" class="md-nav__link">
     <span class="md-ellipsis">
-      SAML2 Assertions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protocol-bindings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Protocol Bindings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saml2-beispiel-single-sign-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2-Beispiel: Single Sign-On
+      CSP-Beispiele
     </span>
   </a>
   
@@ -1581,15 +1518,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
   
 </li>
       
@@ -1612,359 +1540,252 @@
   
 
 
-<h1 id="federationsingle-sign-on">Federation/Single-Sign on</h1>
-<p>Werden mehrere Webapplikationen betrieben, entsteht schnell der Wunsch,
-Benutzerkonten zwischen diesen Applikationen zu synchronisieren. Die
-Grundidee ist es, ein unified Authentication/Authorization-Konzept über
-mehrere Server hinweg zu implementieren. Potentielle Gründe für den
-Einsatz einer Single-Sign On oder Federation Lösung sind:</p>
+<h1 id="content-security-policy">Content-Security-Policy</h1>
+<p>Die Content-Security-Policy (CSP) erlaubt es, eine umfangreiche Policy
+von Webservern an Browser zu übertragen. Prinzipiell sind mittels einer
+CSP viele der bereits erwähnten Security-Header abbildbar.</p>
+<p>Die Content-Security-Policy kann entweder als HTTP-Header oder als Teil
+des HTML-Dokuments übertragen werden. Der verwendete HTTP Header heißt
+<em>Content-Security-Policy</em>, bei Verwendung eines Meta-Tags würde der Code
+beispielsweise folgenderweise aussehen:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;Content-Security-Policy&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;default-src &#39;self&#39;; img-src https://*; child-src &#39;none&#39;;&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Die grundlegende Funktionalität von CSP ist:</p>
 <ul>
 <li>
-<p>SSO erlaubt es mehreren Applikationen eine gemeinsame
-  Login/Logout-Lösung zu verwenden. Dadurch können redundante Lösungen
-  eingespart und duplizierte Sicherheitsprobleme vermieden werden.
-  Nachteil: der Login-Server ist ein Single-Point-of-Failure.</p>
+<p>Definition von vertrauenswürdigem Javascript bzw. Javascript-Sourcen</p>
 </li>
 <li>
-<p>Das gesamte Passwort-Management kann aus der Webapplikation
-  ausgelagert werden. Es müssen keine Passwörter mehr selbst erhoben,
-  bearbeitet oder gespeichert werden.</p>
+<p>Sicherstellen, dass Seitenelemente (CSS, Bilder, etc.) nur aus
+  vertrauenswürden Quellen bezogen werden.</p>
 </li>
 <li>
-<p>Die User-Experience ist angeblich besser. Der Aufwand für einen
-  Benutzer einen neuen Account anzulegen wird minimiert.</p>
+<p>Definition der Interaktion mit externen Seiten (z.B. mittels
+  iFrames)</p>
 </li>
 <li>
-<p>Durch den Login-Server können weitere Authenticationsservices
-  implementiert worden sein, z.B. Ausweiskontrolle oder eine
-  Multi-Faktor-Authentication.</p>
+<p>Sonstiges: Erhöhung der Verbindungssicherheit, etc.</p>
 </li>
 </ul>
-<h2 id="festival-beispiel">Festival-Beispiel</h2>
-<p>Eine gute Analogie ist ein Musikfestival bei welchem Besucher auf dem
-Festivalgelände Getränke erwerben können. Je nach Alter darf ein Kunde
-alkoholische oder nicht-alkoholische Getränke kaufen. Müsste nun jeder
-Getränkestand bei jeder Bestellung Eintrittskarte und den Ausweis
-(Altersnachweis) des Besuchers kontrollieren, würde dies zu starken
-Verzögerungen führen.</p>
-<p>Um die Situation zu verbessern, werden beim Festivaleingang die Besucher
-einmalig bei einem Registrationszelt kontrolliert. Jeder Besucher erhält
-ein Armband um zu beweisen, dass er eine Eintrittskarte besass. In
-Abhängigkeit vom Alter bekommen Minderjährige Besucher ein blaues
-Armband, erwachsene Besucher ein rotes Armband. Anhand dieses Armbands
-(Token) können nun die Getränkestände schnell kontrollieren, ob ein Gast
-alkoholische Getränke konsumieren darf. Zusätzlich wird über den Besitz
-des Bands überprüft, ob ein Besucher eine Eintrittskarte besass. Falls
-ein Besucher bei einem Getränkeshop ohne Band ein Getränk kaufen will,
-wird er zu dem Registrationszelt verwiesen.</p>
-<p>In diesem Beispiel ist das Registrationszelt der Identity Provider, die
-Getränkehändler sind Service Provider, das Armband ein Token und der
-Besucher der Client.</p>
-<p>Das Beispiel zeigt auch zwei Probleme von token-basierten Lösungen. Das
-Armband gilt für die gesamte Dauer des Festivals (im Folgejahr werden
-andere Farben verwendet). Es gibt keine Möglichkeit einen Teil der
-Armbänder nach dem ersten Festivaltag zu invalidieren. Ebenso wird klar,
-dass jegliche Form von Zugriffskontrolle durch das Armband ersetzt wird.
-Wollen z.B. ein Vater und Sohn beide Alkohol kaufen, kann der Vater
-initial den Identitätscheck durchführen und dann sein Armband an seinen
-Sohn weitergeben. Der Vater geht danach wiederholt zum Registrationszelt
-und kauft sich ein zweites Zugangsband. Mit dem ersten Band kann nun der
-Sohn beliebig Alkohol kaufen ohne dass auffällt, dass sein Alter dies
-eigentlich verbieten sollte. Der alleinige Zeitpunkt der Überprüfung
-(Authorization) geschieht während der Bandausgabe.</p>
-<h2 id="oauth2">OAuth2</h2>
-<p><a href="https://tools.ietf.org/html/rfc6749">OAuth2</a> erlaubt es einem Benutzer (Resource
-Owner) einer Applikation (Client) Zugriff auf Resourcen/Operationen auf
-einem Server (Resource Server) zu erteilen. Ein Authorization Server
-wird verwendet um ein Zugriffs-Token für einen definierten Bereich
-(scope) am Resourcen-Server auszustellen. Zusätzlich zu dem
-Zugriffs-Token wird zumeist auch ein Refresh-Token ausgestellt mit dem
-ein Client ein neues Zugriffstoken ohne Benutzerinteraktion generieren
-kann.</p>
-<p>Da die Rechte eines ausgestellten Token im Normalfall nur während der
-Ausstellung überprüft werden und danach für die gesamte Lebenszeit des
-Tokens gültig sind, wird bestenfalls eine sehr kurze Lebenszeit im
-Minutenbereich gewählt. Läuft das Token ab, kann mit den Refresh-Token
-ein neues Access-Token angefordert werden. Da hierfür keine
-Benutzerinteraktion benötigt wird, kann dies automatisiert und
-transparent für den Endbenutzer erfolgen. Der Vorteil liegt darin, dass
-während der Ausstellung durch den Authorisationsserver die angeforderten
-Rechte des Tokens wiederholt überprüft werden.</p>
-<p><img alt="Beispiel für einen OAuth2-Fluss" src="/images/oauth2.svg" /></p>
-<p>Ein interessanter Aspekt ist der Zeitpunkt der Authorization: die
-Überprüfung der eigentlich Zugriffsberechtigung wird durch den
-Authorization-Server zum Zeitpunkt der Ausstellung des Tokens
-durchgeführt. Bei einem Zugriff auf den Resourcen Server werden die
-eigentlichen Berechtigungen nicht mehr überprüft, sondern nur noch
-getestet ob das übergebene Token Zugriff auf die angeforderten Resourcen
-inkludiert und von einem validen Authorization Server signiert wurde.</p>
-<p>Das Token besitzt eine Laufzeit und ist bis zum Ende der Laufzeit
-gültig. Da der Resource Server nicht direkt mit dem Authorization Server
-kommuniziert, gibt es keine Möglichkeit ein Token zuvorig zu
-invalidieren. Dies ist problematisch, falls eine lange Laufzeit (z.B.
-ein Jahr) gewählt wurde und ein Token abhanden gekommen ist. Ein
-Angreifer mit dem entwendeten Token kann nun bis zum Ende der Laufzeit
-dieses Token verwenden um auf die Resource zuzugreifen.</p>
-<p>Um dieses Problem zu entschärfen werden zumeist zwei Tokens generiert:
-ein Access-Token und ein Refresh-Token. Das Access-Token wird zum
-Zugriff auf den Resource Server verwendet und besitzt eine sehr kurze
-Laufzeit, zumeist im Minuten-Bereich. Falls ein Access-Token abgelaufen
-ist, kann der Client das Refresh-Token verwenden um (ohne
-Benutzerinteraktion) ein neues Access-Token zu erhalten. Dies verbessert
-die Sicherheitssituation, da der Authorization-Server vor dem Ausstellen
-eines Access-Tokens überprüft, ob das Subject/der User überhaupt noch
-die notwendige Berechtigung besitzt. Dadurch wird das verwundbare
-Zeitfenster zwar nicht entfernt, aber zumindest reduziert.</p>
-<h2 id="openid-connect">OpenID Connect</h2>
-<p>OpenID Connect verwendet OAuth2 um eine Benutzerauthentication
-durchzuführen. Es gibt verschiedene Subprotokolle (<em>flows</em> genannt). Im
-Allgemeinen funktioniert das OpenID Connect Protokoll auf folgende
-Weise:</p>
-<ol>
-<li>
-<p>Der Client schickt einen Request zu dem OpenID Provider.</p>
-</li>
-<li>
-<p>Der OpenID Provider authentifiziert den Benutzer, der Benutzer
-   bestätigt den Authentication Request.</p>
-</li>
-<li>
-<p>Der OpenID Provider returniert einen ID Token (und zumeist auch
-   einen Access Token).</p>
-</li>
-<li>
-<p>Der Cient kann das Access Token verwenden um weitere Informationen
-   über den User über den <em>UserInfo Endpoint</em> zu erhalten.</p>
-</li>
-</ol>
-<p>Das ID Token ist ein JSON Web Token (JWT), folgende Felder müssen in diesem ausgefüllt werden:</p>
-<ul>
-<li>iss: der Aussteller des Tokens. Dieser muss ein https-Endpunkt sein.</li>
-<li>sub: der subject identifier identifiziert den Benutzer.</li>
-<li>aud: der Identifier für den Server, der die Authentification anforderte.</li>
-<li>exp: Ablaufdateum des Tokens.</li>
-<li>iat: Austellungsdatum des Tokens.</li>
-</ul>
-<p>OpenID Connect definiert drei verschiedene flows (<em>code</em>, <em>implicit</em>
-oder <em>hybrid</em>), ihre Unterschiede werden kurz in folgender Tabelle
-aufgeführt:</p>
+<h2 id="trennung-von-html-und-javascript-code">Trennung von HTML und JavaScript-Code</h2>
+<p>Mittels CSP wird zumeist definiert aus welchen Quellen Javascript-Code
+geladen werden darf. Damit dadurch ein gutes Sicherheitsniveau erreicht
+werden kann, ist eine Trennung vom JavaScript-Code von den verwendeten
+HTML-Dateien notwendig. Falls Javascript innerhalb von HTML Dateien
+erlaubt ist, kann schwer unterschieden werden ob vorgefundener
+JavaScript-Code von der Applikation vorgesehen oder durch einen
+Angreifer eingeschleust worden ist.</p>
+<p>Diese Trennung wird erreicht, wenn der gesamte JavaScript-Code in
+getrennten JS-Dateien bereitgestellt wird. Dieser wird in die HTML-Seite
+mittels einem <em>script</em>-Tag eingebunden:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;externalfile.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>In <em>externalfile.js</em> wird nun der JavaScript-Code hinterlegt. Da
+a-priori keine Verbindung zwischen dem JavaScript-Code und dem HTML-File
+besteht, wird zumeist der <em>$(document).ready</em>-Callback verwendet. Code
+in diesem Callback wird ausgeführt, sobald das DOM fertig geladen wurde:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// binden des JavaScript-Codes an etwaige Elemente</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">doSomething</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// other Javascript code</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Bei diesem Beispiel wird nun durch die Methode <em>addEventListener</em> die
+JavaScript-Methode <em>doSomething</em> beim Klicken auf den Button mit der Id
+<em>btn</em> aufgerufen.</p>
+<h2 id="verfugbare-csp-elemente">Verfügbare CSP-Elemente</h2>
+<p>CSP besteht aus mehreren Direktiven, die folgende Tabelle
+gibt eine kurze Übersicht der Möglichkeiten:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Eigenschaft</th>
-<th style="text-align: left;">Code</th>
-<th style="text-align: left;">Implicit</th>
-<th style="text-align: left;">Hybrid</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Beschreibung</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Authorization Endpoint versendet alle Tokens</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
+<td style="text-align: left;">default-src</td>
+<td style="text-align: left;">definiert die default Policy zum Laden von remote Elementen für die meisten Elemente.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Token Endpunkt versendet alle Tokens</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">nein</td>
+<td style="text-align: left;">script-src</td>
+<td style="text-align: left;">definiert vertrauenswürde Quellen für geladene JavaScript Dateien.</td>
 </tr>
 <tr>
-<td style="text-align: left;">User Agent erhält Tokens</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">nein</td>
+<td style="text-align: left;">style-src</td>
+<td style="text-align: left;">definiert vertrauenswürde Quellen für geladene CSS-Dateien.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Client kann authenticated werden</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
+<td style="text-align: left;">plugin-types</td>
+<td style="text-align: left;">object-src: definiert erlaubte Plugin Typen und deren vertrauenswürde Sourcen</td>
 </tr>
 <tr>
-<td style="text-align: left;">Refresh Tokens können verwendet werden</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
+<td style="text-align: left;">img-src, media-src, font-src</td>
+<td style="text-align: left;">definiert vertrauenswürdige Quellen für die jeweiligen Dateitypen</td>
 </tr>
 <tr>
-<td style="text-align: left;">Kommunikation geschieht in einem Roundtrip</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
+<td style="text-align: left;">child-src (ehem. frame-src)</td>
+<td style="text-align: left;">definiert erlaubte Quellen für den Inhalt verwendeter Iframes.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Großteils Server-zu-Server Kommunikation</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">teilweise</td>
+<td style="text-align: left;">sandbox</td>
+<td style="text-align: left;">aktiviert eine Sandbox für die aktuelle Resource ähnlich wie die Sandbox eines eingebetteten Iframas. Durch Optionen kann die Sandbox aufgeweicht werden.</td>
+</tr>
+<tr>
+<td style="text-align: left;">connect-src</td>
+<td style="text-align: left;">Wird von JSONP, WebSockets und EventSource verwendet.</td>
+</tr>
+<tr>
+<td style="text-align: left;">form-action</td>
+<td style="text-align: left;">welche URIs dürfen als Ziel eines Formulars dienen</td>
+</tr>
+<tr>
+<td style="text-align: left;">reflected-xss</td>
+<td style="text-align: left;">entspricht X-XSS-Protection</td>
+</tr>
+<tr>
+<td style="text-align: left;">frame-ancestors</td>
+<td style="text-align: left;">definiert, welche externen Seiten die Resource im Zuge eines Iframes verwenden dürfen, entspricht ca. einem <em>X-Frame-Option</em>s.</td>
+</tr>
+<tr>
+<td style="text-align: left;">referrer</td>
+<td style="text-align: left;">ähnlich wie Referrer-Header</td>
+</tr>
+<tr>
+<td style="text-align: left;">report-uri</td>
+<td style="text-align: left;">CSP erlaubt die Angabe einer Reporting-URL. Im Fehlerfall wird an diese URL eine detaillierte Fehlermeldung reported.</td>
+</tr>
+<tr>
+<td style="text-align: left;">block-all-mixed-content</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">upgrade-insecure-requests</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
-<p>Für "normale" Applikationen wird die Verwendung des <em>code</em> Flows empfohlen.</p>
-<h2 id="saml2">SAML2</h2>
-<p>Die Abkürzung SAML2 steht für Security Assertion Markup Language
-(Version 2). Diese XML-basierte Sprache dient zum Austausch von
-Authentication und Authorization Informationen zwischen mehreren
-Parteien. Dabei will sich ein Benutzer mittels eines Clients (z.B.
-Webbrowser) an einem Service Provider (z.B. Webserver) anmelden. Um dies
-durchzuführen wird ein Identity Provider (IdP) bemüht dieser ist ein
-Service welches für einen User gegenüber einem Service Provider
-authentifiziert und autorisiert; ebenso kann dieser Service einen
-synchronen Single Sign-Out durchführen.</p>
-<p>Die jeweiligen Operationen werden im SAML2 Jargon häufig <em>Flows</em>
-genannt. Es gibt Login- und Logout-Flows, beide können entweder vom
-Service Provider oder vom Identity Provider gestartet werden. Diese
-unterschiedliche Ausprägung ist durch unterschiedliche Use-Cases
-bedingt. Falls ein Betrieb mehrere Websysteme betreibt, die eigenständig
-sind (z.B. eine GitLab-Instanz, eine NextCloud-Instanz), diese aber mit
-einem unified Sign-In versehen will, macht der SP-trigered flow Sinn.
-Der Benutzer wird beim Login auf z.B. GitLab zu dem IdP weitergeleitet
-und loggt sich auf diesem ein. Es wird eine Bestätigung für GitLab
-generiert (Token) und der User wird automatisch mit diesem Token zu dem
-GitLab-Server weitergeleitet (auf dem er nun eingeloggt ist). Den
-IdP-triggered flow würde man eher in einem Portal-Umfeld verwenden: hier
-gibt es eine initiale Login-Seite und dem Benutzer wird danach ein
-typisches Portal mit mehreren eigenständigen aber integrierten
-Applikationen angezeigt. Wenn er nun auf eine Subapplikation klickt,
-wird das Token automatisch mit übertragen und der User ist in der
-Subapplikation eingeloggt (ohne zuvor vom SP zum IdP umgeleitet zu
-werden).</p>
-<h3 id="saml2-assertions">SAML2 Assertions</h3>
-<p>Das Herzstück von SAML2 sind die Security Assertions die vom IdP
-ausgestellt werden. Eine solche Assertion beschreibt die Rechte, welche
-ein User auf einem SP besitzt. Die Assertion wird vom IdP mittels einer
-public-key basierten Signatur unterschrieben.</p>
-<p>Typische Elemente einer Assertion wären:</p>
-<ul>
-<li>
-<p><em>Issuer</em> identifiziert den IdP der diese Assertion ausgestellt hat.</p>
-</li>
-<li>
-<p><em>Signature</em> beinhaltet die Signatur welche die Integrität der
-  Security Assertion sichert.</p>
-</li>
-<li>
-<p><em>Subject</em> beschreibt das identifizierte Objekt, in diesem Fall den
-  identifizierten User. Der verwendete Identifier (<em>NameId</em>) kann
-  verschiedene Typen besitzen, häufig wird <em>transient</em> verwendet.
-  <em>transient</em> beschreibt einen kurzfristigen Identifier, ähnlich einer
-  Session-Id, und besitzt den Vorteil, dass auf diese Weise der SP
-  nicht die genaue Identität des Subjects erfährt.</p>
-</li>
-<li>
-<p>Conditions: beliebig viele Conditions welche den Anwendungsbereich
-  der Assertion beschränken. Beispiel sind z. b. temporale
-  Beschränkungen (<em>NotBefore</em>, <em>NotOnOrAfter</em>) oder eine Einschränkung
-  der Service für welche die Assertion gültig sein soll.</p>
-</li>
-<li>
-<p>AttributeStatement: beliebig viele Attribute-Statements welche
-  optionale Daten an die Assertion anhängen.</p>
-</li>
-<li>
-<p><em>AuthnStatement</em> beschreibt die Assertion selbst und beinhaltet
-  einen eindeutigen Identifier für die Assertion (<em>SessionIndex</em>).
-  Dieser Identifier wird häufig im Zuge des Sign-Out zur
-  Identifikation der betroffenen Session verwendet.</p>
-</li>
-</ul>
-<p>Bei einem realen Deployment kann die Situation auftreten, dass mehrere
-Identity Provider verfügbar sind und der Service Provider den korrekten
-IdP selektieren muss. Ein Beispiel wäre ein Unternehmen welches interne
-User gegen einem Active Directory und externe User gegen einen
-öffentlichen IdP authentifiziert.</p>
-<p>Um die Selektion des IdPs zu vereinfachen, gibt es das IdP Discovery
-Protokoll. Die beiden häufigen Arten des IdP Discoveries sind:</p>
-<ul>
-<li>
-<p>IdP Discovery am SP: der SP selbst kann die User einem IdP zuordnen
-  und weiß daher, welchen IdP er kontaktieren soll.</p>
-</li>
-<li>
-<p>Delegated IdP Discovery: der SP leitet die Anfrage an einen eigenen
-  IdP Discovery Service weiter. Dieser identifiziert den zu wählenden
-  IdP und retourniert diese Information an den SP. Bei diesem
-  Protokoll muss erwähnt werden, dass die gesamte Kommunikation über
-  den Client läuft: der SP teilt dem Client mit, dass dieser per HTTP
-  Redirect den IdP Discovery Service kontaktieren soll (auf diese
-  Weise erhält der IdP Discovery Service die IP des Clients).</p>
-</li>
-</ul>
-<h3 id="protocol-bindings">Protocol Bindings</h3>
-<p>SAML2 dient zur Vereinheitlichung bestehender SSO-Lösung, daher wurde
-beim Entwurf des Standards auf vielfältige Integrationsmöglichkeiten in
-bestehende Netzwerke geachtet. Dementsprechend definiert SAML2 multiple
-Transportprotokolle, sogenannte Bindings:</p>
-<ul>
-<li>HTTP Redirect Binding</li>
-<li>HTTP POST Binding</li>
-<li>HTTP Artifact Binding</li>
-<li>SAML SOAP Binding</li>
-<li>Reverse SOAP Binding</li>
-<li>SAML URI Binding</li>
-</ul>
-<p>Bei Webbrowser-basierten Flows wird meistens das HTTP Redirect oder das
-HTTP POST Binding verwendet. Bei dem Redirect binding werden die
-übertragenen SAML Dokumente mittels Base64 codiert und als HTTP
-Parameter innerhalb von HTTP Redirects verwendet. Da die Länge der
-Parameter durch die jeweiligen Webbrowser limitiert ist, wird dieses
-Verfahren vor allem für kurze Nachrichten verwendet. HTTP POST basierte
-Verfahren verpacken die Nachrichten innerhalb von HTML Formularen und
-umgehen dadurch die Größenlimitierung. Um den Fluss zu automatisieren,
-werden die Formular zumeist mittels JavaScript automatisch versendet.</p>
-<h3 id="saml2-beispiel-single-sign-on">SAML2-Beispiel: Single Sign-On</h3>
-<p>Folgende Abbildung zeigt ein Beispiel für ein
-SP-initiated Single-Sign On welches durch einen Service Provider
-gestartet und mittels HTTP POST Binding implementiert wurde.</p>
-<p><img alt="Beispiel für ein Single-Sign On welches durch einen Service-Provider angestossen wurde" src="/images/saml2.svg" /></p>
-<p>In diesem Beispiel will ein Client (<em>User Agent</em>) auf einen Service
-Provider zugreifen und benötigt hierfür eine Autorisierung. Nach dem
-initialen Client-Zugriff (Schritt 1) verwendet der SP zusammen mit dem
-Client das <em>IdP Discovery</em> Protokoll um den zugehörigen IdP zu
-identifizieren. Sobald dieser bekannt ist, erstellt der SP einen
-Authorization Request und teilt diesen (samt der Adresse des IdPs) dem
-Client mit. Der Client kontaktiert nun den IdP und übermittelt den
-Request.</p>
-<p>Der IdP authentisiert und autorisiert nun den Client. Falls dies
-erfolgreich durchgeführt wurde, wird eine SAML2 Security Assertion
-ausgestellt, vom IdP signiert und dem Client mitgeteilt. Da dies ein
-HTTP POST basierter Flow ist, erstellt der IdP ein HTML Formular,
-inkludiert in diesem HTML Formular das generierte SAML-Dokument (hidden
-field) und submitted das Formular automatisch mittels Javascript
-(Schritt 4). Der Client greift nun auf den SP zu und übermittelt die
-SAML assertion. Der SP verifiziert die Signatur und erstellt eine
-Session basierend auf den Daten innerhalb der Assertion. Bei Schritt 6
-wird (wahrscheinlich, ist implementierungsabhängig) ein Session Cookie
-gesetzt, dass der Client bei allen weiteren Anfragen an den SP
-verwendet. Auf diese Weise sind nun alle folgenden Requests
-authentifiziert und autorisiert.</p>
-<h2 id="reflektionsfragen">Reflektionsfragen</h2>
+<p>Alle Direktiven die mit <em>-src</em> enden erlauben die
+Verwendung ähnlicher Source-Werte, die folgende Tabelle
+gibt ein paar Beispiele. Durch die Verwendung von “unsafe-inline” wird die Trennung zwischen HTML und JavaScript nicht mehr erzwungen und daher der Großteils des XSS-Schutzes
+neutralisiert. Diese Direktive sollte daher soweit wie möglich vermieden
+werden.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">erlaubt alle URIs ausgenommen <em>data:</em>, <em>blob:</em> und <em>filesystem:</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">’none’</td>
+<td style="text-align: left;">verbietet das Laden von Ressourcen.</td>
+</tr>
+<tr>
+<td style="text-align: left;">’self’</td>
+<td style="text-align: left;">erlaubt das Laden von Ressourcen vom eigenen Origin</td>
+</tr>
+<tr>
+<td style="text-align: left;">data:</td>
+<td style="text-align: left;">erlaubt das Bereitstellen von Ressourcen über data (base64-codierte Daten).</td>
+</tr>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">erlaubt das Laden von Daten von der entsprechenden Domain. Wildcards für Subdomains dürfen verwendet werden. Wird der Domainname mit <em>https://</em> begonnen, muss HTTPS beim Zugriff verwendet werden</td>
+</tr>
+<tr>
+<td style="text-align: left;">https</td>
+<td style="text-align: left;">erzwingt das Laden von Ressourcen über HTTPS, alle Domains sind erlaubt.</td>
+</tr>
+<tr>
+<td style="text-align: left;">’unsafe-inline’</td>
+<td style="text-align: left;">erlaubt inline Javascript als auch <em>javascript:</em> URIs</td>
+</tr>
+<tr>
+<td style="text-align: left;">’unsafe-eval’</td>
+<td style="text-align: left;">erlaubt unsichere dynamische Code-Exekution mittels eval.</td>
+</tr>
+<tr>
+<td style="text-align: left;">’nonce-(nonce)</td>
+<td style="text-align: left;"><em>script</em>- oder <em>style</em>-Tags werden exekutiert sofern diese ein nonce-Attribut besitzen welches ident zu dem Wert innerhalb des CSP ist.</td>
+</tr>
+<tr>
+<td style="text-align: left;">sha256-(hash)</td>
+<td style="text-align: left;">Erlaubt die Exekution von Skripts sofern ihr Hash dem in der CSP angegeben Hash entsprechen.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="csp-nonces">CSP-Nonces</h2>
+<p>CSP-Nonces erlauben die Integration von CSP ohne die gesamte
+Web-Applikation nach dem Grundsatz der strikten Trennung von JavaScript
+und HTML entwickelt zu haben. Dieses System basiert darauf, dass
+innerhalb des CSP-Headers eine Nonce (zufällige einmalige Zahl)
+definiert wird und innerhalb der HTML Datei nur <em>Script</em>- und
+<em>Style</em>-Elemente nur exekutiert werden, wenn diese einen identen Wert
+als <em>nonce</em>-Attribut gesetzt haben.</p>
+<p>Wird zum Beispiel folgender CSP-Header verwendet:</p>
+<div class="highlight"><pre><span></span><code><span class="err">Content-Security-Policy: script-src &#39;nonce-2726c7f26c&#39;</span>
+</code></pre></div>
+<p>würde das Skript nur exekutiert werden, wenn es die idente nonce
+(<em>2726c7f26c</em>) innerhalb des <em>script</em>-Tags verwendet:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">nonce</span><span class="o">=</span><span class="s">&quot;2726c7f26c&quot;</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">inline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Die Sicherheit dieses Verfahrens ist von zwei Annahmen abhängig:</p>
 <ol>
 <li>
-<p>Wie funktioniert der Sign-On Fluss bei SAML2?</p>
+<p>Der Angreifer darf die nonce nicht vorherbestimmten können. Ebenso
+   muss bei jedem Seitenaufruf eine neue nonce generiert werden.</p>
 </li>
 <li>
-<p>Wie funktioniert der Authorisierungsfluss bei OAuth2?</p>
-</li>
-<li>
-<p>Wie ist ein JSON Web Token aufgebaut? Welches Problem kann im
-   Zusammenhang mit Verwechslungen der Signatur und er MAC-Adresse
-   passieren?</p>
-</li>
-<li>
-<p>Welche Rolle übernimmt das IdP Discovery Protokoll innerhalb von
-   SAML2?</p>
-</li>
-<li>
-<p>Gegeben eine SAML2 Example Assertion, was sagt diese aus (wer ist
-   issuer? wer ist subject, etc.)?</p>
-</li>
-<li>
-<p>Wie ist das Verhältnis zwischen OIDC und OAuth2?</p>
+<p>Der Angreifer darf nicht die Möglichkeit besitzen, innerhalb eines
+   sicheren Skript-Aufrufs (bei dem die richtige nonce gesetzt ist)
+   bösartigen JavaScript-Code einzufügen.</p>
 </li>
 </ol>
+<h3 id="csp-beispiele">CSP-Beispiele</h3>
+<p>Ein einfaches Beispiel, welches das Laden von Ressourcen (Javascript,
+CSS, Images) nur vom eigenen Server erlaubt:</p>
+<div class="highlight"><pre><span></span><code><span class="err">Content-Security-Policy: default-src &#39;self&#39;</span>
+</code></pre></div>
+<p>Folgendes Beispiel schränkt mögliche Angriffsvektoren bereits stark ein:</p>
+<div class="highlight"><pre><span></span><code><span class="err">Content-Security-Policy:</span>
+<span class="err">  object-src &#39;none&#39;;</span>
+<span class="err">  script-src &#39;nonce-{random}&#39; &#39;unsafe-inline&#39; &#39;strict-dynamic&#39; https: http:;</span>
+<span class="err">  base-uri &#39;none&#39;;</span>
+</code></pre></div>
+<p>Folgende Einstellungen werden dadurch an den Browser übermittelt:</p>
+<ul>
+<li><em>object-src: none</em> verhindert das Laden von Plugins wie z.B. Flash.</li>
+<li>
+<p>Die verwendete script-src Line verwendet “neues” als auch “altes”
+  CSP damit unterschiedliche Browserversionen sichere CSP
+  Einstellungen bekommen. Die Kombination von <em>nonce</em> und
+  <em>unsafe-inline</em> bewirkt bei neueren Browsern, dass <em>script</em>-Tags nur
+  verwendet werden, wenn die angegebene Nonce bei dem Skript-Tag als
+  Attribut hinterlegt ist. Neuere Browser ignorieren in dem Fall
+  <em>unsafe-inline</em>. Ältere Browser ignorieren die Nonce, über
+  <em>unsafe-inline</em> werden allerdings “normale” script-Tags erlaubt.
+  <em>strict-dynamic</em> erlaubt das Laden von remote JavaScript-Dateien
+  ausgehend von trusted Scripts. Moderne Browser ignorieren die
+  zusätzlichen Schemas (http und https), während ältere Browser die
+  kein <em>strict-dynamic</em> erkennen durch die Schemas externe
+  JavaScript-Dateien laden können.</p>
+</li>
+<li>
+<p><em>base-uri: none</em> deaktiviert das HTML <em>base</em>-Element welches im
+  Zusammenhang mit relativen Imports verwendet werden kann, um
+  Injection-Angriffe durchzuführen.</p>
+</li>
+</ul>
 
 
 

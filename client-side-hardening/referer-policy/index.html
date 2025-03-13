@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../authorization/">
+        <link rel="prev" href="../integration-externer-komponenten/">
       
       
-        <link rel="next" href="../../server-side-attacks/allgemein/">
+        <link rel="next" href="../content-security-policy/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Single-Sign On (SSO) - Web Application Security</title>
+        <title>Referer-Policy - Web Application Security</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#federationsingle-sign-on" class="md-skip">
+        <a href="#referrer-policy" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Single-Sign On (SSO)
+              Referer-Policy
             
           </span>
         </div>
@@ -494,8 +494,6 @@
       
   
   
-    
-  
   
   
     
@@ -507,11 +505,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -526,7 +524,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Zugriffskontrolle
@@ -540,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication/" class="md-nav__link">
+      <a href="../../authentication-and-authorization/authentication/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../session_management/" class="md-nav__link">
+      <a href="../../authentication-and-authorization/session_management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -584,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authorization/" class="md-nav__link">
+      <a href="../../authentication-and-authorization/authorization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -603,31 +601,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Single-Sign On (SSO)
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/sso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -637,104 +614,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#festival-beispiel" class="md-nav__link">
-    <span class="md-ellipsis">
-      Festival-Beispiel
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#oauth2" class="md-nav__link">
-    <span class="md-ellipsis">
-      OAuth2
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openid-connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenID Connect
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saml2" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SAML2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saml2-assertions" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2 Assertions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protocol-bindings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Protocol Bindings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saml2-beispiel-single-sign-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2-Beispiel: Single Sign-On
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1243,8 +1122,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1254,11 +1135,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1273,7 +1154,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Client-Seitige Härtung
@@ -1287,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../client-side-hardening/allgemeines/" class="md-nav__link">
+      <a href="../allgemeines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1309,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../client-side-hardening/integration-externer-komponenten/" class="md-nav__link">
+      <a href="../integration-externer-komponenten/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1328,10 +1209,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../client-side-hardening/referer-policy/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1341,6 +1231,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1353,7 +1244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../client-side-hardening/content-security-policy/" class="md-nav__link">
+      <a href="../content-security-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1509,92 +1400,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#festival-beispiel" class="md-nav__link">
-    <span class="md-ellipsis">
-      Festival-Beispiel
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#oauth2" class="md-nav__link">
-    <span class="md-ellipsis">
-      OAuth2
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openid-connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenID Connect
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saml2" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SAML2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saml2-assertions" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2 Assertions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protocol-bindings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Protocol Bindings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saml2-beispiel-single-sign-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      SAML2-Beispiel: Single Sign-On
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflektionsfragen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflektionsfragen
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1612,359 +1417,42 @@
   
 
 
-<h1 id="federationsingle-sign-on">Federation/Single-Sign on</h1>
-<p>Werden mehrere Webapplikationen betrieben, entsteht schnell der Wunsch,
-Benutzerkonten zwischen diesen Applikationen zu synchronisieren. Die
-Grundidee ist es, ein unified Authentication/Authorization-Konzept über
-mehrere Server hinweg zu implementieren. Potentielle Gründe für den
-Einsatz einer Single-Sign On oder Federation Lösung sind:</p>
+<h1 id="referrer-policy">Referrer-Policy</h1>
+<p>Ein Standard-Header der von Webbrowsern gesetzt wird ist der
+<em>Referer</em>-Header. Dieser inkludiert bei jedem Seitenaufruf die URL der
+aufrufenden Seite. Dies kann einen negativen Security-Impact haben,
+falls die URL der aufrufenden Seite sensible Informationen (wie z.B.
+eine Session-Id oder auch sensible Benutzerdaten) beinhaltet. Potentiell
+wird der Header vom Empfangsserver und, bei unverschlüsselter
+Kommunikation, von allen verbundenen Geräten entlang des
+Kommunikationspfades gesehen.</p>
+<p>Web-Server können das gewünschte Verhalten durch Verwendung des Headers
+<em>Referrer-Policy</em>[1] mitteilen, valide Werte sind:</p>
 <ul>
-<li>
-<p>SSO erlaubt es mehreren Applikationen eine gemeinsame
-  Login/Logout-Lösung zu verwenden. Dadurch können redundante Lösungen
-  eingespart und duplizierte Sicherheitsprobleme vermieden werden.
-  Nachteil: der Login-Server ist ein Single-Point-of-Failure.</p>
-</li>
-<li>
-<p>Das gesamte Passwort-Management kann aus der Webapplikation
-  ausgelagert werden. Es müssen keine Passwörter mehr selbst erhoben,
-  bearbeitet oder gespeichert werden.</p>
-</li>
-<li>
-<p>Die User-Experience ist angeblich besser. Der Aufwand für einen
-  Benutzer einen neuen Account anzulegen wird minimiert.</p>
-</li>
-<li>
-<p>Durch den Login-Server können weitere Authenticationsservices
-  implementiert worden sein, z.B. Ausweiskontrolle oder eine
-  Multi-Faktor-Authentication.</p>
-</li>
+<li>no-referrer: der Referer-Header wird nicht übertragen.</li>
+<li>no-referrer-when-downgrade: die URL wird als Referer übertragen sofern die Folgeseite nicht ein
+unsichereres Protokoll verwendet. Dadurch wird z.B. eine Übertragung der
+URL beim Übergang von HTTPS zu HTTP verboten. Dies ist häufig das
+Default-Verhalten der Webbrowser.</li>
+<li>origin: es wird immer nur der Origin übertragen.</li>
+<li>origin-when-cross-origin: es wird die volle URL übertragen, sofern man sich innerhalb des
+identen Origins befindet. Falls es zu einem Origin-Wechsel kommt (z.B.
+durch Navigation auf eine externe Seite) wird nur der Origin übertragen.</li>
+<li>same-origin: solange man sich innerhalb des Origins befindet, wird die URL gesetzt,
+ansonsten wird kein Referer-Header versendet.</li>
+<li>strict-origin: es wird immer nur der Origin als Referer versendet, und dies auch nur
+falls das Sicherheitslevel ident ist (es wird also beim Übergang von
+einer HTTPS auf eine HTTP Seite kein Referer gesetzt).</li>
+<li>strict-origin-when-cross-origin: es wird die volle URL innerhalb des identen Origin verwendet, wird auf
+Webseiten mit unterschiedlichen Origin zugegriffen (also z.B. beim
+Übergang auf externe Webseiten) wird nur der Origin als Referer
+verwendet. Falls die Sicherheit der Kommunikation schlechter wird (also
+z.B. beim Übergang von HTTPS auf HTTP) wird überhaupt kein
+Referer-Header versendet.</li>
+<li>unsafe-url: die gesamte URL wird im Referrer-Header immer übertragen.</li>
 </ul>
-<h2 id="festival-beispiel">Festival-Beispiel</h2>
-<p>Eine gute Analogie ist ein Musikfestival bei welchem Besucher auf dem
-Festivalgelände Getränke erwerben können. Je nach Alter darf ein Kunde
-alkoholische oder nicht-alkoholische Getränke kaufen. Müsste nun jeder
-Getränkestand bei jeder Bestellung Eintrittskarte und den Ausweis
-(Altersnachweis) des Besuchers kontrollieren, würde dies zu starken
-Verzögerungen führen.</p>
-<p>Um die Situation zu verbessern, werden beim Festivaleingang die Besucher
-einmalig bei einem Registrationszelt kontrolliert. Jeder Besucher erhält
-ein Armband um zu beweisen, dass er eine Eintrittskarte besass. In
-Abhängigkeit vom Alter bekommen Minderjährige Besucher ein blaues
-Armband, erwachsene Besucher ein rotes Armband. Anhand dieses Armbands
-(Token) können nun die Getränkestände schnell kontrollieren, ob ein Gast
-alkoholische Getränke konsumieren darf. Zusätzlich wird über den Besitz
-des Bands überprüft, ob ein Besucher eine Eintrittskarte besass. Falls
-ein Besucher bei einem Getränkeshop ohne Band ein Getränk kaufen will,
-wird er zu dem Registrationszelt verwiesen.</p>
-<p>In diesem Beispiel ist das Registrationszelt der Identity Provider, die
-Getränkehändler sind Service Provider, das Armband ein Token und der
-Besucher der Client.</p>
-<p>Das Beispiel zeigt auch zwei Probleme von token-basierten Lösungen. Das
-Armband gilt für die gesamte Dauer des Festivals (im Folgejahr werden
-andere Farben verwendet). Es gibt keine Möglichkeit einen Teil der
-Armbänder nach dem ersten Festivaltag zu invalidieren. Ebenso wird klar,
-dass jegliche Form von Zugriffskontrolle durch das Armband ersetzt wird.
-Wollen z.B. ein Vater und Sohn beide Alkohol kaufen, kann der Vater
-initial den Identitätscheck durchführen und dann sein Armband an seinen
-Sohn weitergeben. Der Vater geht danach wiederholt zum Registrationszelt
-und kauft sich ein zweites Zugangsband. Mit dem ersten Band kann nun der
-Sohn beliebig Alkohol kaufen ohne dass auffällt, dass sein Alter dies
-eigentlich verbieten sollte. Der alleinige Zeitpunkt der Überprüfung
-(Authorization) geschieht während der Bandausgabe.</p>
-<h2 id="oauth2">OAuth2</h2>
-<p><a href="https://tools.ietf.org/html/rfc6749">OAuth2</a> erlaubt es einem Benutzer (Resource
-Owner) einer Applikation (Client) Zugriff auf Resourcen/Operationen auf
-einem Server (Resource Server) zu erteilen. Ein Authorization Server
-wird verwendet um ein Zugriffs-Token für einen definierten Bereich
-(scope) am Resourcen-Server auszustellen. Zusätzlich zu dem
-Zugriffs-Token wird zumeist auch ein Refresh-Token ausgestellt mit dem
-ein Client ein neues Zugriffstoken ohne Benutzerinteraktion generieren
-kann.</p>
-<p>Da die Rechte eines ausgestellten Token im Normalfall nur während der
-Ausstellung überprüft werden und danach für die gesamte Lebenszeit des
-Tokens gültig sind, wird bestenfalls eine sehr kurze Lebenszeit im
-Minutenbereich gewählt. Läuft das Token ab, kann mit den Refresh-Token
-ein neues Access-Token angefordert werden. Da hierfür keine
-Benutzerinteraktion benötigt wird, kann dies automatisiert und
-transparent für den Endbenutzer erfolgen. Der Vorteil liegt darin, dass
-während der Ausstellung durch den Authorisationsserver die angeforderten
-Rechte des Tokens wiederholt überprüft werden.</p>
-<p><img alt="Beispiel für einen OAuth2-Fluss" src="/images/oauth2.svg" /></p>
-<p>Ein interessanter Aspekt ist der Zeitpunkt der Authorization: die
-Überprüfung der eigentlich Zugriffsberechtigung wird durch den
-Authorization-Server zum Zeitpunkt der Ausstellung des Tokens
-durchgeführt. Bei einem Zugriff auf den Resourcen Server werden die
-eigentlichen Berechtigungen nicht mehr überprüft, sondern nur noch
-getestet ob das übergebene Token Zugriff auf die angeforderten Resourcen
-inkludiert und von einem validen Authorization Server signiert wurde.</p>
-<p>Das Token besitzt eine Laufzeit und ist bis zum Ende der Laufzeit
-gültig. Da der Resource Server nicht direkt mit dem Authorization Server
-kommuniziert, gibt es keine Möglichkeit ein Token zuvorig zu
-invalidieren. Dies ist problematisch, falls eine lange Laufzeit (z.B.
-ein Jahr) gewählt wurde und ein Token abhanden gekommen ist. Ein
-Angreifer mit dem entwendeten Token kann nun bis zum Ende der Laufzeit
-dieses Token verwenden um auf die Resource zuzugreifen.</p>
-<p>Um dieses Problem zu entschärfen werden zumeist zwei Tokens generiert:
-ein Access-Token und ein Refresh-Token. Das Access-Token wird zum
-Zugriff auf den Resource Server verwendet und besitzt eine sehr kurze
-Laufzeit, zumeist im Minuten-Bereich. Falls ein Access-Token abgelaufen
-ist, kann der Client das Refresh-Token verwenden um (ohne
-Benutzerinteraktion) ein neues Access-Token zu erhalten. Dies verbessert
-die Sicherheitssituation, da der Authorization-Server vor dem Ausstellen
-eines Access-Tokens überprüft, ob das Subject/der User überhaupt noch
-die notwendige Berechtigung besitzt. Dadurch wird das verwundbare
-Zeitfenster zwar nicht entfernt, aber zumindest reduziert.</p>
-<h2 id="openid-connect">OpenID Connect</h2>
-<p>OpenID Connect verwendet OAuth2 um eine Benutzerauthentication
-durchzuführen. Es gibt verschiedene Subprotokolle (<em>flows</em> genannt). Im
-Allgemeinen funktioniert das OpenID Connect Protokoll auf folgende
-Weise:</p>
-<ol>
-<li>
-<p>Der Client schickt einen Request zu dem OpenID Provider.</p>
-</li>
-<li>
-<p>Der OpenID Provider authentifiziert den Benutzer, der Benutzer
-   bestätigt den Authentication Request.</p>
-</li>
-<li>
-<p>Der OpenID Provider returniert einen ID Token (und zumeist auch
-   einen Access Token).</p>
-</li>
-<li>
-<p>Der Cient kann das Access Token verwenden um weitere Informationen
-   über den User über den <em>UserInfo Endpoint</em> zu erhalten.</p>
-</li>
-</ol>
-<p>Das ID Token ist ein JSON Web Token (JWT), folgende Felder müssen in diesem ausgefüllt werden:</p>
-<ul>
-<li>iss: der Aussteller des Tokens. Dieser muss ein https-Endpunkt sein.</li>
-<li>sub: der subject identifier identifiziert den Benutzer.</li>
-<li>aud: der Identifier für den Server, der die Authentification anforderte.</li>
-<li>exp: Ablaufdateum des Tokens.</li>
-<li>iat: Austellungsdatum des Tokens.</li>
-</ul>
-<p>OpenID Connect definiert drei verschiedene flows (<em>code</em>, <em>implicit</em>
-oder <em>hybrid</em>), ihre Unterschiede werden kurz in folgender Tabelle
-aufgeführt:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Eigenschaft</th>
-<th style="text-align: left;">Code</th>
-<th style="text-align: left;">Implicit</th>
-<th style="text-align: left;">Hybrid</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Authorization Endpoint versendet alle Tokens</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-</tr>
-<tr>
-<td style="text-align: left;">Token Endpunkt versendet alle Tokens</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">nein</td>
-</tr>
-<tr>
-<td style="text-align: left;">User Agent erhält Tokens</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">nein</td>
-</tr>
-<tr>
-<td style="text-align: left;">Client kann authenticated werden</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
-</tr>
-<tr>
-<td style="text-align: left;">Refresh Tokens können verwendet werden</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
-</tr>
-<tr>
-<td style="text-align: left;">Kommunikation geschieht in einem Roundtrip</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-</tr>
-<tr>
-<td style="text-align: left;">Großteils Server-zu-Server Kommunikation</td>
-<td style="text-align: left;">ja</td>
-<td style="text-align: left;">nein</td>
-<td style="text-align: left;">teilweise</td>
-</tr>
-</tbody>
-</table>
-<p>Für "normale" Applikationen wird die Verwendung des <em>code</em> Flows empfohlen.</p>
-<h2 id="saml2">SAML2</h2>
-<p>Die Abkürzung SAML2 steht für Security Assertion Markup Language
-(Version 2). Diese XML-basierte Sprache dient zum Austausch von
-Authentication und Authorization Informationen zwischen mehreren
-Parteien. Dabei will sich ein Benutzer mittels eines Clients (z.B.
-Webbrowser) an einem Service Provider (z.B. Webserver) anmelden. Um dies
-durchzuführen wird ein Identity Provider (IdP) bemüht dieser ist ein
-Service welches für einen User gegenüber einem Service Provider
-authentifiziert und autorisiert; ebenso kann dieser Service einen
-synchronen Single Sign-Out durchführen.</p>
-<p>Die jeweiligen Operationen werden im SAML2 Jargon häufig <em>Flows</em>
-genannt. Es gibt Login- und Logout-Flows, beide können entweder vom
-Service Provider oder vom Identity Provider gestartet werden. Diese
-unterschiedliche Ausprägung ist durch unterschiedliche Use-Cases
-bedingt. Falls ein Betrieb mehrere Websysteme betreibt, die eigenständig
-sind (z.B. eine GitLab-Instanz, eine NextCloud-Instanz), diese aber mit
-einem unified Sign-In versehen will, macht der SP-trigered flow Sinn.
-Der Benutzer wird beim Login auf z.B. GitLab zu dem IdP weitergeleitet
-und loggt sich auf diesem ein. Es wird eine Bestätigung für GitLab
-generiert (Token) und der User wird automatisch mit diesem Token zu dem
-GitLab-Server weitergeleitet (auf dem er nun eingeloggt ist). Den
-IdP-triggered flow würde man eher in einem Portal-Umfeld verwenden: hier
-gibt es eine initiale Login-Seite und dem Benutzer wird danach ein
-typisches Portal mit mehreren eigenständigen aber integrierten
-Applikationen angezeigt. Wenn er nun auf eine Subapplikation klickt,
-wird das Token automatisch mit übertragen und der User ist in der
-Subapplikation eingeloggt (ohne zuvor vom SP zum IdP umgeleitet zu
-werden).</p>
-<h3 id="saml2-assertions">SAML2 Assertions</h3>
-<p>Das Herzstück von SAML2 sind die Security Assertions die vom IdP
-ausgestellt werden. Eine solche Assertion beschreibt die Rechte, welche
-ein User auf einem SP besitzt. Die Assertion wird vom IdP mittels einer
-public-key basierten Signatur unterschrieben.</p>
-<p>Typische Elemente einer Assertion wären:</p>
-<ul>
-<li>
-<p><em>Issuer</em> identifiziert den IdP der diese Assertion ausgestellt hat.</p>
-</li>
-<li>
-<p><em>Signature</em> beinhaltet die Signatur welche die Integrität der
-  Security Assertion sichert.</p>
-</li>
-<li>
-<p><em>Subject</em> beschreibt das identifizierte Objekt, in diesem Fall den
-  identifizierten User. Der verwendete Identifier (<em>NameId</em>) kann
-  verschiedene Typen besitzen, häufig wird <em>transient</em> verwendet.
-  <em>transient</em> beschreibt einen kurzfristigen Identifier, ähnlich einer
-  Session-Id, und besitzt den Vorteil, dass auf diese Weise der SP
-  nicht die genaue Identität des Subjects erfährt.</p>
-</li>
-<li>
-<p>Conditions: beliebig viele Conditions welche den Anwendungsbereich
-  der Assertion beschränken. Beispiel sind z. b. temporale
-  Beschränkungen (<em>NotBefore</em>, <em>NotOnOrAfter</em>) oder eine Einschränkung
-  der Service für welche die Assertion gültig sein soll.</p>
-</li>
-<li>
-<p>AttributeStatement: beliebig viele Attribute-Statements welche
-  optionale Daten an die Assertion anhängen.</p>
-</li>
-<li>
-<p><em>AuthnStatement</em> beschreibt die Assertion selbst und beinhaltet
-  einen eindeutigen Identifier für die Assertion (<em>SessionIndex</em>).
-  Dieser Identifier wird häufig im Zuge des Sign-Out zur
-  Identifikation der betroffenen Session verwendet.</p>
-</li>
-</ul>
-<p>Bei einem realen Deployment kann die Situation auftreten, dass mehrere
-Identity Provider verfügbar sind und der Service Provider den korrekten
-IdP selektieren muss. Ein Beispiel wäre ein Unternehmen welches interne
-User gegen einem Active Directory und externe User gegen einen
-öffentlichen IdP authentifiziert.</p>
-<p>Um die Selektion des IdPs zu vereinfachen, gibt es das IdP Discovery
-Protokoll. Die beiden häufigen Arten des IdP Discoveries sind:</p>
-<ul>
-<li>
-<p>IdP Discovery am SP: der SP selbst kann die User einem IdP zuordnen
-  und weiß daher, welchen IdP er kontaktieren soll.</p>
-</li>
-<li>
-<p>Delegated IdP Discovery: der SP leitet die Anfrage an einen eigenen
-  IdP Discovery Service weiter. Dieser identifiziert den zu wählenden
-  IdP und retourniert diese Information an den SP. Bei diesem
-  Protokoll muss erwähnt werden, dass die gesamte Kommunikation über
-  den Client läuft: der SP teilt dem Client mit, dass dieser per HTTP
-  Redirect den IdP Discovery Service kontaktieren soll (auf diese
-  Weise erhält der IdP Discovery Service die IP des Clients).</p>
-</li>
-</ul>
-<h3 id="protocol-bindings">Protocol Bindings</h3>
-<p>SAML2 dient zur Vereinheitlichung bestehender SSO-Lösung, daher wurde
-beim Entwurf des Standards auf vielfältige Integrationsmöglichkeiten in
-bestehende Netzwerke geachtet. Dementsprechend definiert SAML2 multiple
-Transportprotokolle, sogenannte Bindings:</p>
-<ul>
-<li>HTTP Redirect Binding</li>
-<li>HTTP POST Binding</li>
-<li>HTTP Artifact Binding</li>
-<li>SAML SOAP Binding</li>
-<li>Reverse SOAP Binding</li>
-<li>SAML URI Binding</li>
-</ul>
-<p>Bei Webbrowser-basierten Flows wird meistens das HTTP Redirect oder das
-HTTP POST Binding verwendet. Bei dem Redirect binding werden die
-übertragenen SAML Dokumente mittels Base64 codiert und als HTTP
-Parameter innerhalb von HTTP Redirects verwendet. Da die Länge der
-Parameter durch die jeweiligen Webbrowser limitiert ist, wird dieses
-Verfahren vor allem für kurze Nachrichten verwendet. HTTP POST basierte
-Verfahren verpacken die Nachrichten innerhalb von HTML Formularen und
-umgehen dadurch die Größenlimitierung. Um den Fluss zu automatisieren,
-werden die Formular zumeist mittels JavaScript automatisch versendet.</p>
-<h3 id="saml2-beispiel-single-sign-on">SAML2-Beispiel: Single Sign-On</h3>
-<p>Folgende Abbildung zeigt ein Beispiel für ein
-SP-initiated Single-Sign On welches durch einen Service Provider
-gestartet und mittels HTTP POST Binding implementiert wurde.</p>
-<p><img alt="Beispiel für ein Single-Sign On welches durch einen Service-Provider angestossen wurde" src="/images/saml2.svg" /></p>
-<p>In diesem Beispiel will ein Client (<em>User Agent</em>) auf einen Service
-Provider zugreifen und benötigt hierfür eine Autorisierung. Nach dem
-initialen Client-Zugriff (Schritt 1) verwendet der SP zusammen mit dem
-Client das <em>IdP Discovery</em> Protokoll um den zugehörigen IdP zu
-identifizieren. Sobald dieser bekannt ist, erstellt der SP einen
-Authorization Request und teilt diesen (samt der Adresse des IdPs) dem
-Client mit. Der Client kontaktiert nun den IdP und übermittelt den
-Request.</p>
-<p>Der IdP authentisiert und autorisiert nun den Client. Falls dies
-erfolgreich durchgeführt wurde, wird eine SAML2 Security Assertion
-ausgestellt, vom IdP signiert und dem Client mitgeteilt. Da dies ein
-HTTP POST basierter Flow ist, erstellt der IdP ein HTML Formular,
-inkludiert in diesem HTML Formular das generierte SAML-Dokument (hidden
-field) und submitted das Formular automatisch mittels Javascript
-(Schritt 4). Der Client greift nun auf den SP zu und übermittelt die
-SAML assertion. Der SP verifiziert die Signatur und erstellt eine
-Session basierend auf den Daten innerhalb der Assertion. Bei Schritt 6
-wird (wahrscheinlich, ist implementierungsabhängig) ein Session Cookie
-gesetzt, dass der Client bei allen weiteren Anfragen an den SP
-verwendet. Auf diese Weise sind nun alle folgenden Requests
-authentifiziert und autorisiert.</p>
-<h2 id="reflektionsfragen">Reflektionsfragen</h2>
-<ol>
-<li>
-<p>Wie funktioniert der Sign-On Fluss bei SAML2?</p>
-</li>
-<li>
-<p>Wie funktioniert der Authorisierungsfluss bei OAuth2?</p>
-</li>
-<li>
-<p>Wie ist ein JSON Web Token aufgebaut? Welches Problem kann im
-   Zusammenhang mit Verwechslungen der Signatur und er MAC-Adresse
-   passieren?</p>
-</li>
-<li>
-<p>Welche Rolle übernimmt das IdP Discovery Protokoll innerhalb von
-   SAML2?</p>
-</li>
-<li>
-<p>Gegeben eine SAML2 Example Assertion, was sagt diese aus (wer ist
-   issuer? wer ist subject, etc.)?</p>
-</li>
-<li>
-<p>Wie ist das Verhältnis zwischen OIDC und OAuth2?</p>
-</li>
-</ol>
+<p>Es wird empfohlen, eine <em>Referrer-Policy</em> zu wählen, die nicht
+<em>no-referrer-when-downgrade</em> bzw. <em>unsafe-url</em> ist.</p>
 
 
 
