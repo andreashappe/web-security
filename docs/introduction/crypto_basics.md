@@ -21,28 +21,28 @@ Angreifer, der auch aktiv angreifen darf.
 Grundlegend sollten folgende Grundsätze bei der Verwendung von
 Kryptographie beachtet werden:
 
--   Niemals selbst ein kryptographisches System entwerfen, sondern immer
-    ein etabliertes (und getestetes) System verwenden.
+- Niemals selbst ein kryptographisches System entwerfen, sondern immer
+  ein etabliertes (und getestetes) System verwenden.
 
--   Niemals selbst einen kryptographischen Algorithmus/Bibliothek
-    implementieren, sondern immer etablierte und getestet Komponenten
-    verwenden.
+- Niemals selbst einen kryptographischen Algorithmus/Bibliothek
+  implementieren, sondern immer etablierte und getestet Komponenten
+  verwenden.
 
--   Die richtige kryptographische Methode wählen.
+- Die richtige kryptographische Methode wählen.
 
--   Immer davon ausgehen, dass der eigene Source Code früher oder später
-    öffentlich wird. Aus diesem Grund darf ein kryptographischer
-    Schlüssel (oder auch Credentials) niemals Teil des Source Codes
-    werden.
+- Immer davon ausgehen, dass der eigene Source Code früher oder später
+  öffentlich wird. Aus diesem Grund darf ein kryptographischer
+  Schlüssel (oder auch Credentials) niemals Teil des Source Codes
+  werden.
 
--   Essentiell zur sicheren Verwendung der verschiedenen
-    kryptographischen Methoden sind die dabei verwendeten Schüssel.
-    Diese müssen sowohl sicher gespeichert als auch transportiert
-    werden. Noch komplexer ist das Herstellen eines Vertrauensverhältnis
-    (Trust) zwischen den jeweiligen Kommunikationspartnern: woher weiss
-    ein Partner, dass ein vorhandener Schlüssel eines anderen
-    Kommunikationsparters vertrauenswürdig ist? Key Management ist
-    komplex und sollte nicht unterschätzt werden!
+- Essentiell zur sicheren Verwendung der verschiedenen
+  kryptographischen Methoden sind die dabei verwendeten Schüssel.
+  Diese müssen sowohl sicher gespeichert als auch transportiert
+  werden. Noch komplexer ist das Herstellen eines Vertrauensverhältnis
+  (Trust) zwischen den jeweiligen Kommunikationspartnern: woher weiss
+  ein Partner, dass ein vorhandener Schlüssel eines anderen
+  Kommunikationsparters vertrauenswürdig ist? Key Management ist
+  komplex und sollte nicht unterschätzt werden!
 
 Jede implementierte und konfigurierbare kryptographische Methode erhöht
 potentiell die Angriffsoberfläche. Ein Beispiel hierfür ist z. B. die
@@ -154,44 +154,42 @@ Entwickler benötigen Guidance zur Selektion der jeweiligen
 kryptographischen Algorithmen, hier eine kleine Auswahl öffentlich
 verfügbarer Dokumente:
 
-1.  Das amerikanische NIST gibt Empfehlungen für Cryptographical
-    Standards ab, z. B. [SP-800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/final). Aufgrund der Zusammenarbeit des
-    NIST mit der amerikanischen NSA bei zu vorigen Crypto-Standards
-    (Vermutung der Platzierung einer Backdoor in einen
-    Random-Number-Generator) wird mittlerweile gerne von den
-    NIST-Empfehlungen abgesehen.
+1. Das amerikanische NIST gibt Empfehlungen für Cryptographical
+   Standards ab, z. B. [SP-800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/final). Aufgrund der Zusammenarbeit des
+   NIST mit der amerikanischen NSA bei zu vorigen Crypto-Standards
+   (Vermutung der Platzierung einer Backdoor in einen
+   Random-Number-Generator) wird mittlerweile gerne von den
+   NIST-Empfehlungen abgesehen.
 
-2.  Die europäische ENISA gibt regelmäßig Empfehlungen zu verwendeten
-    kryptographischen Standards und Schlüssellängen ab ([Algorithms, key
-    size and parameter report 2014](https://www.enisa.europa.eu/publications/algorithms-key-size-and-parameters-report-2014)). Während diese relativ gut sind,
-    ist die Frequenz der Veröffentlichung für IT-Verhältnisse etwas
-    behäbig (4-5 Jahre).
+2. Die europäische ENISA gibt regelmäßig Empfehlungen zu verwendeten
+   kryptographischen Standards und Schlüssellängen ab ([Algorithms, key
+   size and parameter report 2014](https://www.enisa.europa.eu/publications/algorithms-key-size-and-parameters-report-2014)). Während diese relativ gut sind,
+   ist die Frequenz der Veröffentlichung für IT-Verhältnisse etwas
+   behäbig (4-5 Jahre).
 
-3.  Das deutsche Bundesamt für Sicherheit in der Informationstechnik
-    (BSI) bietet häufig überarbeitete Empfehlungen zum Einsatz
-    kryptographischer Methoden an ([BSI TR-02102](https://www.bsi.bund.de/DE/Publikationen/TechnischeRichtlinien/tr02102/index_htm.html)). Diese sind relativ
-    aktuell und klassifizieren Algorithmen in sichere Algorithmen die
-    bei aktuellen Neuentwicklungen verwendet werden sollen und in
-    legacy-Algorithmen, die zwar nicht mehr bei Neuentwicklungen
-    verwendet werden sollten, die aber bei bestehender Software durchaus
-    weiterverwendet werden können.
+3. Das deutsche Bundesamt für Sicherheit in der Informationstechnik
+   (BSI) bietet häufig überarbeitete Empfehlungen zum Einsatz
+   kryptographischer Methoden an ([BSI TR-02102](https://www.bsi.bund.de/DE/Publikationen/TechnischeRichtlinien/tr02102/index_htm.html)). Diese sind relativ
+   aktuell und klassifizieren Algorithmen in sichere Algorithmen die
+   bei aktuellen Neuentwicklungen verwendet werden sollen und in
+   legacy-Algorithmen, die zwar nicht mehr bei Neuentwicklungen
+   verwendet werden sollten, die aber bei bestehender Software durchaus
+   weiterverwendet werden können.
 
-4.  das BetterCrypto.org[6] bietet regelmäßig upgedatete
-    Beispielskonfigurationen für geläufige Webserver. Diese sollten dazu
-    dienen, dass ein Administrator diese Snippets direkt in die
-    Konfiguration eines Webservers kopieren können und dadurch eine
-    sichere Konfiguration erreicht wird.
+4. [BetterCrypto.org](https://www.bettercrypto.org) bietet regelmäßig upgedatete
+   Beispielskonfigurationen für geläufige Webserver. Diese sollten dazu
+   dienen, dass ein Administrator diese Snippets direkt in die
+   Konfiguration eines Webservers kopieren können und dadurch eine
+   sichere Konfiguration erreicht wird.
 
 ## Reflektionsfragen
 
-1.  Welche Grundideen sollten bei dem Entwurf und Einsatz
-    kryptographischer Methoden angewandt werden?
+1. Welche Grundideen sollten bei dem Entwurf und Einsatz
+   kryptographischer Methoden angewandt werden?
 
-2.  Wann sollte ein MAC verwendet werden? Stelle diesen einem Hash oder
-    einer kryptographsichen Signatur gegenüber.
+2. Wann sollte ein MAC verwendet werden? Stelle diesen einem Hash oder
+   einer kryptographsichen Signatur gegenüber.
 
 [1] Das Schlüsselpaar ist mathematisch “verwandt”.
 
 [2] Z. B. aus CPU-Zufallszahlengeneratoren, etc.
-
-[6] <https://www.bettercrypto.org>

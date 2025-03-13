@@ -52,26 +52,25 @@ beinhaltet einen HTTP Header, diese sind immer als *Key: Value*
 strukturiert.
 
 Bei folgendem Beispiel versucht ein Webbrowser auf die Datei
-*/index.html* eines Webservers lesend (Verb: GET) zuzugreifen:
+`/index.html` eines Webservers lesend (Verb: `GET`) zuzugreifen:
 
-    GET /index.html HTTP/1.1
-    Host: snikt.net
-    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0
-    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-    Accept-Language: en-US,en;q=0.5
-    Accept-Encoding: gzip, deflate
-    Connection: close
-    Upgrade-Insecure-Requests: 1
+```http
+GET /index.html HTTP/1.1
+Host: snikt.net
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+```
 
 #### HTTP Request Verbs/Methoden
 
 Ein Request beginnt immer mit einem HTTP Verb (auf Englisch auch HTTP
 Request Method genannt), dieses beschreibt die Aktion die der Client
-gerne hätte. Häufig verwendete Verben werden in Tabelle
-<a href="#tbl:http_verbs" data-reference-type="ref"
-data-reference="tbl:http_verbs">1.1</a> gelistet. Ein verwendetes HTTP
-Verb kann sowohl *safe* als auch *idempotent* sein. Safe Verben sollten
-niemals Resourcen verändern (also Daten am Server modifizieren).
+gerne hätte. Häufig verwendete Verben werden in folgender Tabelle
+gelistet:
 
 | Verb    | safe | idempotent | Name                                                                                                                                            |
 |:--------|:-----|:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -85,7 +84,9 @@ niemals Resourcen verändern (also Daten am Server modifizieren).
 | OPTIONS | ja   | ja         | Listet alle erlaubten Kommunikationsoptionen für eine Resource auf.                                                                             |
 | TRACE   |      |            | Führt zu Debug-Zwecken einen loop-back Test aus.                                                                                                |
 
-Häufig verwendete HTTP Methoden bzw. Verben
+Ein verwendetes HTTP
+Verb kann sowohl *safe* als auch *idempotent* sein. Safe Verben sollten
+niemals Resourcen verändern (also Daten am Server modifizieren).
 
 Idempotente Verben sollten auch bei wiederholtem Aufruf auf eine
 Resource das idente Ergebnis liefern. Sie können also beliebig häufig
@@ -113,20 +114,17 @@ Dissertation veröffentlicht. Das Paradigma versucht es, zustandlose APIs
 Ressource sollte eine eindeutige URL besitzen, als Kommunikationssprache
 wird häufig HTTP eingesetzt.
 
-Tabelle <a href="#tbl:rest" data-reference-type="ref"
-data-reference="tbl:rest">1.2</a> zeigt wie häufig benötige
-CRUD-Funktionalität[2] auf HTTP Verben umgelegt wird.
+Folgende Tabelle zeigt wie häufig benötige
+CRUD-Funktionalität[2] auf HTTP Verben umgelegt wird:
 
 | Verb   | Operation     | Beispiel                                    | Beschreibung                                                                          |
 |:-------|:--------------|:--------------------------------------------|:--------------------------------------------------------------------------------------|
-| GET    | READ          | <a href="/notes/1" class="uri">/notes/1</a> | Fordert die Ressource vom Server an. Diese Operation sollte safe und idempotent sein. |
-| POST   | CREATE        | <a href="/notes" class="uri">/notes</a>     | Erstellt eine neue Ressource am Server, deren URI wird zurück gegeben.                |
-| PUT    | CREATE/UPDATE | <a href="/notes/2" class="uri">/notes/2</a> | Erstellt oder ersetzt eine Ressource an der angegeben URI.                            |
-| PATCH  | UPDATE        | <a href="/notes/2" class="uri">/notes/2</a> | Die angegebene Ressource wird verändert, Nebeneffekte sind erlaubt.                   |
-| DELETE | DELETE        | <a href="/notes/2" class="uri">/notes/2</a> | Die angegebene Ressource wird gelöscht.                                               |
-| HEAD   | READ          | <a href="/notes/2" class="uri">/notes/2</a> | Liefert Meta-Daten für die angegebene Ressource.                                      |
-
-Verwendung von HTTP Verben bei RESTful-Architekturen
+| GET    | READ          | `/notes/1` | Fordert die Ressource vom Server an. Diese Operation sollte safe und idempotent sein. |
+| POST   | CREATE        | `/notes`     | Erstellt eine neue Ressource am Server, deren URI wird zurück gegeben.                |
+| PUT    | CREATE/UPDATE | `/notes/2` | Erstellt oder ersetzt eine Ressource an der angegeben URI.                            |
+| PATCH  | UPDATE        | `/notes/2` | Die angegebene Ressource wird verändert, Nebeneffekte sind erlaubt.                   |
+| DELETE | DELETE        | `/notes/2` | Die angegebene Ressource wird gelöscht.                                               |
+| HEAD   | READ          | `/notes/2` | Liefert Meta-Daten für die angegebene Ressource.                                      |
 
 #### Request Host Header
 
@@ -140,23 +138,25 @@ zu generieren.
 
 Der Server liefert nun ein Antwortdokument:
 
-    HTTP/1.1 302 Found
-    Date: Sun, 03 Mar 2019 22:03:21 GMT
-    Server: Apache/2.4.25 (Debian)
-    Location: https://snikt.net/
-    Content-Length: 277
-    Connection: close
-    Content-Type: text/html; charset=iso-8859-1
+```http
+HTTP/1.1 302 Found
+Date: Sun, 03 Mar 2019 22:03:21 GMT
+Server: Apache/2.4.25 (Debian)
+Location: https://snikt.net/
+Content-Length: 277
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
 
-    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-    <html><head>
-    <title>302 Found</title>
-    </head><body>
-    <h1>Found</h1>
-    <p>The document has moved <a href="https://snikt.net/">here</a>.</p>
-    <hr>
-    <address>Apache/2.4.25 (Debian) Server at snikt.net Port 80</address>
-    </body></html>
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>302 Found</title>
+</head><body>
+<h1>Found</h1>
+<p>The document has moved <a href="https://snikt.net/">here</a>.</p>
+<hr>
+<address>Apache/2.4.25 (Debian) Server at snikt.net Port 80</address>
+</body></html>
+```
 
 Hier fällt zuerst der Statuscode (302) auf. Prinzipiell beschreiben
 Codes aus dem 100er Bereich *Continue*, Codes im 200er Bereich Erfolg
@@ -254,7 +254,9 @@ Webbrowser mit, dass Folgezugriffe auf die Webseite immer über ein
 sicheres Protokoll zu erfolgen haben. Bei Angabe des Headers wird eine
 Laufzeit in Sekunden[4] für diese Regel angegeben:
 
-    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+```http
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+```
 
 Sobald dieser Header vom Browser interpretiert wird, werden potentielle
 zukünftige HTTP-Aufrufe automatisch vom Browser auf HTTPS hochgestuft.
@@ -338,14 +340,16 @@ das Session-Cookie zugreifen kann, aber die Möglichkeit besitzt per
 Javascript einen HTTP TRACE Aufruf auf den Opfer-Webserver abzusetzen,
 kann er auf diese Weise das Session-Cookie extrahieren:
 
-    <script>
-      var xmlhttp = new XMLHttpRequest();
-      var url = 'http://127.0.0.1/';
+```html
+<script>
+  var xmlhttp = new XMLHttpRequest();
+  var url = 'http://127.0.0.1/';
 
-      xmlhttp.withCredentials = true; // send cookie header
-      xmlhttp.open('TRACE', url, false);
-      xmlhttp.send();
-    </script>
+  xmlhttp.withCredentials = true; // send cookie header
+  xmlhttp.open('TRACE', url, false);
+  xmlhttp.send();
+</script>
+```
 
 Aus diesem Grund wird empfohlen, auf Webservern immer HTTP TRACE zu
 deaktivieren.
@@ -388,18 +392,24 @@ das Cookie ist für alle Pfade gültig. Da kein Ablaufdatum (*Expires*)
 bzw. Lebenszeit (*Max-Age*) angegeben wurde, wird das Cookie beim
 Schließen des Browsers gelöscht:
 
-    Set-Cookie: sessionid=38afes7a8; HttpOnly; Path=/
+```http
+Set-Cookie: sessionid=38afes7a8; HttpOnly; Path=/
+```
 
 Das folgende Cookies mit Namen *id* wird vor der unsicheren Übertragung
 mittels HTTP (*Secure*) als auch vor Zugriffen mittels JavaScript
 (*httpOnly*) geschützt. Die Lebensdauer wurde mit einem absoluten Datum
 angegeben:
 
-    Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+```http
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+```
 
 Ein Beispiel für das Setzen der sicherheitsrelevanten Header:
 
-    Set-Cookie: CookieName=CookieValue; SameSite=Strict; httpOnly; Secure;
+```http
+Set-Cookie: CookieName=CookieValue; SameSite=Strict; httpOnly; Secure;
+```
 
 ## JavaScript
 
@@ -492,8 +502,8 @@ Webbrowser-Benutzers durchgeführt werden.
 Während die Same-Origin-Policy aus Sicherheitssicht begrüßenswert ist,
 muss sie teilweise aufgeweicht werden. Zum Beispiel könnte eine Webseite
 aus Sicherheitsgründen auf mehrere Teilserver aufgeteilt worden sein:
-*www.evil.com* beinhaltet die klassische Webseite, während
-*api.evil.com* Operationen anbietet, die von *www* aus aufgerufen werden
+`www.evil.com` beinhaltet die klassische Webseite, während
+`api.evil.com` Operationen anbietet, die von `www` aus aufgerufen werden
 sollten.
 
 Um diese Zugriffe sauber zu erlauben, wird Cross-Domain Resource Sharing
@@ -509,31 +519,31 @@ Dafür wird die so genannten *preflight authorization* verwendet.
 
 Operationen, bei denen Webbrowser CORS durchführen sollten:
 
--   alle HTTP Methoden ausser HTTP GET und HTTP POST
+- alle HTTP Methoden ausser HTTP GET und HTTP POST
 
--   HTTP POST, abhängig vom verwendeten Content-Type
+- HTTP POST, abhängig vom verwendeten Content-Type
 
--   AJAX-Requests
+- AJAX-Requests
 
--   Web Fonts
+- Web Fonts
 
 Ist eine CORS-Authorization notwendig, werden folgende Schritte
 durchgeführt:
 
-1.  Der Webbrowser eines Benutzers erkennt, dass er ausgehend von *www*
-    auf *api* zugreifen will und hierfür ein CORS Authorization
-    notwendig ist.
+1. Der Webbrowser eines Benutzers erkennt, dass er ausgehend von *www*
+   auf *api* zugreifen will und hierfür ein CORS Authorization
+   notwendig ist.
 
-2.  Um diese durchzuführen, versendet er einen HTTP OPTIONS request auf
-    die gewünschte Operation auf *api* und setzt dabei den Origin
-    Header: *Origin: http://www* auf die aufrufende Webseite.
+2. Um diese durchzuführen, versendet er einen HTTP OPTIONS request auf
+   die gewünschte Operation auf *api* und setzt dabei den Origin
+   Header: `Origin: http://www` auf die aufrufende Webseite.
 
-3.  Der *api* Webserver antwortet nun mit dem HTTP Header
-    *Access-Control-Allow-Origin: http://www* und signalisiert dem
-    Webbrowser dass der Zugriff auf *api* ausgehend von *www* erlaubt
-    ist.
+3. Der *api* Webserver antwortet nun mit dem HTTP Header
+   `Access-Control-Allow-Origin: http://www` und signalisiert dem
+   Webbrowser dass der Zugriff auf *api* ausgehend von *www* erlaubt
+   ist.
 
-4.  Der Webserver führt nun die Operation auf *api* durch.
+4. Der Webserver führt nun die Operation auf *api* durch.
 
 ### JSONP
 
@@ -544,21 +554,24 @@ Javascript-Datei geladen. Damit die geladenen Daten an Javascript
 übergeben werden, wird beim Inkludieren der Daten eine Callback Funktion
 mit übergeben.
 
-Ein Beispiel, mittels der URL <a href="/php/jsonp.php?callback=callback"
-class="uri">/php/jsonp.php?callback=callback</a> wird eine Operation
+Ein Beispiel, mittels der URL `/php/jsonp.php?callback=callback` wird eine Operation
 aufgerufen, der Parameter *callback* gibt an, wie die lokale
 Javascript-Callback Funktion heißt. Das Antwortdokument ist z.B.:
 
-    callback('{ "name":"John", "age":30, "city":"New York" }');
+```js
+callback('{ "name":"John", "age":30, "city":"New York" }');
+```
 
 In der aufrufenden Webseite würde der Call nun folgendermaßen aussehen:
 
-    <script>
-    function callback(data) {
-        console.log(data);
-    }
-    </script>
-    <script src="/jsonp.php?callback=callback></script>
+```html
+<script>
+function callback(data) {
+    console.log(data);
+}
+</script>
+<script src="/jsonp.php?callback=callback></script>
+```
 
 Es wird also vom Server ein Funktionsaufruf (auf die Callback-Funktion)
 mit den serverseitigen-Daten erzeugt und dadurch im Webbrowser die
@@ -594,12 +607,12 @@ werden.
 
 Hier wären zwei Angriffsmöglichkeiten offensichtlich:
 
--   Verwendung von WebAssembly um einen hoch-performanten Crypto-Miner
-    im Browser auszuführen.
+- Verwendung von WebAssembly um einen hoch-performanten Crypto-Miner
+  im Browser auszuführen.
 
--   Verwendung von WebAssembly zum Auslagern von Teilen von
-    JavaScript-Schadcode um auf diese Weise die Detektion durch
-    Anti-Malware Tools zu umgehen.
+- Verwendung von WebAssembly zum Auslagern von Teilen von
+  JavaScript-Schadcode um auf diese Weise die Detektion durch
+  Anti-Malware Tools zu umgehen.
 
 Aktuell (Stand Anfang 2020) waren keine großflächigen Angriffe mittels
 WebAssembly bekannt.
@@ -635,20 +648,19 @@ sollte SessionStorage verwendet werden.
 Verglichen zu Cookie ist WebStorage und SessionStorage stärker gegenüber
 XSS-Angriffen verwundbar. Dies ist durch zwei Probleme bedingt:
 
-1.  Cookies können durch Verwendung des *httpOnly*-Flags den Zugriff
-    durch JavaScript unterbinden. Bei WebStorage wurde dieser
-    Sicherheitsmechanismus nicht vorgesehen.
+1. Cookies können durch Verwendung des *httpOnly*-Flags den Zugriff
+   durch JavaScript unterbinden. Bei WebStorage wurde dieser
+   Sicherheitsmechanismus nicht vorgesehen.
 
-2.  Cookies können auf einen Unterpfad gescoped werden. Werden z.B. zwei
-    Webapplikationen auf einem gemeinsamen Server Betrieben, kann ein
-    Cookie z.B. für <https://example.local/app1> und ein Cookie für
-    <a href="https.//example.local/app2"
-    class="uri">https.//example.local/app2</a> ausgestellt werden. Eine
-    Applikation besitzt keinen Zugriff auf das Cookie der anderen
-    Applikation. Bei WebStorage kann dies nicht durchgeführt werden,
-    WebStorage ist immer für die Domain gültig. Das heißt, dass ein
-    Angreifer mit einem XSS-Fehler in app1 auf den WebStorage der app2
-    zugreifen kann.
+2. Cookies können auf einen Unterpfad gescoped werden. Werden z.B. zwei
+   Webapplikationen auf einem gemeinsamen Server Betrieben, kann ein
+   Cookie z.B. für `https://example.local/app1` und ein Cookie für
+   `https://example.local/app2` ausgestellt werden. Eine
+   Applikation besitzt keinen Zugriff auf das Cookie der anderen
+   Applikation. Bei WebStorage kann dies nicht durchgeführt werden,
+   WebStorage ist immer für die Domain gültig. Das heißt, dass ein
+   Angreifer mit einem XSS-Fehler in app1 auf den WebStorage der app2
+   zugreifen kann.
 
 Aus diesen Gründen verbieten einige Sicherheitsrichtlinien den Einsatz
 von HTML5 Web- und SessionStorage.
@@ -676,14 +688,14 @@ Webbrowser ersetzen aktuell Desktop-Applikationen, benötigen hierfür
 allerdings erweiterte Interaktionsmöglichkeiten. Diese werden durch neue
 Standards geschaffen, zum Beispiel:
 
--   WebRTC erlaubt die peer-to-peer Kommunikation zwischen Browsern und
-    wird z.B. für Audio- oder Videokonferenzen verwendet.
+- WebRTC erlaubt die peer-to-peer Kommunikation zwischen Browsern und
+  wird z.B. für Audio- oder Videokonferenzen verwendet.
 
--   WebNFC erlaubt die Verwendung von NFC über Webbrowser.
+- WebNFC erlaubt die Verwendung von NFC über Webbrowser.
 
--   WebBluetooth erlaubt es, JavaScript auf konfigurierte BlueTooth LE
-    devices zuzugreifen und wird für SmartHealth bzw. SmartHome
-    Anwendungen benötigt.
+- WebBluetooth erlaubt es, JavaScript auf konfigurierte BlueTooth LE
+  devices zuzugreifen und wird für SmartHealth bzw. SmartHome
+  Anwendungen benötigt.
 
 Bei diesen Schnittstellen sind aktuell weniger Sicherheits-, sondern
 eher Privatsphäre-Gefährdungen bekannt. Generell kann hier das
@@ -692,24 +704,24 @@ verglichen werden.
 
 ## Reflektionsfragen
 
-1.  Wie können HTTP Header im Zuge einer Information Disclosure
-    verwendet werden?
+1. Wie können HTTP Header im Zuge einer Information Disclosure
+   verwendet werden?
 
-2.  Was versteht man unter SOP? Warum und wie kann dieses Prinzip mit
-    CORS aufweichen?
+2. Was versteht man unter SOP? Warum und wie kann dieses Prinzip mit
+   CORS aufweichen?
 
-3.  Was sind HTTP Methoden? Erkläre *safe* und *idempotente* HTTP
-    Methoden.
+3. Was sind HTTP Methoden? Erkläre *safe* und *idempotente* HTTP
+   Methoden.
 
-4.  Welche Vor- und Nachteile besitzt die Verwendung von Perfect Forward
-    Secrecy?
+4. Welche Vor- und Nachteile besitzt die Verwendung von Perfect Forward
+   Secrecy?
 
-5.  Welche Flags sollten bei Verwendung von HTTP Cookie-basierter
-    Sessions gesetzt werden?
+5. Welche Flags sollten bei Verwendung von HTTP Cookie-basierter
+   Sessions gesetzt werden?
 
-6.  HTTP Cookies als auch HTTP5 localStorage/sessionStorage können zur
-    Speicherung von lokalen Daten verwendet werden. Erläutere die
-    Unterschiede.
+6. HTTP Cookies als auch HTTP5 localStorage/sessionStorage können zur
+   Speicherung von lokalen Daten verwendet werden. Erläutere die
+   Unterschiede.
 
 [1] Da das P in HTTP bereits für Protocol steht, macht die Bezeichnung
 ,,HTTP Protokoll” wenig Sinn.

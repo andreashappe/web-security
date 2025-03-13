@@ -23,17 +23,17 @@ Professionelle Softwareentwicklung verwendet meistens einen
 verschiedene Ausprägungen hier Security einzubringen. Zumeist werden in
 den jeweiligen Phasen sicherheitsrelevante Inhalte hinzugefügt:
 
--   Security Training des Personals
+- Security Training des Personals
 
--   Requirements and Risk Analysis
+- Requirements and Risk Analysis
 
--   Threat Modeling
+- Threat Modeling
 
--   Secure Coding Guidelines, Secure Coding Checklists
+- Secure Coding Guidelines, Secure Coding Checklists
 
--   Security Testing Guides, Pen-Tests
+- Security Testing Guides, Pen-Tests
 
--   Vulnerability Management and Incident Response
+- Vulnerability Management and Incident Response
 
 Einige dieser Punkte werden in den Folgekapiteln etwas genauer
 erläutert.
@@ -58,13 +58,8 @@ intellectual property.
 
 Häufig wird die sog. CIA-Triade zur Klassifizierung verwendet. Hierbei
 stehen die einzelnen Buchstaben für einen schützenswerten Bereich:
-*Confidentiality*, *Integrity* und *Availability*. Diese werden in
-Tabelle <a href="#tbl:cia_triad" data-reference-type="ref"
-data-reference="tbl:cia_triad">1.1</a> genauer erläutert. Die jeweiligen
-Bereiche sind verwandt, Availability kann stark von der Integrität der
-Daten abhängig sein. Beispiel: wenn eine Fahrzeitauskunft zwar als
-Webservice verfügbar ist, aber den Daten nicht vertraut werden kann, ist
-das Gesamtservice aus Usersicht wahrscheinlich nicht available.
+*Confidentiality*, *Integrity* und *Availability*. Diese werden in der folgenden
+Tabelle genauer erläutert:
 
 | Buchstabe | Name            | Beschreibung                                  |
 |:----------|:----------------|:----------------------------------------------|
@@ -72,7 +67,11 @@ das Gesamtservice aus Usersicht wahrscheinlich nicht available.
 | I         | Integrity       | no unauthorized or undetected[2] modification |
 | A         | Availability    | Verfügbarkeit der Daten                       |
 
-CIA-Triade
+Die jeweiligen
+Bereiche sind verwandt, Availability kann stark von der Integrität der
+Daten abhängig sein. Beispiel: wenn eine Fahrzeitauskunft zwar als
+Webservice verfügbar ist, aber den Daten nicht vertraut werden kann, ist
+das Gesamtservice aus Usersicht wahrscheinlich nicht available.
 
 Bei realen Projekten ist die Einschätzung immer vom Kunden abhängig. Ein
 IT-System ist immer in die Kundenlandschaft integriert und daher können
@@ -89,15 +88,15 @@ auf Sicherheit geachtet werden. Um die Ziele der CIA-Triad zu erfüllen,
 empfehlt OWASP folgende Elemente bei der Analyse eines sicheren Designs
 zu beachten:
 
--   Authentication
+- Authentication
 
--   Authorization
+- Authorization
 
--   Data Confidentiality and Integrity
+- Data Confidentiality and Integrity
 
--   Availability
+- Availability
 
--   Auditing and Non-Repudiation
+- Auditing and Non-Repudiation
 
 Die ersten vier Punkte stellen die Anforderungen aus der CIA Triade dar.
 
@@ -111,8 +110,6 @@ gegeben wurde.
 
 ## Threat Modeling
 
-<span id="threat_model" label="threat_model"></span>
-
 Threat Models dienen zur systematischen Analyse von Softwareprodukten
 auf Risiken, Schwachstellen und Gegenmaßnahmen. Durch die Verwendung
 eines formalisierten Ablaufs wird die gleich bleibende Qualität der
@@ -121,13 +118,13 @@ Analyse gewährleistet.
 Bei der Analyse sollten vier Hauptfragen gestellt und beantwortet
 werden[3]:
 
-1.  What are you building?
+1. What are you building?
 
-2.  What could go wrong?
+2. What could go wrong?
 
-3.  What should you do about those things that could go wrong?
+3. What should you do about those things that could go wrong?
 
-4.  Did you do a decent job of analysis?
+4. Did you do a decent job of analysis?
 
 Bevor auf diese einzelnen Bereiche kurz eingegangen wird sollte noch
 kurz erwähnt werden, dass Threat Models im Laufe der Zeit sehr
@@ -141,35 +138,35 @@ verwendbares Threat Model.
 
 Folgende Bereiche sollten durch das Threat Model abgedeckt werden:
 
--   Threat Actors: wer sind die potentiellen Angreifer. Dies ist wichtig
-    zu wissen, da dadurch eine bessere Ressourceneinschätzung (wie viel
-    Zeit bzw. finanzielle Ressourcen kann ein Angreifer aufbringen?)
-    möglich ist. Ebenso wird dadurch geklärt, ob auch Insider-Angriffe
-    möglich sind.
+- Threat Actors: wer sind die potentiellen Angreifer. Dies ist wichtig
+  zu wissen, da dadurch eine bessere Ressourceneinschätzung (wie viel
+  Zeit bzw. finanzielle Ressourcen kann ein Angreifer aufbringen?)
+  möglich ist. Ebenso wird dadurch geklärt, ob auch Insider-Angriffe
+  möglich sind.
 
--   Schützenswertes Gut: vor welchen Angriffen hat ein Unternehmen Angst
-    bzw. welche Daten sind schützenswert. Die Dokumentation
-    schützenswerter Güter ergibt Synergie-Effekte zu der notwendigen
-    DSGVO-Dokumentation.
+- Schützenswertes Gut: vor welchen Angriffen hat ein Unternehmen Angst
+  bzw. welche Daten sind schützenswert. Die Dokumentation
+  schützenswerter Güter ergibt Synergie-Effekte zu der notwendigen
+  DSGVO-Dokumentation.
 
--   Grundlegende Sicherheitsannahmen: im Laufe eines Softwareprojektes
-    werden Produktentscheidungen aufgrund des aktuellen Wissensstand
-    getroffen. Hier sollten diese Entscheidungen dokumentiert[4] werden.
-    Beispielsweise könnte für embedded systems eine schwächere
-    Verschlüsselungstechnik gewählt worden sein, da die vorhandene
-    Hardware nicht potent genug für ein besseres Verfahren war. Durch
-    die Dokumentation der Annahmen können diese periodische auf ihre
-    Haltbarkeit hin überprüft werden. Die Dokumentation dieser Annahmen
-    ist auch essentiell im Falle des Ausfalls eines Entwicklungsteams.
+- Grundlegende Sicherheitsannahmen: im Laufe eines Softwareprojektes
+  werden Produktentscheidungen aufgrund des aktuellen Wissensstand
+  getroffen. Hier sollten diese Entscheidungen dokumentiert[4] werden.
+  Beispielsweise könnte für embedded systems eine schwächere
+  Verschlüsselungstechnik gewählt worden sein, da die vorhandene
+  Hardware nicht potent genug für ein besseres Verfahren war. Durch
+  die Dokumentation der Annahmen können diese periodische auf ihre
+  Haltbarkeit hin überprüft werden. Die Dokumentation dieser Annahmen
+  ist auch essentiell im Falle des Ausfalls eines Entwicklungsteams.
 
--   Scope: welche Bereiche unterliegen der Sicherheitsobacht des
-    Entwicklers? Ist die Datenbank, der Webserver, etc. Teil des
-    Projekts oder werden diese von externen Personen bereitgestellt?
+- Scope: welche Bereiche unterliegen der Sicherheitsobacht des
+  Entwicklers? Ist die Datenbank, der Webserver, etc. Teil des
+  Projekts oder werden diese von externen Personen bereitgestellt?
 
--   Komponenten und Datenflüsse: die Applikation wird in einzelne
-    Komponenten dekonstruiert. Der Datenfluss (samt Klassifizierung der
-    betroffenen Daten) zwischen den Komponenten wird meistens mittels
-    Datenflussdiagrammen (data flow diagrams, DFDs) dargestellt.
+- Komponenten und Datenflüsse: die Applikation wird in einzelne
+  Komponenten dekonstruiert. Der Datenfluss (samt Klassifizierung der
+  betroffenen Daten) zwischen den Komponenten wird meistens mittels
+  Datenflussdiagrammen (data flow diagrams, DFDs) dargestellt.
 
 ### What could go wrong?
 
@@ -177,10 +174,8 @@ Basierend auf den Datenflussdiagrammen werden potentielle Risiken und
 Schwachstellen identifiziert. Häufig wird hierfür STRIDE verwendet.
 Jeder Buchstabe dieser Abkürzung steht für eine Angriffsart, durch das
 Analysieren jedes Elements (des Datenflussdiagrammes) sollten möglichst
-viele Gefährdungen identifiziert werden. Die Tabelle
-<a href="#tbl:stride" data-reference-type="ref"
-data-reference="tbl:stride">1.2</a> listet die jeweiligen Angriffsarten
-auf.
+viele Gefährdungen identifiziert werden. Die folgende Tabelle
+listet die jeweiligen Angriffsarten auf:
 
 | Buchstabe | Name                   |
 |:----------|:-----------------------|
@@ -191,20 +186,10 @@ auf.
 | D         | Denial of Service      |
 | E         | Elevation of Privilege |
 
-STRIDE Angriffsvektoren
-
 Im Privacy Umfeld existiert mit LINDDUN eine ähnliche Methode, die
 jeweiligen Angriffe zielen hier nun nicht auf die Sicherheit, sondern
-auf die Privatsphäre der Benutzer ab. Die Tabelle
-<a href="#tbl:linddun" data-reference-type="ref"
-data-reference="tbl:linddun">1.3</a> listet die jeweiligen Gefährdungen
-für die Privatsphäre auf.
-
-Teilweise sind diese Methoden widersprüchlich. So wird im Zuge von
-STRIDE auf die Repudiation hin geachtet, also auf die
-Nicht-Abstreitbarkeit der Durchführung einer Operation, während LINDDUN
-dies als Non-Repudation als negativ für die Privatsphäre des Benutzers
-betrachtet wird.
+auf die Privatsphäre der Benutzer ab. Die folgende Tabelle
+listet die jeweiligen Gefährdungen für die Privatsphäre auf:
 
 | Buchstabe | Name                             |
 |:----------|:---------------------------------|
@@ -216,7 +201,11 @@ betrachtet wird.
 | U         | Content Unawareness              |
 | N         | Policy and Consent Noncompliance |
 
-LINDDUN Kategorien
+Teilweise sind diese Methoden widersprüchlich. So wird im Zuge von
+STRIDE auf die Repudiation hin geachtet, also auf die
+Nicht-Abstreitbarkeit der Durchführung einer Operation, während LINDDUN
+dies als Non-Repudation als negativ für die Privatsphäre des Benutzers
+betrachtet wird.
 
 ### What should you do about those things that could go wrong?
 
@@ -228,19 +217,19 @@ werden.
 Prinzipiell gibt es mehrere Möglichkeiten mit einer Schwachstelle
 umzugehen:
 
--   Elemination: die Schwachstelle wird entfernt — dies ist effektiv nur
-    durch Entfernen von Features möglich.
+- Elemination: die Schwachstelle wird entfernt — dies ist effektiv nur
+  durch Entfernen von Features möglich.
 
--   Mitigation: es werden Maßnahmen implementiert die das Ausnutzen der
-    Schwachstelle vermeiden bzw. erschweren sollen. Die meisten
-    implementierten Sicherheitsmaßnahmen fallen in diesen Bereich.
+- Mitigation: es werden Maßnahmen implementiert die das Ausnutzen der
+  Schwachstelle vermeiden bzw. erschweren sollen. Die meisten
+  implementierten Sicherheitsmaßnahmen fallen in diesen Bereich.
 
--   Transfer: durch Versicherungen und Verträge kann das Risiko an
-    Andere übertragen werden.
+- Transfer: durch Versicherungen und Verträge kann das Risiko an
+  Andere übertragen werden.
 
--   Accept: ein Risiko kann auch (durch die Geschäftsführung) akzeptiert
-    werden. In diesem Fall ist die Dokumentation der Zuständigkeiten
-    wichtig.
+- Accept: ein Risiko kann auch (durch die Geschäftsführung) akzeptiert
+  werden. In diesem Fall ist die Dokumentation der Zuständigkeiten
+  wichtig.
 
 ### Did we do a decent job of analysis?
 
@@ -260,7 +249,7 @@ durchgeführt werden. Penetration Tests können Sicherheitsmängel
 aufdecken, sie sind allerdings nicht zur gezielten Erhöhung der
 Softwarequalität dienlich, da diese vor dem Testen bereits gewährleistet
 werden sollte (*You can’t test quality in*). Auch hier gibt es eine
-Interaktion mit dem Threat Model[5]: während ein Threat Model im
+Interaktion mit dem Threat Model: während ein Threat Model im
 Gegensatz zu Penetration-Tests weniger direkte Sicherheitslücken findet,
 richtet es den Fokus der Penetration-Tests auf die wichtigsten bzw.
 gefährdetsten Komponenten der zu testenden Applikation.
@@ -313,11 +302,11 @@ der supply-chain attacks) nahmen in letzter Zeit zu.
 
 ## Reflektionsfragen
 
-1.  Was versteht man unter einem Threat Model, welche Elemente sollten
-    vorhanden sein (1-2 Sätz.B.schreibung pro Element)
+1. Was versteht man unter einem Threat Model, welche Elemente sollten
+   vorhanden sein (1-2 Sätz.B.schreibung pro Element)
 
-2.  Welche Maßnahmen sollten im Zuge des Secure Development Lifecycles
-    betrachtet werden? Erläutere einige der Maßnahmen.
+2. Welche Maßnahmen sollten im Zuge des Secure Development Lifecycles
+   betrachtet werden? Erläutere einige der Maßnahmen.
 
 [1] Functional Requirements beschreiben die Funktionsweise einer
 Applikation und sind z.B. mittels use-cases abgebildet. Non-Functional
@@ -334,7 +323,3 @@ im Nachhinein detektiert werden.
 Auswirkungen im Falle einer gebrochenen Annahme, wer für die Überprüfung
 der Annahme zuständig ist, und wer fachlich die Annahme überprüfen kann,
 dokumentiert ist.
-
-[5] Threatmodel: siehe Kapitel
-<a href="#threat_model" data-reference-type="ref"
-data-reference="threat_model">[threat_model]</a>, Seite

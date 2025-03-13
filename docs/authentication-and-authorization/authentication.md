@@ -21,10 +21,8 @@ wird zumeist mit einer Authentifikation kombiniert.
 
 Die Authentifikation dient zur Validierung der behaupteten Identität des
 Benutzers. Es gibt mehrere Möglichkeiten (Faktoren) über welche ein
-Benutzer seine Identität authentifizieren kann, Tabelle
-<a href="#tbl:factors" data-reference-type="ref"
-data-reference="tbl:factors">1.1</a> gibt eine kurze Übersicht häufig
-genutzter Faktoren.
+Benutzer seine Identität authentifizieren kann, folgende Tabelle
+gibt eine kurze Übersicht häufig genutzter Faktoren:
 
 | Faktor              | Art                                             |
 |:--------------------|:------------------------------------------------|
@@ -36,8 +34,6 @@ genutzter Faktoren.
 | PostIdent           | Verifikation am Postamt mittels Ausweis         |
 | VideoIdent          | Verifikation mit Ausweis mittels Videokonferenz |
 | PhotoIdent          | Verifikation über zugeschicktes Ausweisbild     |
-
-Verschiedene Faktoren zur Authentication
 
 Bei der initialen Registrierung und bei nachfolgenden Anmeldungen können
 unterschiedliche Faktoren verwendet werden. Z. B. VideoIdent bei der
@@ -69,18 +65,18 @@ Passwort als auch einem Login-Button bestehen sollte.
 
 Negative Beispiele die den Einsatz von Passwort-Managern erschweren:
 
--   Benutzername und Passwort-Feld sind nicht innerhalb der gleichen
-    Seite
+- Benutzername und Passwort-Feld sind nicht innerhalb der gleichen
+  Seite
 
--   Password-Feld wird erst angezeigt, nachdem ein Benutzername
-    eingegeben wurde
+- Password-Feld wird erst angezeigt, nachdem ein Benutzername
+  eingegeben wurde
 
--   Verwendung von Flash-, Silverlight- oder Java-Applets
+- Verwendung von Flash-, Silverlight- oder Java-Applets
 
--   Authentication through EMail a la Slack (Email mit Bestätigungslink
-    dient als Passwortersatz)
+- Authentication through EMail a la Slack (Email mit Bestätigungslink
+  dient als Passwortersatz)
 
--   HTTP BASIC basierte Authentifikation
+- HTTP BASIC basierte Authentifikation
 
 ### User Enumeration Angriffe
 
@@ -95,20 +91,20 @@ bekannt”.
 Während dies bei einem Login-Formular leicht zu bewerkstelligen ist,
 sind weitere Operationen komplexer:
 
--   “Passwort vergessen”-Funktion: hier muss meistens eine Email-Adresse
-    angegeben werden. Falls die Email-Adresse dem System nicht bekannt
-    ist, sollte keine Fehlermeldung ausgegeben werden, sondern ein
-    Hinweis, dass an die angegebene Email eine Benachrichtigungsemail
-    versendet wurde.
+- “Passwort vergessen”-Funktion: hier muss meistens eine Email-Adresse
+  angegeben werden. Falls die Email-Adresse dem System nicht bekannt
+  ist, sollte keine Fehlermeldung ausgegeben werden, sondern ein
+  Hinweis, dass an die angegebene Email eine Benachrichtigungsemail
+  versendet wurde.
 
--   Bereits vorhandene Email-Adresse bei Registrierung: hier sollte
-    ebenso eine neutrale Erfolgsmeldung innerhalb der Webseite
-    ausgegeben, und anschließend in einer Bestätigungsemail der Benutzer
-    darauf hingewiesen werden, dass er bereits ein Konto mit der
-    Email-Adresse angelegt hatte.
+- Bereits vorhandene Email-Adresse bei Registrierung: hier sollte
+  ebenso eine neutrale Erfolgsmeldung innerhalb der Webseite
+  ausgegeben, und anschließend in einer Bestätigungsemail der Benutzer
+  darauf hingewiesen werden, dass er bereits ein Konto mit der
+  Email-Adresse angelegt hatte.
 
--   Bereits vorhandener Login bei Registrierung: hier muss dem User eine
-    Fehlermeldung angezeigt werden.
+- Bereits vorhandener Login bei Registrierung: hier muss dem User eine
+  Fehlermeldung angezeigt werden.
 
 Generell ist dieser Bereich einer derjenigen, bei denen Usability und
 Security potentiell konträre Ziele besitzen.
@@ -129,26 +125,26 @@ Testbereichs (Buchstaben, Zahlen, Sonderzeichen) oder verwenden
 vorbereitete Passwortlisten. Diese können auf verschiedene Arten
 bereitgestellt werden:
 
--   Sammlung von Passwörtern von etwaigen Password Leaks.
+- Sammlung von Passwörtern von etwaigen Password Leaks.
 
--   Automatisch generierte Liste basierend auf den öffentlichen Seiten
-    der zu testenden Homepage.
+- Automatisch generierte Liste basierend auf den öffentlichen Seiten
+  der zu testenden Homepage.
 
--   Deep-Learning basierte Verfahren, die basierend auf existierenden
-    Passwortlisten neue Passwortlisten generieren.
+- Deep-Learning basierte Verfahren, die basierend auf existierenden
+  Passwortlisten neue Passwortlisten generieren.
 
 Gegenmaßnahmen zielen auf eine Verlangsamung des Angriffs bzw. auf eine
 Sperre betroffener Konten ab:
 
--   Rate-Limits bzw. Verlangsamung bei Fehlerseiten.
+- Rate-Limits bzw. Verlangsamung bei Fehlerseiten.
 
--   Sperre von Benutzeraccounts bzw. IP-Adressen nach einer definierten
-    Anzahl von Fehlversuchen.
+- Sperre von Benutzeraccounts bzw. IP-Adressen nach einer definierten
+  Anzahl von Fehlversuchen.
 
--   Einsatz einer Mehrfaktorauthentication. Durch die benötigte manuelle
-    Interaktion wird eine Brute-Force Attacke ausgebremst. Hier ist die
-    Wahl eines geeigneten Faktors und eine geeignete Integration
-    notwendig.
+- Einsatz einer Mehrfaktorauthentication. Durch die benötigte manuelle
+  Interaktion wird eine Brute-Force Attacke ausgebremst. Hier ist die
+  Wahl eines geeigneten Faktors und eine geeignete Integration
+  notwendig.
 
 ### Logout
 
@@ -171,12 +167,12 @@ Wird ein Benutzeraccount gelöscht oder deaktiviert stellt sich die
 Frage, wie mit den gelöschten Daten des Benutzers umzugehen ist. Wurde
 ein Account gesperrt muss dafür Sorge getragen werden, dass:
 
--   bereits ausgestellte Recovery-Codes den Account nicht reaktivieren
-    können
+- bereits ausgestellte Recovery-Codes den Account nicht reaktivieren
+  können
 
--   aktive Benutzersessions beendet werden
+- aktive Benutzersessions beendet werden
 
--   der Benutzer sich nicht mehr einloggen kann
+- der Benutzer sich nicht mehr einloggen kann
 
 Die Hauptfrage bei einem zu löschenden Account ist, welche Daten
 gelöscht, und welche Daten persistiert werden müssen (beides primär aus
@@ -191,23 +187,20 @@ werden. Falls dies nicht möglich ist, müssen beim Umgang mit Passwörtern
 gewisse Grundregeln eingehalten werden.
 
 Genauere Informationen zur sicheren Speicherung von Passwörtern können
-im Kapitel *Sensitive Data Exposure*
-(<a href="#password_storage" data-reference-type="ref"
-data-reference="password_storage">[password_storage]</a>) gefunden
-werden.
+im Kapitel *Sensitive Data Exposure* gefunden werden.
 
 Prinzipiell können Angriffe gegen Passwörter in drei Kategorien
 eingeteilt werden:
 
-1.  Disclosure tritt auf, wenn das Passwort unbeabsichtigt
-    “veröffentlicht” wird. Dies kann z.B. durch Notizzettel, Wikis oder
-    auch durch phishing geschehen.
+1. Disclosure tritt auf, wenn das Passwort unbeabsichtigt
+   “veröffentlicht” wird. Dies kann z.B. durch Notizzettel, Wikis oder
+   auch durch phishing geschehen.
 
-2.  Online Attacks sind Angriffe gegenüber einem Login-System. Diese
-    können durch das Websystem erkannt werden.
+2. Online Attacks sind Angriffe gegenüber einem Login-System. Diese
+   können durch das Websystem erkannt werden.
 
-3.  Offline Attacks sind Angriffe gegenüber geleakten Passwort-Hashes.
-    Diese können durch das Websystem nicht erkannt werden.
+3. Offline Attacks sind Angriffe gegenüber geleakten Passwort-Hashes.
+   Diese können durch das Websystem nicht erkannt werden.
 
 ### Passwort-Qualität
 
@@ -216,23 +209,23 @@ gewisse Mindestanforderungen erfüllen. 2018 wurden die [NIST 800-63-3:
 Digital Identity Guidelines](https://pages.nist.gov/800-63-3/) veröffentlicht, diese inkludieren mehrere
 Best-Pracises im Umgang mit Passwörtern:
 
--   Minimale Passwortlänge: 8 Zeichen. Ein Unicode Zeichen ist ein
-    Zeichen.
+- Minimale Passwortlänge: 8 Zeichen. Ein Unicode Zeichen ist ein
+  Zeichen.
 
--   Falls ein Benutzer ein längeres Passwort eingibt, müssen mindestens
-    64 Zeichen gespeichert werden.
+- Falls ein Benutzer ein längeres Passwort eingibt, müssen mindestens
+  64 Zeichen gespeichert werden.
 
--   Das periodische Neusetzen von Passwörtern wird nicht mehr gefordert.
-    Diese Maßnahme bewirkte schwächere Passwörter.
+- Das periodische Neusetzen von Passwörtern wird nicht mehr gefordert.
+  Diese Maßnahme bewirkte schwächere Passwörter.
 
--   Komplexitätsregeln bei Passwörtern (mindestens ein Sonderzeichen und
-    ähnliches) wurden entfernt.
+- Komplexitätsregeln bei Passwörtern (mindestens ein Sonderzeichen und
+  ähnliches) wurden entfernt.
 
--   Neu eingegebene Passwörter müssen gegen eine Liste von bekannten
-    Passwort-Leaks und gegen bekannte Standard bzw. häufig genutzte
-    Passwörter getestet werden.
+- Neu eingegebene Passwörter müssen gegen eine Liste von bekannten
+  Passwort-Leaks und gegen bekannte Standard bzw. häufig genutzte
+  Passwörter getestet werden.
 
--   Passwort-Hints dürfen nicht mehr verwendet werden.
+- Passwort-Hints dürfen nicht mehr verwendet werden.
 
 Um eingegebene Passwörter gegen eine Liste von geleakten Passwörtern zu
 überprüfen, kann z.B. von [Have I Been Pwned](https://haveibeenpwned.com)
@@ -258,17 +251,17 @@ des Passwort-Resets geben. Dies wird normalerweise über eine Email mit
 einem Passwort-Reset Link implementiert. Folgende
 Implementierungshinweise:
 
--   Dem User sein bestehendes Passwort zuzusenden ist ein epic fail da
-    hierfür das Passwort unverschlüsselt gespeichert werden müsste.
+- Dem User sein bestehendes Passwort zuzusenden ist ein epic fail da
+  hierfür das Passwort unverschlüsselt gespeichert werden müsste.
 
--   Dem Benutzer ein neues Passwort per Email zuzuschicken sollte
-    vermieden werden.
+- Dem Benutzer ein neues Passwort per Email zuzuschicken sollte
+  vermieden werden.
 
--   Der generierte Link sollte nur einmalig verwendbar sein, und auch
-    nur das Updaten des aktuellen (vergessenen) Passworts erlauben.
+- Der generierte Link sollte nur einmalig verwendbar sein, und auch
+  nur das Updaten des aktuellen (vergessenen) Passworts erlauben.
 
--   der generierte Link sollte nur für den betreffenden User verwendbar
-    sein.
+- der generierte Link sollte nur für den betreffenden User verwendbar
+  sein.
 
 Hinweis: die aktuellen NIST Richtlinien verbieten explizit die
 Verwendung von “Passwort Fragen” (“In welcher Straße bist du
@@ -290,12 +283,12 @@ Emails oder SMS.
 Der Benutzer sollte die Möglichkeit besitzen, sein Passwort neu zu
 setzen. Für eine sichere Operation muss folgendes gegeben sein:
 
--   der User muss aktuell authenticated sein
+- der User muss aktuell authenticated sein
 
--   der Benutzer kann nur sein eigenes Passwort ändern
+- der Benutzer kann nur sein eigenes Passwort ändern
 
--   im Zuge der Operation, die das neue Passwort setzt, muss auch das
-    alte Passwort erfragt werden.
+- im Zuge der Operation, die das neue Passwort setzt, muss auch das
+  alte Passwort erfragt werden.
 
 Das bestehende Password wird erfragt, damit ein Angreifer mit Zugriff
 auf die Session nicht ein neues Passwort setzen kann (und dadurch
@@ -374,17 +367,17 @@ Abkürzung FIDO steht dabei für *Fast IDentity Online*.
 
 Ende 2014 wurde FIDO 1.0 veröffentlicht, dieser Standard umfasste:
 
--   U2F (Universal Second Factor) standardisiert den Einsatz von
-    physikalischen Tokens (wie z.B. einem Yubikey). Sofern die
-    Webapplikation und der verwendete Webbrowser U2F unterstützen kann
-    der Benutzer sich mit einem Hardware-Token authentifizieren (z.B.
-    durch Knopfdruck auf einem USB-Stick oder durch Antappen eines
-    NFC/BLE Tokens).
+- U2F (Universal Second Factor) standardisiert den Einsatz von
+  physikalischen Tokens (wie z.B. einem Yubikey). Sofern die
+  Webapplikation und der verwendete Webbrowser U2F unterstützen kann
+  der Benutzer sich mit einem Hardware-Token authentifizieren (z.B.
+  durch Knopfdruck auf einem USB-Stick oder durch Antappen eines
+  NFC/BLE Tokens).
 
--   UAF (Universal Authentication Framework) dient zur Implementierung
-    eines Passwort-losen Logins. Der Benutzer muss über ein
-    UAF-kompatibles Endgerät verfügen (z.B. Windows 10) und registriert
-    quasi sein Endgerät bei der Webapplikation.
+- UAF (Universal Authentication Framework) dient zur Implementierung
+  eines Passwort-losen Logins. Der Benutzer muss über ein
+  UAF-kompatibles Endgerät verfügen (z.B. Windows 10) und registriert
+  quasi sein Endgerät bei der Webapplikation.
 
 Das Grundprinzip basiert auf public key Kryptographie. Wenn ein
 Authenticator (z.B. Android Gerät) als Gerät eines Benutzers registriert
@@ -409,27 +402,27 @@ dem FIDO U2F Standard entspricht.
 Wird FIDO mit TOTP verglichen, können konzeptionelle Unterschiede
 erkannt werden:
 
--   FIDO1/2 überträgt nur einen öffentlichen Schlüssel während der
-    Registrierung eines neuen Authenticators. TOTP überträgt ein shared
-    secret. Bei FIDO verlässt der geheime Schlüssel niemals den
-    Authenticator.
+- FIDO1/2 überträgt nur einen öffentlichen Schlüssel während der
+  Registrierung eines neuen Authenticators. TOTP überträgt ein shared
+  secret. Bei FIDO verlässt der geheime Schlüssel niemals den
+  Authenticator.
 
--   TOTP benötigt im Gegensatz zu FIDO während der Authentifizierung
-    keine aktive Netzwerkverbindung zwischen Authenticator und Service.
-    Stattdessen benötigt TOTP eine synchronisierte Systemzeit zwischen
-    allen beteiligten Parteien.
+- TOTP benötigt im Gegensatz zu FIDO während der Authentifizierung
+  keine aktive Netzwerkverbindung zwischen Authenticator und Service.
+  Stattdessen benötigt TOTP eine synchronisierte Systemzeit zwischen
+  allen beteiligten Parteien.
 
--   Da bei FIDO der geheime Schlüssel nicht den Authenticator verlässt,
-    gibt es ein Pairing zwischen dem Device und dem Service. Bei TOTP
-    kann ein Benutzer das idente shared secret mit mehreren
-    Authenticators verwenden, eine Zuordnung zu einem dedizierten
-    Authenticator ist daher nicht möglich.
+- Da bei FIDO der geheime Schlüssel nicht den Authenticator verlässt,
+  gibt es ein Pairing zwischen dem Device und dem Service. Bei TOTP
+  kann ein Benutzer das idente shared secret mit mehreren
+  Authenticators verwenden, eine Zuordnung zu einem dedizierten
+  Authenticator ist daher nicht möglich.
 
--   TOTP besitzt keine Hardware-Requirements und kann daher gratis in
-    Software implementiert werden. Während FIDO ein freier Standard ist,
-    setzt es einen Hardware-Token voraus — dadurch ist der Einsatz von
-    FIDO mit Hardware-Kosten verbunden und ist tendenziell nicht
-    “gratis”.
+- TOTP besitzt keine Hardware-Requirements und kann daher gratis in
+  Software implementiert werden. Während FIDO ein freier Standard ist,
+  setzt es einen Hardware-Token voraus — dadurch ist der Einsatz von
+  FIDO mit Hardware-Kosten verbunden und ist tendenziell nicht
+  “gratis”.
 
 ## Authentication von Operationen
 
@@ -500,27 +493,27 @@ Risiko zu senken wurden als IDs große Zufallszahlen gewählt.
 
 ## Reflektionsfragen
 
-1.  Was versteht man unter Multi-Faktor-Authentication?
+1. Was versteht man unter Multi-Faktor-Authentication?
 
-2.  Wie funktionieren TOTP und FIDO U2F? Worin liegen konzeptionelle
-    Unterschiede?
+2. Wie funktionieren TOTP und FIDO U2F? Worin liegen konzeptionelle
+   Unterschiede?
 
-3.  Welche Regeln sollten bei der Speicherung von Passwörtern und zu der
-    Sicherung der Qualität der Passwörter beachtet werden?
+3. Welche Regeln sollten bei der Speicherung von Passwörtern und zu der
+   Sicherung der Qualität der Passwörter beachtet werden?
 
-4.  Was ist der Unterschied zwischen Identification und Authentication?
-    Nenne zumindest vier Beispiele wie ein Benutzer identifiziert werden
-    kann.
+4. Was ist der Unterschied zwischen Identification und Authentication?
+   Nenne zumindest vier Beispiele wie ein Benutzer identifiziert werden
+   kann.
 
-5.  Wie sollte ein Login-Formular gestaltet sein? Von welchen Techniken
-    sollte man Abstand nehmen?
+5. Wie sollte ein Login-Formular gestaltet sein? Von welchen Techniken
+   sollte man Abstand nehmen?
 
-6.  Was ist eine User Enumeration und wie kann man sich dagegen
-    schützen? Was sind komplexere Applikationsfunktionen die schwer
-    gegenüber User Enumeration absicherbar sind?
+6. Was ist eine User Enumeration und wie kann man sich dagegen
+   schützen? Was sind komplexere Applikationsfunktionen die schwer
+   gegenüber User Enumeration absicherbar sind?
 
-7.  Was sind Brute-Force Angriffe und wie werden die dabei verwendeten
-    Daten erzeugt? Welche Gegenmaßnahmen gibt es?
+7. Was sind Brute-Force Angriffe und wie werden die dabei verwendeten
+   Daten erzeugt? Welche Gegenmaßnahmen gibt es?
 
-8.  Auf welche Gefahren sollten bei der Implementierung der
-    Passwort-Vergessen Funktion geachtet werden?
+8. Auf welche Gefahren sollten bei der Implementierung der
+   Passwort-Vergessen Funktion geachtet werden?

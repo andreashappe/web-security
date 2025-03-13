@@ -93,36 +93,40 @@ Operationen komplexe Sicherheitsfragen aufwerfen können. Bei dem
 konkreten Beispiel sollen Benutzerdaten aktualisiert werden. Hierfür
 wird folgende Update-Operation aufgerufen:
 
-    POST /user/update/1 HTTP/1.1
+```http
+POST /user/update/1 HTTP/1.1
+```
 
 Als Parameter wird ein JSON-String mit den neuen Werten übergeben:
 
-    {
-        "id" : "1",
-        "name" : "happe"
-    }
+```json
+{
+    "id" : "1",
+    "name" : "happe"
+}
+```
 
 Bei diesem Beispiel fallen folgende sicherheitsrelevanten Fragen an:
 
--   kann ich durch Setzen einer anderen ID (statt 1) in der URL auf
-    einen anderen Datensatz schreibend zugreifen?
+- kann ich durch Setzen einer anderen ID (statt 1) in der URL auf
+  einen anderen Datensatz schreibend zugreifen?
 
--   was passiert, wenn man die ID im Datensatz ändert? Teilweise
-    überprüfen Webapplikationen nur die ID innerhalb der URL und
-    ignorieren die IDs innerhalb des Datensatzes. Mit Glück kann man
-    diesen Missmatch zum Überschreiben anderer Datensätze verwenden.
+- was passiert, wenn man die ID im Datensatz ändert? Teilweise
+  überprüfen Webapplikationen nur die ID innerhalb der URL und
+  ignorieren die IDs innerhalb des Datensatzes. Mit Glück kann man
+  diesen Missmatch zum Überschreiben anderer Datensätze verwenden.
 
--   was passiert, wenn im Datensatz keine ID vorkommt und der Angreifer
-    manuell ein ID-Element in das JSON-Dokument hinzufügt?
+- was passiert, wenn im Datensatz keine ID vorkommt und der Angreifer
+  manuell ein ID-Element in das JSON-Dokument hinzufügt?
 
--   was passiert, wenn der Angreifer ein neues JSON-Element namens
-    *“Admin”: “true”* hinzufügt?
+- was passiert, wenn der Angreifer ein neues JSON-Element namens
+  *“Admin”: “true”* hinzufügt?
 
--   was passiert, wenn der Angreifer statt HTTP POST eine HTTP GET
-    Operation verwendet? HTTP GET sollte eigentlich eine read-only
-    Operation sein, deswegen werden GET requests teilweise von
-    Web-Application Firewalls nicht kontrolliert und man kann auf diese
-    Weise Firewall-Regeln umgehen.
+- was passiert, wenn der Angreifer statt HTTP POST eine HTTP GET
+  Operation verwendet? HTTP GET sollte eigentlich eine read-only
+  Operation sein, deswegen werden GET requests teilweise von
+  Web-Application Firewalls nicht kontrolliert und man kann auf diese
+  Weise Firewall-Regeln umgehen.
 
 ### Mass-Assignments
 
@@ -140,8 +144,10 @@ gemapped und aktualisiert.
 
 In Ruby on Rails würde der betroffene Code folgendermaßen aussehen:
 
-        @user = User.find(params[:id])
-        @user.update(params[:user])
+```ruby
+@user = User.find(params[:id])
+@user.update(params[:user])
+```
 
 Die erste Zeile des Beispiels verwendet den übergebenen *id* Parameter
 um aus der Datenbank ein User-Objekt zu laden. In der zweiten Zeile
@@ -161,8 +167,10 @@ Ablehnen von Attributen und die explizite Freigabe einzelner Attribute
 
 In Ruby on Rails würde der betroffene Code folgendermaßen aussehen:
 
-        @user = User.find(params[:id])
-        @user.update(params.require(:user).permit(:full_name))
+```ruby
+@user = User.find(params[:id])
+@user.update(params.require(:user).permit(:full_name))
+```
 
 In diesem Fall werden nur die Felder *full\_name* für das Objektes
 *user* mittels mass-assignment aktualisiert.
@@ -177,8 +185,7 @@ werden.
 
 Beispiel: eine Applikation verwaltet Rechnungen, jede Rechnung hat einen
 Benutzer als Autor. Mittels einer Update-Operation kann eine Rechnung
-bearbeitet werden. Dies geschieht mittels der Operation
-<a href="/invoice/1/update" class="uri">/invoice/1/update</a>, in der
+bearbeitet werden. Dies geschieht mittels der Operation `/invoice/1/update`, in der
 Applikation ist der gerade angemeldete autorisierte User als
 *current\_user* bekannt, mittels *current\_user.invoices* kann man auf
 die Rechnungen des aktuellen Users zugreifen, mittels *Invoice* auf alle
@@ -186,12 +193,14 @@ Rechnungen die dem System bekannt sind.
 
 Die Update-Operation sollte nun folgendermaßen aussehen:
 
-        # hier sollte NICHT Invoice.find(params[:id]) stehen
-        @invoice = current_user.invoices.find(params[:id])
+```ruby
+# hier sollte NICHT Invoice.find(params[:id]) stehen
+@invoice = current_user.invoices.find(params[:id])
 
-        # normaler Update-Code
-        @invoice.update(the_data_which_will_be_updated)
-        @invoice.save
+# normaler Update-Code
+@invoice.update(the_data_which_will_be_updated)
+@invoice.save
+```
 
 Durch die Verwendung des User-Scopes wird implizit der Zugriff auf
 Rechnungen des aktuellen Benutzers erzwungen. Dadurch müssen
@@ -215,23 +224,22 @@ Operation eigentlich nicht mehr ausführen dürfe.
 
 ## Reflektionsfragen
 
-1.  Erkläre den Unterschied zwischen Identifikation, Authentication und
-    Authorization?
+1. Erkläre den Unterschied zwischen Identifikation, Authentication und
+   Authorization?
 
-2.  Was versteht man unter Authorization? Wann und wo sollte diese
-    durchgeführt werden? Welches Sicherheitsproblem versteht man unter
-    Insecure Direct Object Reference bzw. unter Forced Browsing?
+2. Was versteht man unter Authorization? Wann und wo sollte diese
+   durchgeführt werden? Welches Sicherheitsproblem versteht man unter
+   Insecure Direct Object Reference bzw. unter Forced Browsing?
 
-3.  Welche Probleme können im Zusammenhang mit Mass-Assignment
-    auftreten?
+3. Welche Probleme können im Zusammenhang mit Mass-Assignment
+   auftreten?
 
-4.  Gegeben ein Webshop mit einem Downloadlink für Rechnungen
-    <http://shop.local/invoices/1/download>. Welche
-    sicherheitsrelevanten Fehler können hier nun auftreten?
+4. Gegeben ein Webshop mit einem Downloadlink für Rechnungen
+   <http://shop.local/invoices/1/download>. Welche
+   sicherheitsrelevanten Fehler können hier nun auftreten?
 
-5.  Gegeben eine Profil-Updatefunktion welche als POST
-    <a href="/user/1/update" class="uri">/user/1/update</a>
-    implementiert wurde, als Parameter werden die Felder *id*, *email*,
-    *new\_password* und *rolle* (mit Wert *user*) übergeben. Erkläre
-    zumindest drei Sicherheitsprobleme die während des Updates eines
-    Benutzers auftreten können.
+5. Gegeben eine Profil-Updatefunktion welche als POST
+   `/user/1/update` implementiert wurde, als Parameter werden die Felder *id*, *email*,
+   *new\_password* und *rolle* (mit Wert *user*) übergeben. Erkläre
+   zumindest drei Sicherheitsprobleme die während des Updates eines
+   Benutzers auftreten können.

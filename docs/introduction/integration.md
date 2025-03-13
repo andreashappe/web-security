@@ -64,14 +64,14 @@ verwendet wird) hoch. In Abhängigkeit von der verwendeten
 Programmiersprache, der verwendeten Paketverwaltung und dessen
 Konfiguration können zwei potentielle Schwachstellen auftreten:
 
-1.  Öffentliche Quelle werden gegenüber privaten Quellen bevorzugt: es
-    wrid nun der Schadcode aus dem öffentlichen Repository geladen.
+1. Öffentliche Quelle werden gegenüber privaten Quellen bevorzugt: es
+   wrid nun der Schadcode aus dem öffentlichen Repository geladen.
 
-2.  Bei der Auswahl der Bibliothek aus internen und öffentlichen Quellen
-    ,,gewinnt” das Paket mit der höchsten Version. In diesem Fall muss
-    der Angreier nur ein Paket mit einer höheren Versionnummer in das
-    öffentliche Repository hochladen um seinen Schadcode in die
-    Opfersoftware zu integrieren.
+2. Bei der Auswahl der Bibliothek aus internen und öffentlichen Quellen
+   ,,gewinnt” das Paket mit der höchsten Version. In diesem Fall muss
+   der Angreier nur ein Paket mit einer höheren Versionnummer in das
+   öffentliche Repository hochladen um seinen Schadcode in die
+   Opfersoftware zu integrieren.
 
 ## Insufficient Logging and Monitoring
 
@@ -83,26 +83,26 @@ Angreifers und die betroffenen Daten zu erkennen.
 
 Folgende groben Anforderungen an das Log-System werden gestellt:
 
--   Es muss mit verteilten Applikationen umgehen können. Eine
-    Webapplikation ist potentiell auf mehrere Computersysteme verteilt
-    (Webserver, Applikationsserver, Datenbankserver). Die Logdaten der
-    gesamten Systeme sollten an einer Stelle aggregiert werden.
+- Es muss mit verteilten Applikationen umgehen können. Eine
+  Webapplikation ist potentiell auf mehrere Computersysteme verteilt
+  (Webserver, Applikationsserver, Datenbankserver). Die Logdaten der
+  gesamten Systeme sollten an einer Stelle aggregiert werden.
 
--   Es muss die Integrität der Logdaten schützen: ein Angreifer sollte
-    keine Möglichkeit besitzen, die geloggten Daten zu beeinflussen.
-    Würden z.B. Logdaten direkt am Webserver gespeichert werden, könnte
-    ein Angreifer der den Webserver gehackt hat, ebenso die Logdaten
-    modifizieren. Dies impliziert, dass der Log-Server über eine genau
-    definierte API erreichbar sein sollte.
+- Es muss die Integrität der Logdaten schützen: ein Angreifer sollte
+  keine Möglichkeit besitzen, die geloggten Daten zu beeinflussen.
+  Würden z.B. Logdaten direkt am Webserver gespeichert werden, könnte
+  ein Angreifer der den Webserver gehackt hat, ebenso die Logdaten
+  modifizieren. Dies impliziert, dass der Log-Server über eine genau
+  definierte API erreichbar sein sollte.
 
--   Es muss die Vertraulichkeit der Daten schützen. Da der Logserver
-    Detailinformationen über betriebliche Abläufe speichert, müssen
-    diese Daten mindestens ebenso sicher wie die ursprünglichen Daten
-    gespeichert werden.
+- Es muss die Vertraulichkeit der Daten schützen. Da der Logserver
+  Detailinformationen über betriebliche Abläufe speichert, müssen
+  diese Daten mindestens ebenso sicher wie die ursprünglichen Daten
+  gespeichert werden.
 
--   Das Log-System muss Möglichkeiten zur nachträglichen Auswertung der
-    gesammelten Daten bieten. Bonuspunkte, wenn man ein automatisiertes
-    Monitoring mit dem Log-System betreiben kann.
+- Das Log-System muss Möglichkeiten zur nachträglichen Auswertung der
+  gesammelten Daten bieten. Bonuspunkte, wenn man ein automatisiertes
+  Monitoring mit dem Log-System betreiben kann.
 
 Die jeweiligen loggenden Systeme sollten alle sicherheitsrelevanten
 Events (z.B. Input Validation Fehler, Authentication Fehler,
@@ -125,23 +125,23 @@ Format vermieden.
 
 Welche Daten sollten pro Event erfasst werden?
 
--   Wann hat sich der Vorfall ereignet? Bei einer verteilten Applikation
-    sollte hier darauf geachtet werden, dass Timestamps die Zeitzone
-    beinhalten (und auch auf Zeitumstellungen achten). Grundlage für das
-    temporale korrelieren von Events ist es, dass alle beteiligten
-    Server eine idente Systemzeit besitzen (z.B. durch die Verwendung
-    von ntp).
+- Wann hat sich der Vorfall ereignet? Bei einer verteilten Applikation
+  sollte hier darauf geachtet werden, dass Timestamps die Zeitzone
+  beinhalten (und auch auf Zeitumstellungen achten). Grundlage für das
+  temporale korrelieren von Events ist es, dass alle beteiligten
+  Server eine idente Systemzeit besitzen (z.B. durch die Verwendung
+  von ntp).
 
--   Wo ist das Event passiert? Hierfür können Systemnamen, Servicenamen,
-    Containernamen oder Applikationsnamen verwendet werden.
+- Wo ist das Event passiert? Hierfür können Systemnamen, Servicenamen,
+  Containernamen oder Applikationsnamen verwendet werden.
 
--   Für welchen Benutzer ist das Event passiert? Hier können
-    Systembenutzer (mit denen das Service läuft) oder feingranular der
-    gerade eingeloggte Benutzer protokolliert werden.
+- Für welchen Benutzer ist das Event passiert? Hier können
+  Systembenutzer (mit denen das Service läuft) oder feingranular der
+  gerade eingeloggte Benutzer protokolliert werden.
 
--   Was ist passiert? Dies wird immer applikations- und event-spezifisch
-    sein. Viele Systeme verwenden zumindest eine idente Klassifizierung
-    der Wichtigkeit des Events.
+- Was ist passiert? Dies wird immer applikations- und event-spezifisch
+  sein. Viele Systeme verwenden zumindest eine idente Klassifizierung
+  der Wichtigkeit des Events.
 
 Die Verwendung von personenbezogenen Daten kann das Logging
 verkomplizieren. Ein Unternehmen sollte klare Regeln erstellen, welche
@@ -316,22 +316,22 @@ finished product*”.
 Häufiger wird zwischen verschiedenen Ansätzen um Security einzubauen
 unterschieden:
 
--   DevOpsSec: es wird ein Produkt entwickelt, danach wird die
-    Administration durchgeführt. Final wird Security gewährleistet: ein
-    Beispiel dafür wäre es, dass nach Inbetriebnahme das Security-Team
-    Security-Patches einspielt. Das klassische Beispiel wäre das
-    Anpassen und der Betrieb von Standardsoftware.
+- DevOpsSec: es wird ein Produkt entwickelt, danach wird die
+  Administration durchgeführt. Final wird Security gewährleistet: ein
+  Beispiel dafür wäre es, dass nach Inbetriebnahme das Security-Team
+  Security-Patches einspielt. Das klassische Beispiel wäre das
+  Anpassen und der Betrieb von Standardsoftware.
 
--   DevSecOps: zuerst wird entwickelt, danach wird Security betrachtet
-    und danach die Administration fortgesetzt. Dieser Ansatz wird
-    aktuell (2019) häufig gesehen und ist zumindest besser als die
-    Security generell zu ignorieren. Ein Beispiel hierfür wäre es, die
-    Inbetriebnahme von der erfolgreichen Durchführung einer
-    Sicherheitsüberprüfung abhängig zu machen.
+- DevSecOps: zuerst wird entwickelt, danach wird Security betrachtet
+  und danach die Administration fortgesetzt. Dieser Ansatz wird
+  aktuell (2019) häufig gesehen und ist zumindest besser als die
+  Security generell zu ignorieren. Ein Beispiel hierfür wäre es, die
+  Inbetriebnahme von der erfolgreichen Durchführung einer
+  Sicherheitsüberprüfung abhängig zu machen.
 
--   SecDevOps: betrachtet initial die Security (z.B. schon während der
-    Planung der Software). Dadurch durchdringt Security die gesamte
-    Entwicklung als auch die Administration.
+- SecDevOps: betrachtet initial die Security (z.B. schon während der
+  Planung der Software). Dadurch durchdringt Security die gesamte
+  Entwicklung als auch die Administration.
 
 Security bewirkt meistens einen Mehraufwand für die Entwickler. Um
 diesen Mehraufwand zu begrenzen, wird auch hier (im DevOps-Spirit) stark
@@ -401,14 +401,14 @@ einer Applikation mittels *OWASP ZAP* unter Zuhilfename des
 
 ## Reflektionsfragen
 
-1.  Was ist der Grundgedanke dabei, DevOps und Security zu verbinden?
+1. Was ist der Grundgedanke dabei, DevOps und Security zu verbinden?
 
-2.  Welche Sicherheitsmaßnahmen können im Zuge von SecDevOps
-    automatisiert durchgeführt werden? Erläutere die jeweiligen
-    Maßnahmen.
+2. Welche Sicherheitsmaßnahmen können im Zuge von SecDevOps
+   automatisiert durchgeführt werden? Erläutere die jeweiligen
+   Maßnahmen.
 
-3.  Wie kann während der Continuous Integration (CI) oder Continuous
-    Delivery (CD) auf die Sicherheit eines Softwareprodukts Rücksicht
-    genommen werden?
+3. Wie kann während der Continuous Integration (CI) oder Continuous
+   Delivery (CD) auf die Sicherheit eines Softwareprodukts Rücksicht
+   genommen werden?
 
-4.  Was sind Supply-Chain Angriffe und wie können diese geschehen?
+4. Was sind Supply-Chain Angriffe und wie können diese geschehen?

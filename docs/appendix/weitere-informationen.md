@@ -44,9 +44,7 @@ kann, kann nur erlebt werden. Glückerlicher Weise gibt es mittlerweile
 eine Vielzahl an gratis bzw. freemium-basierten Webangeboten welche
 genau diese Gelegenheit bieten.
 
-Eine Auflistung dieser kann in Tabelle
-<a href="#tbl:online_hacking" data-reference-type="ref"
-data-reference="tbl:online_hacking">1.1</a> vorgefunden werden[7]. Die
+Eine Auflistung dieser kann in folgender Tabelle vorgefunden werden[7]. Die
 Spalten ,,online”, ,,VPN” und ,,VM” sollten darstellen, wie das
 jeweilige Angebot genutzt werden kann. ,,Online” sind Kurse, bei denen
 eine verwundbare Webapplikation direkt über den Browser des Benutzers
@@ -88,9 +86,7 @@ Suche im Internet gefunden werden.
 OWASP selbst ist in Städte-zentrische Chapters organisiert, ich bin zum
 Beispiel bei dem [OWASP Chapter Klagenfurt](https://www.meetup.com/owasp-klagenfurt-chapter/) (Austria) aktiv.
 
-
 [7] Ich habe mich bei dieser Liste auf Angebote welche, zumindest
 teilweise, gratis nutzbar sind, beschränkt, daher fehlt hier z.B.
-Offensive Security (<a href="www.offensive-security.com"
-class="uri">www.offensive-security.com</a>) obwohl diese von mir hoch
-geschätzt werden.
+[Offensive Security](https://www.offensive-security.com)
+obwohl diese von mir hoch geschätzt werden.

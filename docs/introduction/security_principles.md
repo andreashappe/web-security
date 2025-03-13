@@ -20,22 +20,22 @@ langfristige Wartungsaufwand reduziert.
 Die Minimierung kann und sollte an mehreren Stellen durchgeführt werden,
 einige Beispiele:
 
--   Reduktion benötigter Operationen: ist eine Operation wirklich für
-    den Kunden notwendig oder könnte der Kundenwunsch mit bereits
-    implementierten Operationen ebenso befriedigt werden?
+- Reduktion benötigter Operationen: ist eine Operation wirklich für
+  den Kunden notwendig oder könnte der Kundenwunsch mit bereits
+  implementierten Operationen ebenso befriedigt werden?
 
--   Reduktion der gesammelten und gespeicherten Daten: was ist das
-    minimale Datenset, dass für die Bereitstellung der Operationen
-    benötigt wird. Dies entspricht auch der Datenminimierung die durch
-    die DSGVO[1] vorgeschrieben wird. Hier gibt es einen Wandel der
-    Kultur: von big-data (alles speichern, vielleicht kann man das
-    später verwenden) Richtung toxic-data (Daten sind gefährlich, wie
-    komme ich mit möglichst wenig Daten aus).
+- Reduktion der gesammelten und gespeicherten Daten: was ist das
+  minimale Datenset, dass für die Bereitstellung der Operationen
+  benötigt wird. Dies entspricht auch der Datenminimierung die durch
+  die DSGVO[1] vorgeschrieben wird. Hier gibt es einen Wandel der
+  Kultur: von big-data (alles speichern, vielleicht kann man das
+  später verwenden) Richtung toxic-data (Daten sind gefährlich, wie
+  komme ich mit möglichst wenig Daten aus).
 
--   Komponentenebene: welche Komponenten sind für den Betrieb notwendig?
+- Komponentenebene: welche Komponenten sind für den Betrieb notwendig?
 
--   Funktionale Ebene: welche Funktionen und Features können innerhalb
-    von Komponenten deaktiviert werden?
+- Funktionale Ebene: welche Funktionen und Features können innerhalb
+  von Komponenten deaktiviert werden?
 
 ### Security Misconfiguration
 
@@ -47,61 +47,60 @@ Komponenten und Features vorhanden sind, die auch für die Umsetzung
 eines Kundenwunsches benötigt werden. Beispiele für Software, die nicht
 am Server vorgefunden werden sollte:
 
--   Entwicklungstools wie phpmyadmin. Diese besitzen meistens getrennte
-    Zugangsdaten (verwenden also nicht die Zugangsdaten/Berechtigungen
-    der Web-Applikation) und sind daher potentiell ein *alternate
-    channel* über den auf eine Webapplikation zugegriffen werden kann.
+- Entwicklungstools wie phpmyadmin. Diese besitzen meistens getrennte
+  Zugangsdaten (verwenden also nicht die Zugangsdaten/Berechtigungen
+  der Web-Applikation) und sind daher potentiell ein *alternate
+  channel* über den auf eine Webapplikation zugegriffen werden kann.
 
--   Debug Mode bei verwendeten Frameworks, dieser erlaubt teilweise im
-    Fehlerfall die Verwendung von interaktiven Shells direkt innerhalb
-    der Webapplikation. Dies würde es einem Angreifer erlauben, direkt
-    Programmcode abzusetzen.
+- Debug Mode bei verwendeten Frameworks, dieser erlaubt teilweise im
+  Fehlerfall die Verwendung von interaktiven Shells direkt innerhalb
+  der Webapplikation. Dies würde es einem Angreifer erlauben, direkt
+  Programmcode abzusetzen.
 
--   Debug Toolbars bei Verwendung von Frameworks. Diese erlauben es
-    zeitweise die letzten Sessions aller Benutzer anzuzeigen und
-    erleichtern auf diese Weise Identity Theft.
+- Debug Toolbars bei Verwendung von Frameworks. Diese erlauben es
+  zeitweise die letzten Sessions aller Benutzer anzuzeigen und
+  erleichtern auf diese Weise Identity Theft.
 
--   Stacktraces mit Detailinformationen im Produktivbetrieb. Ein
-    normaler Anwendern kann mit diesen Informationen nichts anfangen,
-    ein Angreifer kann durch diese allerdings genaue Systeminformationen
-    (Bibliotheksversionen, Pfade, etc.) erhalten welche weiter Angriffer
-    erleichtern können.
+- Stacktraces mit Detailinformationen im Produktivbetrieb. Ein
+  normaler Anwendern kann mit diesen Informationen nichts anfangen,
+  ein Angreifer kann durch diese allerdings genaue Systeminformationen
+  (Bibliotheksversionen, Pfade, etc.) erhalten welche weiter Angriffer
+  erleichtern können.
 
--   phpinfo.php liefert genaue Informationen über die verwendete
-    PHP-Version, verfügbare Module, System- und
-    Konfigurationsinformationen die im Produktivbetrieb nicht öffentlich
-    verfügbar sein müssen.
+- phpinfo.php liefert genaue Informationen über die verwendete
+  PHP-Version, verfügbare Module, System- und
+  Konfigurationsinformationen die im Produktivbetrieb nicht öffentlich
+  verfügbar sein müssen.
 
 Beispiele für Metadaten, die nicht am Server vorgefunden werden sollten:
 
--   Beispielscode wie z.B. ein
-    <a href="/example" class="uri">/example</a> Verzeichnis. Dieser kann
-    zeitweise ebenso Sicherheitsfehler enthalten und auf diese Weise
-    Zugang zu dem System erlauben. Auch Beispielscode ohne serverseitige
-    Exekution kann missbraucht werden, siehe z. B. DOM-basierte
-    XSS-Angriffe.
+- Beispielscode wie z.B. ein `/example` Verzeichnis. Dieser kann
+  zeitweise ebenso Sicherheitsfehler enthalten und auf diese Weise
+  Zugang zu dem System erlauben. Auch Beispielscode ohne serverseitige
+  Exekution kann missbraucht werden, siehe z. B. DOM-basierte
+  XSS-Angriffe.
 
--   .git, .svn Verzeichnisse: diese beinhalten den gesamten Source-Code
-    samt Versionshistory. Ein Angreifer kann auf diese Weise sowohl
-    interne Credentials erhalten als auch den verwendeten Source Code
-    analysieren.
+- .git, .svn Verzeichnisse: diese beinhalten den gesamten Source-Code
+  samt Versionshistory. Ein Angreifer kann auf diese Weise sowohl
+  interne Credentials erhalten als auch den verwendeten Source Code
+  analysieren.
 
--   Credentials im Dateisystem oder in Repositories. Da Repositories
-    häufig auf öffentlichen Webservern gespeichert wird (z.B. private
-    gitlab, githab oder bitbucket Repositories) gespeichert wird, können
-    diese im Falle einer Fehlkonfiguration auch potentiell öffentlich
-    zugreifbar gemacht werden. In diesem Fall besitzt ein Angreifer
-    credentials mit denen er potentiell auf sensible Aktivitäten oder
-    Daten zugreifen kann.
+- Credentials im Dateisystem oder in Repositories. Da Repositories
+  häufig auf öffentlichen Webservern gespeichert wird (z.B. private
+  gitlab, githab oder bitbucket Repositories) gespeichert wird, können
+  diese im Falle einer Fehlkonfiguration auch potentiell öffentlich
+  zugreifbar gemacht werden. In diesem Fall besitzt ein Angreifer
+  credentials mit denen er potentiell auf sensible Aktivitäten oder
+  Daten zugreifen kann.
 
--   Backup files (.bak, .tmp) innerhalb des Dateisystems, diese werden
-    z.B. durch Texteditoren angelegt. Wird z.B. auf einem PHP-System
-    eine PHP-Datei am Webserver abgelegt und ein Angreifer greift darauf
-    zu, wird der Code am Server ausgeführt und der Angreifer erhält nur
-    das Ergebnis der Operation. Falls der Angreifer eine Backup-Datei am
-    Server findet, kann er auf diese zugreifen, herunterladen und
-    analysieren und kann auf diese Weise Fehler innerhalb des Source
-    Codes suchen.
+- Backup files (.bak, .tmp) innerhalb des Dateisystems, diese werden
+  z.B. durch Texteditoren angelegt. Wird z.B. auf einem PHP-System
+  eine PHP-Datei am Webserver abgelegt und ein Angreifer greift darauf
+  zu, wird der Code am Server ausgeführt und der Angreifer erhält nur
+  das Ergebnis der Operation. Falls der Angreifer eine Backup-Datei am
+  Server findet, kann er auf diese zugreifen, herunterladen und
+  analysieren und kann auf diese Weise Fehler innerhalb des Source
+  Codes suchen.
 
 ## Least Privilege
 
@@ -198,12 +197,12 @@ the System*.
 Ein motivierter Angreifer besitzt zumeist Möglichkeiten die
 Intransparenz zu lüften:
 
--   Kauf und Reverse-Engineering der Software
+- Kauf und Reverse-Engineering der Software
 
--   Diebstahl eines Systems
+- Diebstahl eines Systems
 
--   Verlust der Obscurity durch Unfall (z.B. Selfies mit sichtbaren
-    Schlüsseln im Hintergrund)
+- Verlust der Obscurity durch Unfall (z.B. Selfies mit sichtbaren
+  Schlüsseln im Hintergrund)
 
 Analog gibt es in der Kryptographie das Kerckhoffsche Prinzip: die
 Sicherheit eines Algorithmus darf nur von der Geheimhaltung des
@@ -260,17 +259,17 @@ Programmcode und Daten auch in diesen Architekturen durchzuführen.
 
 ## Reflektionsfragen
 
-1.  Erläutere das Minimalprinzip mit zumindest drei Beispielen für
-    jenes.
+1. Erläutere das Minimalprinzip mit zumindest drei Beispielen für
+   jenes.
 
-2.  Erläutere Least Privilege und Separation of Duties.
+2. Erläutere Least Privilege und Separation of Duties.
 
-3.  Erläutere Defense in Depth.
+3. Erläutere Defense in Depth.
 
-4.  Erkläre den Unterschied zwischen Fail-Open und Fail-Closed.
+4. Erkläre den Unterschied zwischen Fail-Open und Fail-Closed.
 
-5.  Welche Probleme können durch die Vermischung von Applikationlogik
-    und Eingabedaten entstehen?
+5. Welche Probleme können durch die Vermischung von Applikationlogik
+   und Eingabedaten entstehen?
 
 [1] Datenschutzgrundverordnung, siehe auch
 <https://de.wikipedia.org/wiki/Datenschutz-Grundverordnung>

@@ -47,12 +47,3 @@ Studenten erkannt, und von mir ausgebessert, wurden. Wenn nicht, würde
 ich mich um ein kurzes Feedback unter [andreas@offensive.one](mailto:andreas@offensive.one)
 freuen. Ich stufe Feedback als essentiell dafür ein, dass meine zukünftigen Studenten einen guten
 Unterricht erhalten.
-
-Die aktuelle Version dieses Buchs ist unter <https://snikt.net/websec/>
-unter einer Creative-Commons Lizenz verfügbar. Der idente Inhalt wird
-auch periodisch als Amazon Kindle eBook veröffentlicht. Auf Anfrage
-einzelner Studenten ist dieses Skript auch als Buchversion verfügbar.
-Leider ist das Update eines Papierbuchs nicht so einfach möglich. Da
-Web-Technologie lebendig ist, überarbeite ich dieses Skript jedes Jahr
-neu — aus diesem Grund habe ich einen niedrigen Buchpreis gewählt und
-hoffe, dass dies als fair empfunden wird.

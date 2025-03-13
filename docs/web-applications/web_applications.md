@@ -65,11 +65,9 @@ Ein guter Unterscheidungspunkt ist, wie der Webserver erkennen kann,
 dass ein eingehender HTTP Request über einen Applikationsserver, und
 damit als Applikationscode, ausgeführt werden soll. Initial wurde dies
 primär über die Dateien im Dateisystem erkannt. Ein Beispiel: gegeben
-ein Webroot von <a href="/var/www/" class="uri">/var/www/</a> und eine
-Datei
-<a href="/var/www/operation.php" class="uri">/var/www/operation.php</a>
+ein Webroot von `/var/www/` und eine Datei `/var/www/operation.php`
 wird ein Aufruf der zugeordneten Webseite
-<https://www.example.local/operation.php> an die Datei *operation.php*
+`https://www.example.local/operation.php` an die Datei `operation.php`
 weitergeleitet und (falls PHP am Server konfiguriert wurde) als PHP
 Applikation ausgeführt. Dieser Aufbau ist fehleranfällig: falls ein
 Entwickler eine .php-Datei am Server vergisst oder ein Angreifer eine
@@ -152,17 +150,17 @@ Methoden gewährleistet werden.
 Eine einfache Webapplikation wird zumeist aus drei groben Komponenten
 bestehen:
 
--  Webserver: dient zur Bereitstellung statischer Dateien und leitet
-    dynamische Anfragen an die jeweiligen Applikationsserver weiter.
-    Webserver sind optimiert für das effiziente Zustellen statischer
-    Inhalte. Unter POSIX-Betriebssystemen wie Linux befinden sich am
-    Websever die Web-Dateien häufig im Verzeichnis `/var/www`.
+- Webserver: dient zur Bereitstellung statischer Dateien und leitet
+  dynamische Anfragen an die jeweiligen Applikationsserver weiter.
+  Webserver sind optimiert für das effiziente Zustellen statischer
+  Inhalte. Unter POSIX-Betriebssystemen wie Linux befinden sich am
+  Websever die Web-Dateien häufig im Verzeichnis `/var/www`.
 
--   Applikationsserver: beinhalten die Applikation und bieten die
-    Laufzeitumgebung der Applikation an. Die Applikation kommuniziert
-    mit einer Datenbank zur Speicherung dynamischer Daten.
+- Applikationsserver: beinhalten die Applikation und bieten die
+  Laufzeitumgebung der Applikation an. Die Applikation kommuniziert
+  mit einer Datenbank zur Speicherung dynamischer Daten.
 
--   Datenbank: beinhaltet dynamische Daten.
+- Datenbank: beinhaltet dynamische Daten.
 
 Die Bearbeitung einer Client-Anfrage durch den Applikationsserver kann
 längere Zeit benötigen. Während der Bearbeitung blockiert der
@@ -187,42 +185,42 @@ Inflation von externen Komponenten kommen, dies wird in folgender Grafik gezeigt
 
 Beispiel der Komponenten einer Webapplikation
 
--   Load-Balancer: verteilen den Traffic auf mehrere Webserver. Hier
-    kann es zu Problemen beim Session-Management kommen.
+- Load-Balancer: verteilen den Traffic auf mehrere Webserver. Hier
+  kann es zu Problemen beim Session-Management kommen.
 
--   Content Delivery Networks (CDNs): dienen zur Performancesteigerung
-    bei der Zustellung statischer Daten. Die Inhalte werden über ein
-    geographisch verteiltes Netzwerk direkt an die Clients zugestellt.
+- Content Delivery Networks (CDNs): dienen zur Performancesteigerung
+  bei der Zustellung statischer Daten. Die Inhalte werden über ein
+  geographisch verteiltes Netzwerk direkt an die Clients zugestellt.
 
--   Caching Services werden verwendet, um häufig benötigte Daten oder
-    Webseitenfragmente zwischenzuspeichern. Zumeist geschieht dies
-    in-memory, bekannte Produkte sind z.B. memcached. Ein häufiges
-    Problem ist, dass der Zugriff ohne Überprüfung der Autorisierung
-    erfolgt. Somit erhält ein Angreifer mit Zugriff auf einen Caching
-    Service potentiell auch Zugriff auf sensible Daten.
+- Caching Services werden verwendet, um häufig benötigte Daten oder
+  Webseitenfragmente zwischenzuspeichern. Zumeist geschieht dies
+  in-memory, bekannte Produkte sind z.B. memcached. Ein häufiges
+  Problem ist, dass der Zugriff ohne Überprüfung der Autorisierung
+  erfolgt. Somit erhält ein Angreifer mit Zugriff auf einen Caching
+  Service potentiell auch Zugriff auf sensible Daten.
 
--   Job Server: eine Client-Anfrage muss innerhalb kurzer Zeit
-    beantwortet werden, falls dies nicht erfolgt kann im worst-case der
-    Client-Browser die Verbindung unterbrechen. Um trotzdem langfristige
-    Operationen auszuführen, können diese nebenläufig durch einen
-    Job-Servers ausgeführt werden. Bekannte Produkte in diesem Umfeld
-    sind RabbitMQ oder Redis. Ein potentielles Problem ist, dass Jobs
-    Datenbankzugriffe benötigen und daher der Job Worker eine bestehende
-    Verbindung zur Datenbank besitzt (welche von einem Angreifer
-    ausgenutzt werden kann).
+- Job Server: eine Client-Anfrage muss innerhalb kurzer Zeit
+  beantwortet werden, falls dies nicht erfolgt kann im worst-case der
+  Client-Browser die Verbindung unterbrechen. Um trotzdem langfristige
+  Operationen auszuführen, können diese nebenläufig durch einen
+  Job-Servers ausgeführt werden. Bekannte Produkte in diesem Umfeld
+  sind RabbitMQ oder Redis. Ein potentielles Problem ist, dass Jobs
+  Datenbankzugriffe benötigen und daher der Job Worker eine bestehende
+  Verbindung zur Datenbank besitzt (welche von einem Angreifer
+  ausgenutzt werden kann).
 
--   Full-Text Search: viele Webapplikationen benötigen eine
-    Volltextsuche, diese wird teilweise über einen externen Suchserver
-    implementiert. Dieser beinhaltet eine bearbeite Version des
-    Datenbestands der Datenbank. Ein mögliches Problem sind fehlende
-    Berechtigungsüberprüfungen — während auf der Datenbank der
-    Datenzugriff zwar eingeschränkt wird, wird dies häufig innerhalb der
-    Suchdatenbank vergessen.
+- Full-Text Search: viele Webapplikationen benötigen eine
+  Volltextsuche, diese wird teilweise über einen externen Suchserver
+  implementiert. Dieser beinhaltet eine bearbeite Version des
+  Datenbestands der Datenbank. Ein mögliches Problem sind fehlende
+  Berechtigungsüberprüfungen — während auf der Datenbank der
+  Datenzugriff zwar eingeschränkt wird, wird dies häufig innerhalb der
+  Suchdatenbank vergessen.
 
--   External Services werden häufig von Webapplikationen aufgerufen bzw.
-    integriert. Ein Problem dabei ist, dass Webapplikationen häufig
-    davon ausgehen, dass externe Services sich an definierte Protokolle
-    halten.
+- External Services werden häufig von Webapplikationen aufgerufen bzw.
+  integriert. Ein Problem dabei ist, dass Webapplikationen häufig
+  davon ausgehen, dass externe Services sich an definierte Protokolle
+  halten.
 
 ## Angriffsfläche/Attack Surface
 
@@ -234,16 +232,16 @@ Angriffsfläche nicht nur die direkte Applikation, sondern auch alle
 verbundenen Funktionen und Komponenten, beinhaltet. Bei der Definition
 der Angriffsfläche sollten u.a. folgende Fragen gestellt werden:
 
--   Sind interne Anwender potentielle Angreifer? In diesem Fall wären
-    auch interne Schnittstellen Teil der Angriffsfläche.
+- Sind interne Anwender potentielle Angreifer? In diesem Fall wären
+  auch interne Schnittstellen Teil der Angriffsfläche.
 
--   Sind Administratoren potentielle Angreifer? In diesem Fall wären
-    auch etwaige Administrationswebseiten Teil der Angriffsfläche.
+- Sind Administratoren potentielle Angreifer? In diesem Fall wären
+  auch etwaige Administrationswebseiten Teil der Angriffsfläche.
 
--   Besitzt der Angreifer Zugriff auf Backups oder Logdateien?
+- Besitzt der Angreifer Zugriff auf Backups oder Logdateien?
 
--   Besitzt ein Angreifer Zugriff auf externe Services und sind daher
-    die Callbacks innerhalb der Applikation Teil der Angriffsfläche?
+- Besitzt ein Angreifer Zugriff auf externe Services und sind daher
+  die Callbacks innerhalb der Applikation Teil der Angriffsfläche?
 
 ### Wartungszuständigkeiten
 
@@ -266,24 +264,24 @@ automatisiert werden kann)?
 Durch das Outsourcing von Funktionalität in die Cloud wurde dieses
 Problem noch verschärft, folgende Grundregeln können angenommen werden:
 
--   Self-hosted Server mit eigener Applikation: hier ist der
-    Betreiber/Entwickler für die Wartung aller Komponenten (inkl.
-    Firmware, Lights-out-Management/BMC, Netzwerkinfrastruktur)
-    zuständig.
+- Self-hosted Server mit eigener Applikation: hier ist der
+  Betreiber/Entwickler für die Wartung aller Komponenten (inkl.
+  Firmware, Lights-out-Management/BMC, Netzwerkinfrastruktur)
+  zuständig.
 
--   Infrastructure-as-a-Service (IaaS): hier ist der Anbieter (z.B.
-    Amazon mit seinem EC2 Dienst) für die Hardware, Virtualisierung,
-    Firmware und Netzwerkhardware zuständig. Der eingemietete User ist
-    für Betriebssystem, Laufzeitumgebung, lokale betriebene
-    Hintergrunddienste wie z.B. Datenbanken und die Applikation
-    zuständig.
+- Infrastructure-as-a-Service (IaaS): hier ist der Anbieter (z.B.
+  Amazon mit seinem EC2 Dienst) für die Hardware, Virtualisierung,
+  Firmware und Netzwerkhardware zuständig. Der eingemietete User ist
+  für Betriebssystem, Laufzeitumgebung, lokale betriebene
+  Hintergrunddienste wie z.B. Datenbanken und die Applikation
+  zuständig.
 
--   Plattform-as-a-Service: hier ist der Anbieter (z.B. Heroku)
-    zusätzlich (zu den IaaS Dingen) noch für das Betriebssystem, die
-    Laufzeitumgebung und Hintergrundservices zuständig.
+- Plattform-as-a-Service: hier ist der Anbieter (z.B. Heroku)
+  zusätzlich (zu den IaaS Dingen) noch für das Betriebssystem, die
+  Laufzeitumgebung und Hintergrundservices zuständig.
 
--   Software-as-a-Service (SaaS): hier ist der Anbieter der Software
-    (z.B. gmail) für die Wartung aller Komponente zuständig.
+- Software-as-a-Service (SaaS): hier ist der Anbieter der Software
+  (z.B. gmail) für die Wartung aller Komponente zuständig.
 
 ## Speicherung von Passwörtern
 
@@ -411,18 +409,18 @@ Credentials Zugriff erhält.
 
 ## Reflektionsfragen
 
-1.  Was versteht man unter der Angriffsfläche? Gib mehrere Beispiele für
-    Angriffsflächen die über die reine Webapplikation hinausgehen.
+1. Was versteht man unter der Angriffsfläche? Gib mehrere Beispiele für
+   Angriffsflächen die über die reine Webapplikation hinausgehen.
 
-2.  Erkläre das Problem der Wartungszuständigkeit/Verantwortlichkeiten
-    wenn die Entwicklung und der Betrieb einer Webapplikation auf
-    mehrere Administratoren und Entwickler verteilt wird.
+2. Erkläre das Problem der Wartungszuständigkeit/Verantwortlichkeiten
+   wenn die Entwicklung und der Betrieb einer Webapplikation auf
+   mehrere Administratoren und Entwickler verteilt wird.
 
-3.  Erläutere den Unterschied zwischen impliziten und expliziten Routing
-    von Operationen am Applikationsserver.
+3. Erläutere den Unterschied zwischen impliziten und expliziten Routing
+   von Operationen am Applikationsserver.
 
-4.  Wie können Konfigurationsdaten sicher innerhalb einer Applikation
-    bereitgestellt werden?
+4. Wie können Konfigurationsdaten sicher innerhalb einer Applikation
+   bereitgestellt werden?
 
 [2] Ein Beispiel aus dem Jahr 2020 wären 10 GeForce RTX 2080 Ti
 Grafikkarten, diese erreichen z.B. 551 Giga-Hashes/Sekunde (Quelle:
