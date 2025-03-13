@@ -1,4 +1,5 @@
 site_name: Web Application Security
+repo_url: https://github.com/andreashappe/web-security
 theme:
   name: material
   features:
@@ -18,10 +19,18 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
 
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/andreashappe/web-security
+  analytics:
+    provider: google
+    property: G-8KL7RKRNSS
+
 nav:
+  - 'Intro': index.md
   - 'How to Contribute': todo.md
   - 'Einführung':
-    - 'Intro': index.md
     - 'Grundprinzipien': introduction/security_principles.md
     - 'Sicherheit als Prozess': introduction/security_as_process.md
     - 'Integration mit dem Umfeld': introduction/integration.md
