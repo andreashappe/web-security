@@ -44,10 +44,8 @@ offiziell höchst-nervös veröffentlicht.
 
 Ich hoffe, dass die schlimmsten Missverständnisse bereits durch meine
 Studenten erkannt, und von mir ausgebessert, wurden. Wenn nicht, würde
-ich mich um ein kurzes Feedback unter
-<a href="mailto:andreashappe@snikt.net"
-class="uri">mailto:andreashappe@snikt.net</a> freuen. Ich stufe Feedback
-als essentiell dafür ein, dass meine zukünftigen Studenten einen guten
+ich mich um ein kurzes Feedback unter [andreas@offensive.one](mailto:andreas@offensive.one)
+freuen. Ich stufe Feedback als essentiell dafür ein, dass meine zukünftigen Studenten einen guten
 Unterricht erhalten.
 
 Die aktuelle Version dieses Buchs ist unter <https://snikt.net/websec/>

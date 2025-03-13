@@ -17,7 +17,7 @@ ein Request wird also entweder akzeptiert oder blockiert. Dies war eine
 Design-Entscheidung des Entwicklers um sich auf eine Kernaufgabe zu
 konzentrieren und diese gut zu lösen (do one thing and do this well).
 
-*mod\_security* kann entweder als Apache Modul (daher der Name=
+*mod_security* kann entweder als Apache Modul (daher der Name=
 innerhalb eines bestehenden Apache Webservers integriert werden, oder
 als eigenständiger Reverse-Proxy (als eigenständiger Apache-Server) vor
 mehrere Applikationsserver vorgeschalten werden.

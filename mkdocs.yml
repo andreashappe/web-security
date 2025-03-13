@@ -1,1 +1,45 @@
-site_name: My Docs
+site_name: Web Application Security
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.tracking
+    - navigation.path
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: de
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - 'How to Contribute': todo.md
+  - 'Einführung':
+    - 'Intro': index.md
+    - 'Grundprinzipien': introduction/security_principles.md
+    - 'Sicherheit als Prozess': introduction/security_as_process.md
+    - 'Integration mit dem Umfeld': introduction/integration.md
+    - 'Kryptographische Grundlagen': introduction/crypto_basics.md
+  - 'Web Grundlagen':
+    - 'Technologien': web-applications/web_technologies.md
+    - 'Web Applikationen': web-applications/web_applications.md
+  - 'Zugriffskontrolle':
+    - 'Identifikation und Authentifizierung': authentication-and-authorization/authentication.md
+    - 'Session-Management': authentication-and-authorization/session_management.md
+    - 'Autorisierung': authentication-and-authorization/authorization.md
+    - 'Single-Sign On (SSO)': authentication-and-authorization/sso.md
+  - 'Server-Seitige Angriffe':
+    - 'Angriffe': server-side-attacks/injection_attacks.md
+  - 'Client-Seitige Angriffe':
+    - 'Angriffe': client-side-attacks/client_side_attacks.md
+    - 'Härtungsmaßnahmen': client-side-attacks/client_side_hardening.md
+  - 'Appendix':
+    - 'Apache mod_security': appendix/mod_security.md
+    - 'Entstehungsgeschichte': appendix/history.md
+    - 'What to do next?': appendix/weitere-informationen.md

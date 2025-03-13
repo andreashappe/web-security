@@ -84,17 +84,17 @@ und im Bedarfsfall unsichere Operationen durch den Benutzer explizit zu
 erlauben. Die dabei verwendeten Benutzerinteraktionen sollten dem
 NEAT-Prinzipien genügen:
 
--   Necessary: kann die Applikation, anstatt den Benutzer zu fragen, das
-    Problem auf eine andere sichere Art und Wiese lösen?
+- Necessary: kann die Applikation, anstatt den Benutzer zu fragen, das
+  Problem auf eine andere sichere Art und Wiese lösen?
 
--   Explained: besitzt der Benutzer das notwendige Wissen um eine
-    informierte Entscheidung zu treffen?
+- Explained: besitzt der Benutzer das notwendige Wissen um eine
+  informierte Entscheidung zu treffen?
 
--   Actionable: kann der Benutzer überhaupt sinnvoll auf die
-    dargestellte Meldung reagieren?
+- Actionable: kann der Benutzer überhaupt sinnvoll auf die
+  dargestellte Meldung reagieren?
 
--   Tested: ist die Meldung innerhalb der UX sinnvoll und wurde
-    getestet, ob sie in jeglicher Form von Benutzerfluss sinnvoll ist?
+- Tested: ist die Meldung innerhalb der UX sinnvoll und wurde
+  getestet, ob sie in jeglicher Form von Benutzerfluss sinnvoll ist?
 
 Im Zuge der DSGVO/GDPR wurde bestimmt, dass Software *secure by design
 and default* sein muss. Dies bedeutet, dass Software die Möglichkeit
