@@ -44,7 +44,17 @@ nav:
     - 'Autorisierung': authentication-and-authorization/authorization.md
     - 'Single-Sign On (SSO)': authentication-and-authorization/sso.md
   - 'Server-Seitige Angriffe':
-    - 'Angriffe': server-side-attacks/injection_attacks.md
+    - 'Allgemeines': server-side-attacks/allgemein.md
+    - 'File-Uploads': server-side-attacks/file-uploads.md
+    - 'Path-Traversals': server-side-attacks/path-traversals.md
+    - 'Command-Injections': server-side-attacks/command-injections.md
+    - 'Database-Injections': server-side-attacks/database-injections.md
+    - 'LDAP-Injections': server-side-attacks/ldap-injections.md
+    - 'Type Juggling': server-side-attacks/type-juggling.md
+    - 'XML-basierte Angriffe': server-side-attacks/xml-based-attacks.md
+    - 'Serialisierungs-Angriffe': server-side-attacks/serialization-attacks.md
+    - 'Request Smuggling': server-side-attacks/http-request-smuggling.md
+    - 'SSTI': server-side-attacks/SSTI.md
   - 'Client-Seitige Angriffe':
     - 'Angriffe': client-side-attacks/client_side_attacks.md
     - 'Härtungsmaßnahmen': client-side-attacks/client_side_hardening.md
