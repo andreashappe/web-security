@@ -1,0 +1,1713 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../security_as_process/">
+      
+      
+        <link rel="next" href="../crypto_basics/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Integration mit dem Umfeld - Web Application Security</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#integration-mit-der-umgebung" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="Web Application Security" class="md-header__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web Application Security
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Integration mit dem Umfeld
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web Application Security" class="md-nav__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Web Application Security
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Einführung
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Einführung
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security_principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grundprinzipien
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security_as_process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sicherheit als Prozess
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Integration mit dem Umfeld
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Integration mit dem Umfeld
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-components-with-known-vulnerabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Components with Known Vulnerabilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Components with Known Vulnerabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typo-squatting-und-dependency-confusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typo-Squatting und Dependency Confusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insufficient-logging-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insufficient Logging and Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devops-und-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      DevOps und Tooling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DevOps und Tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agile-methoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agile Methoden
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agile Methoden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anwendbarkeit-agiler-methoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anwendbarkeit agiler Methoden
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-as-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure as Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-and-continuous-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration and Continuous Delivery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devops-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      DevOps and Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DevOps and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatisierung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automatisierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Unit Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-source-code-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Source Code Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-application-scans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Application Scans
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crypto_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kryptographische Grundlagen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Web Grundlagen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Web Grundlagen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_technologies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technologien
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_applications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Applikationen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Zugriffskontrolle
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Zugriffskontrolle
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Identifikation und Authentifizierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/session_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session-Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/authorization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autorisierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/sso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single-Sign On (SSO)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Server-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Server-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Client-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Client-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_hardening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Härtungsmaßnahmen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/mod_security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apache mod_security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entstehungsgeschichte
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/weitere-informationen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What to do next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-components-with-known-vulnerabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Components with Known Vulnerabilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Components with Known Vulnerabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typo-squatting-und-dependency-confusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typo-Squatting und Dependency Confusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insufficient-logging-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insufficient Logging and Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devops-und-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      DevOps und Tooling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DevOps und Tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agile-methoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agile Methoden
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agile Methoden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anwendbarkeit-agiler-methoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anwendbarkeit agiler Methoden
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-as-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure as Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-and-continuous-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration and Continuous Delivery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devops-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      DevOps and Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DevOps and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatisierung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automatisierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Unit Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-source-code-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Source Code Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-application-scans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Application Scans
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="integration-mit-der-umgebung">Integration mit der Umgebung</h1>
+<p>Eine Webapplikation sollte niemals isoliert betrachtet werden. Auch wenn
+die vorgestellten Komponenten perfekt umgesetzt werden, ergibt sich aus
+der Interaktion zwischen der theoretischen Webapplikation und der realen
+Umgebung immer ein Gefahren- bzw. Verbesserungspotential.</p>
+<p>Hierbei kann es sich z.B. um nicht-funktionale Elemente wie Logging
+handeln, oder aber auch um Aspekte wie Programmiersprache-inhärente
+Muster, die einen negativen Einfluss auf die Sicherheit der
+Webapplikation besitzen können.</p>
+<h2 id="using-components-with-known-vulnerabilities">Using Components with Known Vulnerabilities</h2>
+<p>Die Verwendung vorhandener und gewarteter externer Komponenten wie
+Bibliotheken oder Frameworks besitzt sicherheitstechnisch viele
+Vorteile: man kann von Fehlern anderen lernen bzw. muss das Rad nicht
+neu erfinden.</p>
+<p>Damit wird allerdings auch der Nachteil eingekauft, dass eine
+Verwundbarkeit innerhalb einer integrierten externen Komponente
+automatisch auch eine Verwundbarkeit der eigenen Applikation impliziert.
+Daher müssen aktiv und regelmäßig verwendete Komponenten auf bekannte
+Schwachstellen hin überprüft, und ggf. die betroffenen Komponenten
+aktualisiert werden. Falls über eine externe Komponente eine
+Schwachstelle ,,eingefangen” wird, wird dies <em>Supply-Chain Attack</em>
+genannt: der Angriff erfolgt nicht direkt gegen die Applikation selbst,
+sondern über die inkludierten Komponenten, quasi dem Zulieferer (engl.
+Supply Chain).</p>
+<p>Um den Aufwand dieser Überprüfungen zu reduzieren und damit
+optimaler-weise deren Frequenz zu erhöhen gibt es automatisierte Tools
+wie den <a href="https://owasp.org/www-project-dependency-check/">OWASP Dependency-Check</a> oder <em>OWASP Dependency-Track</em>. Diese
+analysieren automatisch Projekte auf Dependencies (z.B. über Ruby
+Gemfiles, NPM package-lock.json Files, Maven Projektbeschreibungen),
+extrahieren automatisch dependencies und korrelieren diese mit
+öffentlichen Verwundbarkeitsdatenbanken. Wird hier nun eine potentiell
+anwendbare Schwachstelle gefunden, wird der Entwickler via Email oder
+Slack notifiziert.</p>
+<h3 id="typo-squatting-und-dependency-confusion">Typo-Squatting und Dependency Confusion</h3>
+<p>Bei <em>Supply-Chain Angriffen</em> plazieren Angreifer Schadcode zumeist in
+neuen Versionen bereits verwendeter Bibliotheken. Der Angreifer muss
+also Zugriff auf den Source Code einer häufig verwendeten Bibliothek
+erlangen. Die Geschichte zeigt, dass dies <a href="https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html">durchaus einfacher als gedacht
+ist</a>.</p>
+<p>Ein Angreifer kann Supply-Chain Angriffe auch ohne Erlangen eines
+bestehenden Projektes durchführen. Bei <em>Typo-Squatting</em> Angriffen
+kopiert der Angreifer eine bestehende Bibliothek, reichert diese um
+Schadcode an, und läd diese unter einem neuen Namen hoch. Der neue Name
+ist sehr ähnlich dem ursprünglichen Namen der Bibliothek gewählt, der
+Angriff zielt darauf ab, dass das Opfer beim Integrieren der eigentlich
+gewünschten Bibliothek sich vertut oder vertippt und dadurch die falsche
+Bibliothek samt Schadcode inkludiert.</p>
+<p>Ein weiterer Angriffsvektor ist <a href="https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610">Dependency Confusion</a>. Hier
+entwickelt das Opfer eine Software, die sowohl öffentliche als auch
+interne (private) BBibliotheken verwendet. Der Angreifer kennt den Namen
+einer internen Bibliothek und läd eine Schadsoftware mit diesem Namen
+auf ein öffentliches Paketverzeichnis (welches von der Opfersoftware
+verwendet wird) hoch. In Abhängigkeit von der verwendeten
+Programmiersprache, der verwendeten Paketverwaltung und dessen
+Konfiguration können zwei potentielle Schwachstellen auftreten:</p>
+<ol>
+<li>
+<p>Öffentliche Quelle werden gegenüber privaten Quellen bevorzugt: es
+    wrid nun der Schadcode aus dem öffentlichen Repository geladen.</p>
+</li>
+<li>
+<p>Bei der Auswahl der Bibliothek aus internen und öffentlichen Quellen
+    ,,gewinnt” das Paket mit der höchsten Version. In diesem Fall muss
+    der Angreier nur ein Paket mit einer höheren Versionnummer in das
+    öffentliche Repository hochladen um seinen Schadcode in die
+    Opfersoftware zu integrieren.</p>
+</li>
+</ol>
+<h2 id="insufficient-logging-and-monitoring">Insufficient Logging and Monitoring</h2>
+<p>Diese Schwachstelle wurde im Jahre 2017 neu bei den OWASP Top 10
+aufgenommen. Es handelt sich hierbei weniger um eine Schwachstelle
+während der Exekution, sondern eher um die Schaffung der Möglichkeit
+nach einem Angriff aufgrund der vorhandenen Log-Dateien das Vorgehen des
+Angreifers und die betroffenen Daten zu erkennen.</p>
+<p>Folgende groben Anforderungen an das Log-System werden gestellt:</p>
+<ul>
+<li>
+<p>Es muss mit verteilten Applikationen umgehen können. Eine
+    Webapplikation ist potentiell auf mehrere Computersysteme verteilt
+    (Webserver, Applikationsserver, Datenbankserver). Die Logdaten der
+    gesamten Systeme sollten an einer Stelle aggregiert werden.</p>
+</li>
+<li>
+<p>Es muss die Integrität der Logdaten schützen: ein Angreifer sollte
+    keine Möglichkeit besitzen, die geloggten Daten zu beeinflussen.
+    Würden z.B. Logdaten direkt am Webserver gespeichert werden, könnte
+    ein Angreifer der den Webserver gehackt hat, ebenso die Logdaten
+    modifizieren. Dies impliziert, dass der Log-Server über eine genau
+    definierte API erreichbar sein sollte.</p>
+</li>
+<li>
+<p>Es muss die Vertraulichkeit der Daten schützen. Da der Logserver
+    Detailinformationen über betriebliche Abläufe speichert, müssen
+    diese Daten mindestens ebenso sicher wie die ursprünglichen Daten
+    gespeichert werden.</p>
+</li>
+<li>
+<p>Das Log-System muss Möglichkeiten zur nachträglichen Auswertung der
+    gesammelten Daten bieten. Bonuspunkte, wenn man ein automatisiertes
+    Monitoring mit dem Log-System betreiben kann.</p>
+</li>
+</ul>
+<p>Die jeweiligen loggenden Systeme sollten alle sicherheitsrelevanten
+Events (z.B. Input Validation Fehler, Authentication Fehler,
+Authorization Fehler, Applikations-Fehler) an das zentrale Log-System
+schicken. Diese Daten sollen um Business Process Events angereichert
+werden. Diese dienen dazu, relevante geschäfts-relevante Prozesse und
+Ereignisse mit den Sicherheits-Events zu korrelieren. Weitere
+Datenquellen sind z.B. Anti-Automatisierungssysteme, welche Brute-Force
+Angriffe erkennen, Datenverarbeitungssysteme (können auch Batch-Systeme
+sein, die z.B. einen Daten-Export oder Backups ausführen) und alle
+direkt und indirekt involvierten Services, wie z.B. Mailserver,
+Datenbankserver, Backupdienste. Falls vorhanden, sollten die
+Loginformationen sicherheitsrelevanter Komponenten (HIDS, NIDS, WAFs)
+auf jeden Fall inkludiert werden.</p>
+<p>Bei dem Loggen sollte darauf geachtet werden, dass, wenn möglich,
+standardisierte Log-Formate wie CEF oder LEEF verwendet werden. Dadurch
+wird das Konvertieren der jeweiligen Datenquellen auf ein gemeinsames
+Format vermieden.</p>
+<p>Welche Daten sollten pro Event erfasst werden?</p>
+<ul>
+<li>
+<p>Wann hat sich der Vorfall ereignet? Bei einer verteilten Applikation
+    sollte hier darauf geachtet werden, dass Timestamps die Zeitzone
+    beinhalten (und auch auf Zeitumstellungen achten). Grundlage für das
+    temporale korrelieren von Events ist es, dass alle beteiligten
+    Server eine idente Systemzeit besitzen (z.B. durch die Verwendung
+    von ntp).</p>
+</li>
+<li>
+<p>Wo ist das Event passiert? Hierfür können Systemnamen, Servicenamen,
+    Containernamen oder Applikationsnamen verwendet werden.</p>
+</li>
+<li>
+<p>Für welchen Benutzer ist das Event passiert? Hier können
+    Systembenutzer (mit denen das Service läuft) oder feingranular der
+    gerade eingeloggte Benutzer protokolliert werden.</p>
+</li>
+<li>
+<p>Was ist passiert? Dies wird immer applikations- und event-spezifisch
+    sein. Viele Systeme verwenden zumindest eine idente Klassifizierung
+    der Wichtigkeit des Events.</p>
+</li>
+</ul>
+<p>Die Verwendung von personenbezogenen Daten kann das Logging
+verkomplizieren. Ein Unternehmen sollte klare Regeln erstellen, welche
+Daten geloggt werden und, falls notwendig, Anonymisierung oder
+Pseudonymisierung verwenden um sensible Daten zu maskieren. Ein
+ähnliches Problem tritt auf, wenn Log-Informationen zwischen Unternehmen
+geteilt werden sollte (z.B. im Zuge eines Informations-Lagebilds). Da
+diese Daten unter anderem personen-bezogene Informationen als auch
+Betriebsgeheimnisse inkludieren können, wird davon meistens abgesehen.</p>
+<p>Die erfassten Daten sollten im Zuge einer Auswertung verwendet werden.
+Hier werden häufig "normale" Texteditoren in Verbindung mit regulären
+Ausdrücken verwendet. Fortgeschrittene Lösungen wären ELK-Stacks, Kibana
+und Logstash und z.B. Splunk.</p>
+<p>In einem ähnlichem Umfeld arbeiten SIEM-Systeme (Security Information
+and Event Management). Diese werden zumeist als weiterer Schritt nach
+Log-Management angesehen. Zusätzlich zum Log-Management wird zumeist
+auch Security Event Management (real-time monitoring), Security
+Information Management (long-term storage of security events) und
+Security Event Correlattion durchgeführt.</p>
+<h2 id="devops-und-tooling">DevOps und Tooling</h2>
+<p>DevOps ist eine neuere Strömung die versucht, Development und Operations
+zu vereinen.</p>
+<p>Webapplikationen werden zumeist von Entwickler erstellt und dann einem
+Administratoren-Team zur Installation übergeben. Teilweise wird die
+Applikation auch von den Entwicklern installiert und dann von den
+Administratoren langfristig gewartet. In größeren Unternehmen wird die
+Installation und Wartung teilweise auf zwei unterschiedliche
+Administratorenteams aufgeteilt.</p>
+<p>Dies führt zu getrennten Teams mit getrennten Wissensstand und kann im
+worst-case auch z.B.nkerdenken — <em>,,us vs. them”</em>— führen. Diese
+Trennung behindert den Informationsfluss und verhindert, und führt
+künstliche Schranken im Verantwortlichkeitsgefühl ein (,,die Admins sind
+dafür verantwortlich”). Im Fehlerfall führt dieses Bunkerdenken auch zum
+Herum schieben der Verantwortung zwischen Parteien.</p>
+<p>DevOps versucht nun, wie der Name schon sagt, die Trennung von
+Entwicklung (,,Development”) und Administration (,,Operations”) zu
+beenden. Prinzipiell ist DevOps mehr eine Philosophie/gelebte
+Firmenkultur die stark von der Kultur der kontinuierlichen Verbesserung
+(z.B. Kanban in Japan) geprägt ist. Bei der Umsetzung bindet es stärker
+Entwickler in klassische Operations-Bereiche wie Deployment ein.</p>
+<p>Eine gute Beschreibung ist, dass DevOps agile Entwicklungsmethoden mit
+agilen Deployment kombiniert.</p>
+<h3 id="agile-methoden">Agile Methoden</h3>
+<p>Agile Methoden sind ein neueres Projektmanagement-Muster, welches im
+<a href="https://agilemanifesto.org/">Agile Manifesto</a> folgende Grundsätze definiert:</p>
+<ul>
+<li>Individuals and interactions over processes and tools</li>
+<li>Working Software over comprehensive documentation</li>
+<li>Customer collaboration over contract negotiation</li>
+<li>Responding to change over following a plan</li>
+</ul>
+<p>Umgesetzt führt dies zumeist dazu, dass monolithische Projekte in kleine
+minimale Teile transformiert werden. Diese werden dann, in Reihenfolge
+der Kundenprioitisierung, abgearbeitet und regelmäßig der Fortschritt
+mit dem Kunden besprochen. Im Zuge des Projektes kommt es häufiger zu
+Änderungswünschen, diese können dann als weiteres Teilprojekt/Schritt
+inkludiert werden, die Geschwindigkeit des Teams kann über Projektdauer
+immer genauer eingeschätzt werden.</p>
+<p>Damit die Projektsteuerung bei agiler Methodik funktioniert, darf ein
+einmal erledigter Schritt/Problem nicht immer wieder (durch Bugs) kosten
+verursachen. Aus diesem Grund wird hier stark auf automatisierte Tests
+gesetzt. Sofern diese Tests erfolgreich durchlaufen wird davon
+ausgegangen, dass das Produkt funktioniert. Der <em>master</em> oder
+<em>production</em>-Branch der Software sollte niemals fehlerhafte Testcases
+besitzen, kann daher jederzeit an den Kunden ausgeliefert werden.</p>
+<h4 id="anwendbarkeit-agiler-methoden">Anwendbarkeit agiler Methoden</h4>
+<p>Agile Methoden sind natürlich nicht für alle Projekte geeignet und
+werden eher bei Startup-Projekten bzw. explorativen Projekten
+angetroffen. Bei Anwendungen mit hoher Sicherheitsrelevanz gibt es
+Zeitweise sehr genau ausspezifizierte Lasten-/Pflichtenhefte, diese
+müssen dann auch dementsprechend umgesetzt werden.</p>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<p>Ein Grundsatz Agiler Methoden ist ,,<em>Working Software over comprehensive
+documentation</em>”.</p>
+<p>Der Fokus auf <em>Working Software</em> anstatt auf Dokumentation schlägt sich
+auch bei dem Deployment (dem Installieren der Software) nieder: dies
+wird zumeist automatisiert als Skript durchgeführt und nicht als
+Dokumentation ausgeliefert (und entspricht dadurch bereits dem
+DevOps-Gedanken).</p>
+<p>Da im Zuge von Agilen Methoden versucht wird möglichst früh und
+möglichst häufig lauffähigen Code beim Kunden bereitzustellen (bzw. als
+Testservice dem Kunden zur Verfügung zu stellen) passieren
+Installationsvorgänge regelmäßig. Um hier nun Redundanzen zu vermeiden
+(bzw. um Konfigurationsfehler zu verhindern) wurden hier (historisch
+betrachtet) Installationsanweisungen immer stärker durch automatisierte
+Skripts ersetzt. Danach wurden dezidierte Deploymentstools (wie z.B.
+<em>capistrano</em>) für das Setup der Applikation konfiguriert und verwendet.
+Im Laufe der Zeit wurden diese Tools nicht nur für die Applikation
+selbst, sondern auch für Datenbanken, Systemservices, etc. angewandt;
+die historische Evolution sind mittlerweile dezidierte Frameworks die
+zum Setup der Systeme dienen (wie z.B. Puppet, Chef oder Ansible).</p>
+<p>Ein weiterer Vorteil dieses Ansatz ist, dass die verwendete
+Konfiguration innerhalb der (hoffentlich) verwendeten Source Code
+Versionierung automatisch versioniert und Veränderungen dokumentiert
+werden. Dies erlaubt das einfachere Debuggen von Regressionen.</p>
+<h3 id="continuous-integration-and-continuous-delivery">Continuous Integration and Continuous Delivery</h3>
+<p>Die Verwendung von Tests zur Sicherung der Softwarequalität ist ein
+essentieller Bestandteil Agiler Methoden. Dem Kunden werden regelmäßig
+neue Programmversionen mit erweiterten Features zugestellt und anhand
+des Kundenwunsches neue Features selektiert und im nächsten
+Programmier-Sprint hinzugefügt. Würden Features fertig gestellt werden,
+die Fehler beinhalten und müsste man nachträglich diese Fehler immer
+wieder neu korrigieren, würde dadurch die Geschwindigkeit des
+Programmierteams stark leiden. Um dies zu verhindern, werden massiv
+Softwaretests geschrieben, die überprüfen ob die gewünschten
+Kundenfeatures ausreichend implementiert wurden. Diese Tests werden
+aufgerufen, bevor ein neues Feature in die, dem Kunden übermittelten,
+Version integriert wird. Auf diese Weise wird automatisch eine Kontrolle
+der Qualität durchgeführt.</p>
+<p>Um sicher zu stellen, dass diese Tests auch wirklich aufgerufen werden,
+werden diese Tests automatisiert aufgerufen. Dies wird im Zuge des
+Continuous Integration Prozess durchgeführt: nach jeder Änderung wird
+versucht, die Software zu bauen (builden) und anschließend werden die
+vorhandenen Tests ausgeführt. Falls ein Fehler auftritt, wird der
+betroffene Entwickler sofort notifiziert.</p>
+<p>Während Unit-Tests primär auf das Testen von Funktionen abzielen, werden
+auch statische Source Code Tests integriert. Diese überprüfen die
+Qualität des gelieferten Codes (z.B. Coding Guidelines) und sind n
+zweites Standbein automatisierter Tests.</p>
+<p>In einem finalen Schritt kann auch Continuous Delivery angewandt werden,
+dies ist quasi die Ausdehnung des Continuous Integration Prozesses auf
+das installieren der fertigen Software (in einer Testumgebung oder, im
+Extremfall, direkt beim Kunden). Hier kann nach erfolgtem Bauen und
+Testen der Software diese auf Knopfdruck (oder vollautomatisiert) in
+einem Test- bzw. Produktivsystem eingespielt werden. Der Fluss von der
+Entwicklung über die Kontrolle bis zur Installation ist somit vollzogen.
+Falls dies alles durch den Entwickler konfiguriert wurde, kommt kein
+klassischer System-Administrator im Prozess vor. Damit gibt es keine
+Teilung der Kompetenzen und Verantwortung mehr, der Schritt zu DevOps
+ist vollzogen.</p>
+<h2 id="devops-and-security">DevOps and Security</h2>
+<p>Die Abkürzung DevOps besteht aus Development und Operations, das Wort
+Security kommt dabei nicht vor.</p>
+<p>Sicherheit in DevOps zu integrieren ist ein ähnliches Problemfeld wie
+das ursprüngliche DevOps-Problem der Trennung zwischen Admins und
+Entwicklern. Wenn die Sicherheitsverantwortlichen ein getrenntes Team
+sind, dann ergibt sich wieder Bunkerdenken, Wissensinseln als auch ein
+fehlendes Verantwortungsgefühl.</p>
+<p>Es wird nun Versucht das Sicherheitsteam in das DevOps-Team zu
+integrieren und dadurch Security als gemeinsame Verantwortung zu
+etablieren. Die Grundidee ist schön in folgendem Satz ausgeführt:
+,,<em>Security is built into the System instead of being applied upon the
+finished product</em>”.</p>
+<p>Häufiger wird zwischen verschiedenen Ansätzen um Security einzubauen
+unterschieden:</p>
+<ul>
+<li>
+<p>DevOpsSec: es wird ein Produkt entwickelt, danach wird die
+    Administration durchgeführt. Final wird Security gewährleistet: ein
+    Beispiel dafür wäre es, dass nach Inbetriebnahme das Security-Team
+    Security-Patches einspielt. Das klassische Beispiel wäre das
+    Anpassen und der Betrieb von Standardsoftware.</p>
+</li>
+<li>
+<p>DevSecOps: zuerst wird entwickelt, danach wird Security betrachtet
+    und danach die Administration fortgesetzt. Dieser Ansatz wird
+    aktuell (2019) häufig gesehen und ist zumindest besser als die
+    Security generell zu ignorieren. Ein Beispiel hierfür wäre es, die
+    Inbetriebnahme von der erfolgreichen Durchführung einer
+    Sicherheitsüberprüfung abhängig zu machen.</p>
+</li>
+<li>
+<p>SecDevOps: betrachtet initial die Security (z.B. schon während der
+    Planung der Software). Dadurch durchdringt Security die gesamte
+    Entwicklung als auch die Administration.</p>
+</li>
+</ul>
+<p>Security bewirkt meistens einen Mehraufwand für die Entwickler. Um
+diesen Mehraufwand zu begrenzen, wird auch hier (im DevOps-Spirit) stark
+auf Automatisierung gesetzt. So werden z.B. Sicherheitstests als
+automatisierte Testprogramme implementiert und während der Testphase
+innerhalb des Continuous Integration Prozesses ausgeführt. Dadurch
+werden die Sicherheitstests automatisch Teil des
+Abnahme-/Verifikationsprozess und durchdringt auf diese Weise die
+gesamte Entwicklung.</p>
+<h3 id="automatisierung">Automatisierung</h3>
+<p>Um die konsistente und regelmäßige Verwendung der Sicherheitstests zu
+enforcen wird die Ausführung der Sicherheitstests stark automatisiert.
+Dieses Kapitel führt häufig verwendete automatisierte Tests an:</p>
+<h4 id="automated-unit-tests">Automated Unit Tests</h4>
+<p>Unit Tests sind minimale Tests die ein Feature verifizieren. Die meisten
+Software-Frameworks erlauben es, Tests auf Controller-Ebene zu schreiben
+für deren Ausführung die Applikation nicht als gesamtes gestartet werden
+muss.</p>
+<p>Alternativ kann ein Unit-Test z.B. als einfaches Shellskript,
+Python-Requests2 skript oder als JUnit-Test unter Verwendung von
+Java-Bibliotheken durchgeführt werden. In dem Fall muss im Zuge der
+Tests ein Webserver gestartet werden, diese Tests sind daher
+zeitaufwendiger.</p>
+<p>Integrations-Tests testen die Funktionalität des Gesamtsystems. Hierbei
+kann unter anderem auf Browser-basierte Frameworks wie Selenium oder
+Capybara zurückgegriffen werden. Durch diese wird ein oder mehrere
+Benutzer mittels eines virtuellen Browsers simuliert — die Tests
+beschreiben die Benutzernavigation und -operationen innerhalb der
+Webseite. Hier kann man z.B. zwei Benutzer simulieren: ein Benutzer legt
+Daten an und ein zweiter Benutzer versucht (invalid) auf diese Daten
+zuzugreifen. Diese Tests sind um einiges Ressourcen- (da ein Webbrowser
+und Webserver benötigt wird) als auch zeitaufwendiger und werden daher
+zumeist nicht nach jeder Sourcecode-Änderung durchgeführt.</p>
+<h4 id="static-source-code-tests">Static Source Code Tests</h4>
+<p>Analog zur Analyse der Qualität des Source Codes (während des normalen
+DevOps-Prozesses) können auch Tools zur statischen Analyse des Source
+Codes inkludiert werden. Diese prüfen den Source Code auf bekannte
+Programmiermuster und -fehler die sicherheitsrelevante Konsequenzen
+besitzen können.</p>
+<p>Hier gibt es meistens Programmier- und Framework-abhängige Tools wie
+z.B. <em>bandit</em> für <em>Python</em>, <em>Brakeman</em> für <em>Ruby on Rails</em> und
+<em>SpotBugs</em> für <em>Java</em>. Eine Ebene über diesen Einzeltools funktioniert
+<em>OWASP SonarCube</em>. Dieses Tool kann intern die gesamten erwähnten
+Subtools anwenden und besitzt auch Plugins um mittels <em>OWASP
+dependency-check</em> eine Überprüfung der verwendeten Abhängigkeiten (z.B.
+Bibliotheken) auf Schadcode hin durchzuführen.</p>
+<h4 id="dynamic-application-scans">Dynamic Application Scans</h4>
+<p>Zusätzlich zur statischen Source-Code Analyse kann man auch dynamische
+Scans verwenden. Hierbei wird zumeist die Applikation in einer
+Testumgebung (z.B. <em>staging</em>) automatisiert installiert und danach
+mittels automatisierter Web Application Security Scanner gescripted ein
+Test durchgeführt. Im Falle einer Regression werden die Entwickler
+benachrichtigt. Beispiele hierfür wäre z.B. das automatisierte Scannen
+einer Applikation mittels <em>OWASP ZAP</em> unter Zuhilfename des
+<em>full-scan.py</em>-Skripts.</p>
+<h2 id="reflektionsfragen">Reflektionsfragen</h2>
+<ol>
+<li>
+<p>Was ist der Grundgedanke dabei, DevOps und Security zu verbinden?</p>
+</li>
+<li>
+<p>Welche Sicherheitsmaßnahmen können im Zuge von SecDevOps
+    automatisiert durchgeführt werden? Erläutere die jeweiligen
+    Maßnahmen.</p>
+</li>
+<li>
+<p>Wie kann während der Continuous Integration (CI) oder Continuous
+    Delivery (CD) auf die Sicherheit eines Softwareprodukts Rücksicht
+    genommen werden?</p>
+</li>
+<li>
+<p>Was sind Supply-Chain Angriffe und wie können diese geschehen?</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

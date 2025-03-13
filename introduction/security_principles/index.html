@@ -1,0 +1,1501 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../security_as_process/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Grundprinzipien - Web Application Security</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#security-principles" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="Web Application Security" class="md-header__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web Application Security
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Grundprinzipien
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web Application Security" class="md-nav__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Web Application Security
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Einführung
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Einführung
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Grundprinzipien
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Grundprinzipien
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#minimalprinzip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimalprinzip
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimalprinzip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-misconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Misconfiguration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#least-privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      Least Privilege
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#separation-of-duties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Separation of Duties
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defense-in-depthhardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defense in Depth/Hardening
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail-open-vs-fail-closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fail-Open vs. Fail-Closed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-go-security-by-obscurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      No-Go: Security by Obscurity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-it-simple-stupid-kiss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep it Simple Stupid (KISS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-by-design-bzw-security-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security-by-Design bzw. Security-by-Default
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trennung-von-daten-und-programm-logik" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trennung von Daten- und Programm-Logik
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security_as_process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sicherheit als Prozess
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration mit dem Umfeld
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crypto_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kryptographische Grundlagen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Web Grundlagen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Web Grundlagen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_technologies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technologien
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_applications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Applikationen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Zugriffskontrolle
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Zugriffskontrolle
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Identifikation und Authentifizierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/session_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session-Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/authorization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autorisierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/sso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single-Sign On (SSO)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Server-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Server-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Client-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Client-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_hardening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Härtungsmaßnahmen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/mod_security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apache mod_security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entstehungsgeschichte
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/weitere-informationen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What to do next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#minimalprinzip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimalprinzip
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimalprinzip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-misconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Misconfiguration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#least-privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      Least Privilege
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#separation-of-duties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Separation of Duties
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defense-in-depthhardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defense in Depth/Hardening
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail-open-vs-fail-closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fail-Open vs. Fail-Closed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-go-security-by-obscurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      No-Go: Security by Obscurity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-it-simple-stupid-kiss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep it Simple Stupid (KISS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-by-design-bzw-security-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security-by-Design bzw. Security-by-Default
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trennung-von-daten-und-programm-logik" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trennung von Daten- und Programm-Logik
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="security-principles">Security Principles</h1>
+<p>Während sich Technologien und Architekturen permanent wandeln und
+verändern, gibt es Sicherheitsprinzipien die quasi allgemein gültig als
+Grundlage für alle weiteren Entscheidungen dienen. Einige dieser werden
+in diesem Kapitel erläutert.</p>
+<h2 id="minimalprinzip">Minimalprinzip</h2>
+<p>Die Applikation sollte nur jene Operationen und Funktionen beinhalten,
+die für die Erfüllung der Kundenanforderungen zwingend benötigt werden.
+Alle weiteren Funktionen und Operationen sollten deaktiviert bzw.
+entfernt werden.</p>
+<p>Durch diese Reduktion des Funktionsumfangs wird implizit die
+Angriffsfläche verringert und dadurch Angriffe erschwert. <em>Was nicht
+vorhanden ist, kann nicht angegriffen werden</em>. Zusätzlich wird der
+langfristige Wartungsaufwand reduziert.</p>
+<p>Die Minimierung kann und sollte an mehreren Stellen durchgeführt werden,
+einige Beispiele:</p>
+<ul>
+<li>
+<p>Reduktion benötigter Operationen: ist eine Operation wirklich für
+    den Kunden notwendig oder könnte der Kundenwunsch mit bereits
+    implementierten Operationen ebenso befriedigt werden?</p>
+</li>
+<li>
+<p>Reduktion der gesammelten und gespeicherten Daten: was ist das
+    minimale Datenset, dass für die Bereitstellung der Operationen
+    benötigt wird. Dies entspricht auch der Datenminimierung die durch
+    die DSGVO[1] vorgeschrieben wird. Hier gibt es einen Wandel der
+    Kultur: von big-data (alles speichern, vielleicht kann man das
+    später verwenden) Richtung toxic-data (Daten sind gefährlich, wie
+    komme ich mit möglichst wenig Daten aus).</p>
+</li>
+<li>
+<p>Komponentenebene: welche Komponenten sind für den Betrieb notwendig?</p>
+</li>
+<li>
+<p>Funktionale Ebene: welche Funktionen und Features können innerhalb
+    von Komponenten deaktiviert werden?</p>
+</li>
+</ul>
+<h3 id="security-misconfiguration">Security Misconfiguration</h3>
+<p>In den OWASP Top 10 kommen häufiger <em>Security Misconfiguration</em> als
+Beispiel für Verstösse gegen das Minimalprinzip vor.</p>
+<p>Wie bereits erwähnt, ist die Grundidee, dass im Produktionsbetrieb nur
+Komponenten und Features vorhanden sind, die auch für die Umsetzung
+eines Kundenwunsches benötigt werden. Beispiele für Software, die nicht
+am Server vorgefunden werden sollte:</p>
+<ul>
+<li>
+<p>Entwicklungstools wie phpmyadmin. Diese besitzen meistens getrennte
+    Zugangsdaten (verwenden also nicht die Zugangsdaten/Berechtigungen
+    der Web-Applikation) und sind daher potentiell ein <em>alternate
+    channel</em> über den auf eine Webapplikation zugegriffen werden kann.</p>
+</li>
+<li>
+<p>Debug Mode bei verwendeten Frameworks, dieser erlaubt teilweise im
+    Fehlerfall die Verwendung von interaktiven Shells direkt innerhalb
+    der Webapplikation. Dies würde es einem Angreifer erlauben, direkt
+    Programmcode abzusetzen.</p>
+</li>
+<li>
+<p>Debug Toolbars bei Verwendung von Frameworks. Diese erlauben es
+    zeitweise die letzten Sessions aller Benutzer anzuzeigen und
+    erleichtern auf diese Weise Identity Theft.</p>
+</li>
+<li>
+<p>Stacktraces mit Detailinformationen im Produktivbetrieb. Ein
+    normaler Anwendern kann mit diesen Informationen nichts anfangen,
+    ein Angreifer kann durch diese allerdings genaue Systeminformationen
+    (Bibliotheksversionen, Pfade, etc.) erhalten welche weiter Angriffer
+    erleichtern können.</p>
+</li>
+<li>
+<p>phpinfo.php liefert genaue Informationen über die verwendete
+    PHP-Version, verfügbare Module, System- und
+    Konfigurationsinformationen die im Produktivbetrieb nicht öffentlich
+    verfügbar sein müssen.</p>
+</li>
+</ul>
+<p>Beispiele für Metadaten, die nicht am Server vorgefunden werden sollten:</p>
+<ul>
+<li>
+<p>Beispielscode wie z.B. ein
+    <a href="/example" class="uri">/example</a> Verzeichnis. Dieser kann
+    zeitweise ebenso Sicherheitsfehler enthalten und auf diese Weise
+    Zugang zu dem System erlauben. Auch Beispielscode ohne serverseitige
+    Exekution kann missbraucht werden, siehe z. B. DOM-basierte
+    XSS-Angriffe.</p>
+</li>
+<li>
+<p>.git, .svn Verzeichnisse: diese beinhalten den gesamten Source-Code
+    samt Versionshistory. Ein Angreifer kann auf diese Weise sowohl
+    interne Credentials erhalten als auch den verwendeten Source Code
+    analysieren.</p>
+</li>
+<li>
+<p>Credentials im Dateisystem oder in Repositories. Da Repositories
+    häufig auf öffentlichen Webservern gespeichert wird (z.B. private
+    gitlab, githab oder bitbucket Repositories) gespeichert wird, können
+    diese im Falle einer Fehlkonfiguration auch potentiell öffentlich
+    zugreifbar gemacht werden. In diesem Fall besitzt ein Angreifer
+    credentials mit denen er potentiell auf sensible Aktivitäten oder
+    Daten zugreifen kann.</p>
+</li>
+<li>
+<p>Backup files (.bak, .tmp) innerhalb des Dateisystems, diese werden
+    z.B. durch Texteditoren angelegt. Wird z.B. auf einem PHP-System
+    eine PHP-Datei am Webserver abgelegt und ein Angreifer greift darauf
+    zu, wird der Code am Server ausgeführt und der Angreifer erhält nur
+    das Ergebnis der Operation. Falls der Angreifer eine Backup-Datei am
+    Server findet, kann er auf diese zugreifen, herunterladen und
+    analysieren und kann auf diese Weise Fehler innerhalb des Source
+    Codes suchen.</p>
+</li>
+</ul>
+<h2 id="least-privilege">Least Privilege</h2>
+<p>Jeder Benutzer und jede Funktion sollte nur jene minimalen Rechte und
+Privilegien besitzen, die für die Ausführung seiner Ausgabe zwingend
+benötigt werden. Jerome Saltzer[2] definierte diesen, als Least
+Privilege bekannten, Ansatz als:</p>
+<blockquote>
+<p>Every program and every priviledged user of the system should operate
+using the least amount of priviledge necessary to complete the job.</p>
+</blockquote>
+<p>Wird dieses Prinzip bereits während des Designs beachtet, führt dies
+zumeist zu Systemen, welche aus mehreren Komponenten bestehen. Diese
+Komponenten kommunizieren über wohl-definierte Interfaces und können
+nicht “direkt” auf die Daten anderer Komponenten zugreifen. Dies
+verbessert die Testbarkeit der einzelnen Komponenten, da diese getrennt
+voneinander überprüft werden können. Aus Sicherheitssicht ist diese
+Architektur ebenso stark zu bevorzugen da eine kompromittierte
+Komponente nicht automatisch ein kompromittiertes Gesamtsystem zur Folge
+hat.</p>
+<p>Um diese Trennung zu ermöglichen, müssen Komponenten mit
+unterscheidbaren Identitäten und mit zuweisbaren Ressourcen betrieben
+werden. Dies inkludiert sowohl Benutzer- und Zugriffsrechte als auch
+Entitlements auf Ressourcen (RAM, CPU, Speicher, Netzwerkbandbreite).
+Weiters inkludiert dies Netzwerkzugriffsrechte: die Applikation sollte
+nur auf jene remote Server zugreifen können, die auch wirklich zwingend
+für den Betrieb notwendig sind.</p>
+<h2 id="separation-of-duties">Separation of Duties</h2>
+<p>Separation of Duties besagt, dass zur Ausführung einer Operation die
+Zustimmung von mehr als einer Person benötigt wird. Ein klassisches
+Beispiel hierfür wäre die Aktivierung eines Atomsprengkopfes für das
+mehrere Personen ihre Zustimmung geben müssen. Das Ziel von Separation
+of Duties ist auf der einen Seite die Vermeidung von Insider-Threats,
+auf der anderen Seite soll dadurch die Entdeckungsrate von
+nicht-gewollten Aktivitäten erhöht werden. Grundsätzlich sollte ein
+kompromittierter Benutzer nicht die Möglichkeit besitzen, das
+Gesamtsystem zu korrumpieren.</p>
+<p>Eine Anwendung dieser Idee ist das Vier-Augen-Prinzip bei dem sensible
+Operationen vor Ausführung zuerst durch zumindest zwei Personen
+bestätigt werden müssen.</p>
+<p>Um diese Prinzipien anwenden zu können, müssen Anwender zweifelsfrei
+identifiziert, authentifiziert und für die auszuführende Operationen
+autorisiert werden. Aus diesem Grund werden
+Mehr-Faktor-Authentifizierungslösungen häufig im Umfeld des Separation
+of Duties Prinzips gefunden.</p>
+<h2 id="defense-in-depthhardening">Defense in Depth/Hardening</h2>
+<p>Das Zwiebelmodel der Sicherheit vergleicht die Gesamtsicherheit einer
+Applikation mit einer Zwiebel. Im Inneren der Zwiebel befindet sich das
+schützenswerte Gut (Daten, Operationen), rundherum gibt es einzelne
+Sicherheitsschichten, analog zu den Schichten einer Zwiebel. Solange
+zumindest eine Schutzschicht vorhanden ist, ist die Sicherheit des
+Gesamtsystems gewährleistet.</p>
+<p>Essentiell ist, dass die einzelnen Schutzschichten voneinander
+unabhängig sind. Würde die gleiche Schutzschicht mehrfach verwendet
+werden (z.B. zweimal die gleiche Web-Application-Firewall mit dem
+identen Regelwerk der Applikation vorgeschalten werden), würde ein
+Fehler in einer Schutzschicht automatisch auch den Schutz der zweiten
+Schutzschicht neutralisieren.</p>
+<p>Zusätzlich zum erhöhten Schutz des schützenswerten Gutes wird durch die
+Zwiebelschichten auch Zeit im Fehlerfall erkauft. Da das System noch
+nicht vollständig kompromittiert ist, besteht z.B. Zeit die Auswirkungen
+eines potentiellen Updates zu testen.</p>
+<h2 id="fail-open-vs-fail-closed">Fail-Open vs. Fail-Closed</h2>
+<p>Fail-Open (auch Fail-Safe genannt) und Fail-Close (auch Fail-Secure
+genannt) beschreiben das Verhalten eines Systems im Fehlerfall. Bei
+Fail-Open wird die Operation durchgeführt, bei Fail-Close wird diese
+verhindert.</p>
+<p>Die Definition des gewünschten Verhaltens kann nur durch den Kunden
+geschehen. Beispiel: ein Smart-Türschloss welches über eine
+Mobilapplikation gesteuert werden kann. Das Verhalten im Falle eines
+Batteriefehlers kann unterschiedlich implementiert werden. In einigen
+Fällen (Notausgang) wäre es sinnvoll, das Schloss zu öffnen; in einigen
+Fällen (Tresor) wäre es sinnvoll, das Schloss zu blockieren. Diese
+Auswahl kann nur vom Kunden durchgeführt werden.</p>
+<h2 id="no-go-security-by-obscurity">No-Go: Security by Obscurity</h2>
+<p>Die Sicherheit eines Systems darf niemals von dessen Intransparenz
+abhängig sein. Ein besserer Ansatz ist z.B. Shannons: <em>The Enemy Knows
+the System</em>.</p>
+<p>Ein motivierter Angreifer besitzt zumeist Möglichkeiten die
+Intransparenz zu lüften:</p>
+<ul>
+<li>
+<p>Kauf und Reverse-Engineering der Software</p>
+</li>
+<li>
+<p>Diebstahl eines Systems</p>
+</li>
+<li>
+<p>Verlust der Obscurity durch Unfall (z.B. Selfies mit sichtbaren
+    Schlüsseln im Hintergrund)</p>
+</li>
+</ul>
+<p>Analog gibt es in der Kryptographie das Kerckhoffsche Prinzip: die
+Sicherheit eines Algorithmus darf nur von der Geheimhaltung des
+Schlüssels und nicht durch die Geheimhaltung des Algorithmus abhängig
+sein. 2020 konnte man die Problematik an Hand des Solarwind-Leaks sehen:
+hier konnten Angreifer Zugriff auf Microsofts Quellcode erlangen.
+Aktuell (Stand Jänner 2021) wurden hier allerdings keine
+Masterpasswörter oder Backdoors bekannt.</p>
+<h2 id="keep-it-simple-stupid-kiss">Keep it Simple Stupid (KISS)</h2>
+<p><em>Complexity is the enemy of security</em>. Ein komplexes System mit vielen
+Komponenten bzw. Interaktionen zwischen Komponenten besitzt automatisch
+eine größere Angriffsfläche und bieten daher Angreifern mehr
+Möglichkeiten.</p>
+<p>Man sollte Simplicity nicht mit primitiven Lösungen verwechseln. Der
+Grundgedanke stammt von Kelly Johnson der bei Skunk Works Chefingenioer
+war, also Leiter jenes Ingenieursteams welches einige der
+hoch-technologischsten Aufklärungsflugzeuge des Kalten Krieges entwurf
+(U2, SR-71).</p>
+<h2 id="security-by-design-bzw-security-by-default">Security-by-Design bzw. Security-by-Default</h2>
+<p>Analog zu dem in der DSGVO/GDPR verankerten privacy-by-design bzw.
+privacy-by-default wird mittlerweile auch gerne von security-by-design
+und security-by-default gesprochen. Ersteres bedeutet, dass eine
+Software so geschrieben sein sollte, dass ein sicherer Betrieb
+prinzipiell möglich ist. Letzteres bedeutet, dass, wenn ein sicherer
+Betrieb möglich ist, dieser auch per-default so konfiguriert sein
+sollte. Dies soll Sicherheitsfehler aufgrund von “vergessener” bzw.
+unterlassender Konfiguration vermeiden, Sicherheitslücken müssen
+explizit geöffnet werden.</p>
+<p>Beides sind keine direkten Entwicklugsprinzipen aber quasi Vorgaben an
+welche sich die Entwicklung halten muss und wurden aus diesem Grund hier
+erwähnt.</p>
+<h2 id="trennung-von-daten-und-programm-logik">Trennung von Daten- und Programm-Logik</h2>
+<p>Ein typischer Vorfall der zu einer Sicherheitslücke führt ist, wenn ein
+Programm bei der Zuordnung zwischen Daten und Programmlogik verwirrt
+wird. Eine SQL-Injection fällt in dieses Muster: eine Benutzereingabe
+(Daten) wird durch inadäquate Programmierung als Programmlogik bzw.
+Programmcode interpretiert und ausgeführt.</p>
+<p>Historisch gab es gegenläufige Computerarchitekturen: die
+Harvard-Architektur verwendete eine strikte Hardware-Trennung zwischen
+Daten- und Programmspeicher. Die konkurrierende Von-Neumann-Architektur
+verwendete einen Speicher sowohl für Daten als auch für Programmcode und
+setzte sich aufgrund der höheren Effizienz durch. Mittlerweile gibt es
+mehrere Sicherheitsvorkehrungen um eine konzeptionelle Trennung von
+Programmcode und Daten auch in diesen Architekturen durchzuführen.</p>
+<h2 id="reflektionsfragen">Reflektionsfragen</h2>
+<ol>
+<li>
+<p>Erläutere das Minimalprinzip mit zumindest drei Beispielen für
+    jenes.</p>
+</li>
+<li>
+<p>Erläutere Least Privilege und Separation of Duties.</p>
+</li>
+<li>
+<p>Erläutere Defense in Depth.</p>
+</li>
+<li>
+<p>Erkläre den Unterschied zwischen Fail-Open und Fail-Closed.</p>
+</li>
+<li>
+<p>Welche Probleme können durch die Vermischung von Applikationlogik
+    und Eingabedaten entstehen?</p>
+</li>
+</ol>
+<p>[1] Datenschutzgrundverordnung, siehe auch
+<a href="https://de.wikipedia.org/wiki/Datenschutz-Grundverordnung">https://de.wikipedia.org/wiki/Datenschutz-Grundverordnung</a></p>
+<p>[2] Jerome Saltzer war an der Entwicklung von Multics involviert und
+leitete später Projekt Athena am MIT. Dieses Projekt war massgeblich an
+der Entwicklung graphischer Oberflächen und Netzwerktechnologien wie
+z.B. Kerberos involviert.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

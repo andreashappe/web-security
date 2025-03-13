@@ -1,0 +1,1634 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../client-side-attacks/client_side_hardening/">
+      
+      
+        <link rel="next" href="../history/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Apache mod_security - Web Application Security</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#waf-mod_security" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="Web Application Security" class="md-header__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web Application Security
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Apache mod_security
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web Application Security" class="md-nav__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Web Application Security
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Einführung
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Einführung
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/security_principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grundprinzipien
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/security_as_process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sicherheit als Prozess
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration mit dem Umfeld
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/crypto_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kryptographische Grundlagen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Web Grundlagen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Web Grundlagen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_technologies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technologien
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_applications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Applikationen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Zugriffskontrolle
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Zugriffskontrolle
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Identifikation und Authentifizierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/session_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session-Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/authorization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autorisierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-and-authorization/sso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single-Sign On (SSO)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Server-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Server-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Client-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Client-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_hardening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Härtungsmaßnahmen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Apache mod_security
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Apache mod_security
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functionality-and-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functionality and Transactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functionality and Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beispielstransaktion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispielstransaktion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules-args" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules: Args
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rules: Args">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operatoren
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beispiele" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiele
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#owasp-core-ruleset" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWASP Core Ruleset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entstehungsgeschichte
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weitere-informationen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What to do next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functionality-and-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functionality and Transactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functionality and Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beispielstransaktion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispielstransaktion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules-args" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules: Args
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rules: Args">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operatoren" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operatoren
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beispiele" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiele
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#owasp-core-ruleset" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWASP Core Ruleset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="waf-mod_security">WAF: mod_security</h1>
+<p><em>mod_security</em> ist eine Web-Application Firewall — dies bedeutet, dass
+sie laut IOS/OSI Model auf Applikationsebene (Level 7) arbeitet und
+daher auch die Sprache der Applikation (in diesem Fall HTTP) spricht und
+versteht. Sie ist eine der bekanntesten Open-Source WAFs und wird daher
+im Zuge dieses Skripts betrachtet.</p>
+<p>Laut dem eigenen Selbstverständnis bietet sie <em>Real-Time Application
+Security Monitoring and Access Control</em>: ein- und ausgehende HTTP
+Anfragen und Antworten können in Echtzeit analysiert und aufgrund von
+Regeln kontrolliert (z. B. blockiert) werden. <em>mod_security</em> blockiert
+by Default keinen Traffic, alle Entscheidungen müssen explizit über
+Regeln konfiguriert werden. Ein häufig verwendeter Regelsatz ist de
+OWASP Core Rule Set (CRS). Die WAF führt kein Input-Sanititzing durch:
+ein Request wird also entweder akzeptiert oder blockiert. Dies war eine
+Design-Entscheidung des Entwicklers um sich auf eine Kernaufgabe zu
+konzentrieren und diese gut zu lösen (do one thing and do this well).</p>
+<p><em>mod_security</em> kann entweder als Apache Modul (daher der Name=
+innerhalb eines bestehenden Apache Webservers integriert werden, oder
+als eigenständiger Reverse-Proxy (als eigenständiger Apache-Server) vor
+mehrere Applikationsserver vorgeschalten werden.</p>
+<p>Wie bereits erwähnt ist der primäre Einsatzzweck von <em>mod_security</em> ist
+das Monitoren und Kontrollieren von HTTP Traffic in Echtzeit und das
+Erstellen von Zugriffsentscheidungen aufgrund dieses Traffics. Konkreter
+kann z. B. <em>Virtual Patching</em> durchgeführt werden. Dabei wird eine
+Sicherheitslücke gepatched ohne, dass die Web-Applikation selbst
+angepasst wird. Beispielsweise könnte es sich bei dem Sicherheitsproblem
+um einen 0day (ohne verfügbaren Patch), oder bei der Applikation um eine
+ungewartete proprietäre Applikation handeln. In diesem Fall würde das
+Angriffsmuster analysiert und für den Angriffsvektor eine Regel
+hinterlegt werden, welche bösartige Angriffe automatisiert erkennt und
+die jeweiligen Requests blockiert. Eine weitere Möglichkeit ist die
+Verwendung vordefinierter Regelwerker zum Hardening bestehender
+Applikationen (dadurch wird eine weitere Schutzschicht über eine
+eigentlich sichere Applikation eingezogen).</p>
+<p>Eine unterschätzte Möglichkeit von <em>mod_security</em> ist der Einsatz als
+Log-Quelle. Webserver protokollieren im Normalfall nur die zugegriffene
+URL (also keinen Request-Body und auch keine Antwortdokumente). Mittels
+<em>mod_security</em> kann ein Administrator nun genau definieren, welche
+Requests in welcher Tiefe protokolliert werden sollten.</p>
+<h2 id="functionality-and-transactions">Functionality and Transactions</h2>
+<p>Grundsätzlich kann die implementierte Funktionalität in vier Bereiche
+aufgeteilt werden:</p>
+<ul>
+<li>
+<p>parsing: eingehende und ausgehende HTTP Nachrichten müssen
+    analysiert werden.</p>
+</li>
+<li>
+<p>buffering: teilweise werden Nachrichten auf mehrere Teilnachrichten
+    aufgeteilt. <em>mod_security</em> sammelt diese, fügt diese zu einer
+    gemeinsamen Nachricht zusammen und ruft erst danach die Filterregeln
+    auf.</p>
+</li>
+<li>
+<p>rule-engine: ist die aktive Komponente welche die bereitgestellten
+    Regeln auf die gesammelten HTTP-Nachrichten anwendet.</p>
+</li>
+<li>
+<p>logging: führt das Logging durch.</p>
+</li>
+</ul>
+<p>Hier kann man auch schon den Overhead von <em>mod_security</em> erkennen: auf
+der einen Seite gibt es einen CPU-Overhead da alle Nachrichten
+analysiert werden müssen, auf der anderen Seite müssen für das Buffering
+alle ein- und aus-gehenden Nachrichten im Speicher gesammelt werden und
+führen so zu Speicher-Overhead. Falls zu viel Speicher verbraucht wird,
+müssen Nachrichten auf der Festplatte/SSD zwischengespeichert werden.
+Beides erhöht die Latenz-Zeit die ein Benutzer wahrnimmt.</p>
+<p>Ein eingehender HTTP Request und die dazugehörende Response durchläuft
+innerhalb von <em>mod_security</em> folgende fünf Phasen:</p>
+<ol>
+<li>
+<p>request headers : cheap, decide if you want to look at body content</p>
+</li>
+<li>
+<p>request body : think POST-Requests, attached Files</p>
+</li>
+<li>
+<p>response headers : cheap, decide if you want to look at body content</p>
+</li>
+<li>
+<p>response body, attached Files</p>
+</li>
+<li>
+<p>logging : decide if the request/response will be logged or not</p>
+</li>
+</ol>
+<p>In Phase 1 und 2 kann das Weiterleiten des Requests zum
+Applikationsserver blockiert werden. Innerhalb der phase 3 und 4 kann
+das Antwortdokument zum Client blockiert werden, die Operation wird
+allerdings am Applikationsserver exekutiert (dies kann z. B. verwendet
+werden um Data-Extraktion zu verhindern). Inder Phase 5 kann ein Request
+nicht mehr blockiert werden.</p>
+<h3 id="beispielstransaktion">Beispielstransaktion</h3>
+<p>Anhand der Debug-Logs von <em>mod_security</em> wird hier nochmal eine
+Transaktion erklärt.</p>
+<p>Folgender Input Request mit jeweils einem Parameter in der URL (<em>a</em>) und
+einem Parameter im Body (<em>b</em>).</p>
+<pre><code>POST /?a=test HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 6
+
+b=test
+</code></pre>
+<p>Dies führt zu folgendem Antwortdokument mit der Nachricht <em>Hello World!</em>
+im Content:</p>
+<pre><code>HTTP/1.1 200 OK
+Date: Sun, 17 Jan 2010 00:13:44 GMT
+Server: Apache
+Content-Length: 12
+Connection: close
+Content-Type: text/html
+
+Hello World!
+</code></pre>
+<p>Folgende Phasen können nun in den Log-Dateien erkannt werden:</p>
+<pre><code>[4] Initialising transaction (txid SopXW38EAAE9YbLQ).
+[5] Adding request argument (QUERY_STRING): name "a", value "test"
+[4] Transaction context created (dcfg 8121800).
+[4] Starting phase REQUEST_HEADERS.
+</code></pre>
+<p>Für jeden eingehenden HTTP-Request wird zunächst eine eindeutige
+Transaktions-ID vergeben. Anschließend wird der HTTP Header analysiert
+und der Parameter <em>a</em> extrahiert. Abschließend werden die Regeln der
+Phase 1 (Request-Header) angewandt.</p>
+<pre><code>[4] Second phase starting (dcfg 8121800).
+[4] Input filter: Reading request body.
+[9] Input filter: Bucket type HEAP contains 6 bytes.
+[9] Input filter: Bucket type EOS contains 0 bytes.
+[5] Adding request argument (BODY): name "b", value "test"
+[4] Input filter: Completed receiving request body (length 6).
+[4] Starting phase REQUEST_BODY.
+</code></pre>
+<p>Falls die Nachricht noch nicht blockiert wurde, wird nun der Content des
+Requests analysiert und dabei der Parameter <em>b</em> extrahiert. Jetzt
+besitzt <em>mod_security</em> Zugriff auf alle Parameter und die Regeln der
+Phase 2 (Request Body) werden angewendet.</p>
+<pre><code>[4] Hook insert_filter: Adding input forwarding filter (r 81d0588).
+[4] Hook insert_filter: Adding output filter (r 81d0588).
+
+[4] Input filter: Forwarding input: mode=0, block=0, nbytes=8192 (f 81d2228, r 81d0588).
+[4] Input filter: Forwarded 6 bytes.
+[4] Input filter: Sent EOS.
+[4] Input filter: Input forwarding complete.
+</code></pre>
+<p>Wenn auch diese Regeln den Request nicht verwerfen, wird der Request an
+den Applikationsserver/die Applikation weitergeleitet. <em>mod_security</em>
+kann nun abwarten, bis ein entsprechendes Antwortdokument empfangen
+wird.</p>
+<pre><code>[9] Output filter: Receiving output (f 81d2258, r 81d0588).
+[4] Starting phase RESPONSE_HEADERS.
+
+[9] Output filter: Bucket type MMAP contains 12 bytes.
+[9] Output filter: Bucket type EOS contains 0 bytes.
+[4] Output filter: Completed receiving response body (buffered full - 12 bytes).
+[4] Starting phase RESPONSE_BODY.
+</code></pre>
+<p>Analog zu der Request-Phase wird nun das Antwortdokument analysiert und
+die Regeln der jeweiligen Phasen (3 und 4) angewendet. Hier sieht man
+auch schön, dass auch das Antwortdokument gespeichert wird — werden z.
+B. viele große Dokumente zugestellt (oder Dateien heruntergeladen)
+müssen diese zwischengespeichert, und auf diese Weise serverseitig viele
+Ressourcen verbraucht, werden.</p>
+<pre><code>[4] Output filter: Output forwarding complete.
+[4] Initialising logging.
+[4] Starting phase LOGGING.
+[4] Audit log: Ignoring a non-relevant request.
+</code></pre>
+<p>Abschließend wird noch die Log-Phase durchspielt und aufgrund dieser
+erkannt, ob der Request bzw. die Response in die Logdatei aufgenommen
+werden sollte.</p>
+<h2 id="rules">Rules</h2>
+<p>Das Herz einer <em>mod_security</em> Installation sind die verwendeten
+Filterregeln. Diese besitzen immer das idente Format:</p>
+<pre><code>SecRule ARGS OPERATOR ACTIONS
+</code></pre>
+<p>Die jeweiligen Bereiche sind einfacher erklärt:</p>
+<p>ARGS<br />
+: beschreibt auf welchen Bereich (z. B. auf welchen Parameter) eine
+jeweilige Operation angewendet werden soll.</p>
+<p>OPERATOR<br />
+: definiert die Abfrage/den Filter der auf die ARGS angewandt werden
+soll.</p>
+<p>ACTIONS<br />
+: beschreibt die Aktivitäten (z. B. blockieren und loggen) die angewandt
+werden, falls der Operator erfolgreich auf die Argumente angewandt
+werden konnte.</p>
+<h3 id="rules-args">Rules: Args</h3>
+<p>Beispiele für mögliche Argumente:</p>
+<ul>
+<li>
+<p>ARGS (GET+POST arguments)</p>
+</li>
+<li>
+<p>ARGS_GET, ARGS_POST: die Parameter dre Header/des Contents</p>
+</li>
+<li>
+<p>FILES: hochgeladene Dateien</p>
+</li>
+<li>
+<p>FULL_REQUEST: der gesamte Request</p>
+</li>
+<li>
+<p>QUERY_STRING, REQUEST_BODY: raw data</p>
+</li>
+<li>
+<p>REQUEST_HEADERS: Header Werte</p>
+</li>
+<li>
+<p>REQUEST_METHOD: die Verwendete HTTP Methode (POST/GET)</p>
+</li>
+<li>
+<p>REQUEST_URI</p>
+</li>
+<li>
+<p>REQUEST_LINE</p>
+</li>
+<li>
+<p>REMOTE_ADDRESS: die Adresse des zugreifenden Clients</p>
+</li>
+</ul>
+<h4 id="operatoren">Operatoren</h4>
+<p>Operatoren beginnen meistens mit einem @-Symbol, einige Beispiele:</p>
+<ul>
+<li>
+<p>"@contains &lt;script &gt;": überprüft ob in den Arguments ein
+    script-Tag vorkommt</p>
+</li>
+<li>
+<p>"@detectSQLi": überprüft die Arguments auf SQL-Injection-Muster</p>
+</li>
+<li>
+<p>"@detectXSS": überprüft die Arguments auf XSS-Muster</p>
+</li>
+<li>
+<p>"@inspectFile /path/to/util/runav.pl": die Arguments werden an das
+    angeführte Skripts übergeben, das Ergebnis des Operators ist das
+    Ergebnis des Skripts. Auf diese Weise kann z. B. jedes hochgeladene
+    File mittels eines Virenscanners überprüft werden, bevor dieses File
+    an den Applikationsserver übergeben wird.</p>
+</li>
+<li>
+<p>"@ipMatch 192.168.1.100": Vergleich auf eine IP-Adresse</p>
+</li>
+<li>
+<p>"@validateDTD /path/to/xml.dtd": überprüft ob das übergebene
+    Argument einem definierten XML-Schema entspricht.</p>
+</li>
+</ul>
+<h4 id="actions">Actions</h4>
+<p>Actions definieren die Operationen, die exekutiert werden sollten falls
+die Operatoren erfolgreich angewandt werden konnten. Diese Operatoren
+können lt. <em>mod_security</em> Dokumentation in verschiedene Bereiche
+eingeteilt werden:</p>
+<ul>
+<li>
+<p>disruptive: verändern den Datenfluss, z. B. <em>allow</em> oder <em>deny</em></p>
+</li>
+<li>
+<p>flow: beziehen sich auf die Regeln selbst, z. B. <em>skip</em> oder <em>chain</em></p>
+</li>
+<li>
+<p>meta-data: dienen zur Dokumentation</p>
+</li>
+<li>
+<p>variable: für komplexe Regeln können Variablen gesetzt bzw.
+    ausgelesen werden</p>
+</li>
+<li>
+<p>logging: Definition der Daten, die geloggt werden sollten</p>
+</li>
+<li>
+<p>special</p>
+</li>
+<li>
+<p>miscellaneous: everything else</p>
+</li>
+</ul>
+<h4 id="beispiele">Beispiele</h4>
+<p>Ein einfaches primitives Beispiel:</p>
+<pre><code>SecRule ARGS "@contains &lt;script&gt;" log,deny,status:404
+</code></pre>
+<p>Diese Regeln verwendet als Datenquelle alle extrahierten Argumente
+(<em>ARGS</em>) und überprüft, ob in diesen ein HTML script-Tag vorkommt. In
+dem Fall wird die Anfrage mit einem 404 Fehler blockiert und geloggt.</p>
+<p>Eine komplexere Regel:</p>
+<pre><code>SecRule REQUEST\_LINE|REQUEST\_HEADERS|REQUEST\_HEADERS\_NAMES "@contains () \{" "id:420008,phase:2,t:none,t:lowercase,deny,status:500,log,msg:'Malware expert - user-agent: Bash ENV Variable Injection Attack'"
+</code></pre>
+<p>Diese Regel sucht in verschiedenen Datenquellen nach dem String <em>() {</em>.
+Dieser String beschreibt einen Bash-Funktionsaufruf und sollte in
+regulärem Verkehr nicht vorkommen. Falls dieser String gefunden wird,
+wird der Request mit einem 500er Statuscode abgelehnt und protokolliert.</p>
+<pre><code>SecRule REMOTE\_ADDR "@ipMatch 192.168.1.101" id:102,phase:1,t:none,nolog,pass,ctl:ruleEngine:off
+</code></pre>
+<p>Diese Regel würde Verkehr von der IP-Adresse 192.168.1.101 immer
+akzeptieren (durch ruleEngine:off werden keine Folgeregeln mehr
+verwendet), diese Requests werden ebenso nicht geloggt. Dadurch wird ein
+Whitelisting der IP-Adresse durchgeführt.</p>
+<pre><code>SecRule ARGS:username “@streq admin” chain,deny
+SecRule REMOTE\_ADDR “!streq 192.168.1.111”
+</code></pre>
+<p>Das letzte Beispiel zeigt, wie zwei Regeln mittels <em>chain</em> verknüpft
+werden. Es wird zuerst die erste Regel angewendet (<em>für das Argument
+username wurde der Wert admin verwendet</em>) und dann mit der Regel <em>die
+IP-Adresse ist nicht 192.168.1.111</em> kombiniert. Falls beide Regeln wahr
+sind, wird die Anfrage abgelehnt. Dies entspricht also der Regel <em>Ein
+Administrator darf sich nur ausgehend von der IP-Adresse 192.168.1.111
+einloggen</em>.</p>
+<h3 id="log-format">Log Format</h3>
+<p>Das <em>mod_security</em> Format entspricht nicht 100% anderen bekannten
+Log-Formaten. Eine protokollierte Transaktion wird über mehrere Sublogs
+beschrieben. Jedes Sublog beginnt mit einem MIME-ähnlichem Header,
+dieser besteht aus einer eindeutigen ID über welchen die Sublogs
+aggregiert werden können (in dem Beispiel <em>f9adec1d</em>) und einer
+Log-Kategorie (dies ist der angehängte Buchstabe).</p>
+<pre><code>--f9adec1d-A--
+[25/Sep/2016:18:42:50 +0300] V@fwen8AAQEAAA2TDbQAAAAK 127.0.0.1 35965 127.0.0.1 443
+--f9adec1d-B--
+GET / HTTP/1.1
+Host: malware.expert
+Accept: */*
+User-Agent: () {
+
+--f9adec1d-F--
+HTTP/1.1 500 Internal Server Error
+Content-Length: 613
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+--f9adec1d-E--
+
+--f9adec1d-H--
+Message: Access denied with code 500 (phase 2). String match "() {" at REQUEST_HEADERS:User-Agent. [file "/etc/modsecurity/malware_expert.conf"] [line "97"] [id "420008"] [msg "Malware expert - user-agent: Bash ENV Variable Injection Attack"]
+Action: Intercepted (phase 2)
+Stopwatch: 1474818170070960 1010 (- - -)
+Stopwatch2: 1474818170070960 1010; combined=177, p1=25, p2=147, p3=0, p4=0, p5=5, sr=55, sw=0, l=0, gc=0
+Response-Body-Transformed: Dechunked
+Producer: ModSecurity for Apache/2.9.0 (http://www.modsecurity.org/).
+Server: Apache
+Engine-Mode: "ENABLED"
+
+--f9adec1d-Z--
+</code></pre>
+<p>In Abhängigkeit der Transaktion können unterschiedliche Log-Kategorien
+befüllt werden. <em>A</em> beinhaltet immer den Zeitstempel und die Adressen
+der betroffenen Kommunikationspartner, <em>B</em> ist der eingehende Request,
+<em>F</em> die erzeugte Antwort; <em>H</em> beschreibt die Regel die angewandt wurde.</p>
+<p>Leider ist es nicht so einfach diese Informationen mittels <em>grep</em> zu
+parsen.</p>
+<h2 id="owasp-core-ruleset">OWASP Core Ruleset</h2>
+<p>Es macht natürlich wenig Sinn, für jede <em>mod_security</em>-Installation
+getrennte Regelwerke für common Angriffsvektoren zu erstellen. Aus
+diesem Grund haben sich Default-Regelwerke gebildet die als Initiale
+Regeln eingespielt werden können. Das bekannteste Beispiel hierfür ist
+das <em>OWASP Core Rule Set</em> (auch CRS genannt), die aktuelle Version ist
+3, dieses Regelwerk wird gerne zum Hardening von Webservern verwendet.</p>
+<p>Dieses Ruleset beinhaltet Regeln welche die Angriffsvektoren der OWASP
+Top 10 (als auch weitere Angriffsvektoren) abdecken. Um dieses Regelwerk
+zu aktivieren, lädt der Administrator den Regelsatz als auch ein
+Konfigurations-File (<em>crs-setup.conf</em>) vom OWASP-Server herunter und
+inkludiert diese innerhalb der Konfiguration des Apache Webservers.
+Dabei kann der Admin entweder alle Regeln inkludieren oder nur einzelne
+Subbereiche (z. B. nur Regeln für SQL-Injection Angriffe).</p>
+<p>Ein häufiges Problem von Web Application Firewalls ist, dass valide
+Anfragen als Schadcode erkannt werden (diese Fehler werden auch als
+<em>false positives</em> bezeichnet). Eine hohe Rate an false positives
+zerstört die Benutzerakzeptanz und führt im Normalfall dazu, das die WAF
+aus Akzeptanzgründen wieder deaktiviert wird. Um dem entgegenzuwirken
+besitzt das OWASP Core Rule Set eine Paranoia-Einstellung welche von 1
+(default) bis 4 gesetzt werden kann. Je höher das Paranoia-Level umso
+mehr Schadcodes werden erkannt, allerdings steigt damit auch das Risiko
+von False-Positives. In Abhängigkeit der Gefährdung der Applikation kann
+nun ein geeignetes Paranoia-Level gewählt werden.</p>
+<h2 id="reflektionsfragen">Reflektionsfragen</h2>
+<ol>
+<li>
+<p>Was versteht man unter einer Web-Application Firewall? Welche
+    Einsatzzwecke bzw. Verwendungsmöglichkeitne gibt es für solche?</p>
+</li>
+<li>
+<p>Aus welchen Teilen besteht eine mod_security Regel? Erläutere die
+    jeweiligen Teile.</p>
+</li>
+<li>
+<p>Was wird durch folgende Regel: <em>SecRule ARGS "@contains
+    &lt;script&gt;" log,deny,status:404</em> durchgeführt?</p>
+</li>
+</ol>
+<!-- -->
+
+<ol>
+<li>
+<p>Was ist der Grundgedanke dabei, DevOps und Security zu verbinden?</p>
+</li>
+<li>
+<p>Welche Sicherheitsmaßnahmen können im Zuge von SecDevOps
+    automatisiert durchgeführt werden? Erläutere die jeweiligen
+    Maßnahmen.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

